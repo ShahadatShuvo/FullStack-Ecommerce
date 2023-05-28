@@ -20,7 +20,7 @@ Before running the front-end, ensure that you have the following software instal
 2. Navigate to the `frontend` directory: `cd frontend`.
 3. Install the dependencies: `npm install`.
 4. Start the development server: `npm run dev`.
-5. Open your web browser and visit `http://localhost:3000` to view the front-end.
+5. You will get the url to view the front-end.
 
 ### Folder Structure
 
@@ -43,12 +43,12 @@ Before running the backend, ensure that you have the following software installe
 ### Installation
 
 1. Navigate to the `backend` directory: `cd backend`.
-2. Create a virtual environment (recommended): `python -m venv env`.
+2. Create a virtual environment (recommended): `python -m venv venv` || `py -m venv venv`. [If not installed]
 3. Activate the virtual environment:
-   - On Windows: `.\venv\Scripts\activate`
+   - On Windows: `venv\Scripts\activate.bat`
    - On macOS/Linux: `source venv/bin/activate`
-4. Install the dependencies: `pip install -r requirements.txt`.
-5. Apply the database migrations: `python manage.py migrate`.
+4. Install the dependencies: `pip install -r requirements.txt`. [If not installed]
+5. Apply the database migrations: `python manage.py migrate`.  [If not installed]
 6. Start the development server: `python manage.py runserver`.
 7. Open your web browser and visit `http://localhost:8000` to view the backend API.
 
