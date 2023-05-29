@@ -13,4 +13,7 @@ class Product(models.Model):
         return self.title
 
     def img_preview(self):  # new
-        return mark_safe(f'<img src = "{self.image_url.url}" width = "80"/>')
+        try:
+            return mark_safe(f'<img src = "{self.image_url.url}" width = "40"/>')
+        except:
+            pass
