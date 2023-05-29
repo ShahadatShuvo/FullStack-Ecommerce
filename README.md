@@ -37,8 +37,8 @@ The backend is built using Django, a high-level Python web framework. It handles
 
 Before running the backend, ensure that you have the following software installed:
 
-- Python (version X.X.X)
-- Django (version X.X.X)
+- Python (version > 3.10)
+- Django (version 4.2.1)
 
 ### Installation
 
