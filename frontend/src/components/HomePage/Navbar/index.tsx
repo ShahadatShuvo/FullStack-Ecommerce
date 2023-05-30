@@ -9,6 +9,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 
 function Navbar() {
+  const [search, setSearch] = React.useState(false);
   return (
     <div>
       <header className="text-gray-600 body-font bg-white">
@@ -29,46 +30,60 @@ function Navbar() {
             <span className="ml-3 text-xl">Tailblocks</span>
           </a>
           {/* search start*/}
-          <div className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center min-w-[35%]">
-            <div className="w-full relative flex items-center">
-              <input
-                type="text"
-                name="search"
-                id="search"
-                className="bg-blue-50 h-10 shadow-sm  block w-full pr-5 sm:text-sm rounded-md px-2 ps-8 focus:outline-none"
-              />
-              <div className="absolute left-1">
-                <SearchOutlinedIcon />
-              </div>
-              <div className="absolute right-0">
-                <IconButton aria-label="delete">
-                  <CloseIcon />
-                </IconButton>
+          {search && (
+            <div className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center min-w-[42%]">
+              <div className="w-full relative flex items-center">
+                <input
+                  type="text"
+                  name="search"
+                  id="search"
+                  placeholder="Type your keywords here"
+                  className="bg-blue-50 h-10 shadow-sm  block w-full pr-5 sm:text-sm rounded-md px-2 ps-10 focus:outline-none"
+                />
+                <div className="absolute left-2">
+                  <SearchOutlinedIcon />
+                </div>
+                <div className="absolute right-0">
+                  <IconButton aria-label="delete">
+                    <CloseIcon
+                      onClick={() =>
+                        setSearch((prevState: boolean) => !prevState)
+                      }
+                    />
+                  </IconButton>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           {/* search end*/}
-          {/* <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
-            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-              Men
-            </a>
-            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-              Women
-            </a>
-            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-              Beauty
-            </a>
-            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-              Sport
-            </a>
-            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-              <ExploreMenu />
-            </a>
-          </nav> */}
+          {!search && (
+            <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
+              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+                Men
+              </a>
+              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+                Women
+              </a>
+              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+                Beauty
+              </a>
+              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+                Sport
+              </a>
+              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+                <ExploreMenu />
+              </a>
+            </nav>
+          )}
           <div className="flex">
-            <IconButton aria-label="search">
-              <SearchOutlinedIcon />
-            </IconButton>
+            {!search && (
+              <IconButton
+                aria-label="search"
+                onClick={() => setSearch((prevState: boolean) => !prevState)}
+              >
+                <SearchOutlinedIcon />
+              </IconButton>
+            )}
             <MenuIcon />
             <CartMenu />
           </div>
