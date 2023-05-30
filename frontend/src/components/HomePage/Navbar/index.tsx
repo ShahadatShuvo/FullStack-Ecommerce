@@ -1,6 +1,11 @@
+"use client";
+
 import React from "react";
 import MenuIcon from "./ProfileMenu";
 import CartMenu from "./CartMenu";
+import ExploreMenu from "./Explore";
+import { IconButton } from "@mui/material";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 function Navbar() {
   return (
@@ -36,10 +41,13 @@ function Navbar() {
               Sport
             </a>
             <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-              <CartMenu />
+              <ExploreMenu />
             </a>
           </nav>
           <div className="flex">
+            <IconButton aria-label="search">
+              <SearchOutlinedIcon />
+            </IconButton>
             <MenuIcon />
             <CartMenu />
           </div>
