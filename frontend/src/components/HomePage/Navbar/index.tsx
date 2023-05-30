@@ -1,5 +1,6 @@
 import React from "react";
-import MenuIcon from "./Menu";
+import MenuIcon from "./ProfileMenu";
+import CartMenu from "./CartMenu";
 
 function Navbar() {
   return (
@@ -21,14 +22,26 @@ function Navbar() {
             </svg>
             <span className="ml-3 text-xl">Tailblocks</span>
           </a>
-          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <a className="mr-5 hover:text-gray-900">First Link</a>
-            <a className="mr-5 hover:text-gray-900">Second Link</a>
-            <a className="mr-5 hover:text-gray-900">Third Link</a>
-            <a className="mr-5 hover:text-gray-900">Fourth Link</a>
+          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
+            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              Men
+            </a>
+            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              Women
+            </a>
+            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              Beauty
+            </a>
+            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              Sport
+            </a>
+            <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              <CartMenu />
+            </a>
           </nav>
-          <div>
+          <div className="flex">
             <MenuIcon />
+            <CartMenu />
           </div>
         </div>
       </header>

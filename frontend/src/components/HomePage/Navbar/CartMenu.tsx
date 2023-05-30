@@ -13,9 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export default function MenuIcon() {
+export default function CartMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -36,7 +36,7 @@ export default function MenuIcon() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <AccountCircleIcon fontSize="large" />
+            <AddShoppingCartIcon fontSize="large" />
           </IconButton>
         </Tooltip>
       </Box>
