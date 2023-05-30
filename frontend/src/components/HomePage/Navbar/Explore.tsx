@@ -14,6 +14,7 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function CartMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -27,18 +28,10 @@ export default function CartMenu() {
   return (
     <div>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2, mt: "4px" }}
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-          >
-            <AddShoppingCartIcon fontSize="medium" />
-          </IconButton>
-        </Tooltip>
+        <div className="flex" onMouseOver={handleClick}>
+          <p>Explore</p>
+          <KeyboardArrowDownIcon />
+        </div>
       </Box>
       <Menu
         anchorEl={anchorEl}
