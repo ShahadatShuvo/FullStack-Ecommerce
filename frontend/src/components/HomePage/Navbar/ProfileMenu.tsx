@@ -29,7 +29,7 @@ export default function MenuIcon() {
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Account settings">
           <IconButton
-            onMouseOver={handleClick}
+            onClick={handleClick}
             size="small"
             sx={{ ml: 2 }}
             aria-controls={open ? "account-menu" : undefined}
