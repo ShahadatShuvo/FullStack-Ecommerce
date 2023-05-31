@@ -4,7 +4,7 @@ import React from "react";
 import MenuIcon from "./ProfileMenu";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
-import { IconButton } from "@mui/material";
+import { Badge, IconButton } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -92,7 +92,20 @@ function Navbar() {
               </IconButton>
             )}
             <MenuIcon />
-            <CartMenu />
+
+            <Badge
+              badgeContent={4}
+              color="primary"
+              sx={{
+                mt: "2px",
+                ".css-106c1u2-MuiBadge-badge": {
+                  borderRadius: "5px",
+                },
+              }}
+            >
+              {/* <MailIcon color="action" />  */}
+              <CartMenu />
+            </Badge>
           </div>
         </div>
       </header>
