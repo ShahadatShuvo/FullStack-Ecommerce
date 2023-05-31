@@ -45,8 +45,8 @@ export default function ExploreMenu(props: ExploreInterface) {
             mt: 1.5,
           },
         }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        transformOrigin={{ horizontal: "center", vertical: "top" }}
+        anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
       >
         <div
           onMouseLeave={handleClose}
