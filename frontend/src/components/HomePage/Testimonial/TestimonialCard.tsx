@@ -1,4 +1,6 @@
-function Testimonialcard() {
+import React from "react";
+
+function TestimonialCard() {
   return (
     <div className="text-black lg:grid grid-cols-4 p-4 gap-8 space-y-6 lg:space-y-0">
       <div className="shadow-lg border col-span-2 border-gray-500 rounded">
@@ -20,4 +22,4 @@ function Testimonialcard() {
   );
 }
 
-export default Testimonialcard;
+export default TestimonialCard;
