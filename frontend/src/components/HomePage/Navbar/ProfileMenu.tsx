@@ -8,12 +8,14 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
+import Image from "next/image";
 
 export default function MenuIcon() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -24,6 +26,8 @@ export default function MenuIcon() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  let fullName = "Shahadat Shuvo";
   return (
     <div>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -76,12 +80,32 @@ export default function MenuIcon() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+          <div className="w-full flex justify-between">
+            <div className="mr-2">
+              <Image
+                src="/img/me.jpg"
+                alt="shopbag"
+                width={45}
+                height={45}
+                className="rounded-full"
+              />
+            </div>
+            <div>
+              <p className="text-lg font-semibold">{fullName}</p>
+              <p className="text-sm">Cumilla, Bangladesh</p>
+            </div>
+          </div>
         </MenuItem>
+        <Divider />
         <MenuItem onClick={handleClose}>
           <Avatar /> My account
         </MenuItem>
-        <Divider />
+        <MenuItem onClick={handleClose}>
+          <ListAltOutlinedIcon /> <p className="ml-3">My Order</p>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <FavoriteBorderIcon /> <p className="ml-3">Wishlist</p>
+        </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
