@@ -2,15 +2,10 @@
 
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Button } from "@mui/material";
+import Image from "next/image";
 
 interface ExploreInterface {
   setExplore: any;
@@ -71,32 +66,94 @@ export default function ExploreMenu(props: ExploreInterface) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <div onMouseLeave={handleClose}>
-          <MenuItem onClick={handleClose}>
-            <Avatar /> Profile
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Avatar /> My account
-          </MenuItem>
-          <Divider />
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <PersonAdd fontSize="small" />
-            </ListItemIcon>
-            Add another account
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
+        <div
+          onMouseLeave={handleClose}
+          className="min-w-[60vw] p-5 flex justify-between pt-8"
+        >
+          <div className="mx-3">
+            <h1 className="text-lg mb-2 font-bold">Home Pages</h1>
+            <ul className="space-y-2">
+              <li>
+                <a href="/">Checkout Page</a>
+              </li>
+              <li></li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+            </ul>
+          </div>
+          <div className="mx-3">
+            <h1 className="text-lg mb-2 font-bold">Shop Pages</h1>
+            <ul className="space-y-2">
+              <li>
+                <a href="/">Checkout Page</a>
+              </li>
+              <li></li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+            </ul>
+          </div>
+          <div className="mx-3">
+            <h1 className="text-lg mb-2 font-bold">Other Pages</h1>
+            <ul className="space-y-2">
+              <li>
+                <a href="/">Checkout Page</a>
+              </li>
+              <li></li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+            </ul>
+          </div>
+          <div className="mx-3">
+            <h1 className="text-lg mb-2 font-bold">Blog Pages</h1>
+            <ul className="space-y-2">
+              <li>
+                <a href="/">Checkout Page</a>
+              </li>
+              <li></li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+              <li>
+                <a href="/">Search Page</a>
+              </li>
+            </ul>
+          </div>
+          {/* image  */}
+          <div className="bg-blue-50 w-[40%] rounded-lg ml-6 p-5 flex justify-between">
+            <div>
+              <p>Sale Collection</p>
+              <p className="font-bold text-2xl mt-2">Up to</p>
+              <p className="font-bold text-2xl mb-4">80% off retail</p>
+              <Button
+                variant="contained"
+                size="small"
+                className="bg-black text-white"
+              >
+                Show me more
+              </Button>
+            </div>
+            <div className="w-[45%] flex justify-end">
+              <Image
+                src="/img/shopbag.svg"
+                alt="shopbag"
+                width={250}
+                height="50"
+                className=""
+              />
+            </div>
+          </div>
         </div>
       </Menu>
     </div>
