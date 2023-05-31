@@ -10,6 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 function Navbar() {
   const [search, setSearch] = React.useState(false);
+  const [explore, setExplore] = React.useState(false);
   return (
     <div>
       <header className="text-gray-600 body-font bg-white">
@@ -70,8 +71,14 @@ function Navbar() {
               <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
                 Sport
               </a>
-              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
-                <ExploreMenu />
+              <a
+                className={
+                  explore
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full"
+                    : "px-5"
+                }
+              >
+                <ExploreMenu setExplore={setExplore} />
               </a>
             </nav>
           )}
