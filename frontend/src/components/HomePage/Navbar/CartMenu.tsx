@@ -14,6 +14,9 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Image from "next/image";
+import { Button } from "@mui/material";
+import "./navbar.module.css";
 
 export default function CartMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -31,7 +34,7 @@ export default function CartMenu() {
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2, mt: "4px" }}
+            sx={{ ml: 2, mt: "4px", p: "4px" }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
@@ -52,6 +55,9 @@ export default function CartMenu() {
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
+            ".css-6hp17o-MuiList-root-MuiMenu-list": {
+              p: 0,
+            },
             "& .MuiAvatar-root": {
               width: 32,
               height: 32,
@@ -75,31 +81,130 @@ export default function CartMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
+        <div className="w-[30vw]">
+          <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll scrollbar-p-hide scrollbar-hide">
+            <h1 className=" text-xl font-bold text-gray-500">Shopping Cart</h1>
+
+            <div id="single-product" className="my-5 flex justify-between">
+              <div className="min-w-[70%] flex justify-between">
+                <Image
+                  src="/img/cart/shoe.jpg"
+                  alt="shopbag"
+                  width={90}
+                  height={50}
+                  className="rounded-md h-[88px] object-cover my-auto"
+                />
+                <div>
+                  <h3 className="font-semibold text-gray-700 text-lg">
+                    Mens classic Shoe
+                  </h3>
+                  <p className="text-gray-400 mb-6">Natural | XL</p>
+                  <p className="text-gray-400">Qty: 1</p>
+                </div>
+              </div>
+              <div>
+                <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
+                  $75
+                </p>
+
+                <Button size="medium">Remove</Button>
+              </div>
+            </div>
+            <Divider />
+            <div id="single-product" className="my-5 flex justify-between">
+              <div className="min-w-[70%] flex justify-between">
+                <Image
+                  src="/img/cart/shoe.jpg"
+                  alt="shopbag"
+                  width={90}
+                  height={50}
+                  className="rounded-md h-[88px] object-cover my-auto"
+                />
+                <div>
+                  <h3 className="font-semibold text-gray-700 text-lg">
+                    Mens classic Shoe
+                  </h3>
+                  <p className="text-gray-400 mb-6">Natural | XL</p>
+                  <p className="text-gray-400">Qty: 1</p>
+                </div>
+              </div>
+              <div>
+                <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
+                  $75
+                </p>
+
+                <Button size="medium">Remove</Button>
+              </div>
+            </div>
+            <Divider />
+            <div id="single-product" className="mt-5 flex justify-between">
+              <div className="min-w-[70%] flex justify-between">
+                <Image
+                  src="/img/cart/shoe.jpg"
+                  alt="shopbag"
+                  width={90}
+                  height={50}
+                  className="rounded-md h-[88px] object-cover my-auto"
+                />
+                <div>
+                  <h3 className="font-semibold text-gray-700 text-lg">
+                    Mens classic Shoe
+                  </h3>
+                  <p className="text-gray-400 mb-6">Natural | XL</p>
+                  <p className="text-gray-400">Qty: 1</p>
+                </div>
+              </div>
+              <div>
+                <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
+                  $75
+                </p>
+
+                <Button size="medium">Remove</Button>
+              </div>
+            </div>
+            <Divider />
+            <div id="single-product" className="mt-5 flex justify-between">
+              <div className="min-w-[70%] flex justify-between">
+                <Image
+                  src="/img/cart/shoe.jpg"
+                  alt="shopbag"
+                  width={90}
+                  height={50}
+                  className="rounded-md h-[88px] object-cover my-auto"
+                />
+                <div>
+                  <h3 className="font-semibold text-gray-700 text-lg">
+                    Mens classic Shoe
+                  </h3>
+                  <p className="text-gray-400 mb-6">Natural | XL</p>
+                  <p className="text-gray-400">Qty: 1</p>
+                </div>
+              </div>
+              <div>
+                <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
+                  $75
+                </p>
+
+                <Button size="medium">Remove</Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-3 pb-3 bg-blue-50">
+            <div className="pt-3 px-5 font-bold flex justify-between">
+              <p>Subtotal</p>
+              <p>$299.00</p>
+            </div>
+            <div className="px-5 py-3  flex justify-between gap-2">
+              <p className="w-[50%] px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-center drop-shadow-md hover:drop-shadow-xl font-semibold">
+                View cart
+              </p>
+              <p className="w-[50%] px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
+                Check out
+              </p>
+            </div>
+          </div>
+        </div>
       </Menu>
     </div>
   );
