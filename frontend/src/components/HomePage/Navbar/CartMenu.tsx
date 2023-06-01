@@ -9,6 +9,7 @@ import Tooltip from "@mui/material/Tooltip";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Image from "next/image";
 import { Button } from "@mui/material";
+import "../NewArrival/index.css";
 
 export default function CartMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -74,7 +75,7 @@ export default function CartMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <div className="w-[30vw]">
-          <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll">
+          <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll hide-scrollbar">
             <h1 className=" text-xl font-bold text-gray-500">Shopping Cart</h1>
 
             <div id="single-product" className="my-5 flex justify-between">
