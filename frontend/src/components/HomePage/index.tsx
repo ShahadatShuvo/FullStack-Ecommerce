@@ -1,10 +1,10 @@
-import React from "react";
-import Navbar from "./Navbar";
+import DiscoverMore from "./DiscoverMore";
+import Footer from "./Footer";
 import HeroSection from "./HeroSection";
+import Navbar from "./Navbar";
+import NewArrival from "./NewArrival";
 import Steps from "./Steps";
 import Testimonial from "./Testimonial";
-import Footer from "./Footer";
-import NewArrival from "./NewArrival";
 
 function HomePage() {
   return (
@@ -13,6 +13,7 @@ function HomePage() {
       <HeroSection />
       <NewArrival />
       <Steps />
+      <DiscoverMore />
       <Testimonial />
       <Footer />
     </div>
