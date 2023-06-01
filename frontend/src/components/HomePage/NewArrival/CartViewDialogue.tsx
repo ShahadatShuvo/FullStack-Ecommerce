@@ -78,7 +78,7 @@ export default function CartViewDialogue() {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Modal title
+          Product Title
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
@@ -97,11 +97,6 @@ export default function CartViewDialogue() {
             dui. Donec ullamcorper nulla non metus auctor fringilla.
           </Typography>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
-        </DialogActions>
       </BootstrapDialog>
     </div>
   );
