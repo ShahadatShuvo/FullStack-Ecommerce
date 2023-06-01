@@ -7,6 +7,7 @@ import ExploreMenu from "./Explore";
 import { Badge, IconButton } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 
 function Navbar() {
   const [search, setSearch] = React.useState(false);
@@ -14,21 +15,18 @@ function Navbar() {
   return (
     <div>
       <header className="text-gray-600 body-font bg-white">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg> */}
-            <span className="ml-3 text-xl">Tailblocks</span>
+        <div className="container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
+          <a
+            href="/"
+            className="flex title-font font-medium items-center text-gray-900  md:mb-0"
+          >
+            <Image
+              src="/img/title.png"
+              alt=""
+              width={100}
+              height={200}
+              className="w-[110px] h-[80px]"
+            />
           </a>
           {/* search start*/}
           {search && (
