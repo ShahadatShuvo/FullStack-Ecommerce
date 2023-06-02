@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import HeroSection from "./HeroSection";
 import Navbar from "./Navbar";
 import NewArrival from "./NewArrival";
+import ProductDisplay from "./ProductsDisplay";
 import Steps from "./Steps";
 import Testimonial from "./Testimonial";
 
@@ -14,6 +15,7 @@ function HomePage() {
       <NewArrival />
       <Steps />
       <DiscoverMore />
+      <ProductDisplay />
       <Testimonial />
       <Footer />
     </div>
