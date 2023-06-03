@@ -9,7 +9,17 @@ import CartViewDialogue from "./CartViewDialogue";
 import StarIcon from "@mui/icons-material/Star";
 import { Button } from "@mui/material";
 
-function ProductCard() {
+interface ProductCardProps {
+  key: number | string;
+  title: string;
+  description: string;
+  price: number;
+  image_url: string;
+}
+
+function ProductCard(props: ProductCardProps) {
+  console.log("title: ", props);
+  const { title, price } = props;
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
@@ -64,9 +74,7 @@ function ProductCard() {
         </div>
       </div>
       <div className="mt-3">
-        <h3 className="text-gray-800 text-lg font-semibold">
-          Mens new sports Shoe
-        </h3>
+        <h3 className="text-gray-800 text-lg font-semibold"> {props.title}</h3>
         <p className="text-gray-400">Perfect for sports | released in 2023</p>
         <div className="mt-5 flex justify-between items-center">
           <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
