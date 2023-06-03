@@ -58,13 +58,6 @@ function ProductView() {
           <div className="w-[40%] bg-blue-50 px-2 py-1 rounded-full flex items-center justify-around">
             <IconButton
               aria-label="delete"
-              onClick={() => setCounter((prevState) => prevState + 1)}
-            >
-              <AddIcon />
-            </IconButton>
-            <p className="px-2">{counter}</p>
-            <IconButton
-              aria-label="delete"
               onClick={() =>
                 setCounter((prevState) => {
                   if (prevState === 0) {
@@ -75,6 +68,14 @@ function ProductView() {
               }
             >
               <RemoveIcon />
+            </IconButton>
+
+            <p className="px-2">{counter}</p>
+            <IconButton
+              aria-label="delete"
+              onClick={() => setCounter((prevState) => prevState + 1)}
+            >
+              <AddIcon />
             </IconButton>
           </div>
 
