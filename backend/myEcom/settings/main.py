@@ -30,9 +30,11 @@ INSTALLED_APPS = [
     'store',  # new
     'import_export',  # new
     'rest_framework',  # new
+    'corsheaders',  # new
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,12 +122,22 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 MEDIA_URL = '/images/'
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.BasicAuthentication',
+#         # 'rest_framework.authentication.SessionAuthentication',
+#     ],
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ]
+# }
+
+
+CORS_ORIGIN_ALLOW_ALL = True  # new
+
+
+# CORS_ORIGIN_WHITELIST = [
+#     'http://example.com',  # Replace with your allowed domain
+#     'https://example.com',
+#     # ...
+# ]
