@@ -19,15 +19,11 @@ interface insAtctiveInterface {
 function Navbar() {
   const [search, setSearch] = React.useState(false);
   const [explore, setExplore] = React.useState(false);
-  const [isActive, setIsActive] = React.useState({
-    men: true,
-    women: false,
-    beauty: false,
-    sport: false,
-  });
+  const [isActive, setIsActive] = React.useState("");
 
   const handleClick = (name: string) => {
-    console.log(name);
+    setIsActive((prevState: string) => name);
+    console.log(isActive);
   };
 
   return (
@@ -77,29 +73,51 @@ function Navbar() {
             <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
               <a
                 className={
-                  isActive.men
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full"
-                    : "px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full"
+                  isActive === "men"
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
                 }
-                onClick={() => handleClick("name")}
+                onClick={() => handleClick("men")}
               >
                 Men
               </a>
-              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              <a
+                className={
+                  isActive === "women"
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+                }
+                onClick={() => handleClick("women")}
+              >
                 Women
               </a>
-              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              <a
+                className={
+                  isActive === "beauty"
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+                }
+                onClick={() => handleClick("beauty")}
+              >
                 Beauty
               </a>
-              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              <a
+                className={
+                  isActive === "sport"
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+                }
+                onClick={() => handleClick("sport")}
+              >
                 Sport
               </a>
               <a
                 className={
-                  explore
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full"
-                    : "px-5"
+                  isActive === "explore"
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                    : "px-5 select-none	"
                 }
+                onClick={() => handleClick("explore")}
               >
                 <ExploreMenu setExplore={setExplore} />
               </a>
