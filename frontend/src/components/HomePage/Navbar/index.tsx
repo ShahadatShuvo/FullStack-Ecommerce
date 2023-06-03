@@ -9,9 +9,27 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
+interface insAtctiveInterface {
+  men: boolean;
+  women: boolean;
+  beauty: boolean;
+  sport: boolean;
+}
+
 function Navbar() {
   const [search, setSearch] = React.useState(false);
   const [explore, setExplore] = React.useState(false);
+  const [isActive, setIsActive] = React.useState({
+    men: true,
+    women: false,
+    beauty: false,
+    sport: false,
+  });
+
+  const handleClick = (name: string) => {
+    console.log(name);
+  };
+
   return (
     <div>
       <header className="text-gray-600 body-font bg-white">
@@ -57,7 +75,14 @@ function Navbar() {
           {/* search end*/}
           {!search && (
             <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
-              <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
+              <a
+                className={
+                  isActive.men
+                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full"
+                    : "px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full"
+                }
+                onClick={() => handleClick("name")}
+              >
                 Men
               </a>
               <a className="px-5  hover:text-gray-900 hover:bg-gray-200 hover:py-1 hover:rounded-full">
