@@ -74,6 +74,9 @@ function ProductCard(props: ProductCardProps) {
         </div>
       </div>
       <div className="mt-3">
+        <pre>
+          title: {title} price: {price}
+        </pre>
         <h3 className="text-gray-800 text-lg font-semibold"> {props.title}</h3>
         <p className="text-gray-400">Perfect for sports | released in 2023</p>
         <div className="mt-5 flex justify-between items-center">
