@@ -1,4 +1,4 @@
-import "./globals.css";
+// import "./globals.css";
 
 export const metadata = {
   title: "FullStack Ecommerce",
@@ -15,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="text-black">{children}</body>
+      <body className="text-black" suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   );
 }
