@@ -1,13 +1,37 @@
+"use client";
+import { useState } from "react";
+
 function DiscoverMore() {
+  const [activeCategory, setActiveCategory] = useState("");
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+  };
+  console.log(activeCategory);
+
   return (
     <div>
+      <div>
+        <h1 className="text-3xl md:text-4xl 2xl:text-5xl font-semibold text-center my-8">
+          Start exploring.
+        </h1>
+      </div>
+
       <nav
         className="nc-Nav mb-12 lg:mb-14 relative flex justify-center w-full text-sm md:text-base"
         id="Nav"
       >
         <ul className="flex  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button className="block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize rounded-full text-slate-600  hover:text-slate-900  focus:outline-none">
+            <button
+              onClick={() => handleCategoryClick("women")}
+              className={`
+              categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
+                activeCategory === "women"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
               <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
                 <span className="inline-block">
                   <svg
@@ -44,7 +68,14 @@ function DiscoverMore() {
             </button>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button className="block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize rounded-full bg-slate-900 text-slate-50 focus:outline-none">
+            <button
+              onClick={() => handleCategoryClick("man")}
+              className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize  ${
+                activeCategory === "man"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
               <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
                 <span className="inline-block">
                   <svg
@@ -81,7 +112,14 @@ function DiscoverMore() {
             </button>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button className="block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize rounded-full text-slate-600  hover:text-slate-900  focus:outline-none">
+            <button
+              onClick={() => handleCategoryClick("kids")}
+              className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
+                activeCategory === "kids"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
               <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
                 <span className="inline-block">
                   <svg
@@ -118,7 +156,14 @@ function DiscoverMore() {
             </button>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button className="block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize rounded-full text-slate-600  hover:text-slate-900  focus:outline-none">
+            <button
+              onClick={() => handleCategoryClick("sports")}
+              className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
+                activeCategory === "sports"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
               <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
                 <span className="inline-block">
                   <svg
@@ -169,7 +214,14 @@ function DiscoverMore() {
             </button>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button className="block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize rounded-full text-slate-600  hover:text-slate-900  focus:outline-none">
+            <button
+              onClick={() => handleCategoryClick("beauty")}
+              className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
+                activeCategory === "beauty"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
               <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
                 <span className="inline-block">
                   <svg
@@ -206,7 +258,14 @@ function DiscoverMore() {
             </button>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button className="block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize rounded-full text-slate-600  hover:text-slate-900  focus:outline-none">
+            <button
+              onClick={() => handleCategoryClick("jewelry")}
+              className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
+                activeCategory === "jewelry"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
               <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
                 <span className="inline-block">
                   <svg
