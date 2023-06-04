@@ -5,8 +5,8 @@ import MenuIcon from "./ProfileMenu";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import { Badge, IconButton } from "@mui/material";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import CloseIcon from "@mui/icons-material/Close";
+// import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+// import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
 interface insAtctiveInterface {
@@ -17,7 +17,7 @@ interface insAtctiveInterface {
 }
 
 function Navbar() {
-  const [search, setSearch] = React.useState(false);
+  // const [search, setSearch] = React.useState(false);
   const [explore, setExplore] = React.useState(false);
   const [isActive, setIsActive] = React.useState("");
 
@@ -43,7 +43,7 @@ function Navbar() {
             />
           </a>
           {/* search start*/}
-          {search && (
+          {/* {search && (
             <div className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center min-w-[42%]">
               <div className="w-full relative flex items-center">
                 <input
@@ -67,71 +67,71 @@ function Navbar() {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
           {/* search end*/}
-          {!search && (
-            <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
-              <a
-                className={
-                  isActive === "men"
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-                }
-                onClick={() => handleClick("men")}
-              >
-                Men
-              </a>
-              <a
-                className={
-                  isActive === "women"
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-                }
-                onClick={() => handleClick("women")}
-              >
-                Women
-              </a>
-              <a
-                className={
-                  isActive === "beauty"
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-                }
-                onClick={() => handleClick("beauty")}
-              >
-                Beauty
-              </a>
-              <a
-                className={
-                  isActive === "sport"
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                    : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-                }
-                onClick={() => handleClick("sport")}
-              >
-                Sport
-              </a>
-              <a
-                className={
-                  isActive === "explore"
-                    ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                    : "px-5 select-none	"
-                }
-                onClick={() => handleClick("explore")}
-              >
-                <ExploreMenu setExplore={setExplore} />
-              </a>
-            </nav>
-          )}
+
+          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
+            <a
+              className={
+                isActive === "men"
+                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+              }
+              onClick={() => handleClick("men")}
+            >
+              Men
+            </a>
+            <a
+              className={
+                isActive === "women"
+                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+              }
+              onClick={() => handleClick("women")}
+            >
+              Women
+            </a>
+            <a
+              className={
+                isActive === "beauty"
+                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+              }
+              onClick={() => handleClick("beauty")}
+            >
+              Beauty
+            </a>
+            <a
+              className={
+                isActive === "sport"
+                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
+              }
+              onClick={() => handleClick("sport")}
+            >
+              Sport
+            </a>
+            <a
+              className={
+                isActive === "explore"
+                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
+                  : "px-5 select-none	"
+              }
+              onClick={() => handleClick("explore")}
+            >
+              <ExploreMenu setExplore={setExplore} />
+            </a>
+          </nav>
+
           <div className="flex">
-            {!search && (
+            {/* {!search && (
               <IconButton
                 aria-label="search"
                 onClick={() => setSearch((prevState: boolean) => !prevState)}
               >
                 <SearchOutlinedIcon />
               </IconButton>
-            )}
+            )} */}
             <MenuIcon />
 
             <Badge
