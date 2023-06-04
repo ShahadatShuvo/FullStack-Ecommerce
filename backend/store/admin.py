@@ -7,7 +7,8 @@ from import_export.admin import ImportExportModelAdmin
 
 @admin.register(Product)
 class AdminProduct(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ['title', 'price', 'stock', 'img_preview']
+    list_display = ['title', 'price', 'created_at',
+                    'updated_at', 'stock', 'img_preview']
 
 
 @admin.register(Customer)
