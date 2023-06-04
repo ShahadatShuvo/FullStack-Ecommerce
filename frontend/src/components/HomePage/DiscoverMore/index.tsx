@@ -1,5 +1,8 @@
 "use client";
+import { IconButton } from "@mui/material";
 import { useState } from "react";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 
 function DiscoverMore() {
   const [activeCategory, setActiveCategory] = useState("");
@@ -15,6 +18,28 @@ function DiscoverMore() {
         <h1 className="text-3xl md:text-4xl 2xl:text-5xl font-semibold text-center my-8">
           Start exploring.
         </h1>
+
+        <div className="w-[40vw] mb-8 md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center min-w-[42%]">
+          <div className="w-full relative flex items-center">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Type your keywords here"
+              className="bg-blue-50 h-10 shadow-sm  block w-full pr-5 sm:text-sm rounded-md px-2 ps-10 focus:outline-none"
+            />
+            <div className="absolute left-2">
+              <SearchOutlinedIcon />
+            </div>
+            <div className="absolute right-0">
+              <IconButton aria-label="delete">
+                <CloseIcon
+                // onClick={() => setSearch((prevState: boolean) => !prevState)}
+                />
+              </IconButton>
+            </div>
+          </div>
+        </div>
       </div>
 
       <nav
