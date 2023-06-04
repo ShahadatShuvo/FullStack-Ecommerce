@@ -1,4 +1,5 @@
 "use client";
+
 import { IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -19,11 +20,16 @@ interface ProductDataProps {
 
 function DiscoverMore() {
   const [search, setSearch] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState("");
 
   const [activeCategory, setActiveCategory] = useState("");
 
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null || "Error");
+
+  function handleChange(event: any) {
+    setSearchValue((prevState) => event.target.value);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -378,6 +384,8 @@ function DiscoverMore() {
                 id="search"
                 placeholder="Type your keywords here"
                 autoFocus
+                onChange={handleChange}
+                value={searchValue}
                 className="bg-blue-50 h-10 shadow-sm  block w-full sm:text-sm rounded-full  px-12 focus:outline-none "
               />
               <div className="absolute left-3">
