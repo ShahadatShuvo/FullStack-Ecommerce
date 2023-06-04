@@ -18,8 +18,8 @@ interface ProductCardProps {
 }
 
 function ProductCard(props: ProductCardProps) {
-  console.log("title: ", props);
-  const { title, price } = props;
+  const { title, price, image_url } = props;
+  console.log("image_url: ", image_url);
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
@@ -65,7 +65,8 @@ function ProductCard(props: ProductCardProps) {
         )}
         <div className="p-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
-            src="/img/cart/sshoe.png"
+            // src="/img/cart/sshoe.png"
+            src={image_url || "/img/cart/sshoe.png"}
             alt=""
             width={230}
             height={230}
@@ -74,14 +75,11 @@ function ProductCard(props: ProductCardProps) {
         </div>
       </div>
       <div className="mt-3">
-        <pre>
-          title: {title} price: {price}
-        </pre>
-        <h3 className="text-gray-800 text-lg font-semibold"> {props.title}</h3>
+        <h3 className="text-gray-800 text-lg font-semibold"> {title}</h3>
         <p className="text-gray-400">Perfect for sports | released in 2023</p>
         <div className="mt-5 flex justify-between items-center">
           <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
-            $75
+            TK {price}
           </p>
           <p className="text-gray-500 font-medium">
             <StarIcon className="text-yellow-600 mt-[-3px]" />
@@ -94,3 +92,5 @@ function ProductCard(props: ProductCardProps) {
 }
 
 export default ProductCard;
+
+// export const ProductCard = React.memo(Card);

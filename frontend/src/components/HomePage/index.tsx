@@ -4,6 +4,7 @@ import HeroSection from "./HeroSection";
 import Navbar from "./Navbar";
 import NewArrival from "./NewArrival";
 import ProductDisplay from "./ProductsDisplay";
+import ProductContainer from "./ProductsDisplay";
 import Steps from "./Steps";
 import Testimonial from "./Testimonial";
 
@@ -15,7 +16,7 @@ function HomePage() {
       <NewArrival />
       <Steps />
       <DiscoverMore />
-      <ProductDisplay />
+      <ProductContainer />
       <Testimonial />
       <Footer />
     </div>

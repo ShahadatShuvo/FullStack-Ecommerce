@@ -1,21 +1,28 @@
 "use client";
 
-import { Pagination } from "@mui/material";
-import ProductCard from "../NewArrival/ProductCard";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import ProductDisplay from "./ProductDisplay";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const USERNAME = "shahadat"; // Replace with your username
 const PASSWORD = "bangladesh7860"; // Replace with your password
 
-function ProductDisplay() {
+interface ProductDataProps {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  stock: number;
+}
+
+function ProductContainer() {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null || "Error");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${apiUrl}/products`, {
+        const response = await fetch(`${apiUrl}/api/products`, {
           headers: {
             Authorization: `Basic ${btoa(`${USERNAME}:${PASSWORD}`)}`, // Base64 encoded username:password
           },
@@ -35,36 +42,11 @@ function ProductDisplay() {
     fetchData();
   }, []);
 
-  console.log("data: ", data);
-
-  const displayProducts = data?.map((product: any) => {
-    return (
-      <ProductCard
-        key={product.id}
-        title={product.title}
-        description={product.description}
-        price={product.price}
-        image_url={product.image_url}
-      />
-    );
-  });
-
   return (
     <div>
-      <div className="grid  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  mx-16">
-        {displayProducts}
-        {/* <ProductCard />  */}
-      </div>
-      <div className="my-5 mb-12 w-full flex justify-center items-center select-none">
-        <Pagination
-          count={10}
-          variant="outlined"
-          shape="rounded"
-          color="primary"
-        />
-      </div>
+      <ProductDisplay data={data} />
     </div>
   );
 }
 
-export default ProductDisplay;
+export default ProductContainer;
