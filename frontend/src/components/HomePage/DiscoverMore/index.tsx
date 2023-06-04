@@ -338,7 +338,8 @@ function DiscoverMore() {
                 name="search"
                 id="search"
                 placeholder="Type your keywords here"
-                className="bg-blue-50 h-10 shadow-sm  block w-full sm:text-sm rounded-full  px-12 focus:outline-none"
+                autoFocus
+                className="bg-blue-50 h-10 shadow-sm  block w-full sm:text-sm rounded-full  px-12 focus:outline-none "
               />
               <div className="absolute left-3">
                 <SearchOutlinedIcon />
