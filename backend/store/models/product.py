@@ -7,6 +7,10 @@ class Product(models.Model):
     description = models.TextField()
     price = models.FloatField()
     stock = models.IntegerField()
+    created_at = models.DateTimeField(
+        auto_now_add=True, blank=True, null=True, editable=False)
+    updated_at = models.DateTimeField(
+        auto_now=True, blank=True, null=True, editable=False)
     image_url = models.ImageField(upload_to='products/', null=True, blank=True)
 
     def __str__(self):
