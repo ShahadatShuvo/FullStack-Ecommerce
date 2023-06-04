@@ -1,10 +1,12 @@
 "use client";
 import { IconButton } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 
 function DiscoverMore() {
+  const [search, setSearch] = React.useState(false);
+
   const [activeCategory, setActiveCategory] = useState("");
 
   const handleCategoryClick = (category: any) => {
@@ -18,32 +20,10 @@ function DiscoverMore() {
         <h1 className="text-3xl md:text-4xl 2xl:text-5xl font-semibold text-center my-8">
           Start exploring.
         </h1>
-
-        <div className="w-[40vw] mb-8 md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center min-w-[42%]">
-          <div className="w-full relative flex items-center">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              placeholder="Type your keywords here"
-              className="bg-blue-50 h-10 shadow-sm  block w-full pr-5 sm:text-sm rounded-md px-2 ps-10 focus:outline-none"
-            />
-            <div className="absolute left-2">
-              <SearchOutlinedIcon />
-            </div>
-            <div className="absolute right-0">
-              <IconButton aria-label="delete">
-                <CloseIcon
-                // onClick={() => setSearch((prevState: boolean) => !prevState)}
-                />
-              </IconButton>
-            </div>
-          </div>
-        </div>
       </div>
 
       <nav
-        className="nc-Nav mb-12 lg:mb-14 relative flex justify-center w-full text-sm md:text-base"
+        className="nc-Nav mb-8 lg:mb-8 relative flex justify-center w-full text-sm md:text-base"
         id="Nav"
       >
         <ul className="flex  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
@@ -321,8 +301,61 @@ function DiscoverMore() {
               </div>
             </button>
           </li>
+          <li
+            className="nc-NavItem2 relative"
+            id="NavItem2"
+            onClick={() => setSearch((prevState: boolean) => !prevState)}
+          >
+            <button
+              onClick={() => handleCategoryClick("search")}
+              className={`categoryBtn block font-medium whitespace-nowrap px-3.5  text-sm sm:px-7  capitalize ${
+                activeCategory === "search"
+                  ? "rounded-full bg-slate-900 text-white focus:outline-none"
+                  : ""
+              }`}
+            >
+              <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
+                <IconButton aria-label="search">
+                  <SearchOutlinedIcon
+                    className={`${
+                      activeCategory === "search"
+                        ? " text-white "
+                        : "text-black"
+                    }`}
+                  />
+                </IconButton>
+              </div>
+            </button>
+          </li>
         </ul>
       </nav>
+      <div>
+        {search && (
+          <div className="w-[40vw] mb-8 md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <div className="w-full relative flex items-center">
+              <input
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Type your keywords here"
+                className="bg-blue-50 h-10 shadow-sm  block w-full sm:text-sm rounded-full  px-12 focus:outline-none"
+              />
+              <div className="absolute left-3">
+                <SearchOutlinedIcon />
+              </div>
+              <div className="absolute right-2">
+                <IconButton aria-label="delete">
+                  <CloseIcon
+                    onClick={() =>
+                      setSearch((prevState: boolean) => !prevState)
+                    }
+                  />
+                </IconButton>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
