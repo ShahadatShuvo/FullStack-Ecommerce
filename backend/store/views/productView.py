@@ -12,7 +12,7 @@ class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['price', 'stock', 'created_at', 'updated_at']
+    filterset_fields = ['id', 'price', 'stock', 'created_at', 'updated_at']
 
     # authentication_classes = [BasicAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
