@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
-import CartViewDialogue from "./CartViewDialogue";
 import StarIcon from "@mui/icons-material/Star";
 import { Button } from "@mui/material";
+import Image from "next/image";
+import React from "react";
+import CartViewDialogue from "./CartViewDialogue";
 
 interface ProductCardProps {
   key: number | string;
@@ -70,7 +70,7 @@ function ProductCard(props: ProductCardProps) {
             alt=""
             width={230}
             height={230}
-            className="pt-5"
+            className="pt-5 h-[280px] object-contain"
           />
         </div>
       </div>

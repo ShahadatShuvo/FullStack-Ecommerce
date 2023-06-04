@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductDisplay from "./ProductDisplay";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
