@@ -10,7 +10,7 @@ import React from "react";
 import CartViewDialogue from "./CartViewDialogue";
 
 interface ProductCardProps {
-  key: number | string;
+  // key: number | string;
   title: string;
   description: string;
   price: number;
@@ -59,7 +59,7 @@ function ProductCard(props: ProductCardProps) {
               </Button>
 
               <CartViewDialogue
-                key={props.key}
+                // key={props.key}
                 title={props.title}
                 description={props.description}
                 price={props.price}

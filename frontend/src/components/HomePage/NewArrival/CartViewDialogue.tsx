@@ -50,7 +50,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 interface ProductCardProps {
-  key: number | string;
+  // key: number | string;
   title: string;
   description: string;
   price: number;
@@ -90,7 +90,7 @@ export default function CartViewDialogue(props: ProductCardProps) {
         ></BootstrapDialogTitle>
         <div className="p-5">
           <ProductView
-            key={props.key}
+            // key={props.key}
             title={props.title}
             description={props.description}
             price={props.price}
