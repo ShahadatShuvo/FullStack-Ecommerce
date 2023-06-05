@@ -1,12 +1,12 @@
-import { Button, IconButton } from "@mui/material";
-import React from "react";
+import AddIcon from "@mui/icons-material/Add";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
-import StarIcon from "@mui/icons-material/Star";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
+import RemoveIcon from "@mui/icons-material/Remove";
+import StarIcon from "@mui/icons-material/Star";
+import { Button, IconButton } from "@mui/material";
 import Image from "next/image";
+import React from "react";
 
 interface ProductCardProps {
   // key: number | string;
@@ -43,7 +43,10 @@ function ProductView(props: ProductCardProps) {
 
         <div className="p-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
-            // src="/img/cart/sshoe.png"
+            style={{
+              height: "auto",
+              width: "auto",
+            }}
             src={props.image_url}
             alt=""
             width={350}
