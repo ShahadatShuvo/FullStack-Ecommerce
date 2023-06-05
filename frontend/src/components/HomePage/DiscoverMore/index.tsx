@@ -31,14 +31,15 @@ function DiscoverMore() {
     setSearchValue((prevState) => event.target.value);
   }
 
+  console.log("searchValue", searchValue);
+  console.log("getData", data);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/products`, {
-          headers: {
-            Authorization: `Basic ${btoa(`${USERNAME}:${PASSWORD}`)}`, // Base64 encoded username:password
-          },
-        });
+        const response = await fetch(
+          `${apiUrl}/api/products?search=${searchValue}`
+        );
 
         if (response.ok) {
           const result = await response.json();
@@ -47,17 +48,16 @@ function DiscoverMore() {
           throw new Error("Request failed");
         }
       } catch (error) {
-        console.log(error);
+        console.log("error:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [searchValue]);
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
   };
-  console.log(activeCategory);
 
   return (
     <div>

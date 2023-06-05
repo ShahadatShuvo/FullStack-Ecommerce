@@ -19,7 +19,6 @@ interface ProductCardProps {
 
 function ProductCard(props: ProductCardProps) {
   const { title, price, image_url } = props;
-  console.log("image_url: ", image_url);
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
