@@ -58,7 +58,13 @@ function ProductCard(props: ProductCardProps) {
                 <span className="ml-1">Add to bag</span>
               </Button>
 
-              <CartViewDialogue />
+              <CartViewDialogue
+                key={props.key}
+                title={props.title}
+                description={props.description}
+                price={props.price}
+                image_url={props.image_url}
+              />
             </div>
           </div>
         )}

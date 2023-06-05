@@ -6,10 +6,17 @@ import StarIcon from "@mui/icons-material/Star";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
-
 import Image from "next/image";
 
-function ProductView() {
+interface ProductCardProps {
+  key: number | string;
+  title: string;
+  description: string;
+  price: number;
+  image_url: string;
+}
+
+function ProductView(props: ProductCardProps) {
   const [counter, setCounter] = React.useState(0);
   const [favourite, setFavourite] = React.useState(false);
   const [accordion1, setAccordion1] = React.useState(true);
@@ -35,7 +42,8 @@ function ProductView() {
 
         <div className="p-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
-            src="/img/cart/sshoe.png"
+            // src="/img/cart/sshoe.png"
+            src={props.image_url}
             alt=""
             width={350}
             height={350}
@@ -44,10 +52,10 @@ function ProductView() {
         </div>
       </div>
       <div className="w-[60%]">
-        <h1 className="text-3xl font-bold">Heacy weight Shoes</h1>
+        <h1 className="text-3xl font-bold">{props.title}</h1>
         <div className="mt-1 flex justify-between">
           <p className="px-5 text-center text-sm py-1 border-2 border-green-600 rounded-lg">
-            $112
+            TK {props.price}
           </p>
           <p className="text-gray-500 font-medium">
             <StarIcon className="text-yellow-600 mt-[-3px]" />
@@ -96,10 +104,7 @@ function ProductView() {
           </div>
           {accordion1 && (
             <div className="mt-3 p-3 rounded-lg bg-gray-100">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
-              repellat, iure veritatis facilis commodi similique ratione sunt
-              temporibus saepe cum porro, excepturi quae exercitationem autem
-              odio! Hic dignissimos itaque fugiat corporis quod minus minima.
+              {props.description}
             </div>
           )}
         </div>

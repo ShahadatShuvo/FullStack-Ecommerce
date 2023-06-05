@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import { IconButton } from "@mui/material";
 
-function DiscoverNav({ setSearch }: { setSearch: any }) {
+function DiscoverNav({
+  setSearch,
+  setFilter,
+  filter,
+}: {
+  setSearch: any;
+  setFilter: any;
+  filter: string;
+}) {
   const [activeCategory, setActiveCategory] = useState("");
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
+  };
+  const handleChange = (event: SelectChangeEvent) => {
+    setFilter(event.target.value as string);
   };
   return (
     <div>
@@ -15,7 +31,7 @@ function DiscoverNav({ setSearch }: { setSearch: any }) {
         className="nc-Nav mb-8 lg:mb-8 relative flex justify-center w-full text-sm md:text-base"
         id="Nav"
       >
-        <ul className="flex  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
+        <ul className="flex items-center  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
           <li className="nc-NavItem2 relative" id="NavItem2">
             <button
               onClick={() => handleCategoryClick("women")}
@@ -251,44 +267,31 @@ function DiscoverNav({ setSearch }: { setSearch: any }) {
               </div>
             </button>
           </li>
-          <li className="nc-NavItem2 relative" id="NavItem2">
-            <button
-              onClick={() => handleCategoryClick("jewelry")}
-              className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
-                activeCategory === "jewelry"
-                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
-                  : ""
-              }`}
-            >
-              <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
-                <span className="inline-block">
-                  <svg
-                    className="w-4 h-4 sm:w-5 sm:h-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.7998 3.40005L7.19982 7.70005C7.09982 7.90005 6.99982 8.20005 6.89982 8.40005L5.19982 17C5.09982 17.6 5.39982 18.3 5.89982 18.6L11.1998 21.6C11.5998 21.8 12.2998 21.8 12.6998 21.6L17.9998 18.6C18.4998 18.3 18.7998 17.6 18.6998 17L16.9998 8.40005C16.9998 8.20005 16.7998 7.90005 16.6998 7.70005L13.0998 3.40005C12.4998 2.60005 11.4998 2.60005 10.7998 3.40005Z"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                    <path
-                      d="M16.8002 8.5L12.5002 20.7C12.3002 21.1 11.7002 21.1 11.6002 20.7L7.2002 8.5"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                  </svg>
-                </span>
-                <span>Jewelry</span>
-              </div>
-            </button>
+
+          <li
+            className="mx-2 nc-NavItem2 relative w-[150px] py-2"
+            id="NavItem2"
+          >
+            <div>
+              <FormControl fullWidth size="small">
+                <InputLabel id="demo-simple-select-label" sx={{ p: 0, m: 0 }}>
+                  Filter by
+                  <FilterAltOutlinedIcon />
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={filter}
+                  label="Filter by m"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="price">Price - Ascending</MenuItem>
+                  <MenuItem value="-price">Price - Descending</MenuItem>
+                  <MenuItem value="stock">Stock - Ascending</MenuItem>
+                  <MenuItem value="-stock">Stock - Descending</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
           </li>
           <li
             className="nc-NavItem2 relative"
