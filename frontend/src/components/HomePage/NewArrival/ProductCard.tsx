@@ -14,6 +14,7 @@ interface ProductCardProps {
   title: string;
   description: string;
   price: number;
+  stock: number;
   image_url: string;
 }
 
@@ -62,6 +63,7 @@ function ProductCard(props: ProductCardProps) {
                 // key={props.key}
                 title={props.title}
                 description={props.description}
+                stock={props.stock}
                 price={props.price}
                 image_url={props.image_url}
               />

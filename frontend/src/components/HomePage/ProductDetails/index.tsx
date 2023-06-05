@@ -13,6 +13,7 @@ interface ProductCardProps {
   title: string;
   description: string;
   price: number;
+  stock: number;
   image_url: string;
 }
 
@@ -56,6 +57,9 @@ function ProductView(props: ProductCardProps) {
         <div className="mt-1 flex justify-between">
           <p className="px-5 text-center text-sm py-1 border-2 border-green-600 rounded-lg">
             TK {props.price}
+          </p>
+          <p className="text-gray-500 font-semibold">
+            Available in stock: {props.stock}
           </p>
           <p className="text-gray-500 font-medium">
             <StarIcon className="text-yellow-600 mt-[-3px]" />
