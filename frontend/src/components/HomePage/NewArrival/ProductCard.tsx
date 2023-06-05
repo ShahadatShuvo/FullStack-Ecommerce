@@ -73,7 +73,7 @@ function ProductCard(props: ProductCardProps) {
         <div className="p-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
             style={{
-              height: "auto",
+              height: "280px",
               width: "auto",
             }}
             src={image_url || "/img/cart/sshoe.png"}
