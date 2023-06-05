@@ -285,10 +285,10 @@ function DiscoverNav({
                   label="Filter by m"
                   onChange={handleChange}
                 >
-                  <MenuItem value="price">Price - Ascending</MenuItem>
-                  <MenuItem value="-price">Price - Descending</MenuItem>
-                  <MenuItem value="stock">Stock - Ascending</MenuItem>
-                  <MenuItem value="-stock">Stock - Descending</MenuItem>
+                  <MenuItem value="price">Price - Low to High</MenuItem>
+                  <MenuItem value="-price">Price - High to Low</MenuItem>
+                  <MenuItem value="stock">Stock - Low to High</MenuItem>
+                  <MenuItem value="-stock">Stock - High to Low</MenuItem>
                 </Select>
               </FormControl>
             </div>
