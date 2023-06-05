@@ -32,7 +32,7 @@ function DiscoverMore() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/api/products?search=${searchValue}`
+          `${apiUrl}/api/products?page=${page}&search=${searchValue}`
         );
 
         if (response.ok) {
@@ -47,7 +47,7 @@ function DiscoverMore() {
     };
 
     fetchData();
-  }, [searchValue]);
+  }, [searchValue, page]);
 
   return (
     <div>
