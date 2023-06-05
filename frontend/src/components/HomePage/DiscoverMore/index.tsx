@@ -7,8 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import ProductDisplay from "../ProductsDisplay/ProductDisplay";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-const USERNAME = "shahadat"; // Replace with your username
-const PASSWORD = "bangladesh7860"; // Replace with your password
 
 interface ProductDataProps {
   id: number;
@@ -31,8 +29,8 @@ function DiscoverMore() {
     setSearchValue((prevState) => event.target.value);
   }
 
-  console.log("searchValue", searchValue);
-  console.log("getData", data);
+  // console.log("searchValue", searchValue);
+  // console.log("getData", data);
 
   useEffect(() => {
     const fetchData = async () => {
