@@ -33,7 +33,7 @@ function DiscoverNav({
       >
         <ul className="flex items-center  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button
+            <div
               onClick={() => handleCategoryClick("women")}
               className={`
               categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
@@ -75,10 +75,10 @@ function DiscoverNav({
                 </span>
                 <span>Women</span>
               </div>
-            </button>
+            </div>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button
+            <div
               onClick={() => handleCategoryClick("man")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize  ${
                 activeCategory === "man"
@@ -119,10 +119,10 @@ function DiscoverNav({
                 </span>
                 <span>Man</span>
               </div>
-            </button>
+            </div>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button
+            <div
               onClick={() => handleCategoryClick("kids")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
                 activeCategory === "kids"
@@ -163,10 +163,10 @@ function DiscoverNav({
                 </span>
                 <span>Kids</span>
               </div>
-            </button>
+            </div>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button
+            <div
               onClick={() => handleCategoryClick("sports")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
                 activeCategory === "sports"
@@ -221,10 +221,10 @@ function DiscoverNav({
                 </span>
                 <span>Sports</span>
               </div>
-            </button>
+            </div>
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
-            <button
+            <div
               onClick={() => handleCategoryClick("beauty")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
                 activeCategory === "beauty"
@@ -265,7 +265,7 @@ function DiscoverNav({
                 </span>
                 <span>Beauty</span>
               </div>
-            </button>
+            </div>
           </li>
 
           <li
@@ -298,7 +298,7 @@ function DiscoverNav({
             id="NavItem2"
             onClick={() => setSearch((prevState: boolean) => !prevState)}
           >
-            <button
+            <div
               onClick={() => handleCategoryClick("search")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5  text-sm sm:px-7  capitalize ${
                 activeCategory === "search"
@@ -317,7 +317,7 @@ function DiscoverNav({
                   />
                 </IconButton>
               </div>
-            </button>
+            </div>
           </li>
         </ul>
       </nav>
