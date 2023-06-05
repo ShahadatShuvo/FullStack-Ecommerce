@@ -6,8 +6,8 @@ import StarIcon from "@mui/icons-material/Star";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
-
 import Image from "next/image";
+
 interface ProductCardProps {
   key: number | string;
   title: string;
@@ -15,6 +15,7 @@ interface ProductCardProps {
   price: number;
   image_url: string;
 }
+
 function ProductView(props: ProductCardProps) {
   const [counter, setCounter] = React.useState(0);
   const [favourite, setFavourite] = React.useState(false);

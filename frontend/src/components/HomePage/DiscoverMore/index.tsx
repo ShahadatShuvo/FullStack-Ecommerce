@@ -15,6 +15,8 @@ function DiscoverMore() {
   const [searchValue, setSearchValue] = React.useState("");
   const [page, setPage] = React.useState(1);
   const [data, setData] = useState<any>(null);
+  const [filter, setFilter] = React.useState("");
+
   const [error, setError] = useState<string | null>(null || "Error");
 
   function handleSearchChange(event: any) {
@@ -58,7 +60,11 @@ function DiscoverMore() {
       </div>
 
       {/* nav start */}
-      <DiscoverNav setSearch={setSearch} />
+      <DiscoverNav
+        setSearch={setSearch}
+        setFilter={setFilter}
+        filter={filter}
+      />
       {/* nav end */}
       <div>
         {search && (
