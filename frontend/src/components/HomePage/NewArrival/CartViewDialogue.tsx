@@ -49,8 +49,14 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
     </DialogTitle>
   );
 }
-
-export default function CartViewDialogue() {
+interface ProductCardProps {
+  key: number | string;
+  title: string;
+  description: string;
+  price: number;
+  image_url: string;
+}
+export default function CartViewDialogue(props: ProductCardProps) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -83,7 +89,13 @@ export default function CartViewDialogue() {
           onClose={handleClose}
         ></BootstrapDialogTitle>
         <div className="p-5">
-          <ProductView />
+          <ProductView
+            key={props.key}
+            title={props.title}
+            description={props.description}
+            price={props.price}
+            image_url={props.image_url}
+          />
         </div>
       </BootstrapDialog>
     </div>
