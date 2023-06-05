@@ -54,7 +54,7 @@ function ProductView(props: ProductCardProps) {
       </div>
       <div className="w-[60%]">
         <h1 className="text-3xl font-bold">{props.title}</h1>
-        <div className="mt-1 flex justify-between">
+        <div className="mt-3 flex justify-between">
           <p className="px-5 text-center text-sm py-1 border-2 border-green-600 rounded-lg">
             TK {props.price}
           </p>
@@ -66,7 +66,7 @@ function ProductView(props: ProductCardProps) {
             <span>4.9 (98 reviews)</span>
           </p>
         </div>
-        <div className="mt-8 w-full flex justify-around items-center gap-5">
+        <div className="mt-6 w-full flex justify-around items-center gap-5">
           <div className="w-[40%] bg-blue-50 px-2 py-1 rounded-full flex items-center justify-around">
             <IconButton
               aria-label="delete"
