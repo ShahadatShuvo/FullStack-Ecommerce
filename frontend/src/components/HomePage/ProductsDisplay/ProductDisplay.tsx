@@ -13,12 +13,6 @@ interface ProductDataProps {
 }
 
 function ProductDisplay({ data }: { data: ProductDataProps[] }) {
-  console.log("data from ProductDisplay: ", data);
-
-  data?.map((product: any) => {
-    console.log("product: ", product);
-  });
-
   const displayProducts = data?.map((product: any) => {
     return (
       <ProductCard

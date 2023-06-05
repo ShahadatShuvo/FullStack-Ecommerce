@@ -23,7 +23,6 @@ function Navbar() {
 
   const handleClick = (name: string) => {
     setIsActive((prevState: string) => name);
-    console.log(isActive);
   };
 
   return (
