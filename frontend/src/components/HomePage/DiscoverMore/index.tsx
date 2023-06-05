@@ -17,6 +17,8 @@ function DiscoverMore() {
   const [data, setData] = useState<any>(null);
   const [filter, setFilter] = React.useState("");
 
+  console.log("filter:", filter);
+
   const [error, setError] = useState<string | null>(null || "Error");
 
   function handleSearchChange(event: any) {
@@ -84,12 +86,11 @@ function DiscoverMore() {
                 <SearchOutlinedIcon />
               </div>
               <div className="absolute right-2">
-                <IconButton aria-label="delete">
-                  <CloseIcon
-                    onClick={() =>
-                      setSearch((prevState: boolean) => !prevState)
-                    }
-                  />
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => setSearch((prevState: boolean) => !prevState)}
+                >
+                  <CloseIcon />
                 </IconButton>
               </div>
             </div>
