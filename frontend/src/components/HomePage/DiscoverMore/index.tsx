@@ -6,19 +6,27 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import ProductDisplay from "./ProductDisplay";
 import DiscoverNav from "./DiscoverNav";
+import { Pagination } from "@mui/material";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function DiscoverMore() {
   const [search, setSearch] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
-
+  const [page, setPage] = React.useState(1);
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null || "Error");
 
-  function handleChange(event: any) {
+  function handleSearchChange(event: any) {
     setSearchValue((prevState) => event.target.value);
   }
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +70,7 @@ function DiscoverMore() {
                 id="search"
                 placeholder="Type your keywords here"
                 autoFocus
-                onChange={handleChange}
+                onChange={handleSearchChange}
                 value={searchValue}
                 className="bg-blue-50 h-10 shadow-sm  block w-full sm:text-sm rounded-full  px-12 focus:outline-none "
               />
@@ -84,6 +92,16 @@ function DiscoverMore() {
       </div>
       <div className="mt-5">
         <ProductDisplay data={data} />
+        <div className="my-5 mb-12 w-full flex justify-center items-center select-none">
+          <Pagination
+            count={10}
+            page={page}
+            onChange={handlePageChange}
+            variant="outlined"
+            shape="rounded"
+            color="primary"
+          />
+        </div>
       </div>
     </div>
   );

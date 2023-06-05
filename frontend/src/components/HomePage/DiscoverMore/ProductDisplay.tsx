@@ -1,6 +1,5 @@
 "use client";
 
-import { Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import ProductCard from "../NewArrival/ProductCard";
 
@@ -12,8 +11,8 @@ interface ProductDataProps {
   stock: number;
 }
 
-function ProductDisplay({ data }: { data: ProductDataProps[] }) {
-  const displayProducts = data?.map((product: any) => {
+function ProductDisplay({ data }: { data: any }) {
+  const displayProducts = data?.results?.map((product: any) => {
     return (
       <ProductCard
         key={product.id}
@@ -26,18 +25,8 @@ function ProductDisplay({ data }: { data: ProductDataProps[] }) {
   });
 
   return (
-    <div>
-      <div className="grid  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  mx-16">
-        {displayProducts}
-      </div>
-      <div className="my-5 mb-12 w-full flex justify-center items-center select-none">
-        <Pagination
-          count={10}
-          variant="outlined"
-          shape="rounded"
-          color="primary"
-        />
-      </div>
+    <div className="grid  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  mx-16">
+      {displayProducts}
     </div>
   );
 }
