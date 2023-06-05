@@ -9,7 +9,7 @@ import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
 import Image from "next/image";
 
 interface ProductCardProps {
-  key: number | string;
+  // key: number | string;
   title: string;
   description: string;
   price: number;
