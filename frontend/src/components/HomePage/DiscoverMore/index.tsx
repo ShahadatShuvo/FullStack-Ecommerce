@@ -17,8 +17,6 @@ function DiscoverMore() {
   const [data, setData] = useState<any>(null);
   const [filter, setFilter] = React.useState("");
 
-  console.log("filter:", filter);
-
   const [error, setError] = useState<string | null>(null || "Error");
 
   function handleSearchChange(event: any) {
@@ -36,7 +34,7 @@ function DiscoverMore() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/api/products?page=${page}&search=${searchValue}`
+          `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
         );
 
         if (response.ok) {
@@ -51,7 +49,7 @@ function DiscoverMore() {
     };
 
     fetchData();
-  }, [searchValue, page]);
+  }, [searchValue, page, filter]);
 
   return (
     <div>

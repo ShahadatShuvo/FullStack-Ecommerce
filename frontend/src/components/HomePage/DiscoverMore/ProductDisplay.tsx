@@ -19,6 +19,7 @@ function ProductDisplay({ data }: { data: any }) {
         title={product.title}
         description={product.description}
         price={product.price}
+        stock={product.stock}
         image_url={product.image_url}
       />
     );
