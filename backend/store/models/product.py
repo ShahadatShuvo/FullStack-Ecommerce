@@ -5,8 +5,9 @@ from .category import Category
 
 class Product(models.Model):
     title = models.CharField(max_length=100, null=True)
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, null=True, blank=True)
+    # category = models.ForeignKey(
+    #     Category, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ManyToManyField(Category, blank=True)
     description = models.TextField()
     price = models.FloatField()
     stock = models.IntegerField()
