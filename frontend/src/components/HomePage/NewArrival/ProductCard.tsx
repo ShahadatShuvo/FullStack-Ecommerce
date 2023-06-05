@@ -18,7 +18,7 @@ interface ProductCardProps {
 }
 
 function ProductCard(props: ProductCardProps) {
-  const { title, price, image_url } = props;
+  const { title, description, price, image_url } = props;
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
@@ -75,7 +75,7 @@ function ProductCard(props: ProductCardProps) {
       </div>
       <div className="mt-3">
         <h3 className="text-gray-800 text-lg font-semibold"> {title}</h3>
-        <p className="text-gray-400">Perfect for sports | released in 2023</p>
+        <p className="text-gray-400">{description}</p>
         <div className="mt-5 flex justify-between items-center">
           <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
             TK {price}
