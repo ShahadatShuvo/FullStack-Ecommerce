@@ -10,7 +10,7 @@ from import_export.admin import ImportExportModelAdmin
 class AdminProduct(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['title', 'price', 'display_categories', 'created_at',
                     'updated_at', 'stock', 'img_preview']
-    # list_filter = ['price', 'category', 'stock']
+    # list_filter = ['price', 'stock']
     search_fields = ['title', 'description']
     readonly_fields = ['img_preview']
 

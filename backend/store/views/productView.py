@@ -13,9 +13,9 @@ class ProductList(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['id', 'price', 'stock',
-                        'created_at', 'updated_at', 'category']
+                        'created_at', 'updated_at']
     search_fields = ['title', 'price', 'description']
-    ordering_fields = ['price', 'stock', 'category']
+    ordering_fields = ['price', 'stock']
     # authentication_classes = [BasicAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
 
