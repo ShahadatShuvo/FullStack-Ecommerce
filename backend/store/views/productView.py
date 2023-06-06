@@ -14,8 +14,8 @@ class ProductList(generics.ListCreateAPIView):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['title', 'price', 'description']
     ordering_fields = ['price', 'stock', 'category']
-    # filterset_fields = ['id', 'price', 'stock',
-    #                     'created_at', 'updated_at']
+    filterset_fields = ['id', 'price', 'stock',
+                        'created_at', 'updated_at', 'category']
     # authentication_classes = [BasicAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
 
