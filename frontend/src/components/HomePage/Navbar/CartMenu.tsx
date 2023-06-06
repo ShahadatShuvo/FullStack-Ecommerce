@@ -1,14 +1,14 @@
 "use client";
 
-import * as React from "react";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
-import Menu from "@mui/material/Menu";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
 import Tooltip from "@mui/material/Tooltip";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Image from "next/image";
-import { Button } from "@mui/material";
+import * as React from "react";
 import "../NewArrival/index.css";
 
 export default function CartMenu() {
@@ -107,6 +107,10 @@ export default function CartMenu() {
             <div id="single-product" className="my-5 flex justify-between">
               <div className="min-w-[70%] flex justify-between">
                 <Image
+                  style={{
+                    height: "auto",
+                    width: "auto",
+                  }}
                   src="/img/cart/shoe.jpg"
                   alt="shopbag"
                   width={90}
