@@ -31,3 +31,4 @@ class AdminOrder(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Category)
 class AdminCategory(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['name', 'description', 'img_preview']
+    ordering = ['name']
