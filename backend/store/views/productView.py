@@ -12,9 +12,10 @@ class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['id', 'price', 'stock', 'created_at', 'updated_at']
+    filterset_fields = ['id', 'price', 'stock',
+                        'created_at', 'updated_at', 'category']
     search_fields = ['title', 'price', 'description']
-    ordering_fields = ['price', 'stock',]
+    ordering_fields = ['price', 'stock', 'category']
     # authentication_classes = [BasicAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
 
