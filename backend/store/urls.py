@@ -12,4 +12,7 @@ urlpatterns = [
     path("api/users/", views.UserList.as_view(), name="account-list"),
     path("api/user/create/", views.UserCreate.as_view(), name="account-create"),
     path("api/user/<str:pk>/", views.UserDetail.as_view(), name="account-detail"),
+
+    path('api/category/<str:category_name>/',
+         views.CategoryProductListView.as_view(), name='category-product-list'),
 ]
