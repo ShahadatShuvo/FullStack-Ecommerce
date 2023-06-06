@@ -1,9 +1,12 @@
 from store.serializers import ProductSerializer
 from store.models import Product
+from store.models import Category
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.authentication import BasicAuthentication
 from rest_framework import filters
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -24,3 +27,14 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class CategoryProductListView(APIView):
+    def get(self, request, category_name):
+        try:
+            category = Category.objects.get(name=category_name)
+            products = category.product_set.all()
+            serializer = ProductSerializer(products, many=True)
+            return Response(serializer.data)
+        except Category.DoesNotExist:
+            return Response({'error': 'Category not found'}, status=404)
