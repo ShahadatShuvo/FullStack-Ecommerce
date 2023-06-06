@@ -8,11 +8,14 @@ from import_export.admin import ImportExportModelAdmin
 
 @admin.register(Product)
 class AdminProduct(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ['title', 'price', 'created_at',
+    list_display = ['title', 'price', 'display_categories', 'created_at',
                     'updated_at', 'stock', 'img_preview']
-    # list_filter = ['price', 'category', 'stock']
+    # list_filter = ['price', 'stock']
     search_fields = ['title', 'description']
     readonly_fields = ['img_preview']
+
+    def display_categories(self, obj):
+        return ", ".join([str(category) for category in obj.category.all()])
 
 
 @admin.register(Customer)
@@ -31,3 +34,4 @@ class AdminOrder(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Category)
 class AdminCategory(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['name', 'description', 'img_preview']
+    ordering = ['name']
