@@ -19,6 +19,8 @@ function DiscoverMore() {
 
   const [error, setError] = useState<string | null>(null || "Error");
 
+  console.log("data:", data);
+
   function handleSearchChange(event: any) {
     setSearchValue((prevState) => event.target.value);
   }
