@@ -1,12 +1,11 @@
 "use client";
 
-import { IconButton } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import ProductDisplay from "./ProductDisplay";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { IconButton, Pagination } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import DiscoverNav from "./DiscoverNav";
-import { Pagination } from "@mui/material";
+import ProductDisplay from "./ProductDisplay";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -54,9 +53,17 @@ function DiscoverMore() {
   return (
     <div>
       <div>
+        {/* Magic Line */}
+        <div className="flex justify-start">
+          <div className="border-4 border-gradient w-1/3"></div>
+        </div>
         <h1 className="text-3xl md:text-4xl 2xl:text-5xl font-semibold text-center my-8">
           Start exploring.
         </h1>
+        {/* Magic Line */}
+        <div className="flex justify-end">
+          <div className="border-4 border-gradient w-1/3"></div>
+        </div>
       </div>
 
       {/* nav start */}
