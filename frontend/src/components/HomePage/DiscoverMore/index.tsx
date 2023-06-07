@@ -15,10 +15,14 @@ function DiscoverMore() {
   const [page, setPage] = React.useState(1);
   const [data, setData] = useState<any>(null);
   const [filter, setFilter] = React.useState("");
+  const [resultMap, setResultMap] = useState<any>(true); // dataMap = data["results"
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const [error, setError] = useState<string | null>(null || "Error");
 
   console.log("data:", data);
+  console.log("activeCategory:", activeCategory);
+  console.log("resultMap:", resultMap);
 
   function handleSearchChange(event: any) {
     setSearchValue((prevState) => event.target.value);
@@ -34,10 +38,16 @@ function DiscoverMore() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
-        );
-
+        let response;
+        if (activeCategory === "all") {
+          response = await fetch(
+            `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
+          );
+          setResultMap(true);
+        } else {
+          response = await fetch(`${apiUrl}/api/category/${activeCategory}`);
+          setResultMap(false);
+        }
         if (response.ok) {
           const result = await response.json();
           setData(result);
@@ -50,7 +60,7 @@ function DiscoverMore() {
     };
 
     fetchData();
-  }, [searchValue, page, filter]);
+  }, [searchValue, page, filter, activeCategory]);
 
   return (
     <div>
@@ -73,6 +83,8 @@ function DiscoverMore() {
         setSearch={setSearch}
         setFilter={setFilter}
         filter={filter}
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
       />
       {/* nav end */}
       <div>
@@ -105,7 +117,7 @@ function DiscoverMore() {
         )}
       </div>
       <div className="mt-5">
-        <ProductDisplay data={data} />
+        <ProductDisplay data={data} resultMap={resultMap} />
         <div className="my-5 mb-12 w-full flex justify-center items-center select-none">
           <Pagination
             count={10}
