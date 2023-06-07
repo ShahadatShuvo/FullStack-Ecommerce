@@ -15,6 +15,7 @@ function HomePage() {
       <Steps />
       <DiscoverMore />
       <Testimonial />
+
       <Footer />
     </div>
   );
