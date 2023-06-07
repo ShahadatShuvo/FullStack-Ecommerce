@@ -54,12 +54,12 @@ function DiscoverMore() {
 
   return (
     <div>
-      <div>
+      <div className="my-16 mx-16">
         {/* Magic Line */}
         <div className="flex justify-start">
           <div className="border-4 border-gradient w-1/3"></div>
         </div>
-        <h1 className="text-3xl md:text-4xl 2xl:text-5xl font-semibold text-center my-8">
+        <h1 className="text-3xl md:text-4xl font-semibold text-center">
           Start exploring.
         </h1>
         {/* Magic Line */}
