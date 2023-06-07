@@ -1,21 +1,22 @@
 "use client";
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
+import Logout from "@mui/icons-material/Logout";
+import PersonAdd from "@mui/icons-material/PersonAdd";
+import Settings from "@mui/icons-material/Settings";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
+import Link from "next/link";
+import * as React from "react";
 
 export default function MenuIcon() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -97,9 +98,12 @@ export default function MenuIcon() {
           </div>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
+        <Link href="/account">
+          <MenuItem onClick={handleClose}>
+            <Avatar /> My account
+          </MenuItem>
+        </Link>
+
         <MenuItem onClick={handleClose}>
           <ListAltOutlinedIcon /> <p className="ml-3">My Order</p>
         </MenuItem>
