@@ -12,13 +12,15 @@ function DiscoverNav({
   setSearch,
   setFilter,
   filter,
+  activeCategory,
+  setActiveCategory,
 }: {
   setSearch: any;
   setFilter: any;
   filter: string;
+  activeCategory: string;
+  setActiveCategory: any;
 }) {
-  const [activeCategory, setActiveCategory] = useState("");
-
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
   };
