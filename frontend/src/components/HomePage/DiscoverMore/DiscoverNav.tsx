@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import CloseIcon from "@mui/icons-material/Close";
+import AllOutIcon from "@mui/icons-material/AllOut";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -12,13 +12,15 @@ function DiscoverNav({
   setSearch,
   setFilter,
   filter,
+  activeCategory,
+  setActiveCategory,
 }: {
   setSearch: any;
   setFilter: any;
   filter: string;
+  activeCategory: string;
+  setActiveCategory: any;
 }) {
-  const [activeCategory, setActiveCategory] = useState("");
-
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
   };
@@ -32,6 +34,24 @@ function DiscoverNav({
         id="Nav"
       >
         <ul className="flex items-center  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
+          <li className="mx-3 nc-NavItem2 relative" id="NavItem2">
+            <div
+              onClick={() => handleCategoryClick("all")}
+              className={`
+              categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
+                activeCategory === "all"
+                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  : ""
+              }`}
+            >
+              <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm ">
+                <span className="inline-block">
+                  <AllOutIcon />
+                </span>
+                <span>All</span>
+              </div>
+            </div>
+          </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("women")}
@@ -79,9 +99,9 @@ function DiscoverNav({
           </li>
           <li className="nc-NavItem2 relative" id="NavItem2">
             <div
-              onClick={() => handleCategoryClick("man")}
+              onClick={() => handleCategoryClick("men")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize  ${
-                activeCategory === "man"
+                activeCategory === "men"
                   ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
                   : ""
               }`}
@@ -117,7 +137,7 @@ function DiscoverNav({
                     ></path>
                   </svg>
                 </span>
-                <span>Man</span>
+                <span>Men</span>
               </div>
             </div>
           </li>
@@ -165,7 +185,7 @@ function DiscoverNav({
               </div>
             </div>
           </li>
-          <li className="nc-NavItem2 relative" id="NavItem2">
+          <li className="mx-3 nc-NavItem2 relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("sports")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
@@ -223,7 +243,7 @@ function DiscoverNav({
               </div>
             </div>
           </li>
-          <li className="nc-NavItem2 relative" id="NavItem2">
+          {/* <li className="nc-NavItem2 relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("beauty")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
@@ -266,7 +286,7 @@ function DiscoverNav({
                 <span>Beauty</span>
               </div>
             </div>
-          </li>
+          </li> */}
 
           <li
             className="mx-2 nc-NavItem2 relative w-[150px] py-2"

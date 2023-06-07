@@ -1,12 +1,11 @@
 "use client";
 
-import { IconButton } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import ProductDisplay from "./ProductDisplay";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { IconButton, Pagination } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import DiscoverNav from "./DiscoverNav";
-import { Pagination } from "@mui/material";
+import ProductDisplay from "./ProductDisplay";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -16,8 +15,14 @@ function DiscoverMore() {
   const [page, setPage] = React.useState(1);
   const [data, setData] = useState<any>(null);
   const [filter, setFilter] = React.useState("");
+  const [resultMap, setResultMap] = useState<any>(true); // dataMap = data["results"
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const [error, setError] = useState<string | null>(null || "Error");
+
+  console.log("data:", data);
+  console.log("activeCategory:", activeCategory);
+  console.log("resultMap:", resultMap);
 
   function handleSearchChange(event: any) {
     setSearchValue((prevState) => event.target.value);
@@ -33,10 +38,16 @@ function DiscoverMore() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
-        );
-
+        let response;
+        if (activeCategory === "all") {
+          response = await fetch(
+            `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
+          );
+          setResultMap(true);
+        } else {
+          response = await fetch(`${apiUrl}/api/category/${activeCategory}`);
+          setResultMap(false);
+        }
         if (response.ok) {
           const result = await response.json();
           setData(result);
@@ -49,14 +60,22 @@ function DiscoverMore() {
     };
 
     fetchData();
-  }, [searchValue, page, filter]);
+  }, [searchValue, page, filter, activeCategory]);
 
   return (
     <div>
-      <div>
-        <h1 className="text-3xl md:text-4xl 2xl:text-5xl font-semibold text-center my-8">
+      <div className="my-16 mx-16">
+        {/* Magic Line */}
+        <div className="flex justify-start">
+          <div className="border-4 border-gradient w-1/3"></div>
+        </div>
+        <h1 className="text-3xl md:text-4xl font-semibold text-center">
           Start exploring.
         </h1>
+        {/* Magic Line */}
+        <div className="flex justify-end">
+          <div className="border-4 border-gradient w-1/3"></div>
+        </div>
       </div>
 
       {/* nav start */}
@@ -64,6 +83,8 @@ function DiscoverMore() {
         setSearch={setSearch}
         setFilter={setFilter}
         filter={filter}
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
       />
       {/* nav end */}
       <div>
@@ -96,7 +117,7 @@ function DiscoverMore() {
         )}
       </div>
       <div className="mt-5">
-        <ProductDisplay data={data} />
+        <ProductDisplay data={data} resultMap={resultMap} />
         <div className="my-5 mb-12 w-full flex justify-center items-center select-none">
           <Pagination
             count={10}

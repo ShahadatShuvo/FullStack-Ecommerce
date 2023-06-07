@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import { useEffect, useRef } from "react";
 import ProductCard from "./ProductCard";
-import { useRef, useEffect } from "react";
 import "./index.css";
 
 function NewArrival() {
@@ -55,17 +54,26 @@ function NewArrival() {
   }, []);
 
   return (
-    <div className="my-5 mx-16">
-      <h2 className=" text-4xl font-semibold">
+    <div className="my-16 mx-16">
+      {/* Magic Line */}
+      <div className="flex justify-start">
+        <div className="border-4 border-gradient w-1/4"></div>
+      </div>
+      <h2 className="my-5 text-4xl font-semibold text-center">
         New Arrivals.
         <span className="text-gray-500 ml-2">REY backpacks & bags</span>
       </h2>
+      {/* Magic Line */}
+      <div className="flex justify-end">
+        <div className="border-4 border-gradient w-1/4"></div>
+      </div>
 
       <div
         ref={containerRef}
         className="flex overflow-x-auto hide-scrollbar my-12 justify-between gap-5"
         style={{ cursor: "grab" }}
       >
+        {/* <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
@@ -73,8 +81,7 @@ function NewArrival() {
         <ProductCard />
         <ProductCard />
         <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard /> */}
       </div>
     </div>
   );

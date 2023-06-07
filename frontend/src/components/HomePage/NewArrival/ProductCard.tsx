@@ -23,6 +23,8 @@ function ProductCard(props: ProductCardProps) {
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
+  // image_url[0] === "/" ? `http://127.0.0.1:8000${image_url}` : image_url;
+
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
   };
@@ -76,7 +78,8 @@ function ProductCard(props: ProductCardProps) {
               height: "280px",
               width: "auto",
             }}
-            src={image_url || "/img/cart/sshoe.png"}
+            src={image_url}
+            // src={image_url}
             alt=""
             width={230}
             height={230}

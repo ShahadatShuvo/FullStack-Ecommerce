@@ -25,3 +25,18 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.border-gradient {
+  --border-color-2: #0074d9;
+  --border-color-1: #001f3f;
+  --border-color-3: #7fdbff;
+  --border-color-4: #39cccc;
+  border-image: linear-gradient(
+      to right,
+      var(--border-color-3),
+      var(--border-color-2),
+      var(--border-color-1),
+      var(--border-color-4)
+    )
+    1;
+}
