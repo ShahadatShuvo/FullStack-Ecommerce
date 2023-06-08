@@ -2,6 +2,7 @@
 
 import React, { createContext, useState } from "react";
 import HomePage from "@/components/HomePage";
+import Checkout from "./checkout/page";
 
 interface ProductCardProps {
   id: number | string;
