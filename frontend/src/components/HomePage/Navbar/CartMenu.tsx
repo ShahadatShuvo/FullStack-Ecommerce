@@ -32,6 +32,11 @@ export default function CartMenu() {
     setAnchorEl(null);
   };
 
+  const subTotal = contextValue.reduce(
+    (acc: number, item: any) => acc + item.price * item.qty,
+    0
+  );
+
   const allCartItems = contextValue.map((product) => {
     return (
       <div key={product.id}>
@@ -131,7 +136,7 @@ export default function CartMenu() {
           <div className="mt-3 pb-3 bg-blue-50">
             <div className="pt-3 px-5 font-bold flex justify-between">
               <p>Subtotal</p>
-              <p>$299.00</p>
+              <p>{subTotal} TK</p>
             </div>
             <div className="px-5 py-3 pt-5  flex justify-between gap-2">
               <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
