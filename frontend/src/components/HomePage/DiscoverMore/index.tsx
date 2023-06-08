@@ -1,5 +1,4 @@
 "use client";
-
 import CloseIcon from "@mui/icons-material/Close";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { IconButton, Pagination } from "@mui/material";
@@ -25,7 +24,7 @@ function DiscoverMore() {
   console.log("resultMap:", resultMap);
 
   function handleSearchChange(event: any) {
-    setSearchValue((prevState) => event.target.value);
+    setSearchValue(event.target.value);
   }
 
   const handlePageChange = (
@@ -35,11 +34,17 @@ function DiscoverMore() {
     setPage(value);
   };
 
+  const clearSearch = () => {
+    setSearch(false);
+    setSearchValue("");
+    setPage(1);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         let response;
-        if (activeCategory === "all") {
+        if (activeCategory === "all" || searchValue !== "") {
           response = await fetch(
             `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
           );
@@ -61,6 +66,12 @@ function DiscoverMore() {
 
     fetchData();
   }, [searchValue, page, filter, activeCategory]);
+
+  useEffect(() => {
+    if (searchValue !== "") {
+      setActiveCategory("all");
+    }
+  }, [searchValue]);
 
   return (
     <div>
@@ -105,10 +116,7 @@ function DiscoverMore() {
                 <SearchOutlinedIcon />
               </div>
               <div className="absolute right-2">
-                <IconButton
-                  aria-label="delete"
-                  onClick={() => setSearch((prevState: boolean) => !prevState)}
-                >
+                <IconButton aria-label="delete" onClick={clearSearch}>
                   <CloseIcon />
                 </IconButton>
               </div>
