@@ -13,6 +13,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Function to update the context value
+
   return (
     <html lang="en">
       <body className="text-black" suppressHydrationWarning={true}>
