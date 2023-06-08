@@ -49,13 +49,14 @@ export default function CartMenu() {
               <h3 className="font-semibold text-gray-700 text-lg">
                 {product.title}
               </h3>
-              <p className="text-gray-400 mb-6">{product.description}</p>
+              <p className="text-gray-400 mb-5">{product.description}</p>
+              <p className="text-gray-400 ">Price: {product.price}</p>
               <p className="text-gray-400">Qty: {product.qty}</p>
             </div>
           </div>
           <div>
             <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
-              {product.price} TK
+              {product.price * product.qty} TK
             </p>
 
             <Button size="medium" onClick={() => handleRemove(product)}>
