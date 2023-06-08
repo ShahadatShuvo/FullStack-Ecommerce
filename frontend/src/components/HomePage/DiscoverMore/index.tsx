@@ -39,7 +39,7 @@ function DiscoverMore() {
     const fetchData = async () => {
       try {
         let response;
-        if (activeCategory === "all") {
+        if (activeCategory === "all" || searchValue !== "") {
           response = await fetch(
             `${apiUrl}/api/products?ordering=${filter}&page=${page}&search=${searchValue}`
           );
@@ -61,6 +61,12 @@ function DiscoverMore() {
 
     fetchData();
   }, [searchValue, page, filter, activeCategory]);
+
+  useEffect(() => {
+    if (searchValue !== "") {
+      setActiveCategory("all");
+    }
+  }, [searchValue]);
 
   return (
     <div>
