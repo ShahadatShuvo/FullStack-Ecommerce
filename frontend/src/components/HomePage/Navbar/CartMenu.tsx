@@ -139,9 +139,12 @@ export default function CartMenu() {
               <p>{subTotal} TK</p>
             </div>
             <div className="px-5 py-3 pt-5  flex justify-between gap-2">
-              <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
+              <a
+                href="/checkout"
+                className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold"
+              >
                 Check out
-              </p>
+              </a>
             </div>
           </div>
         </div>

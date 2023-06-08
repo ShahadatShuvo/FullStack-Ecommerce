@@ -1,6 +1,6 @@
 import LoginForm from "@/components/Accounts/LoginForm";
 
-function page() {
+function Account() {
   return (
     <div className="bg-white">
       <LoginForm />
@@ -8,4 +8,4 @@ function page() {
   );
 }
 
-export default page;
+export default Account;
