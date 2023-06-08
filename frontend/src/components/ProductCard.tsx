@@ -7,10 +7,10 @@ import StarIcon from "@mui/icons-material/Star";
 import { Button } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import CartViewDialogue from "./CartViewDialogue";
+import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
 
 interface ProductCardProps {
-  // key: number | string;
+  id: number | string;
   title: string;
   description: string;
   price: number;
@@ -19,11 +19,12 @@ interface ProductCardProps {
 }
 
 function ProductCard(props: ProductCardProps) {
-  const { title, description, price, image_url } = props;
+  const { id, title, description, price, image_url } = props;
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
+  const [cartItems, setCartItems] = React.useState<ProductCardProps[]>([]);
 
-  // image_url[0] === "/" ? `http://127.0.0.1:8000${image_url}` : image_url;
+  console.log("cartItems:", cartItems);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
@@ -33,6 +34,9 @@ function ProductCard(props: ProductCardProps) {
   };
   const onHandleViewClose = () => {
     setView(false);
+  };
+  const onHandleClick = (props: ProductCardProps) => {
+    setCartItems((prevState: ProductCardProps[]) => [...prevState, props]);
   };
 
   return (
@@ -56,7 +60,10 @@ function ProductCard(props: ProductCardProps) {
         {view && (
           <div className="absolute bottom-4 w-full">
             <div className="px-2 flex justify-around">
-              <Button className="text-xs font-semibold py-1 rounded-full bg-black hover:bg-gray-600 text-white flex justify-center items-center drop-shadow-md hover:drop-shadow-xl">
+              <Button
+                className="text-xs font-semibold py-1 rounded-full bg-black hover:bg-gray-600 text-white flex justify-center items-center drop-shadow-md hover:drop-shadow-xl"
+                onClick={() => onHandleClick(props)}
+              >
                 <NextWeekOutlinedIcon />
                 <span className="ml-1">Add to bag</span>
               </Button>

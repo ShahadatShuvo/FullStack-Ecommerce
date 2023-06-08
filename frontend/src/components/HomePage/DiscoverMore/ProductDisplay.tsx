@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductCard from "../NewArrival/ProductCard";
+import ProductCard from "../../ProductCard";
 
 interface ProductDataProps {
   id: number;
@@ -23,6 +23,7 @@ function ProductDisplay({
     ? Data.map((product: any) => (
         <ProductCard
           key={product.id}
+          id={product.id}
           title={product.title}
           description={product.description}
           price={product.price}
