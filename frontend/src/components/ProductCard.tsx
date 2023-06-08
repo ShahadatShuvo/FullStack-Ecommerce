@@ -6,8 +6,9 @@ import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
 import StarIcon from "@mui/icons-material/Star";
 import { Button } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
+import { CartItemContext } from "../app/_page";
 
 interface ProductCardProps {
   id: number | string;
@@ -24,7 +25,9 @@ function ProductCard(props: ProductCardProps) {
   const [view, setView] = React.useState(false);
   const [cartItems, setCartItems] = React.useState<ProductCardProps[]>([]);
 
-  console.log("cartItems:", cartItems);
+  const { contextValue, increateContextValue } = useContext(CartItemContext);
+
+  console.log("contextValue:", contextValue);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
@@ -36,7 +39,8 @@ function ProductCard(props: ProductCardProps) {
     setView(false);
   };
   const onHandleClick = (props: ProductCardProps) => {
-    setCartItems((prevState: ProductCardProps[]) => [...prevState, props]);
+    // setCartItems((prevState: ProductCardProps[]) => [...prevState, props]);
+    increateContextValue(props);
   };
 
   return (
