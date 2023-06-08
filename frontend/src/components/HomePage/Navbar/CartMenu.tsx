@@ -12,6 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
 import * as React from "react";
 import "../NewArrival/index.css";
+import Link from "next/link";
 
 export default function CartMenu() {
   const { contextValue, increateContextValue, deleteContextValue } =
@@ -138,14 +139,13 @@ export default function CartMenu() {
               <p>Subtotal</p>
               <p>{subTotal} TK</p>
             </div>
-            <div className="px-5 py-3 pt-5  flex justify-between gap-2">
-              <a
-                href="/checkout"
-                className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold"
-              >
-                Check out
-              </a>
-            </div>
+            <Link href="/checkout">
+              <div className="px-5 py-3 pt-5  flex justify-between gap-2">
+                <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
+                  Check out
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
       </Menu>
