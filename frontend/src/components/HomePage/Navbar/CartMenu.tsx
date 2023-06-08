@@ -14,7 +14,12 @@ import * as React from "react";
 import "../NewArrival/index.css";
 
 export default function CartMenu() {
-  const { contextValue, increateContextValue } = useContext(CartItemContext);
+  const { contextValue, increateContextValue, deleteContextValue } =
+    useContext(CartItemContext);
+
+  const handleRemove = (product: any) => {
+    deleteContextValue(product);
+  };
 
   console.log("contextValue:", contextValue);
 
@@ -45,7 +50,7 @@ export default function CartMenu() {
                 {product.title}
               </h3>
               <p className="text-gray-400 mb-6">{product.description}</p>
-              <p className="text-gray-400">Qty: 1</p>
+              <p className="text-gray-400">Qty: {product.qty}</p>
             </div>
           </div>
           <div>
@@ -53,7 +58,9 @@ export default function CartMenu() {
               {product.price} TK
             </p>
 
-            <Button size="medium">Remove</Button>
+            <Button size="medium" onClick={() => handleRemove(product)}>
+              Remove
+            </Button>
           </div>
         </div>
         <Divider />
@@ -125,11 +132,8 @@ export default function CartMenu() {
               <p>Subtotal</p>
               <p>$299.00</p>
             </div>
-            <div className="px-5 py-3  flex justify-between gap-2">
-              <p className="w-[50%] px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-center drop-shadow-md hover:drop-shadow-xl font-semibold">
-                View cart
-              </p>
-              <p className="w-[50%] px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
+            <div className="px-5 py-3 pt-5  flex justify-between gap-2">
+              <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
                 Check out
               </p>
             </div>

@@ -2,11 +2,11 @@
 
 import React from "react";
 import MenuIcon from "./ProfileMenu";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/_page";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import { Badge, IconButton } from "@mui/material";
-// import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-// import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
 interface insAtctiveInterface {
@@ -17,6 +17,8 @@ interface insAtctiveInterface {
 }
 
 function Navbar() {
+  const { contextValue, increateContextValue } = useContext(CartItemContext);
+
   // const [search, setSearch] = React.useState(false);
   const [explore, setExplore] = React.useState(false);
   const [isActive, setIsActive] = React.useState("");
@@ -134,7 +136,7 @@ function Navbar() {
             <MenuIcon />
 
             <Badge
-              badgeContent={4}
+              badgeContent={contextValue.length}
               color="primary"
               sx={{
                 mt: "2px",

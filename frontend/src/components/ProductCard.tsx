@@ -16,6 +16,7 @@ interface ProductCardProps {
   description: string;
   price: number;
   stock: number;
+  qty: number;
   image_url: string;
 }
 
