@@ -1,8 +1,7 @@
 "use client";
 
-import React, { createContext, useState } from "react";
 import HomePage from "@/components/HomePage";
-import Checkout from "./checkout/page";
+import React, { createContext, useState } from "react";
 
 interface ProductCardProps {
   id: number | string;
@@ -40,9 +39,14 @@ function AllPages() {
   }, [contextValue]);
 
   React.useEffect(() => {
-    const cartData = JSON.parse(localStorage.getItem("cart") || "");
+    const cartData = localStorage.getItem("cart");
     if (cartData) {
-      setContextValue(cartData);
+      try {
+        const parsedData = JSON.parse(cartData);
+        setContextValue(parsedData);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
     }
   }, []);
 
