@@ -1,13 +1,9 @@
-import Link from "next/link";
-import React from "react";
+import CheckoutPage from "@/components/CheckoutP/CheckoutP";
 
 function Checkout() {
   return (
-    <div className="bg-white h-screen py-8">
-      Checkout
-      <Link href="/">
-        <p>Home</p>
-      </Link>
+    <div className="bg-white ">
+      <CheckoutPage />
     </div>
   );
 }
