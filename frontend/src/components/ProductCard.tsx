@@ -26,7 +26,7 @@ function ProductCard(props: ProductCardProps) {
   const [view, setView] = React.useState(false);
   const [cartItems, setCartItems] = React.useState<ProductCardProps[]>([]);
 
-  const { contextValue, increateContextValue } = useContext(CartItemContext);
+  const { contextValue, increaseContextValue } = useContext(CartItemContext);
 
   console.log("contextValue:", contextValue);
 
@@ -41,7 +41,7 @@ function ProductCard(props: ProductCardProps) {
   };
   const onHandleClick = (props: ProductCardProps) => {
     // setCartItems((prevState: ProductCardProps[]) => [...prevState, props]);
-    increateContextValue(props);
+    increaseContextValue(props);
   };
 
   return (

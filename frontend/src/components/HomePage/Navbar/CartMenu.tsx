@@ -15,14 +15,11 @@ import "../NewArrival/index.css";
 import Link from "next/link";
 
 export default function CartMenu() {
-  const { contextValue, increateContextValue, deleteContextValue } =
-    useContext(CartItemContext);
+  const { contextValue, deleteContextValue } = useContext(CartItemContext);
 
   const handleRemove = (product: any) => {
     deleteContextValue(product);
   };
-
-  console.log("contextValue:", contextValue);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -38,7 +35,7 @@ export default function CartMenu() {
     0
   );
 
-  const allCartItems = contextValue.map((product) => {
+  const allCartItems = contextValue.map((product: any) => {
     return (
       <div key={product.id}>
         <div id="single-product" className="my-5 flex justify-between">
