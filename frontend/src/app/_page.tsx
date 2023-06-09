@@ -16,22 +16,37 @@ interface ProductCardProps {
 
 interface ContextValue {
   contextValue: ProductCardProps[];
-  increateContextValue: (newValue: ProductCardProps) => void;
+  increaseContextValue: (newValue: ProductCardProps) => void;
   deleteContextValue: (newValue: ProductCardProps) => void;
 }
 
 export const CartItemContext = createContext<ContextValue>({
   contextValue: [],
-  increateContextValue: () => {},
+  increaseContextValue: () => {},
   deleteContextValue: () => {},
 });
 
 function AllPages() {
   const [contextValue, setContextValue] = useState([]);
 
-  //   console.log("contextValue:", contextValue);
+  React.useEffect(() => {
+    // const check = JSON.parse(localStorage.getItem("check") || "true");
 
-  const increateContextValue = (newValue: ProductCardProps) => {
+    if (contextValue.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(contextValue));
+      // } else if (contextValue.length === 0) {
+      //   localStorage.setItem("check", "false");
+    }
+  }, [contextValue]);
+
+  React.useEffect(() => {
+    const cartData = JSON.parse(localStorage.getItem("cart") || "");
+    if (cartData) {
+      setContextValue(cartData);
+    }
+  }, []);
+
+  const increaseContextValue = (newValue: ProductCardProps) => {
     setContextValue((prevState: ProductCardProps[] | any) => {
       const isExist = prevState.find(
         (item: ProductCardProps) => item.id === newValue.id
@@ -74,7 +89,7 @@ function AllPages() {
   return (
     <div>
       <CartItemContext.Provider
-        value={{ contextValue, increateContextValue, deleteContextValue }}
+        value={{ contextValue, increaseContextValue, deleteContextValue }}
       >
         <HomePage />
       </CartItemContext.Provider>

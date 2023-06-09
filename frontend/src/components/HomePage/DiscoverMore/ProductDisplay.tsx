@@ -6,6 +6,7 @@ import ProductCard from "../../ProductCard";
 interface ProductDataProps {
   id: number;
   title: string;
+  qty: number;
   description: string;
   price: number;
   stock: number;
@@ -24,6 +25,7 @@ function ProductDisplay({
         <ProductCard
           key={product.id}
           id={product.id}
+          qty={product.qty}
           title={product.title}
           description={product.description}
           price={product.price}
