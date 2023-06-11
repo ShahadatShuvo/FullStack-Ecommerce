@@ -2,25 +2,23 @@ import CartMenu from "../HomePage/Navbar/CartMenu";
 
 function CheckoutPage() {
   return (
-    <div className="">
-      <div className="py-8 ">
-        {/* Magic headline */}
-        <div>
-          <div className="flex justify-start">
-            <div className="border-4 border-gradient w-[30vw]"></div>
-          </div>
-          <h1 className="text-4xl font-semibold text-center">Checkout Page</h1>
-          <div className="flex justify-end">
-            <div className="border-4 border-gradient w-[30vw]"></div>
-          </div>
+    <div className="w-[100vw] p-16">
+      {/* Magic headline */}
+      <div className="mb-12">
+        <div className="flex justify-start">
+          <div className="border-4 border-gradient w-[30vw]"></div>
+        </div>
+        <h1 className="text-4xl font-semibold text-center">Checkout Page</h1>
+        <div className="flex justify-end">
+          <div className="border-4 border-gradient w-[30vw]"></div>
         </div>
       </div>
 
       {/* Checkout Data */}
 
-      <div className="flex w-[100vw] justify-between gap-3 mx-14  ">
+      <div className="w-full flex justify-between gap-3">
         {/* Left Side */}
-        <div className="space-y-10 w-[50]">
+        <div className="space-y-10 w-[50%] bg-blue-200">
           <div className="flex flex-col border border-slate-200  rounded-xl sm:flex-row items-start p-6 ">
             <span className="hidden sm:block">
               <svg
@@ -302,7 +300,7 @@ function CheckoutPage() {
         </div>
 
         {/* Right Side */}
-        <div className="w-[50%]">
+        <div className="w-[50%] bg-red-200">
           <CartMenu />
         </div>
 
