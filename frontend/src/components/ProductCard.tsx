@@ -28,7 +28,7 @@ function ProductCard(props: ProductCardProps) {
 
   const { contextValue, increaseContextValue } = useContext(CartItemContext);
 
-  console.log("contextValue:", contextValue);
+  // console.log("contextValue:", contextValue);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
