@@ -127,7 +127,25 @@ function Footer() {
             </a>
           </div>
           <p className="mt-8 text-base leading-6 text-center text-gray-400">
-            © 2023 SomeCompany, Inc. All rights reserved.
+            © 2023 All rights reserved.
+            <span className="ml-2">
+              Developed by:
+              <a
+                href="https://www.facebook.com/hossain.shuvo.7860"
+                target="_blank"
+                className="text-blue-500 font-semibold ml-1"
+              >
+                HossAin Shuvo
+              </a>
+              <span className="mx-1">&</span>
+              <a
+                href="https://www.facebook.com/mdmahinbinraihan"
+                target="_blank"
+                className="text-blue-500 font-semibold"
+              >
+                Mahin bin Mukto
+              </a>
+            </span>
           </p>
         </div>
       </section>
