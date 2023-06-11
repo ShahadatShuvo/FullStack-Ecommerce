@@ -1,3 +1,5 @@
+import CartMenu from "../HomePage/Navbar/CartMenu";
+
 function CheckoutPage() {
   return (
     <div className="">
@@ -301,7 +303,7 @@ function CheckoutPage() {
 
         {/* Right Side */}
         <div className="w-[50%]">
-          <h1>Hello</h1>
+          <CartMenu />
         </div>
 
         {/* End */}
