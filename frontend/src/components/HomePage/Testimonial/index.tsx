@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const testimonials = [
@@ -56,7 +57,7 @@ const Testimonial = () => {
   const testimonial = testimonials[currentTestimonial];
 
   return (
-    <div className="my-32 w-full space-y-24">
+    <div className="w-full space-y-24 py-16">
       <div>
         {/* Magic Line */}
         <div className="flex justify-start">
@@ -71,9 +72,11 @@ const Testimonial = () => {
 
       <div className="flex justify-center relative">
         <div className="-bottom-12">
-          <img
-            className="h-16 w-16 top-0 rounded-full -top-8"
-            src="img/quotes.png"
+          <Image
+            className="h-16 w-16 rounded-full -top-8"
+            height={64}
+            width={64}
+            src="/img/quotes.png"
             alt="Testimonial Image"
           />
         </div>
@@ -82,9 +85,11 @@ const Testimonial = () => {
             {/* <!-- Magic Dots --> */}
             <div className="relative flex p-4 justify-between border-b border-gray-500">
               <h3 className="text-lg font-bold flex justify-center items-center">
-                <img
+                <Image
                   className="h-16 w-16 -top-12 rounded-full"
                   src={testimonial.img}
+                  height={64}
+                  width={64}
                   alt=""
                 />
                 {testimonial.name}
@@ -107,9 +112,11 @@ const Testimonial = () => {
           </div>
         </div>
         <div>
-          <img
-            className="h-16 w-16 ml-4 -bottom-12 rounded-full absolute bottom-0 transform rotate-180"
-            src="img/quotes.png"
+          <Image
+            className="h-16 w-16 ml-4  rounded-full absolute bottom-0 transform rotate-180"
+            src="/img/quotes.png"
+            height={64}
+            width={64}
             alt="Testimonial Image"
           />
         </div>
