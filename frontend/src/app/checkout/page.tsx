@@ -1,4 +1,4 @@
-import CheckoutPage from "@/components/CheckoutP/CheckoutP";
+import CheckoutPage from "@/components/Checkout/CheckoutPage";
 
 function Checkout() {
   return (
