@@ -73,7 +73,7 @@ const Testimonial = () => {
       <div className="flex justify-center relative">
         <div className="-bottom-12">
           <Image
-            className="h-16 w-16 rounded-full -top-8"
+            className="h-16 w-16 rounded-full absolute left-[20%] top-[-30%]"
             height={64}
             width={64}
             src="/img/quotes.png"
@@ -113,7 +113,7 @@ const Testimonial = () => {
         </div>
         <div>
           <Image
-            className="h-16 w-16 ml-4  rounded-full absolute bottom-0 transform rotate-180"
+            className="h-16 w-16 ml-4  rounded-full absolute bottom-[-30%] transform rotate-180"
             src="/img/quotes.png"
             height={64}
             width={64}
