@@ -1,4 +1,6 @@
+import Navbar from "@/components/HomePage/Navbar";
 import "./globals.css";
+import Footer from "@/components/HomePage/Footer";
 
 export const metadata = {
   title: "FullStack Ecommerce",
@@ -18,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="text-black" suppressHydrationWarning={true}>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
