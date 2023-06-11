@@ -27,16 +27,20 @@ export const CartItemContext = createContext<ContextValue>({
 
 function AllPages() {
   const [contextValue, setContextValue] = useState([]);
+  const [check, setCheck] = useState(false);
 
   React.useEffect(() => {
     // const check = JSON.parse(localStorage.getItem("check") || "true");
 
     if (contextValue.length > 0) {
       localStorage.setItem("cart", JSON.stringify(contextValue));
-      // } else if (contextValue.length === 0) {
-      //   localStorage.setItem("check", "false");
+    } else {
+      const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+      if (cartData.length === 1 && check === true) {
+        localStorage.removeItem("cart");
+      }
     }
-  }, [contextValue]);
+  }, [contextValue, check]);
 
   React.useEffect(() => {
     const cartData = localStorage.getItem("cart");
@@ -89,6 +93,10 @@ function AllPages() {
       // If the product is not found, return the previous state as is
       return prevState;
     });
+
+    if (contextValue.length === 1) {
+      setCheck(true);
+    }
   };
   return (
     <div>
