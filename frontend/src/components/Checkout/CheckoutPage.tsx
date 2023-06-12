@@ -1,8 +1,13 @@
+"use client";
+
+import Link from "next/link";
 import CartMenu from "../HomePage/Navbar/CartMenu";
+import { Button, Divider } from "@mui/material";
+import Image from "next/image";
 
 function CheckoutPage() {
   return (
-    <div className="w-[100vw] p-16">
+    <div className="w-full p-16">
       {/* Magic headline */}
       <div className="mb-12">
         <div className="flex justify-start">
@@ -18,7 +23,7 @@ function CheckoutPage() {
 
       <div className="w-full flex justify-between gap-3">
         {/* Left Side */}
-        <div className="space-y-10 w-[50%] bg-blue-200">
+        <div className="space-y-10 w-[50%]">
           <div className="flex flex-col border border-slate-200  rounded-xl sm:flex-row items-start p-6 ">
             <span className="hidden sm:block">
               <svg
@@ -300,8 +305,70 @@ function CheckoutPage() {
         </div>
 
         {/* Right Side */}
-        <div className="w-[50%] bg-red-200">
-          <CartMenu />
+        <div className="w-[50%] border border-slate-200  rounded-xl">
+          <div className="w-full">
+            <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll hide-scrollbar">
+              <h1 className=" text-xl font-bold text-gray-500">
+                Shopping Cart
+              </h1>
+              <div>
+                <div>
+                  <div
+                    id="single-product"
+                    className="my-5 flex justify-between"
+                  >
+                    <div className="min-w-[70%] flex">
+                      <Image
+                        src="/img/cart/shoe.jpg"
+                        // src={product.image_url}
+                        alt="shopbag"
+                        width={90}
+                        height={50}
+                        className="rounded-md h-[88px] object-cover my-auto mr-3"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-gray-700 text-lg">
+                          {/* {product.title}  */} title
+                        </h3>
+                        <p className="text-gray-400 mb-5">
+                          {/* {product.description} */} description
+                        </p>
+                        <p className="text-gray-400 ">Price: 250</p>
+                        <p className="text-gray-400">Qty: 14</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
+                        280 TK
+                      </p>
+
+                      <Button
+                        size="medium"
+                        // onClick={() => handleRemove(product)}
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                  </div>
+                  <Divider />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 pb-3 bg-blue-50">
+              <div className="pt-3 px-5 font-bold flex justify-between">
+                <p>Subtotal</p>
+                <p>2450 TK</p>
+              </div>
+              <Link href="/checkout">
+                <div className="px-5 py-3 pt-5  flex justify-between gap-2">
+                  <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
+                    Check out
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* End */}

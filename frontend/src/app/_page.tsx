@@ -1,6 +1,7 @@
 "use client";
 
 import HomePage from "@/components/HomePage";
+import Navbar from "@/components/HomePage/Navbar";
 import React, { createContext, useState } from "react";
 
 interface ProductCardProps {
@@ -73,6 +74,7 @@ function AllPages() {
       return [...prevState, { ...newValue, qty: 1 }];
     });
   };
+  console.log("contextValue home:", contextValue);
 
   const deleteContextValue = (newValue: ProductCardProps) => {
     setContextValue((prevState) => {
@@ -103,6 +105,7 @@ function AllPages() {
       <CartItemContext.Provider
         value={{ contextValue, increaseContextValue, deleteContextValue }}
       >
+        <Navbar />
         <HomePage />
       </CartItemContext.Provider>
     </div>
