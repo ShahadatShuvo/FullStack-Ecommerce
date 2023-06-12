@@ -16,6 +16,7 @@ import Link from "next/link";
 
 export default function CartMenu() {
   const { contextValue, deleteContextValue } = useContext(CartItemContext);
+  console.log("contextValue:", contextValue);
 
   const handleRemove = (product: any) => {
     deleteContextValue(product);
