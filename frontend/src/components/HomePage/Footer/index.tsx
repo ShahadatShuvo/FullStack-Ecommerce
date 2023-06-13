@@ -1,5 +1,4 @@
 import FacebookIcon from "@mui/icons-material/Facebook";
-import GithubIcon from "@mui/icons-material/Github";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 function Footer() {
@@ -73,7 +72,7 @@ function Footer() {
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">GitHub</span>
-              <GithubIcon />
+              <TwitterIcon />
             </a>
           </div>
           <p className="mt-8 text-base leading-6 text-center text-gray-400">
