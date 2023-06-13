@@ -19,7 +19,7 @@ export default function DashboardHome() {
   };
 
   return (
-    <div className="w-[100vw] bg-white h-screen">
+    <div className="w-[100vw] bg-white ">
       <div>
         <div className="flex justify-start">
           <div className="border-4 border-gradient w-[30vw]"></div>
