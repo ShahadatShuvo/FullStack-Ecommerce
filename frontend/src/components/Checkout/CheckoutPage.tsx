@@ -2,19 +2,41 @@
 
 import Link from "next/link";
 import CartMenu from "../HomePage/Navbar/CartMenu";
-import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Checkbox,
+  Divider,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  IconButton,
+  Radio,
+  RadioGroup,
+  TextField,
+} from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import ChaletIcon from "@mui/icons-material/Chalet";
+import BusinessIcon from "@mui/icons-material/Business";
 
 function CheckoutPage() {
   const [counter, setCounter] = React.useState(0);
+  const [checked, setChecked] = React.useState(true);
 
   const [cartItems, setCartItems] = React.useState([]);
 
   const handleRemove = (product: any) => {
     // deleteContextValue(product);
+  };
+  const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
   };
   React.useEffect(() => {
     const cartData = localStorage.getItem("cart");
@@ -113,284 +135,148 @@ function CheckoutPage() {
 
       {/* Checkout Data */}
 
-      <div className="w-full flex justify-between gap-3">
+      <div className="w-full flex justify-between gap-5">
         {/* Left Side */}
         <div className="space-y-10 w-[50%]">
-          <div className="flex flex-col border border-slate-200  rounded-xl sm:flex-row items-start p-6 ">
-            <span className="hidden sm:block">
-              <svg
-                className="w-6 h-6 text-slate-700  mt-0.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.12 12.78C12.05 12.77 11.96 12.77 11.88 12.78C10.12 12.72 8.71997 11.28 8.71997 9.50998C8.71997 7.69998 10.18 6.22998 12 6.22998C13.81 6.22998 15.28 7.69998 15.28 9.50998C15.27 11.28 13.88 12.72 12.12 12.78Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M18.74 19.3801C16.96 21.0101 14.6 22.0001 12 22.0001C9.40001 22.0001 7.04001 21.0101 5.26001 19.3801C5.36001 18.4401 5.96001 17.5201 7.03001 16.8001C9.77001 14.9801 14.25 14.9801 16.97 16.8001C18.04 17.5201 18.64 18.4401 18.74 19.3801Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-              </svg>
-            </span>
-            <div className="sm:ml-8">
-              <h3 className=" text-slate-700  flex ">
-                <span className="uppercase tracking-tight">CONTACT INFO</span>
-              </h3>
-              <div className="font-semibold mt-1 text-sm">
-                <span className="">Enrico Smith</span>
-                <span className="ml-3 tracking-tighter">+855 - 666 - 7744</span>
-              </div>
+          <div className="p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center ">
+            <AccountCircleOutlinedIcon className=" text-3xl" />
+            <div className="ml-5 ">
+              <p className=" flex items-center">
+                <span className="uppercase mr-2">Contact Info</span>
+                <CheckOutlinedIcon />
+              </p>
+              <p className="text-black font-medium">
+                <span>Shahadat Hossain</span>
+                <span className="ml-4">+019 54677860</span>
+              </p>
             </div>
           </div>
 
           {/* Shipping Info */}
           <div className="border border-slate-200  rounded-xl ">
-            <div className="p-6 flex flex-col sm:flex-row items-start">
-              <span className="hidden sm:block">
-                <svg
-                  className="w-6 h-6 text-slate-700  mt-0.5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12.1401 15.0701V13.11C12.1401 10.59 14.1801 8.54004 16.7101 8.54004H18.6701"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M5.62012 8.55005H7.58014C10.1001 8.55005 12.1501 10.59 12.1501 13.12V13.7701V17.25"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M7.14008 6.75L5.34009 8.55L7.14008 10.35"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M16.8601 6.75L18.6601 8.55L16.8601 10.35"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </svg>
-              </span>
-              <div className="sm:ml-8">
-                <h3 className=" text-slate-700  flex ">
-                  <span className="uppercase">SHIPPING ADDRESS</span>
-                </h3>
-                <div className="font-semibold mt-1 text-sm">
-                  <span className="">
-                    St. Paul Road, Norris, SD 57560, Dakota, USA
-                  </span>
-                </div>
+            <div className="p-6 text-gray-600 flex flex-col sm:flex-row items-start">
+              <LocalShippingOutlinedIcon className=" text-3xl" />
+              <div className="ml-5 ">
+                <p className=" flex items-center">
+                  <span className="uppercase mr-2">SHIPPING ADDRESS</span>
+                  <CheckOutlinedIcon />
+                </p>
+                <p className="text-black font-medium">
+                  <span>Cumilla, Chittagong, Cumilla-3500</span>
+                </p>
               </div>
             </div>
-            <div className="border-t  border-slate-200  px-6 py-7 space-y-4 sm:space-y-6 block">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
-                <div>
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900 "
-                    data-nc-id="Label"
-                  >
-                    First name
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    value="Cole"
-                  />
-                </div>
-                <div>
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900  "
-                    data-nc-id="Label"
-                  >
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    value="Enrico "
-                  />
-                </div>
+            <div className="border-t  border-slate-200  px-6 py-7 space-y-4 sm:space-y-6 block uppercase">
+              <div className="w-full flex justify-between gap-5">
+                <TextField
+                  size="small"
+                  id="outlined-basic"
+                  label="First Name"
+                  variant="outlined"
+                  className="w-full"
+                />
+                <TextField
+                  size="small"
+                  id="outlined-basic"
+                  label="Last Name"
+                  variant="outlined"
+                  className="w-full"
+                />
               </div>
-              <div className="sm:flex space-y-4 sm:space-y-0 sm:space-x-3">
-                <div className="flex-1">
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900  "
-                    data-nc-id="Label"
-                  >
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    placeholder=""
-                    value="123, Dream Avenue, USA"
-                  />
-                </div>
-                <div className="sm:w-1/3">
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900  "
-                    data-nc-id="Label"
-                  >
-                    Apt, Suite *
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    value="55U - DD5 "
-                  />
-                </div>
+              <div className="w-full flex justify-between gap-5">
+                <TextField
+                  size="small"
+                  id="outlined-basic"
+                  label="Country"
+                  variant="outlined"
+                  className="w-full"
+                />
+                <TextField
+                  size="small"
+                  id="outlined-basic"
+                  label="State"
+                  variant="outlined"
+                  className="w-full"
+                />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
-                <div>
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900 "
-                    data-nc-id="Label"
-                  >
-                    City
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    value="Norris"
-                  />
-                </div>
-                <div>
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900  "
-                    data-nc-id="Label"
-                  >
-                    Country
-                  </label>
-                  <select className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10 ">
-                    <option value="United States">United States</option>
-                    <option value="United States">Canada</option>
-                    <option value="United States">Mexico</option>
-                    <option value="United States">Israel</option>
-                    <option value="United States">France</option>
-                    <option value="United States">England</option>
-                    <option value="United States">Laos</option>
-                    <option value="United States">China</option>
-                  </select>
-                </div>
+              <div className="w-full flex justify-between gap-5">
+                <TextField
+                  size="small"
+                  id="outlined-basic"
+                  label="City"
+                  variant="outlined"
+                  className="w-full"
+                />
+                <TextField
+                  size="small"
+                  id="outlined-basic"
+                  label="ZIP / Postal Code"
+                  variant="outlined"
+                  className="w-full"
+                />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
-                <div>
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900  "
-                    data-nc-id="Label"
-                  >
-                    State/Province
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    value="Texas"
-                  />
-                </div>
-                <div>
-                  <label
-                    className="nc-Label text-base font-medium text-neutral-900 "
-                    data-nc-id="Label"
-                  >
-                    Postal code
-                  </label>
-                  <input
-                    type="text"
-                    className="rounded-md  border border-gray-200 bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg w-full h-10"
-                    value="2500 "
-                  />
-                </div>
+              <div className="w-full flex justify-between gap-5 pt-5">
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Detail Address"
+                  multiline
+                  rows={4}
+                  value="Please enter your address in detail if needed."
+                  className="w-full"
+                />
               </div>
-              <div>
-                <label
-                  className="nc-Label text-base font-medium text-neutral-900 "
-                  data-nc-id="Label"
+
+              <div className="w-full">
+                <FormControl>
+                  <FormLabel id="demo-radio-buttons-group-label">
+                    <span className="text-black font-semibold">
+                      Address type:
+                    </span>
+                  </FormLabel>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female"
+                    name="radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="home"
+                      control={<Radio />}
+                      label={
+                        <div className="flex items-center">
+                          <ChaletIcon className="text-3xl" />
+                          <p className="ml-2">Home (all day delivery)</p>
+                        </div>
+                      }
+                      className="text-gray-500 capitalize ml-32"
+                    />
+                    <FormControlLabel
+                      value="office"
+                      control={<Radio />}
+                      label={
+                        <div className="flex items-center">
+                          <BusinessIcon className="text-3xl" />
+                          <p className="ml-2">Office(Delivery 9AM - 5 PM)</p>
+                        </div>
+                      }
+                      className="text-gray-500 capitalize ml-32"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
+
+              <div className="w-full flex gap-5 pt-6">
+                <Button
+                  variant="contained"
+                  className="mt-5 bg-black rounded-full w-[60%]"
                 >
-                  Address type
-                </label>
-                <div className="mt-1.5 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                  <div className="flex items-center text-sm sm:text-base ">
-                    <input
-                      id="Address-type-home"
-                      type="radio"
-                      className="focus:ring-action-primary text-primary-500 rounded-full border-slate-400 hover:border-slate-700 bg-transparent  focus:ring-primary-500 w-6 h-6"
-                      name="Address-type"
-                      value="Address-type-home"
-                    />
-                    <label
-                      htmlFor="Address-type-home"
-                      className="pl-2.5 sm:pl-3 block text-slate-900  select-none"
-                    >
-                      <span className="text-sm font-medium">
-                        Home{" "}
-                        <span className="font-light">(All Day Delivery)</span>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="flex items-center text-sm sm:text-base ">
-                    <input
-                      id="Address-type-office"
-                      type="radio"
-                      className="focus:ring-action-primary text-primary-500 rounded-full border-slate-400 hover:border-slate-700 bg-transparent  focus:ring-primary-500 w-6 h-6"
-                      name="Address-type"
-                      value="Address-type-office"
-                    />
-                    <label
-                      htmlFor="Address-type-office"
-                      className="pl-2.5 sm:pl-3 block text-slate-900  select-none"
-                    >
-                      <span className="text-sm font-medium">
-                        Office{" "}
-                        <span className="font-light">
-                          (Delivery{" "}
-                          <span className="font-medium">9 AM - 5 PM</span>)
-                        </span>{" "}
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row pt-6">
-                <button className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6  ttnc-ButtonPrimary disabled:bg-opacity-90 bg-slate-900  hover:bg-slate-800 text-slate-50  shadow-xl   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 ">
-                  Save and next to Payment
-                </button>
-                <button className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6  ttnc-ButtonSecondary bg-white text-slate-700  hover:bg-gray-100 mt-3 sm:mt-0 sm:ml-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 ">
+                  Save and next tp payment
+                </Button>
+                <Button
+                  variant="contained"
+                  className="mt-5 bg-black rounded-full hover:bg-red-600"
+                >
                   Cancel
-                </button>
+                </Button>
               </div>
             </div>
           </div>
