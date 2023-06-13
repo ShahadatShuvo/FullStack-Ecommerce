@@ -33,6 +33,8 @@ function CheckoutRightDiv() {
 
   const [userCupon, setUserCupon] = React.useState("");
 
+  const [discount, setDiscount] = React.useState(0);
+
   const subTotal = contextValue.reduce(
     (acc: number, item: any) => acc + item.price * item.qty,
     0
@@ -62,10 +64,12 @@ function CheckoutRightDiv() {
         if (response.ok) {
           const result = await response.json();
           setCupon(result);
+          setDiscount(result.discount);
         } else {
           throw new Error("Request failed");
         }
       } catch (error) {
+        setDiscount(0);
         console.log("error:", error);
       }
     };
@@ -177,6 +181,14 @@ function CheckoutRightDiv() {
             <p className="text-gray-400">Subtotal</p>
             <p>{subTotal} TK</p>
           </div>
+          {discount ? (
+            <div className="flex justify-between">
+              <p className="text-gray-400">Discount applied:</p>
+              <p>{discount} TK</p>
+            </div>
+          ) : (
+            ""
+          )}
           <div className="flex justify-between">
             <p className="text-gray-400">Shipping estimate</p>
             <p>100 TK</p>
