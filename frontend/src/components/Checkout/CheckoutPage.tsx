@@ -295,7 +295,11 @@ function CheckoutPage() {
                 variant="outlined"
                 className="w-full rounded-full"
               />
-              <Button variant="contained" className=" bg-black rounded-full">
+              <Button
+                variant="contained"
+                color="success"
+                className=" bg-black rounded-full"
+              >
                 Apply
               </Button>
             </div>
