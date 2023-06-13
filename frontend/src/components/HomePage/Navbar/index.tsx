@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import MenuIcon from "./ProfileMenu";
-import { useContext } from "react";
 // import { CartItemContext } from "@/app/_page";
 import { CartItemContext } from "@/app/_context";
+import { Badge } from "@mui/material";
+import Image from "next/image";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
-import { Badge, IconButton } from "@mui/material";
-import Image from "next/image";
 
 interface insAtctiveInterface {
   men: boolean;
@@ -37,11 +36,11 @@ function Navbar() {
             className="flex title-font font-medium items-center text-gray-900  md:mb-0"
           >
             <Image
-              src="/img/title.png"
+              src="/img/buyingmart.png"
               alt=""
               width={100}
-              height={200}
-              className="w-[110px] h-[80px]"
+              height={300}
+              className="w-[120px] h-[80px]"
             />
           </a>
           {/* search start*/}
