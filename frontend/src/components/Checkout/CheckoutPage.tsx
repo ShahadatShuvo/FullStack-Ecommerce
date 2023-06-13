@@ -16,6 +16,15 @@ function CheckoutPage() {
     deleteContextValue,
   } = useContext(CartItemContext);
 
+  const subTotal = contextValue.reduce(
+    (acc: number, item: any) => acc + item.price * item.qty,
+    0
+  );
+
+  const taxAmount = subTotal * 0.05;
+
+  const orderTotal = subTotal + taxAmount + 100;
+
   const onHandleIncreament = (product: any) => {
     increaseContextValue(product);
   };
@@ -133,19 +142,19 @@ function CheckoutPage() {
             <div className="mt-8 w-full font-semibold flex flex-col gap-3">
               <div className="flex justify-between">
                 <p className="text-gray-400">Subtotal</p>
-                <p>350 TK</p>
+                <p>{subTotal} TK</p>
               </div>
               <div className="flex justify-between">
                 <p className="text-gray-400">Shipping estimate</p>
                 <p>100 TK</p>
               </div>
               <div className="flex justify-between">
-                <p className="text-gray-400">Tax</p>
-                <p>20 TK</p>
+                <p className="text-gray-400">Tax(5%)</p>
+                <p>{taxAmount} TK</p>
               </div>
               <div className="flex justify-between text-md text-blue-400">
                 <p className="">Order Total</p>
-                <p className="text-blue-400">400 TK</p>
+                <p className="text-blue-400">{orderTotal} TK</p>
               </div>
 
               <Button
