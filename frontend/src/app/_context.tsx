@@ -15,11 +15,13 @@ interface ProductCardProps {
 interface ContextValue {
   contextValue: ProductCardProps[];
   increaseContextValue: (newValue: ProductCardProps) => void;
+  decreaseContextValue: (newValue: ProductCardProps) => void;
   deleteContextValue: (newValue: ProductCardProps) => void;
 }
 
 export const CartItemContext = createContext<ContextValue>({
   contextValue: [],
   increaseContextValue: () => {},
+  decreaseContextValue: () => {},
   deleteContextValue: () => {},
 });

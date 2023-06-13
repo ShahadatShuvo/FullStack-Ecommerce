@@ -2,35 +2,33 @@
 
 import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import CheckoutLeftDiv from "./CheckoutLeftDiv";
+import { CartItemContext } from "@/app/_context";
 
 function CheckoutPage() {
-  const [counter, setCounter] = React.useState(0);
+  const {
+    contextValue,
+    increaseContextValue,
+    decreaseContextValue,
+    deleteContextValue,
+  } = useContext(CartItemContext);
 
-  const [cartItems, setCartItems] = React.useState([]);
-
-  const handleRemove = (product: any) => {
-    // deleteContextValue(product);
+  const onHandleIncreament = (product: any) => {
+    increaseContextValue(product);
   };
 
-  React.useEffect(() => {
-    const cartData = localStorage.getItem("cart");
-    if (cartData) {
-      try {
-        const parsedData = JSON.parse(cartData);
-        setCartItems(parsedData);
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
-    }
-  }, []);
+  const onHandleDecreament = (product: any) => {
+    decreaseContextValue(product);
+  };
 
-  console.log("Cart Items: ", cartItems);
+  const onHandleRemove = (product: any) => {
+    deleteContextValue(product);
+  };
 
-  const allCartItems = cartItems.map((product: any) => {
+  const allCartItems = contextValue.map((product: any) => {
     return (
       <div key={product.id}>
         <div id="single-product" className="my-5 flex justify-between">
@@ -57,24 +55,17 @@ function CheckoutPage() {
                   color="primary"
                   aria-label="delete"
                   className="bg-blue-50"
-                  onClick={() =>
-                    setCounter((prevState) => {
-                      if (prevState === 0) {
-                        return prevState;
-                      }
-                      return prevState - 1;
-                    })
-                  }
+                  onClick={() => onHandleDecreament(product)}
                 >
                   <RemoveIcon />
                 </IconButton>
-                <p className="px-5">{counter}</p>
+                <p className="px-5">{product.qty}</p>
 
                 <IconButton
                   color="primary"
                   aria-label="delete"
                   className="bg-blue-50"
-                  onClick={() => setCounter((prevState) => prevState + 1)}
+                  onClick={() => onHandleIncreament(product)}
                 >
                   <AddIcon />
                 </IconButton>
@@ -89,7 +80,7 @@ function CheckoutPage() {
               size="medium"
               color="error"
               className="rounded-md bg-red-50"
-              onClick={() => handleRemove(product)}
+              onClick={() => onHandleRemove(product)}
             >
               Remove
             </Button>
