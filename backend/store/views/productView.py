@@ -38,3 +38,10 @@ class CategoryProductListView(APIView):
             return Response(serializer.data)
         except Category.DoesNotExist:
             return Response({'error': 'Category not found'}, status=404)
+
+
+class NewArrivals(APIView):
+    def get(self, request):
+        products = Product.objects.order_by('-updated_at')[:8]
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)

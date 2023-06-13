@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import ProductCard from "../../ProductCard";
+import { useEffect, useRef, useState } from "react";
 import "./index.css";
+import ProductCard from "@/components/ProductCard";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function NewArrival() {
+  const [newArrival, setNewArrival] = useState([]);
+  console.log("newArrival:", newArrival);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -53,35 +57,59 @@ function NewArrival() {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await fetch(`${apiUrl}/api/products/new-arrival`);
+
+        if (response.ok) {
+          const result = await response.json();
+          setNewArrival(result);
+        } else {
+          throw new Error("Request failed");
+        }
+      } catch (error) {
+        console.log("error:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const displayProducts = newArrival.map((product: any) => (
+    <ProductCard
+      key={product.id}
+      id={product.id}
+      qty={product.qty}
+      title={product.title}
+      description={product.description}
+      price={product.price}
+      stock={product.stock}
+      image_url={
+        product.image_url[0] === "/"
+          ? `http://127.0.0.1:8000${product.image_url}`
+          : product.image_url
+      }
+    />
+  ));
+
   return (
     <div className="my-16 mx-16">
       {/* Magic Line */}
       <div className="flex justify-start">
-        <div className="border-4 border-gradient w-1/4"></div>
+        <div className="border-4 border-gradient w-1/3"></div>
       </div>
-      <h2 className="my-5 text-4xl font-semibold text-center">
-        New Arrivals.
-        <span className="text-gray-500 ml-2">REY backpacks & bags</span>
-      </h2>
+      <h2 className="my-3 text-4xl font-semibold text-center">New Arrivals</h2>
       {/* Magic Line */}
       <div className="flex justify-end">
-        <div className="border-4 border-gradient w-1/4"></div>
+        <div className="border-4 border-gradient w-1/3"></div>
       </div>
 
       <div
         ref={containerRef}
-        className="flex overflow-x-auto hide-scrollbar my-12 justify-between gap-5"
+        className="flex overflow-x-auto hide-scrollbar my-24 justify-between gap-5"
         style={{ cursor: "grab" }}
       >
-        {/* <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard /> */}
+        {displayProducts}
       </div>
     </div>
   );
