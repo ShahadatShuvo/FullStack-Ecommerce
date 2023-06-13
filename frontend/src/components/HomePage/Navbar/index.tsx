@@ -1,157 +1,259 @@
 "use client";
-
-import React, { useContext } from "react";
-import MenuIcon from "./ProfileMenu";
-// import { CartItemContext } from "@/app/_page";
 import { CartItemContext } from "@/app/_context";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Badge } from "@mui/material";
 import Image from "next/image";
+import { useContext, useState } from "react";
+import { Link } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
-
-interface insAtctiveInterface {
-  men: boolean;
-  women: boolean;
-  beauty: boolean;
-  sport: boolean;
-}
+import MenuBarIcon from "./ProfileMenu";
 
 function Navbar() {
   const { contextValue } = useContext(CartItemContext);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [explore, setExplore] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  // const [search, setSearch] = React.useState(false);
-  const [explore, setExplore] = React.useState(false);
-  const [isActive, setIsActive] = React.useState("");
+  const handleCategoryClick = (category: any) => {
+    setActiveCategory(category);
+  };
 
-  const handleClick = (name: string) => {
-    setIsActive((prevState: string) => name);
+  const handleClick = (name) => {
+    setIsActive(name);
+  };
+
+  const handleHamburger = () => {
+    setMobileOpen(!mobileOpen);
+    console.log("Hamburger Clicked");
   };
 
   return (
-    <div>
-      <header className="text-gray-600 body-font bg-white">
-        <div className="container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
-          <a
-            href="/"
-            className="flex title-font font-medium items-center text-gray-900  md:mb-0"
-          >
-            <Image
-              src="/img/buymart.png"
-              alt=""
-              width={100}
-              height={300}
-              className="w-[120px] h-[80px]"
-            />
-          </a>
-          {/* search start*/}
-          {/* {search && (
-            <div className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center min-w-[42%]">
-              <div className="w-full relative flex items-center">
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  placeholder="Type your keywords here"
-                  className="bg-blue-50 h-10 shadow-sm  block w-full pr-5 sm:text-sm rounded-md px-2 ps-10 focus:outline-none"
-                />
-                <div className="absolute left-2">
-                  <SearchOutlinedIcon />
-                </div>
-                <div className="absolute right-0">
-                  <IconButton aria-label="delete">
-                    <CloseIcon
-                      onClick={() =>
-                        setSearch((prevState: boolean) => !prevState)
-                      }
-                    />
-                  </IconButton>
-                </div>
-              </div>
-            </div>
-          )} */}
-          {/* search end*/}
+    <header className="text-gray-600 body-font bg-white">
+      <div className="container mx-auto flex flex-wrap items-center justify-between">
+        <a
+          href="/"
+          className="flex title-font font-medium items-center text-gray-900"
+        >
+          <Image
+            src="/img/ebajar.PNG"
+            alt=""
+            width={100}
+            height={300}
+            className="w-[120px] h-[80px] -mx-4"
+          />
+        </a>
 
-          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center font-bold text-gray-500">
-            <a
-              className={
+        {/* Navigation Start */}
+        <nav className="hidden md:block md:ml-auto md:mr-auto">
+          <ul className="flex space-x-4 font-bold text-gray-500">
+            <li
+              className={`${
+                isActive === "all"
+                  ? "text-gray-900 bg-gray-200"
+                  : "hover:text-gray-900 hover:bg-blue-200"
+              } px-5 py-1 rounded-full select-none cursor-pointer`}
+              onClick={() => handleClick("all")}
+            >
+              <Link
+                onClick={() => handleCategoryClick("all")}
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                All
+              </Link>
+            </li>
+            <li
+              className={`${
                 isActive === "men"
-                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-              }
+                  ? "text-gray-900 bg-gray-200"
+                  : "hover:text-gray-900 hover:bg-blue-200"
+              } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("men")}
             >
-              Men
-            </a>
-            <a
-              className={
+              <Link
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                Men
+              </Link>
+            </li>
+            <li
+              className={`${
                 isActive === "women"
-                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-              }
+                  ? "text-gray-900 bg-gray-200"
+                  : "hover:text-gray-900 hover:bg-blue-200"
+              } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("women")}
             >
-              Women
-            </a>
-            <a
-              className={
-                isActive === "beauty"
-                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-              }
-              onClick={() => handleClick("beauty")}
-            >
-              Beauty
-            </a>
-            <a
-              className={
+              <Link
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                Women
+              </Link>
+            </li>
+
+            <li
+              className={`${
                 isActive === "sport"
-                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                  : "px-5  hover:text-gray-900 hover:bg-blue-50 hover:py-1 hover:rounded-full select-none	"
-              }
+                  ? "text-gray-900 bg-gray-200"
+                  : "hover:text-gray-900 hover:bg-blue-200"
+              } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("sport")}
             >
-              Sport
-            </a>
-            <a
-              className={
-                isActive === "explore"
-                  ? "px-5 text-gray-900 bg-gray-200 py-1 rounded-full select-none	"
-                  : "px-5 select-none	"
-              }
+              <Link
+                onClick={() => handleCategoryClick("sports")}
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                Sport
+              </Link>
+            </li>
+            <li
+              className={`${
+                isActive === "explore" ? "text-gray-900 bg-gray-200" : ""
+              } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("explore")}
             >
               <ExploreMenu setExplore={setExplore} />
-            </a>
-          </nav>
+            </li>
+          </ul>
+        </nav>
+        {/* Navigation Ends  */}
 
-          <div className="flex">
-            {/* {!search && (
-              <IconButton
-                aria-label="search"
-                onClick={() => setSearch((prevState: boolean) => !prevState)}
-              >
-                <SearchOutlinedIcon />
-              </IconButton>
-            )} */}
-            <MenuIcon />
+        <div className="flex justify-center items-center">
+          <MenuBarIcon />
 
-            <Badge
-              badgeContent={contextValue.length}
-              color="primary"
-              sx={{
-                mt: "2px",
-                ".css-106c1u2-MuiBadge-badge": {
-                  borderRadius: "5px",
-                },
-              }}
+          <Badge
+            badgeContent={contextValue.length}
+            color="primary"
+            sx={{
+              mt: "2px",
+              ".css-106c1u2-MuiBadge-badge": {
+                borderRadius: "5px",
+              },
+            }}
+          >
+            {/* <MailIcon color="action" /> */}
+            <CartMenu />
+          </Badge>
+          {/* Hamburger Menu */}
+          <div className="md:hidden ml-5 relative">
+            <input type="checkbox" id="menu-toggle" className="hidden" />
+            <label
+              htmlFor="menu-toggle"
+              className="cursor-pointer"
+              onClick={() => handleHamburger()}
             >
-              {/* <MailIcon color="action" />  */}
-              <CartMenu />
-            </Badge>
+              <MenuIcon className="w-10 h-10" />
+            </label>
+            <div className="relative">
+              {mobileOpen && (
+                <div
+                  className="absolute top-full right-2 mt-2 bg-white shadow-[rgba(0,0,0,0.24)] rounded-lg z-10"
+                  id="menu"
+                >
+                  <ul className="flex flex-col space-y-4 p-4">
+                    <li
+                      className={`${
+                        isActive === "all"
+                          ? "text-gray-900 bg-gray-200"
+                          : "hover:text-gray-900 hover:bg-blue-200"
+                      } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
+                      onClick={() => handleClick("all")}
+                    >
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        All
+                      </Link>
+                    </li>
+                    <li
+                      className={`${
+                        isActive === "men"
+                          ? "text-gray-900 bg-gray-200"
+                          : "hover:text-gray-900 hover:bg-blue-200"
+                      } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
+                      onClick={() => handleClick("men")}
+                    >
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        Men
+                      </Link>
+                    </li>
+                    <li
+                      className={`${
+                        isActive === "women"
+                          ? "text-gray-900 bg-gray-200"
+                          : "hover:text-gray-900 hover:bg-blue-200"
+                      } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
+                      onClick={() => handleClick("women")}
+                    >
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        Woman
+                      </Link>
+                    </li>
+
+                    <li
+                      className={`${
+                        isActive === "sport"
+                          ? "text-gray-900 bg-gray-200"
+                          : "hover:text-gray-900 hover:bg-blue-200"
+                      } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
+                      onClick={() => handleClick("sport")}
+                    >
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        Sports
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
+          {/* Hamburger Menu Ends */}
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
 
