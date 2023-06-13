@@ -1,106 +1,15 @@
 "use client";
 
-import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
-import Image from "next/image";
-import React, { useContext } from "react";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import React, { useContext, useEffect } from "react";
 import CheckoutLeftDiv from "./CheckoutLeftDiv";
 import { CartItemContext } from "@/app/_context";
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import CheckoutRightDiv from "./CheckoutRightDiv";
 
 function CheckoutPage() {
-  const {
-    contextValue,
-    increaseContextValue,
-    decreaseContextValue,
-    deleteContextValue,
-  } = useContext(CartItemContext);
-
-  const subTotal = contextValue.reduce(
-    (acc: number, item: any) => acc + item.price * item.qty,
-    0
-  );
-
-  const taxAmount = subTotal * 0.05;
-
-  const orderTotal = subTotal + taxAmount + 100;
-
-  const onHandleIncreament = (product: any) => {
-    increaseContextValue(product);
-  };
-
-  const onHandleDecreament = (product: any) => {
-    decreaseContextValue(product);
-  };
-
-  const onHandleRemove = (product: any) => {
-    deleteContextValue(product);
-  };
-
-  const allCartItems = contextValue.map((product: any) => {
-    return (
-      <div key={product.id}>
-        <div id="single-product" className="my-5 flex justify-between">
-          <div className="min-w-[70%] flex">
-            <Image
-              // src="/img/cart/shoe.jpg"
-              src={product.image_url}
-              alt="shopbag"
-              width={90}
-              height={50}
-              className="bg-blue-50 rounded-md h-[100px] object-cover my-auto mr-5"
-            />
-            <div>
-              <h3 className="font-semibold text-gray-700 text-lg">
-                {product.title}
-              </h3>
-              <p className="text-gray-400 font-medium mb-5">
-                <span>Price: {product.price}</span>
-                <span className="mx-2">|</span>
-                <span>Qty: {product.qty}</span>
-              </p>
-              <div className="flex items-center">
-                <IconButton
-                  color="primary"
-                  aria-label="delete"
-                  className="bg-blue-50"
-                  onClick={() => onHandleDecreament(product)}
-                >
-                  <RemoveIcon />
-                </IconButton>
-                <p className="px-5">{product.qty}</p>
-
-                <IconButton
-                  color="primary"
-                  aria-label="delete"
-                  className="bg-blue-50"
-                  onClick={() => onHandleIncreament(product)}
-                >
-                  <AddIcon />
-                </IconButton>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="mb-8 text-center py-1 px-2 border-2 border-green-600 rounded-lg">
-              {product.price * product.qty} TK
-            </p>
-            <Button
-              size="medium"
-              color="error"
-              className="rounded-md bg-red-50"
-              onClick={() => onHandleRemove(product)}
-            >
-              Remove
-            </Button>
-          </div>
-        </div>
-        <Divider />
-      </div>
-    );
-  });
   return (
     <div className="w-full p-16 border-y-2">
+      <SnackbarProvider />
       {/* Magic headline */}
       <div className="mb-16">
         <div className="flex justify-start">
@@ -119,64 +28,7 @@ function CheckoutPage() {
         <CheckoutLeftDiv />
 
         {/* Right Side */}
-        <div className="w-[50%] border border-slate-200  rounded-xl p-5">
-          <div className="rounded-lg bg-white">{allCartItems}</div>
-          <div className="mt-5">
-            <p className="font-medium text-lg">Discount code</p>
-            <div className="mt-3 flex gap-3">
-              <TextField
-                size="small"
-                id="outlined-basic"
-                label="Enter code here"
-                variant="outlined"
-                className="w-full rounded-full"
-              />
-              <Button
-                variant="contained"
-                color="success"
-                className=" bg-black rounded-full"
-              >
-                Apply
-              </Button>
-            </div>
-            <div className="mt-8 w-full font-semibold flex flex-col gap-3">
-              <div className="flex justify-between">
-                <p className="text-gray-400">Subtotal</p>
-                <p>{subTotal} TK</p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-gray-400">Shipping estimate</p>
-                <p>100 TK</p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-gray-400">Tax(5%)</p>
-                <p>{taxAmount} TK</p>
-              </div>
-              <div className="flex justify-between text-md text-blue-400">
-                <p className="">Order Total</p>
-                <p className="text-blue-400">{orderTotal} TK</p>
-              </div>
-
-              <Button
-                variant="contained"
-                className="mt-5 bg-black rounded-full"
-              >
-                Confirm Order
-              </Button>
-              <Alert severity="info" className="bg-blue-50 rounded-full">
-                Learn more
-                <a href="/" className="mx-1 underline hover:text-red-500">
-                  Taxes
-                </a>
-                and
-                <a href="/" className="mx-1 underline hover:text-red-500">
-                  Shipping
-                </a>
-                infomation
-              </Alert>
-            </div>
-          </div>
-        </div>
+        <CheckoutRightDiv />
       </div>
       {/* End */}
     </div>

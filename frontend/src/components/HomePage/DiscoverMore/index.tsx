@@ -19,10 +19,6 @@ function DiscoverMore() {
 
   const [error, setError] = useState<string | null>(null || "Error");
 
-  console.log("data:", data);
-  console.log("activeCategory:", activeCategory);
-  console.log("resultMap:", resultMap);
-
   function handleSearchChange(event: any) {
     setSearchValue(event.target.value);
   }
