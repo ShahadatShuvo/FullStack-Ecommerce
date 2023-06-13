@@ -42,6 +42,6 @@ class CategoryProductListView(APIView):
 
 class NewArrivals(APIView):
     def get(self, request):
-        products = Product.objects.order_by('-updated_at')[:12]
+        products = Product.objects.order_by('-updated_at')[:8]
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
