@@ -64,7 +64,12 @@ export default function CartMenu() {
               {product.price * product.qty} TK
             </p>
 
-            <Button size="medium" onClick={() => handleRemove(product)}>
+            <Button
+              size="medium"
+              color="error"
+              onClick={() => handleRemove(product)}
+              className="bg-red-50"
+            >
               Remove
             </Button>
           </div>
