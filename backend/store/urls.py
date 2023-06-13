@@ -15,4 +15,7 @@ urlpatterns = [
 
     path('api/category/<str:category_name>/',
          views.CategoryProductListView.as_view(), name='category-product-list'),
+
+    path('api/cupons/', views.CuponList.as_view(), name='cupon-list'),
+    path('api/cupon/<str:pk>/', views.CuponDetail.as_view(), name='cupon-detail'),
 ]

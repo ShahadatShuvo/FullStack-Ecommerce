@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Customer, Order, Category
+from .models import Product, Customer, Order, Category, Cupon
 from import_export.admin import ImportExportModelAdmin
 
 
@@ -35,3 +35,9 @@ class AdminOrder(ImportExportModelAdmin, admin.ModelAdmin):
 class AdminCategory(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['name', 'description', 'img_preview']
     ordering = ['name']
+
+
+@admin.register(Cupon)
+class AdminCupon(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ['code', 'discount', 'active', 'created_at', 'updated_at']
+    ordering = ['discount', 'created_at', 'updated_at']
