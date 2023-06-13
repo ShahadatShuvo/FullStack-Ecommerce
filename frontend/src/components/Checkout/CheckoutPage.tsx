@@ -121,13 +121,13 @@ function CheckoutPage() {
     );
   });
   return (
-    <div className="w-full p-16">
+    <div className="w-full p-16 border-y-2">
       {/* Magic headline */}
-      <div className="mb-12">
+      <div className="mb-16">
         <div className="flex justify-start">
           <div className="border-4 border-gradient w-[30vw]"></div>
         </div>
-        <h1 className="text-4xl font-semibold text-center">Checkout Page</h1>
+        <h1 className="text-4xl font-medium text-center">Checkout Page</h1>
         <div className="flex justify-end">
           <div className="border-4 border-gradient w-[30vw]"></div>
         </div>
@@ -233,6 +233,7 @@ function CheckoutPage() {
                   >
                     <FormControlLabel
                       value="home"
+                      // checked={true}
                       control={<Radio />}
                       label={
                         <div className="flex items-center">
