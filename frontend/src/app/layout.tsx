@@ -57,6 +57,7 @@ export default function RootLayout({
   }, []);
 
   const increaseContextValue = (newValue: ProductCardProps) => {
+    console.log("increase Value:", newValue);
     setContextValue((prevState: ProductCardProps[] | any) => {
       const isExist = prevState.find(
         (item: ProductCardProps) => item.id === newValue.id
@@ -75,6 +76,34 @@ export default function RootLayout({
       return [...prevState, { ...newValue, qty: 1 }];
     });
   };
+
+  const decreaseContextValue = (newValue: ProductCardProps) => {
+    setContextValue((prevState: ProductCardProps[] | any) => {
+      const isExist = prevState.find(
+        (item: ProductCardProps) => item.id === newValue.id
+      );
+      if (isExist) {
+        return prevState.map((item: ProductCardProps) => {
+          if (item.id === newValue.id) {
+            if (item.qty > 1) {
+              return {
+                ...item,
+                qty: item.qty - 1,
+              };
+            } else {
+              return {
+                ...item,
+                qty: 1,
+              };
+            }
+          }
+          return item;
+        });
+      }
+      return [...prevState, { ...newValue, qty: 1 }];
+    });
+  };
+
   console.log("contextValue home:", contextValue);
 
   const deleteContextValue = (newValue: ProductCardProps) => {
@@ -113,7 +142,12 @@ export default function RootLayout({
       </head>
       <body className="text-black" suppressHydrationWarning={true}>
         <CartItemContext.Provider
-          value={{ contextValue, increaseContextValue, deleteContextValue }}
+          value={{
+            contextValue,
+            increaseContextValue,
+            decreaseContextValue,
+            deleteContextValue,
+          }}
         >
           {children}
         </CartItemContext.Provider>
