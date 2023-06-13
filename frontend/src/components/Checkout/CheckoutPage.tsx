@@ -2,10 +2,102 @@
 
 import Link from "next/link";
 import CartMenu from "../HomePage/Navbar/CartMenu";
-import { Button, Divider } from "@mui/material";
+import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
 import Image from "next/image";
+import React from "react";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 function CheckoutPage() {
+  const [counter, setCounter] = React.useState(0);
+
+  const [cartItems, setCartItems] = React.useState([]);
+
+  const handleRemove = (product: any) => {
+    // deleteContextValue(product);
+  };
+  React.useEffect(() => {
+    const cartData = localStorage.getItem("cart");
+    if (cartData) {
+      try {
+        const parsedData = JSON.parse(cartData);
+        setCartItems(parsedData);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    }
+  }, []);
+
+  console.log("Cart Items: ", cartItems);
+
+  const allCartItems = cartItems.map((product: any) => {
+    return (
+      <div key={product.id}>
+        <div id="single-product" className="my-5 flex justify-between">
+          <div className="min-w-[70%] flex">
+            <Image
+              // src="/img/cart/shoe.jpg"
+              src={product.image_url}
+              alt="shopbag"
+              width={90}
+              height={50}
+              className="bg-blue-50 rounded-md h-[100px] object-cover my-auto mr-5"
+            />
+            <div>
+              <h3 className="font-semibold text-gray-700 text-lg">
+                {product.title}
+              </h3>
+              <p className="text-gray-400 font-medium mb-5">
+                <span>Price: {product.price}</span>
+                <span className="mx-2">|</span>
+                <span>Qty: {product.qty}</span>
+              </p>
+              <div className="flex items-center">
+                <IconButton
+                  color="primary"
+                  aria-label="delete"
+                  className="bg-blue-50"
+                  onClick={() =>
+                    setCounter((prevState) => {
+                      if (prevState === 0) {
+                        return prevState;
+                      }
+                      return prevState - 1;
+                    })
+                  }
+                >
+                  <RemoveIcon />
+                </IconButton>
+                <p className="px-5">{counter}</p>
+
+                <IconButton
+                  color="primary"
+                  aria-label="delete"
+                  className="bg-blue-50"
+                  onClick={() => setCounter((prevState) => prevState + 1)}
+                >
+                  <AddIcon />
+                </IconButton>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="mb-8 text-center py-1 px-2 border-2 border-green-600 rounded-lg">
+              {product.price * product.qty} TK
+            </p>
+            <Button
+              size="medium"
+              className="bg-blue-50 rounded-md"
+              onClick={() => handleRemove(product)}
+            >
+              Remove
+            </Button>
+          </div>
+        </div>
+        <Divider />
+      </div>
+    );
+  });
   return (
     <div className="w-full p-16">
       {/* Magic headline */}
@@ -305,74 +397,62 @@ function CheckoutPage() {
         </div>
 
         {/* Right Side */}
-        <div className="w-[50%] border border-slate-200  rounded-xl">
-          <div className="w-full">
-            <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll hide-scrollbar">
-              <h1 className=" text-xl font-bold text-gray-500">
-                Shopping Cart
-              </h1>
-              <div>
-                <div>
-                  <div
-                    id="single-product"
-                    className="my-5 flex justify-between"
-                  >
-                    <div className="min-w-[70%] flex">
-                      <Image
-                        src="/img/cart/shoe.jpg"
-                        // src={product.image_url}
-                        alt="shopbag"
-                        width={90}
-                        height={50}
-                        className="rounded-md h-[88px] object-cover my-auto mr-3"
-                      />
-                      <div>
-                        <h3 className="font-semibold text-gray-700 text-lg">
-                          {/* {product.title}  */} title
-                        </h3>
-                        <p className="text-gray-400 mb-5">
-                          {/* {product.description} */} description
-                        </p>
-                        <p className="text-gray-400 ">Price: 250</p>
-                        <p className="text-gray-400">Qty: 14</p>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="mb-8 text-center py-1 border-2 border-green-600 rounded-lg">
-                        280 TK
-                      </p>
-
-                      <Button
-                        size="medium"
-                        // onClick={() => handleRemove(product)}
-                      >
-                        Remove
-                      </Button>
-                    </div>
-                  </div>
-                  <Divider />
-                </div>
-              </div>
+        <div className="w-[50%] border border-slate-200  rounded-xl p-5">
+          <div className="rounded-lg bg-white">{allCartItems}</div>
+          <div className="mt-5">
+            <p className="font-medium text-lg">Discount code</p>
+            <div className="mt-3 flex gap-3">
+              <TextField
+                size="small"
+                id="outlined-basic"
+                label="Enter code here"
+                variant="outlined"
+                className="w-full rounded-full"
+              />
+              <Button variant="contained" className=" bg-black rounded-full">
+                Apply
+              </Button>
             </div>
-
-            <div className="mt-3 pb-3 bg-blue-50">
-              <div className="pt-3 px-5 font-bold flex justify-between">
-                <p>Subtotal</p>
-                <p>2450 TK</p>
+            <div className="mt-8 w-full font-semibold flex flex-col gap-3">
+              <div className="flex justify-between">
+                <p className="text-gray-400">Subtotal</p>
+                <p>350 TK</p>
               </div>
-              <Link href="/checkout">
-                <div className="px-5 py-3 pt-5  flex justify-between gap-2">
-                  <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
-                    Check out
-                  </p>
-                </div>
-              </Link>
+              <div className="flex justify-between">
+                <p className="text-gray-400">Shipping estimate</p>
+                <p>100 TK</p>
+              </div>
+              <div className="flex justify-between">
+                <p className="text-gray-400">Tax</p>
+                <p>20 TK</p>
+              </div>
+              <div className="flex justify-between text-md text-blue-400">
+                <p className="">Order Total</p>
+                <p className="text-blue-400">400 TK</p>
+              </div>
+
+              <Button
+                variant="contained"
+                className="mt-5 bg-black rounded-full"
+              >
+                Confirm Order
+              </Button>
+              <Alert severity="info" className="bg-blue-50 rounded-full">
+                Learn more
+                <a href="/" className="mx-1 underline hover:text-red-500">
+                  Taxes
+                </a>
+                and
+                <a href="/" className="mx-1 underline hover:text-red-500">
+                  Shipping
+                </a>
+                infomation
+              </Alert>
             </div>
           </div>
         </div>
-
-        {/* End */}
       </div>
+      {/* End */}
     </div>
   );
 }
