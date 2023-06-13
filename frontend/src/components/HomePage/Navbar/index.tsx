@@ -36,7 +36,7 @@ function Navbar() {
             className="flex title-font font-medium items-center text-gray-900  md:mb-0"
           >
             <Image
-              src="/img/buyingmart.png"
+              src="/img/buymart.png"
               alt=""
               width={100}
               height={300}
