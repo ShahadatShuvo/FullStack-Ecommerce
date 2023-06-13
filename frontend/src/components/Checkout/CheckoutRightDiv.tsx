@@ -42,7 +42,7 @@ function CheckoutRightDiv() {
 
   const taxAmount = subTotal * 0.05;
 
-  const orderTotal = subTotal + taxAmount + 100;
+  const orderTotal = subTotal - discount + taxAmount + 100;
 
   const onHandleIncreament = (product: any) => {
     increaseContextValue(product);
