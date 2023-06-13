@@ -3,7 +3,8 @@
 import React from "react";
 import MenuIcon from "./ProfileMenu";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/_page";
+// import { CartItemContext } from "@/app/_page";
+import { CartItemContext } from "@/app/_context";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import { Badge, IconButton } from "@mui/material";
@@ -17,7 +18,7 @@ interface insAtctiveInterface {
 }
 
 function Navbar() {
-  const { contextValue, increateContextValue } = useContext(CartItemContext);
+  const { contextValue } = useContext(CartItemContext);
 
   // const [search, setSearch] = React.useState(false);
   const [explore, setExplore] = React.useState(false);

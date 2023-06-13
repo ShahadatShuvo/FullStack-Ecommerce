@@ -9,6 +9,7 @@ import Testimonial from "./Testimonial";
 function HomePage() {
   return (
     <div>
+      <Navbar />
       <HeroSection />
       <NewArrival />
       <Steps />
