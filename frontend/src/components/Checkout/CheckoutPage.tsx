@@ -87,7 +87,8 @@ function CheckoutPage() {
             </p>
             <Button
               size="medium"
-              className="bg-blue-50 rounded-md"
+              color="error"
+              className="rounded-md bg-red-50"
               onClick={() => handleRemove(product)}
             >
               Remove
