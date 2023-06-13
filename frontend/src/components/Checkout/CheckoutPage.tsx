@@ -171,14 +171,7 @@ function CheckoutPage() {
                 <TextField
                   size="small"
                   id="outlined-basic"
-                  label="First Name"
-                  variant="outlined"
-                  className="w-full"
-                />
-                <TextField
-                  size="small"
-                  id="outlined-basic"
-                  label="Last Name"
+                  label="Full Name"
                   variant="outlined"
                   className="w-full"
                 />
