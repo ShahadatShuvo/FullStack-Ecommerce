@@ -13,14 +13,14 @@ function Navbar() {
   const { contextValue } = useContext(CartItemContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState("all");
   const [activeCategory, setActiveCategory] = useState("all");
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
   };
 
-  const handleClick = (name) => {
+  const handleClick = (name: string) => {
     setIsActive(name);
   };
 
@@ -32,21 +32,18 @@ function Navbar() {
   return (
     <header className="text-gray-600 body-font bg-white">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
-        <a
-          href="/"
-          className="flex title-font font-medium items-center text-gray-900"
-        >
+        <a href="/">
           <Image
-            src="/img/ebajar.PNG"
+            src="/img/VMi.png"
             alt=""
-            width={100}
-            height={300}
-            className="w-[120px] h-[80px] -mx-4"
+            width={130}
+            height={80}
+            className="w-[160px] h-[80px] py-2"
           />
         </a>
 
         {/* Navigation Start */}
-        <nav className="hidden md:block md:ml-auto md:mr-auto">
+        {/* <nav className="hidden md:block md:ml-auto md:mr-auto">
           <ul className="flex space-x-4 font-bold text-gray-500">
             <li
               className={`${
@@ -132,7 +129,24 @@ function Navbar() {
               <ExploreMenu setExplore={setExplore} />
             </li>
           </ul>
-        </nav>
+        </nav> */}
+        <div className="w-[50%] ">
+          <div className="relative flex overflow-x-hidden text-lg">
+            <div className="animate-marquee whitespace-nowrap">
+              <span className=" mr-1">Virtual Mart (VM).</span>
+              <span className=" mr-1">Here, You will quickly get</span>
+              <span className=" mr-1">all kinds of your daily Shopping,</span>
+              <span className=" mr-1">with only 1 click from your</span>
+              <span className="text-blue-400 mr-1">Home or Office.</span>
+              <span className="ml-5 mr-1">ভার্চুয়াল মার্ট (ভিএম)</span>
+              <span className=" mr-1">এখানে, আপনি আপনার বাসা বা অফিস থেকে</span>
+              <span className=" mr-1">
+                মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের
+              </span>
+              <span className=" mr-1">কেনাকাটা পেয়ে যাবেন, খুব সহজে।</span>
+            </div>
+          </div>
+        </div>
         {/* Navigation Ends  */}
 
         <div className="flex justify-center items-center">
