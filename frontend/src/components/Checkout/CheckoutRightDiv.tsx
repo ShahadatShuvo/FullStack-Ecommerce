@@ -179,7 +179,7 @@ function CheckoutRightDiv() {
         <div className="mt-8 w-full font-semibold flex flex-col gap-3">
           <div className="flex justify-between">
             <p className="text-gray-400">Subtotal</p>
-            <p>{subTotal} TK</p>
+            <p>{subTotal.toFixed(2)} TK</p>
           </div>
           {discount ? (
             <div className="flex justify-between">
@@ -195,11 +195,11 @@ function CheckoutRightDiv() {
           </div>
           <div className="flex justify-between">
             <p className="text-gray-400">Tax(5%)</p>
-            <p>{taxAmount} TK</p>
+            <p>{taxAmount.toFixed(2)} TK</p>
           </div>
           <div className="flex justify-between text-md text-blue-400">
             <p className="">Order Total</p>
-            <p className="text-blue-400">{orderTotal} TK</p>
+            <p className="text-blue-400">{orderTotal.toFixed(2)} TK</p>
           </div>
 
           <Button variant="contained" className="mt-5 bg-black rounded-full">
