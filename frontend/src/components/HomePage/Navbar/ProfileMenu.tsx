@@ -18,7 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 
-export default function MenuIcon() {
+export default function MenuBarIcon() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
