@@ -8,7 +8,8 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 import React, { useContext } from "react";
 import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
-import { CartItemContext } from "../app/_page";
+// import { CartItemContext } from "../app/_page";
+import { CartItemContext } from "@/app/_context";
 
 interface ProductCardProps {
   id: number | string;
