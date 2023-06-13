@@ -133,17 +133,14 @@ function Navbar() {
         <div className="w-[50%] ">
           <div className="relative flex overflow-x-hidden text-lg">
             <div className="animate-marquee whitespace-nowrap">
-              <span className=" mr-1">Virtual Mart (VM).</span>
-              <span className=" mr-1">Here, You will quickly get</span>
-              <span className=" mr-1">all kinds of your daily Shopping,</span>
-              <span className=" mr-1">with only 1 click from your</span>
-              <span className="text-blue-400 mr-1">Home or Office.</span>
-              <span className="ml-5 mr-1">ভার্চুয়াল মার্ট (ভিএম)</span>
-              <span className=" mr-1">এখানে, আপনি আপনার বাসা বা অফিস থেকে</span>
-              <span className=" mr-1">
-                মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের
+              <span>
+                Virtual Mart (VM). Here, You will quickly get all kinds of your
+                daily Shopping, with only 1 click from your{" "}
+                <span className="text-blue-400">Home or Office</span>.
+                ভার্চুয়াল মার্ট (ভিএম) এখানে, আপনি আপনার বাসা বা অফিস থেকে
+                মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের কেনাকাটা পেয়ে যাবেন, খুব
+                সহজে।
               </span>
-              <span className=" mr-1">কেনাকাটা পেয়ে যাবেন, খুব সহজে।</span>
             </div>
           </div>
         </div>
