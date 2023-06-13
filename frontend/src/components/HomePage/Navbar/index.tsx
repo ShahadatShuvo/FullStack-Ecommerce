@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Badge } from "@mui/material";
 import Image from "next/image";
 import { useContext, useState } from "react";
+import { Link } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import MenuBarIcon from "./ProfileMenu";
@@ -13,6 +14,11 @@ function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const handleCategoryClick = (category: any) => {
+    setActiveCategory(category);
+  };
 
   const handleClick = (name) => {
     setIsActive(name);
@@ -50,7 +56,16 @@ function Navbar() {
               } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("all")}
             >
-              All
+              <Link
+                onClick={() => handleCategoryClick("all")}
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                All
+              </Link>
             </li>
             <li
               className={`${
@@ -60,7 +75,15 @@ function Navbar() {
               } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("men")}
             >
-              Men
+              <Link
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                Men
+              </Link>
             </li>
             <li
               className={`${
@@ -70,7 +93,15 @@ function Navbar() {
               } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("women")}
             >
-              Women
+              <Link
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                Women
+              </Link>
             </li>
 
             <li
@@ -81,7 +112,16 @@ function Navbar() {
               } px-5 py-1 rounded-full select-none cursor-pointer`}
               onClick={() => handleClick("sport")}
             >
-              Sport
+              <Link
+                onClick={() => handleCategoryClick("sports")}
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-10}
+                duration={500}
+              >
+                Sport
+              </Link>
             </li>
             <li
               className={`${
@@ -136,7 +176,16 @@ function Navbar() {
                       } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
                       onClick={() => handleClick("all")}
                     >
-                      All
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        All
+                      </Link>
                     </li>
                     <li
                       className={`${
@@ -146,7 +195,16 @@ function Navbar() {
                       } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
                       onClick={() => handleClick("men")}
                     >
-                      Men
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        Men
+                      </Link>
                     </li>
                     <li
                       className={`${
@@ -156,7 +214,16 @@ function Navbar() {
                       } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
                       onClick={() => handleClick("women")}
                     >
-                      Women
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        Woman
+                      </Link>
                     </li>
 
                     <li
@@ -167,7 +234,16 @@ function Navbar() {
                       } px-5 py-1 rounded-full select-none cursor-pointer text-center`}
                       onClick={() => handleClick("sport")}
                     >
-                      Sport
+                      <Link
+                        onClick={() => handleCategoryClick("all")}
+                        to="home"
+                        spy={true}
+                        smooth={true}
+                        offset={-10}
+                        duration={500}
+                      >
+                        Sports
+                      </Link>
                     </li>
                   </ul>
                 </div>

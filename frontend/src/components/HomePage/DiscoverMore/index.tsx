@@ -70,7 +70,7 @@ function DiscoverMore() {
   }, [searchValue]);
 
   return (
-    <div>
+    <div id="home">
       <div className="my-16 mx-16">
         {/* Magic Line */}
         <div className="flex justify-start">
