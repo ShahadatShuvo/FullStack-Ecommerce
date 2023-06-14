@@ -76,12 +76,13 @@ function Navbar() {
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
                       <span>
-                        Virtual Mart (VM). Here, You will quickly get all kinds
-                        of your daily Shopping, with only 1 click from your{" "}
+                        Virtual Mart (VMart). Here, You will quickly get all
+                        kinds of your daily Shopping, with only 1 click from
+                        your{" "}
                         <span className="text-blue-400">Home or Office</span>.
-                        ভার্চুয়াল মার্ট (ভিএম) এখানে, আপনি আপনার বাসা বা অফিস
-                        থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের কেনাকাটা
-                        পেয়ে যাবেন, খুব সহজে।
+                        ভার্চুয়াল মার্ট (ভিমার্ট) এখানে, আপনি আপনার বাসা বা
+                        অফিস থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের
+                        কেনাকাটা পেয়ে যাবেন, খুব সহজে।
                       </span>
                     </div>
                   </div>
