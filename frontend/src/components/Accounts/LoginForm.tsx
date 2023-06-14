@@ -3,7 +3,13 @@ function LoginForm() {
     <>
       <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img className="mx-auto w-1/3 w-auto" src="img/shopping.svg" />
+          <span className="w-[200px]">
+            <img
+              className="mx-auto w-1/2  md:w-[40vw] "
+              src="img/shopping.svg"
+            />
+          </span>
+
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 ">
             Sign in to your account
           </h2>

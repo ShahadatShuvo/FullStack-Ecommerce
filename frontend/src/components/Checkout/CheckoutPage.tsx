@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useContext, useEffect } from "react";
+import { SnackbarProvider } from "notistack";
 import CheckoutLeftDiv from "./CheckoutLeftDiv";
-import { CartItemContext } from "@/app/_context";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import CheckoutRightDiv from "./CheckoutRightDiv";
+import OrderSuccess from "./OrderSuccess";
 
 function CheckoutPage() {
   return (
@@ -31,6 +30,7 @@ function CheckoutPage() {
         <CheckoutRightDiv />
       </div>
       {/* End */}
+      <OrderSuccess />
     </div>
   );
 }

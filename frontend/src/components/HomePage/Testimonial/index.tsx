@@ -1,5 +1,6 @@
 "use client";
 
+import StarsIcon from "@mui/icons-material/Stars";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -71,29 +72,19 @@ const Testimonial = () => {
       </div>
 
       <div className="flex justify-center relative">
-        <div className="-bottom-12">
+        <div className="">
           <Image
-            className="h-16 w-16 rounded-full absolute left-[20%] top-[-30%]"
+            className="h-16 w-16 rounded-full absolute md:left-[20%] left-0  top-[-30%]"
             height={64}
             width={64}
             src="/img/quotes.png"
             alt="Testimonial Image"
           />
         </div>
-        <div className="flex flex-col shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] items-center justify-center w-[50vw]">
+        <div className="flex flex-col shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] items-center justify-center w-[250px] md:w-[50vw]">
           <div className="shadow-lg border col-span-2 border-gray-500 rounded">
             {/* <!-- Magic Dots --> */}
-            <div className="relative flex p-4 justify-between border-b border-gray-500">
-              <h3 className="text-lg font-bold flex justify-center items-center">
-                <Image
-                  className="h-16 w-16 -top-12 rounded-full"
-                  src={testimonial.img}
-                  height={64}
-                  width={64}
-                  alt=""
-                />
-                {testimonial.name}
-              </h3>
+            <div className="relative flex p-4 justify-end border-b border-gray-500">
               <div className="flex gap-2 items-center">
                 {testimonials.map((_, index) => (
                   <div
@@ -108,7 +99,29 @@ const Testimonial = () => {
                 ))}
               </div>
             </div>
-            <p className="p-4">{testimonial.comment}</p>
+            <p className="block text-base p-2 md:text-2xl mt-4 text-center">
+              {testimonial.comment}
+            </p>
+            <div className="text-lg mt-8 mb-4 font-bold flex flex-col justify-center items-center">
+              <Image
+                className="h-12 w-12 rounded-full"
+                src={testimonial.img}
+                height={64}
+                width={64}
+                alt=""
+              />
+              <span className="block text-lg font-semibold">
+                {testimonial.name}
+              </span>
+
+              <span className=" block flex-col justify-center items-center">
+                <StarsIcon className=" text-yellow-300" />
+                <StarsIcon className=" text-yellow-300" />
+                <StarsIcon className=" text-yellow-300" />
+                <StarsIcon className=" text-yellow-300" />
+                <StarsIcon className=" text-yellow-300" />
+              </span>
+            </div>
           </div>
         </div>
         <div>
