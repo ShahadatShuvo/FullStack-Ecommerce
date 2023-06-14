@@ -40,6 +40,6 @@ class AdminCupon(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(CustomUser)
 class AdminCustomUser(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ['email', 'phone_number', 'first_name', 'last_name',
-                    'gender', 'country', 'state', 'city', 'zip_code', 'date_joined', 'last_login', 'is_active', 'is_staff', 'is_superuser', 'img_preview']
+    list_display = ['img_preview', 'email', 'phone_number', 'first_name', 'last_name',           'gender',
+                    'country', 'state', 'city', 'zip_code', 'date_joined', 'last_login', 'is_active', 'is_staff', 'is_superuser']
     ordering = ['email', 'phone_number', 'country', 'state', 'city', 'gender']
