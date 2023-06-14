@@ -31,10 +31,10 @@ function DiscoverNav({
   return (
     <div>
       <nav
-        className="nc-Nav mb-8 lg:mb-8 relative flex justify-center w-full text-sm md:text-base"
+        className=" mb-4 lg:mb-8 relative flex justify-center w-full text-sm md:text-base"
         id="Nav"
       >
-        <ul className="flex items-center  p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
+        <ul className="flex items-center  md:p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
           <li className="mx-3  relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("all")}
@@ -49,11 +49,11 @@ function DiscoverNav({
                 <span className="inline-block">
                   <AllOutIcon />
                 </span>
-                <span>All</span>
+                <span>All Products</span>
               </div>
             </div>
           </li>
-          <li className=" relative" id="NavItem2">
+          <li className=" hidden md:block  relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("women")}
               className={`
@@ -71,7 +71,7 @@ function DiscoverNav({
               </div>
             </div>
           </li>
-          <li className=" relative" id="NavItem2">
+          <li className=" hidden md:block  relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("men")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize  ${
@@ -89,7 +89,7 @@ function DiscoverNav({
             </div>
           </li>
 
-          <li className="mx-3  relative" id="NavItem2">
+          <li className="mx-3  hidden md:block   relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("sports")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
