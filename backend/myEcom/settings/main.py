@@ -144,3 +144,6 @@ CORS_ORIGIN_ALLOW_ALL = True  # new
 #     'https://example.com',
 #     # ...
 # ]
+
+
+AUTH_USER_MODEL = "store.CustomUser"
