@@ -1,5 +1,10 @@
 import React from "react";
 
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import BusinessIcon from "@mui/icons-material/Business";
+import ChaletIcon from "@mui/icons-material/Chalet";
+import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import {
   Button,
   FormControl,
@@ -9,11 +14,6 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import ChaletIcon from "@mui/icons-material/Chalet";
-import BusinessIcon from "@mui/icons-material/Business";
 
 function CheckoutLeftDiv() {
   const [checked, setChecked] = React.useState(true);
@@ -147,7 +147,7 @@ function CheckoutLeftDiv() {
               variant="contained"
               className="mt-5 bg-black rounded-full w-[60%]"
             >
-              Save and next tp payment
+              Save and next to payment
             </Button>
             <Button
               variant="contained"
