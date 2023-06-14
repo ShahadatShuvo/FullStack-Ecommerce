@@ -14,6 +14,8 @@ urlpatterns = [
 
     # users endpoints
     path("api/users/", views.UserList.as_view(), name="account-list"),
+    path("api/user/<str:pk>/", views.UserDetail.as_view()),
+
     path('api/user/register/', views.CustomUserRegisterView.as_view(),
          name='user-register'),
     path('api/user/login/', views.CustomUserLoginView.as_view(),
