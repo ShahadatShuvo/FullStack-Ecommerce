@@ -1,6 +1,7 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard";
+import MagicLine from "@/components/SubComponent/MagicLine";
 import { useEffect, useRef, useState } from "react";
 import "./index.css";
 
@@ -94,15 +95,7 @@ function NewArrival() {
 
   return (
     <div className=" my-8 md:my-16 ">
-      {/* Magic Line */}
-      <div className="flex justify-start">
-        <div className="border-4 border-gradient w-1/3"></div>
-      </div>
-      <h2 className="my-3 text-4xl font-semibold text-center">New Arrivals</h2>
-      {/* Magic Line */}
-      <div className="flex justify-end">
-        <div className="border-4 border-gradient w-1/3"></div>
-      </div>
+      <MagicLine title="New Arrivals" />
 
       <div
         ref={containerRef}

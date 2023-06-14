@@ -1,4 +1,5 @@
 "use client";
+import MagicLine from "@/components/SubComponent/MagicLine";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { IconButton, Pagination } from "@mui/material";
@@ -72,17 +73,7 @@ function DiscoverMore() {
   return (
     <div id="home">
       <div className="my-16 ">
-        {/* Magic Line */}
-        <div className="flex justify-start">
-          <div className="border-4 border-gradient w-1/3"></div>
-        </div>
-        <h1 className="text-3xl md:text-4xl font-semibold text-center">
-          Start exploring.
-        </h1>
-        {/* Magic Line */}
-        <div className="flex justify-end">
-          <div className="border-4 border-gradient w-1/3"></div>
-        </div>
+        <MagicLine title="Start Exploring" />
       </div>
 
       {/* nav start */}

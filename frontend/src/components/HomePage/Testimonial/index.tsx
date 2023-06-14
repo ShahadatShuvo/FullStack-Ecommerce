@@ -1,5 +1,6 @@
 "use client";
 
+import MagicLine from "@/components/SubComponent/MagicLine";
 import StarIcon from "@mui/icons-material/Star";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
@@ -64,15 +65,7 @@ const Testimonial = () => {
   return (
     <div className="w-full space-y-24 py-16 ">
       <div>
-        {/* Magic Line */}
-        <div className="flex justify-start">
-          <div className="border-4 border-gradient w-1/3"></div>
-        </div>
-        <h1 className="text-4xl font-semibold text-center">Testimonial</h1>
-        {/* Magic Line */}
-        <div className="flex justify-end">
-          <div className="border-4 border-gradient w-1/3"></div>
-        </div>
+        <MagicLine title="Testimonial" />
       </div>
 
       <div className="flex justify-center relative">
