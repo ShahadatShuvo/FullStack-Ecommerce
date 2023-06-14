@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Link as ScrollLink } from "react-scroll";
 
 function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -26,21 +26,28 @@ function HeroSection() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative  md:w-full ">
       <img
         src={images[currentImage]}
         alt="Carousel Image"
-        className="max-h-full w-full object-cover"
+        className="max-h-full w-full md:object-cover object-fill"
       />
-      <div className=" space-y-6 my-10 absolute top-4 md:top-16 lg:top-32 left-4 md:left-10 right-64 lg:right-[600px]">
-        <h2 className="text-blue-950 text-2xl md:text-5xl lg:text-6xl font-bold break-words">
+      <div className=" space-y-6 md:my-10 my-0 absolute top-4 md:top-16 lg:top-32 left-4 md:left-10 right-64 lg:right-[600px]">
+        <h2 className="text-blue-950 text-lg font-serif md:text-5xl lg:text-6xl font-bold break-words">
           {texts[currentImage]}
         </h2>
-        <Link href="/">
-          <button className="mt-4 my-8 bg-blue-950 text-white rounded-3xl py-2 px-4 ">
+
+        <button className="mt-4 my-8 bg-blue-950 text-white rounded-3xl py-2 px-4 ">
+          <ScrollLink
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={-10}
+            duration={500}
+          >
             Explore Now
-          </button>
-        </Link>
+          </ScrollLink>
+        </button>
       </div>
       <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
         {images.map((image, index) => (
