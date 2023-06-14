@@ -1,20 +1,18 @@
 "use client";
 import { CartItemContext } from "@/app/_context";
+import CloseIcon from "@mui/icons-material/Close";
+import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Badge } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import MenuBarIcon from "./ProfileMenu";
-import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
-import IconButton from "@mui/material/IconButton";
-import Collapse from "@mui/material/Collapse";
-import Button from "@mui/material/Button";
-import CloseIcon from "@mui/icons-material/Close";
-import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 
 function Navbar() {
   const { contextValue } = useContext(CartItemContext);
@@ -74,7 +72,7 @@ function Navbar() {
                 Headline
               </p>
               <div className="w-full flex justify-center">
-                <div className="w-[50%]">
+                <div className="w-[80%]">
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
                       <span>
