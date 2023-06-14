@@ -68,11 +68,11 @@ function Navbar() {
             }}
           >
             <div className="relative">
-              <p className="absolute top-1 font-semibold text-gray-500">
+              <p className="absolute hidden md:block top-1 font-semibold text-gray-500">
                 Headline
               </p>
               <div className="w-full flex justify-center">
-                <div className="w-[80%]">
+                <div className=" w-full md:w-[85%]">
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
                       <span>
