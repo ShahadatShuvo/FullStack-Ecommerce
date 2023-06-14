@@ -4,11 +4,17 @@ import { SingleStepInterface } from "../../../../interfaces";
 function SingleStep(props: SingleStepInterface) {
   const { image, step, title, description, extraStyle } = props.step;
   return (
-    <div className=" text-center   text-black mx-auto w-72 mb-16">
-      <Image src={`/${image}`} alt="" width={450} height={451} />
+    <div className=" text-center   text-black mx-auto w-64 md:w-72 mb-16 hover:shadow-[rgba(0,_0,_0,_0.12)_0px_3px_8px] p-8 rounded-xl  ">
+      <Image
+        src={`/${image}`}
+        alt=""
+        className="-mt-16"
+        width={450}
+        height={451}
+      />
       <div className="space-y-5">
         <span
-          className={`nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs  ${extraStyle}  `}
+          className={` inline-flex px-2.5 md:py-1 rounded-full font-medium text-xs  ${extraStyle}  `}
         >
           {step}
         </span>

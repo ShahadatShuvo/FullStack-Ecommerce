@@ -1,8 +1,8 @@
 "use client";
 
+import ProductCard from "@/components/ProductCard";
 import { useEffect, useRef, useState } from "react";
 import "./index.css";
-import ProductCard from "@/components/ProductCard";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -93,7 +93,7 @@ function NewArrival() {
   ));
 
   return (
-    <div className="my-16 mx-16">
+    <div className=" my-8 md:my-16 ">
       {/* Magic Line */}
       <div className="flex justify-start">
         <div className="border-4 border-gradient w-1/3"></div>
@@ -106,7 +106,7 @@ function NewArrival() {
 
       <div
         ref={containerRef}
-        className="flex overflow-x-auto hide-scrollbar my-24 justify-between gap-5"
+        className="flex overflow-x-auto hide-scrollbar my-24  mx-16 justify-between gap-5"
         style={{ cursor: "grab" }}
       >
         {displayProducts}

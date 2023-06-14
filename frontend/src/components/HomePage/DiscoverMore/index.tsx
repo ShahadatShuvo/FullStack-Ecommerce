@@ -71,7 +71,7 @@ function DiscoverMore() {
 
   return (
     <div id="home">
-      <div className="my-16 mx-16">
+      <div className="my-16 ">
         {/* Magic Line */}
         <div className="flex justify-start">
           <div className="border-4 border-gradient w-1/3"></div>
@@ -96,7 +96,7 @@ function DiscoverMore() {
       {/* nav end */}
       <div>
         {search && (
-          <div className="w-[40vw] mb-8 md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <div className="w-[40vw] mx-16 mb-8 md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <div className="w-full relative flex items-center">
               <input
                 type="text"
