@@ -1,5 +1,4 @@
-from .customerSerializer import CustomerSerializer
 from .productSerializer import ProductSerializer
 from .orderSerializer import OrderSerializer
-from .userSerializer import UserSerializer
+from .userSerializer import CustomUserSerializer
 from .cuponSerializer import CuponSerializer
