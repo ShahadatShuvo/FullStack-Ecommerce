@@ -1,6 +1,8 @@
 "use client";
 
-import StarsIcon from "@mui/icons-material/Stars";
+import StarIcon from "@mui/icons-material/Star";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -30,6 +32,8 @@ const testimonials = [
 
 const Testimonial = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const value = 4.7;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -104,7 +108,7 @@ const Testimonial = () => {
             </p>
             <div className="text-lg mt-8 mb-4 font-bold flex flex-col justify-center items-center">
               <Image
-                className="h-12 w-12 rounded-full"
+                className="h-20 w-24 rounded-full"
                 src={testimonial.img}
                 height={64}
                 width={64}
@@ -115,11 +119,25 @@ const Testimonial = () => {
               </span>
 
               <span className=" block flex-col justify-center items-center">
-                <StarsIcon className=" text-yellow-300" />
-                <StarsIcon className=" text-yellow-300" />
-                <StarsIcon className=" text-yellow-300" />
-                <StarsIcon className=" text-yellow-300" />
-                <StarsIcon className=" text-yellow-300" />
+                <Box
+                  sx={{
+                    // width: 200,
+                    marginY: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <Rating
+                    name="text-feedback"
+                    value={value}
+                    readOnly
+                    precision={0.5}
+                    emptyIcon={
+                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                    }
+                  />
+                  {/* <Box sx={{ ml: 2 }}>Good</Box> */}
+                </Box>
               </span>
             </div>
           </div>
