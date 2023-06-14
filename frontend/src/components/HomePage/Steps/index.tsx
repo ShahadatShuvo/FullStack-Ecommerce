@@ -38,7 +38,7 @@ function Steps() {
     },
   ];
   return (
-    <div className=" md:my-5 pt-16 my-2 mx-16 border-b border-t  border-slate-300">
+    <div className=" md:my-5 pt-16 my-2 mx-16 border-b border-t border-slate-300">
       <div className="grid md:grid-cols-2 lg:grid-cols-4">
         {stepsData.map((step) => (
           <div className=" w-full  " key={step.id}>

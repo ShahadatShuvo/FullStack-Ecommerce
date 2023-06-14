@@ -62,7 +62,7 @@ const Testimonial = () => {
   const testimonial = testimonials[currentTestimonial];
 
   return (
-    <div className="w-full space-y-24 py-16">
+    <div className="w-full space-y-24 py-16 ">
       <div>
         {/* Magic Line */}
         <div className="flex justify-start">
@@ -78,14 +78,14 @@ const Testimonial = () => {
       <div className="flex justify-center relative">
         <div className="">
           <Image
-            className="h-16 w-16 rounded-full absolute md:left-[20%] left-0  top-[-30%]"
+            className="h-16 w-16 rounded-full absolute md:left-[160px] left-0  top-[-80px]"
             height={64}
             width={64}
             src="/img/quotes.png"
             alt="Testimonial Image"
           />
         </div>
-        <div className="flex flex-col shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] items-center justify-center w-[250px] md:w-[50vw]">
+        <div className="flex flex-col shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] items-center justify-center w-[250px] md:w-[800px]">
           <div className="shadow-lg border col-span-2 border-gray-500 rounded">
             {/* <!-- Magic Dots --> */}
             <div className="relative flex p-4 justify-end border-b border-gray-500">
@@ -108,7 +108,7 @@ const Testimonial = () => {
             </p>
             <div className="text-lg mt-8 mb-4 font-bold flex flex-col justify-center items-center">
               <Image
-                className="h-20 w-24 rounded-full"
+                className="h-24 w-24 rounded-full"
                 src={testimonial.img}
                 height={64}
                 width={64}
@@ -136,7 +136,6 @@ const Testimonial = () => {
                       <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
                     }
                   />
-                  {/* <Box sx={{ ml: 2 }}>Good</Box> */}
                 </Box>
               </span>
             </div>
@@ -144,7 +143,7 @@ const Testimonial = () => {
         </div>
         <div>
           <Image
-            className="h-16 w-16 ml-4  rounded-full absolute bottom-[-30%] transform rotate-180"
+            className="h-16 w-16 ml-4  rounded-full absolute bottom-[-80px] transform rotate-180"
             src="/img/quotes.png"
             height={64}
             width={64}
