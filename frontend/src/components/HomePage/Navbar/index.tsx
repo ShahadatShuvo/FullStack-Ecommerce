@@ -14,6 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
+import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 
 function Navbar() {
   const { contextValue } = useContext(CartItemContext);
@@ -21,7 +22,7 @@ function Navbar() {
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
   const [activeCategory, setActiveCategory] = useState("all");
-  const [open, setOpen] = useState(true);
+  const [openHeadline, setOpenHeadline] = useState(true);
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
@@ -39,15 +40,18 @@ function Navbar() {
   return (
     <div>
       <div>
-        <Collapse in={open}>
+        <Collapse in={openHeadline}>
           <Alert
+            icon={
+              <FeedOutlinedIcon fontSize="inherit" className="text-gray-600" />
+            }
             action={
               <IconButton
                 aria-label="close"
                 color="inherit"
                 size="small"
                 onClick={() => {
-                  setOpen(false);
+                  setOpenHeadline(false);
                 }}
               >
                 <CloseIcon fontSize="inherit" />
@@ -65,18 +69,23 @@ function Navbar() {
               },
             }}
           >
-            <div className="w-full flex justify-center">
-              <div className="w-[50%]">
-                <div className="relative flex overflow-x-hidden text-lg">
-                  <div className="animate-marquee whitespace-nowrap">
-                    <span>
-                      Virtual Mart (VM). Here, You will quickly get all kinds of
-                      your daily Shopping, with only 1 click from your{" "}
-                      <span className="text-blue-400">Home or Office</span>.
-                      ভার্চুয়াল মার্ট (ভিএম) এখানে, আপনি আপনার বাসা বা অফিস
-                      থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের কেনাকাটা পেয়ে
-                      যাবেন, খুব সহজে।
-                    </span>
+            <div className="relative">
+              <p className="absolute top-1 font-semibold text-gray-500">
+                Headline
+              </p>
+              <div className="w-full flex justify-center">
+                <div className="w-[50%]">
+                  <div className="relative flex overflow-x-hidden text-lg">
+                    <div className="animate-marquee whitespace-nowrap">
+                      <span>
+                        Virtual Mart (VM). Here, You will quickly get all kinds
+                        of your daily Shopping, with only 1 click from your{" "}
+                        <span className="text-blue-400">Home or Office</span>.
+                        ভার্চুয়াল মার্ট (ভিএম) এখানে, আপনি আপনার বাসা বা অফিস
+                        থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের কেনাকাটা
+                        পেয়ে যাবেন, খুব সহজে।
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -189,7 +198,10 @@ function Navbar() {
           {/* Navigation Ends  */}
 
           <div className="flex justify-center items-center">
-            <MenuBarIcon setOpen={setOpen} />
+            <MenuBarIcon
+              openHeadline={openHeadline}
+              setOpenHeadline={setOpenHeadline}
+            />
 
             <Badge
               badgeContent={contextValue.length}

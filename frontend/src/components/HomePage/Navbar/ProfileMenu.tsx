@@ -18,8 +18,15 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-export default function MenuBarIcon({ setOpen }: { setOpen: any }) {
+export default function MenuBarIcon({
+  openHeadline,
+  setOpenHeadline,
+}: {
+  openHeadline: boolean;
+  setOpenHeadline: any;
+}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -113,10 +120,18 @@ export default function MenuBarIcon({ setOpen }: { setOpen: any }) {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            setOpen(true);
+            setOpenHeadline((prevState: any) => !prevState);
           }}
         >
-          <LockOpenIcon /> <p className="ml-3">Re-open Headline Bar</p>
+          {openHeadline ? (
+            <div className="flex">
+              <LockOutlinedIcon /> <p className="ml-3">Close Headline Bar</p>
+            </div>
+          ) : (
+            <div className="flex">
+              <LockOpenIcon /> <p className="ml-3">Open Headline Bar</p>
+            </div>
+          )}
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
