@@ -1,14 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.html import mark_safe
-
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from store.managers import CustomUserManager
 
 # Create your models here.
 
 
-class CustomUser(AbstractUser):
-    # Remove the username field
-    username = None
+class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     # Gender choices
     GENDER_CHOICES = (
@@ -18,23 +18,24 @@ class CustomUser(AbstractUser):
     )
 
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    phone_number = models.CharField(max_length=15)
-    country = models.CharField(max_length=50)
-    state = models.CharField(max_length=255)
-    city = models.CharField(max_length=50)
-    zip_code = models.CharField(max_length=10)
-    date_joined = models.DateTimeField(auto_now_add=True)
+    phone_number = models.CharField(max_length=15, blank=True)
+    country = models.CharField(max_length=50, blank=True)
+    state = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=50, blank=True)
+    zip_code = models.CharField(max_length=10, blank=True)
+    date_joined = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
     image_url = models.ImageField(upload_to='users/', null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
 
     # Add related_name to avoid clashes with auth.User model
     groups = models.ManyToManyField(

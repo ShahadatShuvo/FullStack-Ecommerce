@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from store.models import CustomUser as User
 from store.serializers import CustomUserSerializer as UserSerializer
+from store.serializers import CustomUserLoginSerializer as UserLoginSerializer
+
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -11,7 +13,16 @@ from django.core.mail import send_mail
 from rest_framework.response import Response
 from rest_framework import generics, permissions, status
 from rest_framework.authentication import BasicAuthentication
-from django.utils.encoding import force_bytes, force_str
+from django.utils.encoding import force_bytes
+from django.urls import reverse
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from rest_framework.response import Response
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -31,16 +42,21 @@ class CustomUserRegisterView(generics.CreateAPIView):
 
 class CustomUserLoginView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
+    serializer_class = UserLoginSerializer
 
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')
         password = request.data.get('password')
 
         user = authenticate(request, email=email, password=password)
+        if user is None:
+            print('user is none')
 
         if user is not None:
+            print(user.is_active)  # Move this line here
+
             login(request, user)
-            serializer = UserSerializer(user)
+            serializer = UserLoginSerializer(user)
             return Response(serializer.data)
         else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -82,3 +98,27 @@ class CustomUserPasswordResetView(generics.GenericAPIView):
         send_mail(mail_subject, message, 'from@example.com', [email])
 
         return Response({'detail': 'Password reset email has been sent'})
+
+
+class CustomUserPasswordResetConfirmView(generics.GenericAPIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, uidb64, token, *args, **kwargs):
+        try:
+            uid = urlsafe_base64_decode(uidb64).decode()
+            user = get_object_or_404(User, pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            return Response({'error': 'Invalid reset link'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if default_token_generator.check_token(user, token):
+            password = request.data.get('password')
+            confirm_password = request.data.get('confirm_password')
+
+            if password == confirm_password:
+                user.set_password(password)
+                user.save()
+                return Response({'detail': 'Password reset successfully'})
+            else:
+                return Response({'error': 'Passwords do not match'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'error': 'Invalid reset link'}, status=status.HTTP_400_BAD_REQUEST)
