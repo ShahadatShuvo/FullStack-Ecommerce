@@ -8,6 +8,12 @@ import { Link as ScrollLink } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import MenuBarIcon from "./ProfileMenu";
+import Box from "@mui/material/Box";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Navbar() {
   const { contextValue } = useContext(CartItemContext);
@@ -15,6 +21,7 @@ function Navbar() {
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
   const [activeCategory, setActiveCategory] = useState("all");
+  const [open, setOpen] = useState(true);
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
@@ -31,22 +38,53 @@ function Navbar() {
 
   return (
     <div>
-      <div className=" border w-[100vw] flex justify-center items-center drop-shadow-md">
-        <div className="w-[50%]">
-          <div className="relative flex overflow-x-hidden text-lg">
-            <div className="animate-marquee whitespace-nowrap">
-              <span>
-                Virtual Mart (VM). Here, You will quickly get all kinds of your
-                daily Shopping, with only 1 click from your{" "}
-                <span className="text-blue-400">Home or Office</span>.
-                ভার্চুয়াল মার্ট (ভিএম) এখানে, আপনি আপনার বাসা বা অফিস থেকে
-                মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের কেনাকাটা পেয়ে যাবেন, খুব
-                সহজে।
-              </span>
+      <div>
+        <Collapse in={open}>
+          <Alert
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            className="bg-gray-100 text-gray-600"
+            sx={{
+              padding: "0px 16px",
+              // bgcolor: "white",
+              marginTop: "5px",
+              marginX: "5px",
+              border: "1px solid black",
+              ".css-1pxa9xg-MuiAlert-message": {
+                padding: "3px 0px",
+              },
+            }}
+          >
+            <div className="w-full flex justify-center">
+              <div className="w-[50%]">
+                <div className="relative flex overflow-x-hidden text-lg">
+                  <div className="animate-marquee whitespace-nowrap">
+                    <span>
+                      Virtual Mart (VM). Here, You will quickly get all kinds of
+                      your daily Shopping, with only 1 click from your{" "}
+                      <span className="text-blue-400">Home or Office</span>.
+                      ভার্চুয়াল মার্ট (ভিএম) এখানে, আপনি আপনার বাসা বা অফিস
+                      থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের কেনাকাটা পেয়ে
+                      যাবেন, খুব সহজে।
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </Alert>
+        </Collapse>
       </div>
+
       <header className="text-gray-600 body-font bg-white">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <a href="/">
@@ -151,7 +189,7 @@ function Navbar() {
           {/* Navigation Ends  */}
 
           <div className="flex justify-center items-center">
-            <MenuBarIcon />
+            <MenuBarIcon setOpen={setOpen} />
 
             <Badge
               badgeContent={contextValue.length}

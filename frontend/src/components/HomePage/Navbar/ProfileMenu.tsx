@@ -17,8 +17,9 @@ import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
-export default function MenuBarIcon() {
+export default function MenuBarIcon({ setOpen }: { setOpen: any }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -109,6 +110,13 @@ export default function MenuBarIcon() {
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <FavoriteBorderIcon /> <p className="ml-3">Wishlist</p>
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setOpen(true);
+          }}
+        >
+          <LockOpenIcon /> <p className="ml-3">Re-open Headline Bar</p>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
