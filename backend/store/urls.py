@@ -12,20 +12,6 @@ urlpatterns = [
     # order endpoints
     path("api/orders/", views.OrderList.as_view()),
 
-    # users endpoints
-    #     path("api/users/", views.UserList.as_view(), name="account-list"),
-    #     path("api/user/<str:pk>/", views.UserDetail.as_view()),
-
-    #     path('api/user/register/', views.CustomUserRegisterView.as_view(),
-    #          name='user-register'),
-    #     path('api/user/login/', views.CustomUserLoginView.as_view(),
-    #          name='user-login'),
-    #     path('api/user/logout/', views.CustomUserLogoutView.as_view(),
-    #          name='user-logout'),
-    #     path('api/user/reset-password/', views.CustomUserPasswordResetView.as_view(),
-    #          name='user-password-reset'),
-    #     path('api/user/reset-password/confirm/<str:uidb64>/<str:token>/',
-    #          views.CustomUserPasswordResetConfirmView.as_view(), name='api_password_reset_confirm'),
 
     # category endpoints
     path('api/category/<str:category_name>/',
