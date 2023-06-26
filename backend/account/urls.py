@@ -9,4 +9,8 @@ urlpatterns = [
     path('profile/', views.UserProfileView.as_view(), name='profile'),
     path('change-password/', views.UserChangePasswordView.as_view(),
          name='change-password'),
+    path('reset-password/', views.SendPasswordResetEmailView.as_view(),
+         name='reset-password'),
+    path('reset-password/<uid>/<token>/',
+         views.UserPasswordResetView.as_view(), name='reset-password-confirm'),
 ]
