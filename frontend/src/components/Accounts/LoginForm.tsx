@@ -20,6 +20,9 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
 import AuthSuccess from "./AuthSuccess";
+import { set } from "date-fns";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const validationSchema = yup.object({
   email: yup
@@ -35,7 +38,7 @@ const validationSchema = yup.object({
 function LoginForm() {
   const router = useRouter();
 
-  const { isSignUpComplete } = useContext(CartItemContext);
+  const { isSignUpComplete, checkLogin } = useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -44,11 +47,13 @@ function LoginForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      // handleSignUp(values);
+      // alert(JSON.stringify(values, null, 2));
+      handleLogin(values);
     },
   });
   const [showPassword, setShowPassword] = React.useState(false);
+  const [errorMsg, setErrorMsg] = React.useState("");
+  const [show, setShow] = React.useState(0);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -58,12 +63,48 @@ function LoginForm() {
     event.preventDefault();
   };
 
-  const handleLogin = () => {
-    router.push("/");
+  const handleLogin = (data: any) => {
+    const formData = {
+      email: data.email,
+      password: data.password,
+    };
+    const handleSubmit = async (formData: any) => {
+      try {
+        const response = await fetch(`${apiUrl}/api/account/login/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Store the access token in localStorage or any other state management solution
+          localStorage.setItem("accessToken", data.token.access);
+          checkLogin(true);
+          router.push("/");
+        } else if (response.status === 404) {
+          const errorData = await response.json();
+          setErrorMsg(errorData.errors.non_field_errors[0]);
+          setShow((prevData) => prevData + 1);
+        } else if (response.status === 400) {
+          const errorData = await response.json();
+          setErrorMsg(errorData.errors.email[0]);
+          setShow((prevData) => prevData + 1);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    handleSubmit(formData);
   };
 
   return (
     <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
+      {errorMsg && <AuthSuccess msg={errorMsg} type="error" show={show} />}
+
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <span className="w-[200px]">
           <Image
@@ -149,9 +190,7 @@ function LoginForm() {
           </div>
         </div>
       </form>
-      {isSignUpComplete && (
-        <AuthSuccess msg="Signup Successfully Completed!" type="success" />
-      )}
+
       <div className="mt-10 text-center text-sm text-gray-500">
         Not a member?
         <Link

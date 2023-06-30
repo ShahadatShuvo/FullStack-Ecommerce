@@ -71,6 +71,7 @@ function RegistrationForm() {
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [errorMsg, setErrorMsg] = React.useState("");
+  const [show, setShow] = React.useState(0);
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -106,6 +107,8 @@ function RegistrationForm() {
         } else if (response.status === 400) {
           const errorData = await response.json();
           setErrorMsg(errorData.errors.email[0]);
+          setShow((prevData) => prevData + 1);
+
           // Display error message to the user
           // You can use state or a UI library to show the error message else {
         }
@@ -311,7 +314,7 @@ function RegistrationForm() {
               </Button>
             </div>
           </div>
-          {errorMsg && <AuthSuccess msg={errorMsg} type="error" />}
+          {errorMsg && <AuthSuccess msg={errorMsg} type="error" show={show} />}
 
           <h4 className="mt-10 text-center text-sm text-gray-500">
             Already have account?

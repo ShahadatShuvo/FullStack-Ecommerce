@@ -13,11 +13,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 export default function AuthSuccess({
   msg,
   type,
+  show,
 }: {
   msg: string;
   type: string;
+  show: number;
 }) {
-  console.log("errorMsg:", msg);
   const [open, setOpen] = React.useState(false);
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -31,7 +32,7 @@ export default function AuthSuccess({
   };
   React.useEffect(() => {
     setOpen(true);
-  }, []);
+  }, [show]);
   return (
     <Stack spacing={2} sx={{ width: "100%" }}>
       <Snackbar
