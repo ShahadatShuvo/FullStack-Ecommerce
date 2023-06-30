@@ -21,6 +21,9 @@ import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
+import AuthSuccess from "./AuthSuccess";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const validationSchema = yup.object({
   first_name: yup.string().required("First name is required"),
@@ -48,8 +51,7 @@ const validationSchema = yup.object({
 function RegistrationForm() {
   const router = useRouter();
 
-  const { contextValue, isSignUpComplete, checkSignUp } =
-    useContext(CartItemContext);
+  const { checkSignUp } = useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -68,6 +70,7 @@ function RegistrationForm() {
   });
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const [errorMsg, setErrorMsg] = React.useState("");
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -76,9 +79,42 @@ function RegistrationForm() {
   };
 
   const handleSignUp = (data: any) => {
-    console.log("formData:", data);
-    checkSignUp(true);
-    router.push("/account/login");
+    const formData = {
+      email: data.email,
+      password: data.password1,
+      password2: data.password2,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      gender: data.gender,
+    };
+    const handleSubmit = async (formData: any) => {
+      try {
+        const response = await fetch(`${apiUrl}/api/account/register/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Store the access token in localStorage or any other state management solution
+          // localStorage.setItem("accessToken", data.token);
+          checkSignUp(true);
+          router.push("/account/login");
+        } else if (response.status === 400) {
+          const errorData = await response.json();
+          setErrorMsg(errorData.errors.email[0]);
+          // Display error message to the user
+          // You can use state or a UI library to show the error message else {
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    handleSubmit(formData);
   };
 
   return (
@@ -269,13 +305,13 @@ function RegistrationForm() {
               <Button
                 variant="contained"
                 className="rounded-full"
-                // onClick={handleSignUp}
                 type="submit"
               >
                 Sign Up
               </Button>
             </div>
           </div>
+          {errorMsg && <AuthSuccess msg={errorMsg} type="error" />}
 
           <h4 className="mt-10 text-center text-sm text-gray-500">
             Already have account?

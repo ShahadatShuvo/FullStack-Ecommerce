@@ -35,9 +35,7 @@ const validationSchema = yup.object({
 function LoginForm() {
   const router = useRouter();
 
-  const { isSignUpComplete, checkSignUp } = useContext(CartItemContext);
-
-  console.log("isSignUpComplete:", isSignUpComplete);
+  const { isSignUpComplete } = useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -61,7 +59,6 @@ function LoginForm() {
   };
 
   const handleLogin = () => {
-    console.log("login");
     router.push("/");
   };
 
@@ -152,7 +149,9 @@ function LoginForm() {
           </div>
         </div>
       </form>
-      {isSignUpComplete && <AuthSuccess />}
+      {isSignUpComplete && (
+        <AuthSuccess msg="Signup Successfully Completed!" type="success" />
+      )}
       <div className="mt-10 text-center text-sm text-gray-500">
         Not a member?
         <Link

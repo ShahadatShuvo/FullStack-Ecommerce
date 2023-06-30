@@ -10,7 +10,14 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function AuthSuccess() {
+export default function AuthSuccess({
+  msg,
+  type,
+}: {
+  msg: string;
+  type: string;
+}) {
+  console.log("errorMsg:", msg);
   const [open, setOpen] = React.useState(false);
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -36,8 +43,12 @@ export default function AuthSuccess() {
           horizontal: "left",
         }}
       >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          Signup Successfully Completed!
+        <Alert
+          onClose={handleClose}
+          severity={type === "error" ? "error" : "success"}
+          sx={{ width: "100%" }}
+        >
+          {msg}
         </Alert>
       </Snackbar>
     </Stack>
