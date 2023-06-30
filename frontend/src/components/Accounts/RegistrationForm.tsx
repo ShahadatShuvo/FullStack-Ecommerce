@@ -2,6 +2,7 @@
 
 import {
   FormControl,
+  FormHelperText,
   IconButton,
   InputLabel,
   MenuItem,
@@ -9,6 +10,8 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -18,17 +21,46 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 
+const validationSchema = yup.object({
+  first_name: yup.string().required("First name is required"),
+  last_name: yup.string().required("Last name is required"),
+  gender: yup.string().required("Gender is required"),
+  email: yup
+    .string()
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password1: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .max(20, "Password must be at most 20 characters")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, and one digit"
+    )
+    .required("Password is required"),
+  password2: yup
+    .string()
+    .oneOf([yup.ref("password1")], "Passwords must match")
+    .required("Confirm Password is required"),
+});
+
 function RegistrationForm() {
   const router = useRouter();
-
+  const formik = useFormik({
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      gender: "",
+      email: "",
+      password1: "",
+      password2: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   const [showPassword, setShowPassword] = React.useState(false);
-
-  const [gender, setGender] = React.useState("");
-
-  const handleChangeGender = (event: any) => {
-    setGender(event.target.value as string);
-  };
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -38,8 +70,7 @@ function RegistrationForm() {
   };
 
   const handleSignUp = () => {
-    console.log("sign up");
-    router.push("/account/login");
+    console.log("formData:");
   };
 
   return (
@@ -62,7 +93,10 @@ function RegistrationForm() {
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form
+          className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+          onSubmit={formik.handleSubmit}
+        >
           <div className="flex flex-col gap-3">
             <div className="flex justify-between gap-2">
               <div className="flex flex-col gap-2">
@@ -74,6 +108,16 @@ function RegistrationForm() {
                   label="First Name"
                   variant="outlined"
                   size="small"
+                  name="first_name"
+                  value={formik.values.first_name}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.first_name &&
+                    Boolean(formik.errors.first_name)
+                  }
+                  helperText={
+                    formik.touched.first_name && formik.errors.first_name
+                  }
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -85,6 +129,15 @@ function RegistrationForm() {
                   label="Last Name"
                   variant="outlined"
                   size="small"
+                  name="last_name"
+                  value={formik.values.last_name}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.last_name && Boolean(formik.errors.last_name)
+                  }
+                  helperText={
+                    formik.touched.last_name && formik.errors.last_name
+                  }
                 />
               </div>
             </div>
@@ -97,14 +150,19 @@ function RegistrationForm() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={gender}
                   label="Gender"
-                  onChange={handleChangeGender}
+                  name="gender"
+                  value={formik.values.gender}
+                  onChange={formik.handleChange}
+                  error={formik.touched.gender && Boolean(formik.errors.gender)}
                 >
-                  <MenuItem value={"male"}>Male</MenuItem>
-                  <MenuItem value={"female"}>Female</MenuItem>
-                  <MenuItem value={"other"}>Other</MenuItem>
+                  <MenuItem value="male">Male</MenuItem>
+                  <MenuItem value="female">Female</MenuItem>
+                  <MenuItem value="other">Other</MenuItem>
                 </Select>
+                <p className="text-xs text-red-500 mt-1">
+                  {formik.touched.gender && formik.errors.gender}
+                </p>
               </FormControl>
             </div>
             <div className="flex flex-col gap-2">
@@ -116,6 +174,11 @@ function RegistrationForm() {
                 label="Email"
                 variant="outlined"
                 size="small"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -131,6 +194,12 @@ function RegistrationForm() {
                 <OutlinedInput
                   id="password1"
                   type={showPassword ? "text" : "password"}
+                  name="password1"
+                  value={formik.values.password1}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.password1 && Boolean(formik.errors.password1)
+                  }
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -145,6 +214,9 @@ function RegistrationForm() {
                   }
                   label="Password"
                 />
+                <p className="text-xs text-red-500 mt-1">
+                  {formik.touched.password1 && formik.errors.password1}
+                </p>
               </FormControl>
             </div>
             <div className="flex flex-col gap-2">
@@ -160,6 +232,12 @@ function RegistrationForm() {
                 <OutlinedInput
                   id="password2"
                   type={showPassword ? "text" : "password"}
+                  name="password2"
+                  value={formik.values.password2}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.password2 && Boolean(formik.errors.password2)
+                  }
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -174,13 +252,17 @@ function RegistrationForm() {
                   }
                   label="Confirm Password"
                 />
+                <p className="text-xs text-red-500 mt-1">
+                  {formik.touched.password2 && formik.errors.password2}
+                </p>
               </FormControl>
             </div>
             <div className="flex flex-col gap-2 bg-black rounded-full">
               <Button
                 variant="contained"
                 className="rounded-full"
-                onClick={handleSignUp}
+                // onClick={handleSignUp}
+                type="submit"
               >
                 Sign Up
               </Button>
@@ -196,7 +278,7 @@ function RegistrationForm() {
               Log in
             </Link>
           </h4>
-        </div>
+        </form>
       </div>
     </div>
   );
