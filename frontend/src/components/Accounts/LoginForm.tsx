@@ -104,10 +104,11 @@ function LoginForm() {
       </div>
       <div className="mt-10 text-center text-sm text-gray-500">
         Not a member?
-        <Link href="/account/register">
-          <p className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-            Register here
-          </p>
+        <Link
+          href="/account/signup"
+          className="ml-3 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        >
+          Register here
         </Link>
       </div>
     </div>
