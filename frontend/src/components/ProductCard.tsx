@@ -10,6 +10,7 @@ import React, { useContext } from "react";
 import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
 // import { CartItemContext } from "../app/_page";
 import { CartItemContext } from "@/app/context";
+import OrderSuccess from "./OrderSuccess";
 
 interface ProductCardProps {
   id: number | string;
@@ -64,13 +65,11 @@ function ProductCard(props: ProductCardProps) {
         {view && (
           <div className="absolute bottom-4 w-full">
             <div className="px-2 flex justify-around">
-              <Button
-                className="text-xs font-semibold py-1 rounded-full bg-black hover:bg-gray-600 text-white flex justify-center items-center drop-shadow-md hover:drop-shadow-xl"
-                onClick={() => onHandleClick(props)}
-              >
-                <NextWeekOutlinedIcon />
-                <span className="ml-1">Add to bag</span>
-              </Button>
+              <OrderSuccess
+                type="btn"
+                onHandleClick={onHandleClick}
+                product={props}
+              />
 
               <CartViewDialogue
                 // key={props.key}
@@ -86,11 +85,10 @@ function ProductCard(props: ProductCardProps) {
         <div className="p-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
             style={{
-              height: "280px",
-              width: "auto",
+              height: "250px",
+              width: "250px",
             }}
             src={image_url}
-            // src={image_url}
             alt=""
             width={230}
             height={230}

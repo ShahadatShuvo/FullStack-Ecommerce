@@ -2228,7 +2228,7 @@ normalize-range@^0.1.2:
 
 notistack@^3.0.1:
   version "3.0.1"
-  resolved "https://registry.npmjs.org/notistack/-/notistack-3.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/notistack/-/notistack-3.0.1.tgz#daf59888ab7e2c30a1fa8f71f9cba2978773236e"
   integrity sha512-ntVZXXgSQH5WYfyU+3HfcXuKaapzAJ8fBLQ/G618rn3yvSzEbnOB8ZSOwhX+dAORy/lw+GC2N061JA0+gYWTVA==
   dependencies:
     clsx "^1.1.0"
