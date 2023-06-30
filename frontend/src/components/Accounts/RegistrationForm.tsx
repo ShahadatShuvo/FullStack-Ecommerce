@@ -2,7 +2,6 @@
 
 import {
   FormControl,
-  FormHelperText,
   IconButton,
   InputLabel,
   MenuItem,
@@ -40,7 +39,7 @@ const validationSchema = yup.object({
     .required("Password is required"),
   password2: yup
     .string()
-    .oneOf([yup.ref("password1")], "Passwords must match")
+    .oneOf([yup.ref("password1")], "Passwords do not match")
     .required("Confirm Password is required"),
 });
 
@@ -58,6 +57,7 @@ function RegistrationForm() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      handleSignUp(values);
     },
   });
   const [showPassword, setShowPassword] = React.useState(false);
@@ -69,8 +69,9 @@ function RegistrationForm() {
     event.preventDefault();
   };
 
-  const handleSignUp = () => {
-    console.log("formData:");
+  const handleSignUp = (data: any) => {
+    console.log("formData:", data);
+    router.push("/account/login");
   };
 
   return (

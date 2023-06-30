@@ -8,6 +8,8 @@ import {
   OutlinedInput,
   TextField,
 } from "@mui/material";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import Image from "next/image";
 import Link from "next/link";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -16,8 +18,31 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import React from "react";
 import { useRouter } from "next/navigation";
 
+const validationSchema = yup.object({
+  email: yup
+    .string()
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
+
 function LoginForm() {
   const router = useRouter();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      // handleSignUp(values);
+    },
+  });
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -52,7 +77,10 @@ function LoginForm() {
         </h2>
       </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form
+        className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+        onSubmit={formik.handleSubmit}
+      >
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="font-semibold">
@@ -63,6 +91,11 @@ function LoginForm() {
               label="Email"
               variant="outlined"
               size="small"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -74,6 +107,12 @@ function LoginForm() {
               <OutlinedInput
                 id="password1"
                 type={showPassword ? "text" : "password"}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -88,6 +127,9 @@ function LoginForm() {
                 }
                 label="Password"
               />
+              <p className="text-xs text-red-500 mt-1">
+                {formik.touched.password && formik.errors.password}
+              </p>
             </FormControl>
           </div>
 
@@ -95,13 +137,14 @@ function LoginForm() {
             <Button
               variant="contained"
               className="rounded-full"
-              onClick={handleLogin}
+              // onClick={handleLogin}
+              type="submit"
             >
               Log In
             </Button>
           </div>
         </div>
-      </div>
+      </form>
       <div className="mt-10 text-center text-sm text-gray-500">
         Not a member?
         <Link
