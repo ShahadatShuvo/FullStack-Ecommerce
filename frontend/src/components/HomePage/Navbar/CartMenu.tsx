@@ -3,7 +3,7 @@
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useContext } from "react";
 // import { CartItemContext } from "@/app/_page";
-import { CartItemContext } from "@/app/_context";
+import { CartItemContext } from "@/app/context";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";

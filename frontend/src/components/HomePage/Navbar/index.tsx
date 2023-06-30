@@ -1,5 +1,5 @@
 "use client";
-import { CartItemContext } from "@/app/_context";
+import { CartItemContext } from "@/app/context";
 import CloseIcon from "@mui/icons-material/Close";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import MenuIcon from "@mui/icons-material/Menu";

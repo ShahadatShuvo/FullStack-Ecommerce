@@ -14,6 +14,8 @@ interface ProductCardProps {
 
 interface ContextValue {
   contextValue: ProductCardProps[];
+  isSignUpComplete: boolean;
+  checkSignUp: (value: boolean) => void;
   increaseContextValue: (newValue: ProductCardProps) => void;
   decreaseContextValue: (newValue: ProductCardProps) => void;
   deleteContextValue: (newValue: ProductCardProps) => void;
@@ -21,6 +23,8 @@ interface ContextValue {
 
 export const CartItemContext = createContext<ContextValue>({
   contextValue: [],
+  isSignUpComplete: false,
+  checkSignUp: () => {},
   increaseContextValue: () => {},
   decreaseContextValue: () => {},
   deleteContextValue: () => {},

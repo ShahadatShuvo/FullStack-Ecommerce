@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useContext, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { CartItemContext } from "@/app/_context";
+import { CartItemContext } from "@/app/context";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 
 interface CuponInterface {

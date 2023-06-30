@@ -3,7 +3,7 @@
 import Navbar from "@/components/HomePage/Navbar";
 import "./globals.css";
 import Footer from "@/components/HomePage/Footer";
-import { CartItemContext } from "./_context";
+import { CartItemContext } from "./context";
 import React, { useState } from "react";
 
 interface ProductCardProps {
@@ -29,7 +29,12 @@ export default function RootLayout({
 }) {
   // Function to update the context value
   const [contextValue, setContextValue] = useState([]);
+  const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [check, setCheck] = useState(false);
+
+  const checkSignUp = (value: boolean) => {
+    setIsSignUpComplete(value);
+  };
 
   React.useEffect(() => {
     // const check = JSON.parse(localStorage.getItem("check") || "true");
@@ -140,6 +145,8 @@ export default function RootLayout({
       <body className="text-black" suppressHydrationWarning={true}>
         <CartItemContext.Provider
           value={{
+            isSignUpComplete,
+            checkSignUp,
             contextValue,
             increaseContextValue,
             decreaseContextValue,
