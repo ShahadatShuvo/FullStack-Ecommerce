@@ -16,8 +16,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Button from "@mui/material/Button";
+import { useRouter } from "next/navigation";
 
 function RegistrationForm() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const [gender, setGender] = React.useState("");
@@ -32,6 +35,11 @@ function RegistrationForm() {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
+  };
+
+  const handleSignUp = () => {
+    console.log("sign up");
+    router.push("/account/login");
   };
 
   return (
@@ -169,7 +177,11 @@ function RegistrationForm() {
               </FormControl>
             </div>
             <div className="flex flex-col gap-2 bg-black rounded-full">
-              <Button variant="contained" className="rounded-full">
+              <Button
+                variant="contained"
+                className="rounded-full"
+                onClick={handleSignUp}
+              >
                 Sign Up
               </Button>
             </div>
