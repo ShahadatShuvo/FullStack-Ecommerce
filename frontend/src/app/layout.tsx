@@ -30,10 +30,14 @@ export default function RootLayout({
   // Function to update the context value
   const [contextValue, setContextValue] = useState([]);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
+  const [isLoginComplete, setIsLoginComplete] = useState(false);
   const [check, setCheck] = useState(false);
 
   const checkSignUp = (value: boolean) => {
     setIsSignUpComplete(value);
+  };
+  const checkLogin = (value: boolean) => {
+    setIsLoginComplete(value);
   };
 
   React.useEffect(() => {
@@ -146,7 +150,9 @@ export default function RootLayout({
         <CartItemContext.Provider
           value={{
             isSignUpComplete,
+            isLoginComplete,
             checkSignUp,
+            checkLogin,
             contextValue,
             increaseContextValue,
             decreaseContextValue,
