@@ -19,6 +19,8 @@ import Link from "next/link";
 import React from "react";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/context";
 
 const validationSchema = yup.object({
   first_name: yup.string().required("First name is required"),
@@ -45,6 +47,10 @@ const validationSchema = yup.object({
 
 function RegistrationForm() {
   const router = useRouter();
+
+  const { contextValue, isSignUpComplete, checkSignUp } =
+    useContext(CartItemContext);
+
   const formik = useFormik({
     initialValues: {
       first_name: "",
@@ -71,6 +77,7 @@ function RegistrationForm() {
 
   const handleSignUp = (data: any) => {
     console.log("formData:", data);
+    checkSignUp(true);
     router.push("/account/login");
   };
 

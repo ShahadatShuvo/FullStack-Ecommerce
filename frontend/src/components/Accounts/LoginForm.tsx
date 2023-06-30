@@ -17,6 +17,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/context";
 
 const validationSchema = yup.object({
   email: yup
@@ -31,6 +33,15 @@ const validationSchema = yup.object({
 
 function LoginForm() {
   const router = useRouter();
+
+  const { isSignUpComplete, checkSignUp } = useContext(CartItemContext);
+
+  console.log("isSignUpComplete:", isSignUpComplete);
+
+  if (isSignUpComplete) {
+    alert("Sign up complete");
+    checkSignUp(false);
+  }
 
   const formik = useFormik({
     initialValues: {
