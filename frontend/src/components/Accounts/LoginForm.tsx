@@ -19,6 +19,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
+import AuthSuccess from "./AuthSuccess";
 
 const validationSchema = yup.object({
   email: yup
@@ -37,11 +38,6 @@ function LoginForm() {
   const { isSignUpComplete, checkSignUp } = useContext(CartItemContext);
 
   console.log("isSignUpComplete:", isSignUpComplete);
-
-  if (isSignUpComplete) {
-    alert("Sign up complete");
-    checkSignUp(false);
-  }
 
   const formik = useFormik({
     initialValues: {
@@ -156,6 +152,7 @@ function LoginForm() {
           </div>
         </div>
       </form>
+      {isSignUpComplete && <AuthSuccess />}
       <div className="mt-10 text-center text-sm text-gray-500">
         Not a member?
         <Link
