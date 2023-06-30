@@ -1,11 +1,11 @@
 import LoginForm from "@/components/Accounts/LoginForm";
 
-function Account() {
+function AccountLogin() {
   return (
     <div className="bg-white">
-      <p>Welcome to account</p>
+      <LoginForm />
     </div>
   );
 }
 
-export default Account;
+export default AccountLogin;
