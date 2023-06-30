@@ -14,8 +14,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 function LoginForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -24,6 +26,11 @@ function LoginForm() {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
+  };
+
+  const handleLogin = () => {
+    console.log("login");
+    router.push("/");
   };
 
   return (
@@ -85,7 +92,11 @@ function LoginForm() {
           </div>
 
           <div className="flex flex-col gap-2 bg-black rounded-full">
-            <Button variant="contained" className="rounded-full">
+            <Button
+              variant="contained"
+              className="rounded-full"
+              onClick={handleLogin}
+            >
               Log In
             </Button>
           </div>
