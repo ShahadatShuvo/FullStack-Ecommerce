@@ -1,12 +1,19 @@
+import Image from "next/image";
+import Link from "next/link";
+
 function LoginForm() {
   return (
     <>
       <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <span className="w-[200px]">
-            <img
-              className="mx-auto w-1/2  md:w-[40vw] "
-              src="img/shopping.svg"
+            <Image
+              alt="shopping"
+              src="/img/account/login1.svg"
+              width={200}
+              height={200}
+              priority={true}
+              className="mx-auto w-1/2 md:w-[60vw]"
             />
           </span>
 
@@ -17,24 +24,6 @@ function LoginForm() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action="#" method="POST">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Name
-              </label>
-              <div className="mt-2">
-                <input
-                  id="name"
-                  name="name"
-                  type="name"
-                  autoComplete="name"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
             <div>
               <label
                 htmlFor="name"
@@ -63,12 +52,12 @@ function LoginForm() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
+                  <Link
                     href="#"
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
@@ -93,15 +82,14 @@ function LoginForm() {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Register Here
-            </a>
-          </p>
+          <div className="mt-10 text-center text-sm text-gray-500">
+            Not a member?
+            <Link href="/account/register">
+              <p className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                Register here
+              </p>
+            </Link>
+          </div>
         </div>
       </div>
     </>
