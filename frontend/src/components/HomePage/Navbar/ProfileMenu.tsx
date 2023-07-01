@@ -19,6 +19,9 @@ import Link from "next/link";
 import * as React from "react";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/context";
+import AuthSuccess from "@/components/Accounts/AuthSuccess";
 
 export default function MenuBarIcon({
   openHeadline,
@@ -27,6 +30,8 @@ export default function MenuBarIcon({
   openHeadline: boolean;
   setOpenHeadline: any;
 }) {
+  const { checkLogin, checkSignUp, setToken } = useContext(CartItemContext);
+  const [logout, setLogout] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -36,9 +41,21 @@ export default function MenuBarIcon({
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    setToken("");
+    checkLogin(false);
+    checkSignUp(false);
+    setLogout(true);
+  };
+
   let fullName = "Shahadat Shuvo";
   return (
     <div>
+      {logout && (
+        <AuthSuccess msg="You have loged out!" type="warning" show={0} />
+      )}
+
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Account settings">
           <IconButton
@@ -147,7 +164,7 @@ export default function MenuBarIcon({
             Settings
           </MenuItem>
         </Link>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
