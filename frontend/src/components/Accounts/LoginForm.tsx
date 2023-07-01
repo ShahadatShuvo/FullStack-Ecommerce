@@ -20,7 +20,6 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
 import AuthSuccess from "./AuthSuccess";
-import { set } from "date-fns";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -104,6 +103,13 @@ function LoginForm() {
   return (
     <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
       {errorMsg && <AuthSuccess msg={errorMsg} type="error" show={show} />}
+      {isSignUpComplete && (
+        <AuthSuccess
+          msg="Signup Successfully Completed!"
+          type="success"
+          show={1}
+        />
+      )}
 
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <span className="w-[200px]">
