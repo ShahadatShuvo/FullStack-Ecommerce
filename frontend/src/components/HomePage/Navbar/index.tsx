@@ -3,7 +3,7 @@ import { CartItemContext } from "@/app/context";
 import CloseIcon from "@mui/icons-material/Close";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Badge } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
@@ -18,7 +18,8 @@ import MenuBarIcon from "./ProfileMenu";
 function Navbar() {
   const router = useRouter();
 
-  const { contextValue, accessToken, setToken } = useContext(CartItemContext);
+  const { contextValue, accessToken, setToken, isLoginComplete } =
+    useContext(CartItemContext);
   console.log("accessToken", accessToken);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
@@ -202,18 +203,20 @@ function Navbar() {
           {/* Navigation Ends  */}
 
           <div className="flex justify-center items-center">
-            {accessToken ? (
+            {accessToken || isLoginComplete ? (
               <MenuBarIcon
                 openHeadline={openHeadline}
                 setOpenHeadline={setOpenHeadline}
               />
             ) : (
-              <button
+              <Button
+                variant="contained"
+                size="small"
+                className="bg-black rounded-full"
                 onClick={() => router.push("/account/login")}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
               >
                 Login
-              </button>
+              </Button>
             )}
 
             <Badge
