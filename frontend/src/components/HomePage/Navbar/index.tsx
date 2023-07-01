@@ -18,7 +18,8 @@ import MenuBarIcon from "./ProfileMenu";
 function Navbar() {
   const router = useRouter();
 
-  const { contextValue } = useContext(CartItemContext);
+  const { contextValue, accessToken, setToken } = useContext(CartItemContext);
+  console.log("accessToken", accessToken);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
@@ -201,7 +202,7 @@ function Navbar() {
           {/* Navigation Ends  */}
 
           <div className="flex justify-center items-center">
-            {authenticated ? (
+            {accessToken ? (
               <MenuBarIcon
                 openHeadline={openHeadline}
                 setOpenHeadline={setOpenHeadline}

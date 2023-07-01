@@ -5,6 +5,7 @@ import "./globals.css";
 import Footer from "@/components/HomePage/Footer";
 import { CartItemContext } from "./context";
 import React, { useState } from "react";
+import { set } from "date-fns";
 
 interface ProductCardProps {
   id: number | string;
@@ -30,15 +31,31 @@ export default function RootLayout({
   // Function to update the context value
   const [contextValue, setContextValue] = useState([]);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
   const [isLoginComplete, setIsLoginComplete] = useState(false);
   const [check, setCheck] = useState(false);
 
+  const setToken = (value: string) => {
+    setAccessToken(value);
+  };
   const checkSignUp = (value: boolean) => {
     setIsSignUpComplete(value);
   };
   const checkLogin = (value: boolean) => {
     setIsLoginComplete(value);
   };
+
+  React.useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      try {
+        // const parsedData = JSON.parse(token);
+        setAccessToken(token);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    }
+  }, []);
 
   React.useEffect(() => {
     // const check = JSON.parse(localStorage.getItem("check") || "true");
@@ -151,6 +168,8 @@ export default function RootLayout({
           value={{
             isSignUpComplete,
             isLoginComplete,
+            accessToken,
+            setToken,
             checkSignUp,
             checkLogin,
             contextValue,

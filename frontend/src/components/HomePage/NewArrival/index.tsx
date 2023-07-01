@@ -9,7 +9,6 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function NewArrival() {
   const [newArrival, setNewArrival] = useState([]);
-  console.log("newArrival:", newArrival);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
