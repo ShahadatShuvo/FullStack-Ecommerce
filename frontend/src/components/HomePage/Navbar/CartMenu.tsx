@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
+import { useRouter } from "next/navigation";
 import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
 import * as React from "react";
@@ -16,7 +17,10 @@ import "../NewArrival/index.css";
 import Link from "next/link";
 
 export default function CartMenu() {
-  const { contextValue, deleteContextValue } = useContext(CartItemContext);
+  const router = useRouter();
+
+  const { contextValue, deleteContextValue, isLoginComplete, accessToken } =
+    useContext(CartItemContext);
 
   const handleRemove = (product: any) => {
     deleteContextValue(product);
@@ -35,6 +39,15 @@ export default function CartMenu() {
     (acc: number, item: any) => acc + item.price * item.qty,
     0
   );
+
+  const handleCheckout = () => {
+    console.log("checkout");
+    if (isLoginComplete || accessToken) {
+      router.push("/checkout");
+    } else {
+      router.push("/account/login");
+    }
+  };
 
   const allCartItems = contextValue.map((product: any) => {
     return (
@@ -142,13 +155,15 @@ export default function CartMenu() {
               <p>Subtotal</p>
               <p>{subTotal} TK</p>
             </div>
-            <Link href="/checkout">
-              <div className="px-5 py-3 pt-5  flex justify-between gap-2">
-                <p className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold">
-                  Check out
-                </p>
-              </div>
-            </Link>
+
+            <div className="px-5 py-3 pt-5  flex justify-between gap-2">
+              <p
+                className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold"
+                onClick={handleCheckout}
+              >
+                Check out
+              </p>
+            </div>
           </div>
         </div>
       </Menu>
