@@ -22,6 +22,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
 import AuthSuccess from "@/components/Accounts/AuthSuccess";
+import { useRouter } from "next/navigation";
 
 export default function MenuBarIcon({
   openHeadline,
@@ -30,6 +31,8 @@ export default function MenuBarIcon({
   openHeadline: boolean;
   setOpenHeadline: any;
 }) {
+  const router = useRouter();
+
   const { checkLogin, checkSignUp, setToken } = useContext(CartItemContext);
   const [logout, setLogout] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -47,6 +50,12 @@ export default function MenuBarIcon({
     checkLogin(false);
     checkSignUp(false);
     setLogout(true);
+    const currentPageUrl = window.location.href;
+    const searchString = "checkout";
+    const isSubstringPresent = currentPageUrl.indexOf(searchString) !== -1;
+    if (isSubstringPresent) {
+      router.push("/");
+    }
   };
 
   let fullName = "Shahadat Shuvo";
