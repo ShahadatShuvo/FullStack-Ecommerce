@@ -14,18 +14,23 @@ import { Link as ScrollLink } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import MenuBarIcon from "./ProfileMenu";
+import AuthSuccess from "@/components/Accounts/AuthSuccess";
 
 function Navbar() {
   const router = useRouter();
 
-  const { contextValue, accessToken, setToken, isLoginComplete } =
-    useContext(CartItemContext);
+  const {
+    contextValue,
+    accessToken,
+    setToken,
+    isLoginComplete,
+    isLogoutComplete,
+  } = useContext(CartItemContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
   const [activeCategory, setActiveCategory] = useState("all");
   const [openHeadline, setOpenHeadline] = useState(true);
-  const [authenticated, setAuthenticated] = useState(false);
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
@@ -41,6 +46,9 @@ function Navbar() {
 
   return (
     <div>
+      {isLogoutComplete && (
+        <AuthSuccess msg="You have loged out!" type="warning" show={1} />
+      )}
       <div>
         <Collapse in={openHeadline}>
           <Alert

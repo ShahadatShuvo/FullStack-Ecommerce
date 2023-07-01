@@ -33,12 +33,10 @@ export default function MenuBarIcon({
 }) {
   const router = useRouter();
 
-  const { checkLogin, checkSignUp, accessToken, isLoginComplete, setToken } =
+  const { checkLogin, checkSignUp, accessToken, checkLogout, setToken } =
     useContext(CartItemContext);
-  const [logout, setLogout] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const [show, setShow] = React.useState(0);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -47,12 +45,11 @@ export default function MenuBarIcon({
   };
 
   const handleLogout = () => {
-    setShow((prevState) => prevState + 1);
-    setLogout(true);
     localStorage.removeItem("accessToken");
     setToken("");
     checkLogin(false);
     checkSignUp(false);
+    checkLogout(true);
     const currentPageUrl = window.location.href;
     const searchString = "checkout";
     const isSubstringPresent = currentPageUrl.indexOf(searchString) !== -1;
@@ -179,11 +176,6 @@ export default function MenuBarIcon({
           Logout
         </MenuItem>
       </Menu>
-      {/* {logout ||
-        !isLoginComplete ||
-        (!accessToken && (
-          <AuthSuccess msg="You have loged out!" type="error" show={show} />
-        ))} */}
     </div>
   );
 }
