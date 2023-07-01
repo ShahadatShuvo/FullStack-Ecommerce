@@ -33,7 +33,12 @@ export default function RootLayout({
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [isLoginComplete, setIsLoginComplete] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [check, setCheck] = useState(false);
+
+  const toggleTheme = () => {
+    setIsLightTheme((prevTheme: boolean) => !prevTheme);
+  };
 
   const setToken = (value: string) => {
     setAccessToken(value);
@@ -166,6 +171,8 @@ export default function RootLayout({
       <body className="text-black" suppressHydrationWarning={true}>
         <CartItemContext.Provider
           value={{
+            isLightTheme,
+            toggleTheme,
             isSignUpComplete,
             isLoginComplete,
             accessToken,
