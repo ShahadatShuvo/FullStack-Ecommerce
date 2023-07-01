@@ -20,7 +20,6 @@ function Navbar() {
 
   const { contextValue, accessToken, setToken, isLoginComplete } =
     useContext(CartItemContext);
-  console.log("accessToken", accessToken);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
@@ -38,7 +37,6 @@ function Navbar() {
 
   const handleHamburger = () => {
     setMobileOpen(!mobileOpen);
-    console.log("Hamburger Clicked");
   };
 
   return (

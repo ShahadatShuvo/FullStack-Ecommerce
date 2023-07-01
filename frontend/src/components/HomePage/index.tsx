@@ -13,7 +13,6 @@ import TrendingProducts from "./trendingProducts/TrendingProducts";
 
 function HomePage() {
   const { isLoginComplete, checkLogin } = useContext(CartItemContext);
-  console.log("isLoginComplete", isLoginComplete);
 
   return (
     <div>

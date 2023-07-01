@@ -41,7 +41,6 @@ export default function CartMenu() {
   );
 
   const handleCheckout = () => {
-    console.log("checkout");
     if (isLoginComplete || accessToken) {
       router.push("/checkout");
     } else {
