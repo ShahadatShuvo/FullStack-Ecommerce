@@ -17,6 +17,8 @@ interface ContextValue {
   accessToken: string;
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
+  isLightTheme: boolean;
+  toggleTheme: () => void;
   setToken: (value: string) => void;
   checkSignUp: (value: boolean) => void;
   checkLogin: (value: boolean) => void;
@@ -30,6 +32,8 @@ export const CartItemContext = createContext<ContextValue>({
   isSignUpComplete: false,
   accessToken: "",
   isLoginComplete: false,
+  isLightTheme: true,
+  toggleTheme: () => {},
   setToken: () => {},
   checkSignUp: () => {},
   checkLogin: () => {},

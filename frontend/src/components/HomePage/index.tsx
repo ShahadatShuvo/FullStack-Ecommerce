@@ -9,6 +9,7 @@ import Testimonial from "./Testimonial";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
 import AuthSuccess from "../Accounts/AuthSuccess";
+import TrendingProducts from "./trendingProducts/TrendingProducts";
 
 function HomePage() {
   const { isLoginComplete, checkLogin } = useContext(CartItemContext);
@@ -25,9 +26,10 @@ function HomePage() {
       )}
       <Navbar />
       <HeroSection />
+      <TrendingProducts />
+      <DiscoverMore />
       <NewArrival />
       <Steps />
-      <DiscoverMore />
       <Testimonial />
     </div>
   );
