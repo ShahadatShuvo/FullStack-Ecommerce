@@ -37,7 +37,8 @@ const validationSchema = yup.object({
 function LoginForm() {
   const router = useRouter();
 
-  const { isSignUpComplete, checkLogin } = useContext(CartItemContext);
+  const { isSignUpComplete, checkLogin, checkSignUp } =
+    useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -98,6 +99,7 @@ function LoginForm() {
     };
 
     handleSubmit(formData);
+    checkSignUp(false);
   };
 
   return (
@@ -107,7 +109,7 @@ function LoginForm() {
         <AuthSuccess
           msg="Signup Successfully Completed!"
           type="success"
-          show={1}
+          show={0}
         />
       )}
 

@@ -8,6 +8,7 @@ import Steps from "./Steps";
 import Testimonial from "./Testimonial";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
+import AuthSuccess from "../Accounts/AuthSuccess";
 
 function HomePage() {
   const { isLoginComplete, checkLogin } = useContext(CartItemContext);
@@ -15,6 +16,13 @@ function HomePage() {
 
   return (
     <div>
+      {isLoginComplete && (
+        <AuthSuccess
+          msg="Login Successfully Completed!"
+          type="success"
+          show={2}
+        />
+      )}
       <Navbar />
       <HeroSection />
       <NewArrival />
