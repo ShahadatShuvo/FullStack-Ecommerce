@@ -36,7 +36,6 @@ export default function MenuBarIcon({
   const { checkLogin, checkSignUp, accessToken, isLoginComplete, setToken } =
     useContext(CartItemContext);
   const [logout, setLogout] = React.useState(false);
-  console.log("logout", logout);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [show, setShow] = React.useState(0);
