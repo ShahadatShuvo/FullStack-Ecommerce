@@ -46,7 +46,13 @@ export default function AuthSuccess({
       >
         <Alert
           onClose={handleClose}
-          severity={type === "error" ? "error" : "success"}
+          severity={
+            type === "error"
+              ? "error"
+              : type === "warning"
+              ? "warning"
+              : "success"
+          }
           sx={{ width: "100%" }}
         >
           {msg}

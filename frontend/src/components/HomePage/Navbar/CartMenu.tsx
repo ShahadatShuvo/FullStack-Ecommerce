@@ -157,7 +157,7 @@ export default function CartMenu() {
 
             <div className="px-5 py-3 pt-5  flex justify-between gap-2">
               <p
-                className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold"
+                className="w-full px-6 py-2 rounded-full text-center drop-shadow-md hover:drop-shadow-xl bg-gray-800 hover:bg-gray-950 text-white font-semibold cursor-pointer"
                 onClick={handleCheckout}
               >
                 Check out

@@ -33,6 +33,7 @@ export default function RootLayout({
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [isLoginComplete, setIsLoginComplete] = useState(false);
+  const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [check, setCheck] = useState(false);
 
@@ -48,6 +49,9 @@ export default function RootLayout({
   };
   const checkLogin = (value: boolean) => {
     setIsLoginComplete(value);
+  };
+  const checkLogout = (value: boolean) => {
+    setIsLogoutComplete(value);
   };
 
   React.useEffect(() => {
@@ -176,6 +180,8 @@ export default function RootLayout({
             isSignUpComplete,
             isLoginComplete,
             accessToken,
+            isLogoutComplete,
+            checkLogout,
             setToken,
             checkSignUp,
             checkLogin,

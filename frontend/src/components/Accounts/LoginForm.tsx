@@ -37,7 +37,7 @@ const validationSchema = yup.object({
 function LoginForm() {
   const router = useRouter();
 
-  const { isSignUpComplete, checkLogin, checkSignUp } =
+  const { isSignUpComplete, checkLogin, checkSignUp, checkLogout } =
     useContext(CartItemContext);
 
   const formik = useFormik({
@@ -100,6 +100,7 @@ function LoginForm() {
 
     handleSubmit(formData);
     checkSignUp(false);
+    checkLogout(false);
   };
 
   return (
