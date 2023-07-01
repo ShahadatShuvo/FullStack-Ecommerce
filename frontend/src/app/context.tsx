@@ -14,8 +14,10 @@ interface ProductCardProps {
 
 interface ContextValue {
   contextValue: ProductCardProps[];
+  accessToken: string;
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
+  setToken: (value: string) => void;
   checkSignUp: (value: boolean) => void;
   checkLogin: (value: boolean) => void;
   increaseContextValue: (newValue: ProductCardProps) => void;
@@ -26,7 +28,9 @@ interface ContextValue {
 export const CartItemContext = createContext<ContextValue>({
   contextValue: [],
   isSignUpComplete: false,
+  accessToken: "",
   isLoginComplete: false,
+  setToken: () => {},
   checkSignUp: () => {},
   checkLogin: () => {},
   increaseContextValue: () => {},
