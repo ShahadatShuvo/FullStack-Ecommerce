@@ -1,23 +1,119 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
-import DateInput from "../SubComponent/Input/DateInput";
-import Input from "../SubComponent/Input/Input";
-import SelectInput from "../SubComponent/Input/SelectInput";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-const options = ["Male", "Female", "Other"];
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 
 function UpdateAccount() {
   return (
-    <div className="min-h-[75vh] flex justify-center items-center">
-      <div className="flex flex-col gap-3 ">
-        <Input labelName="Name" type="text" id="name-input" />
-        <Input labelName="Email" type="email" id="email-input" />
-        <DateInput />
-        <Input labelName="Addess" type="text" id="address-input" />
-        <SelectInput labelName="Select Gender" options={options} />
-        <Input labelName="Phone No" type="number" id="phone-input" />
-        <span className=" text-center"></span>
-        <Button variant="contained">Update</Button>
+    <div className="my-16 min-h-[55vh] flex justify-center items-center">
+      <div className="w-[50%] flex flex-col gap-3 ">
+        <div className="w-full flex gap-5">
+          <TextField
+            fullWidth
+            size="small"
+            id="outlined-basic"
+            label="First Name"
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            size="small"
+            id="outlined-basic"
+            label="Last Name"
+            variant="outlined"
+          />
+        </div>
+        <div className="w-full flex gap-5">
+          <TextField
+            fullWidth
+            size="small"
+            type="email"
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            size="small"
+            id="outlined-basic"
+            label="Phone Number"
+            variant="outlined"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <FormControl fullWidth size="small">
+            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Gender"
+              name="gender"
+            >
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+              <MenuItem value="other">Other</MenuItem>
+            </Select>
+            <p className="text-xs text-red-500 mt-1">
+              {/* {formik.touched.gender && formik.errors.gender}  */}
+            </p>
+          </FormControl>
+        </div>
+        <div className="w-full flex gap-5">
+          <TextField
+            fullWidth
+            size="small"
+            type="text"
+            id="outlined-basic"
+            label="Country"
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            size="small"
+            id="outlined-basic"
+            label="State"
+            variant="outlined"
+          />
+        </div>
+        <div className="w-full flex gap-5">
+          <TextField
+            fullWidth
+            size="small"
+            type="text"
+            id="outlined-basic"
+            label="City"
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            size="small"
+            id="outlined-basic"
+            label="Zip Code"
+            variant="outlined"
+          />
+        </div>
+        <div className="w-full flex gap-5">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DatePicker"]} sx={{ width: "100%" }}>
+              <DatePicker label="Date of Birth" sx={{ width: "100%" }} />
+            </DemoContainer>
+          </LocalizationProvider>
+        </div>
+        <div className="w-full flex gap-5">
+          <Button fullWidth variant="contained">
+            Update
+          </Button>
+        </div>
       </div>
     </div>
   );

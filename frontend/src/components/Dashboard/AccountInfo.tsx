@@ -4,6 +4,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 function AccountInfo() {
   const { userProfile } = useContext(CartItemContext);
 
@@ -12,7 +14,11 @@ function AccountInfo() {
       <div className="w-[60%] flex justify-between items-center">
         <div>
           <Image
-            src="/img/me.jpg"
+            src={
+              userProfile.image_url
+                ? `${apiUrl}${userProfile.image_url}`
+                : "/img/me.jpg"
+            }
             alt=""
             width={300}
             height={300}
