@@ -9,7 +9,34 @@ import { CartItemContext } from "@/app/context";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function AccountInfo() {
-  const { userProfile } = useContext(CartItemContext);
+  const { userProfile, accessToken, updateUserprofile, isLoginComplete } =
+    useContext(CartItemContext);
+
+  // Get user Profile data
+  React.useEffect(() => {
+    const userProfileData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/account/profile/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem("userData", JSON.stringify(data));
+          updateUserprofile(data);
+        } else {
+          console.log("Error fetching user profile data");
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    };
+    userProfileData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessToken, isLoginComplete]);
 
   return (
     <div className="min-h-[60vh] w-screen flex justify-center">

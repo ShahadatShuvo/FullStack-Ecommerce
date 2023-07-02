@@ -18,10 +18,13 @@ import {
   TextField,
 } from "@mui/material";
 
-function UpdateAccount() {
-  const { userProfile } = useContext(CartItemContext);
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  const [formdata, setFormdata] = React.useState({
+function UpdateAccount() {
+  const { userProfile, accessToken, updateUserprofile } =
+    useContext(CartItemContext);
+
+  const [formData, setformData] = React.useState({
     first_name: `${userProfile?.first_name}`,
     last_name: `${userProfile?.last_name}`,
     email: `${userProfile?.email}`,
@@ -31,22 +34,45 @@ function UpdateAccount() {
     state: `${userProfile?.state}`,
     city: `${userProfile?.city}`,
     zip_code: `${userProfile?.zip_code}`,
-    date_of_birth: `${userProfile?.date_of_birth}`,
+    date_of_birth: "1999-10-05",
   });
 
-  const handleFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormdata({ ...formdata, [e.target.name]: e.target.value });
+  const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleGenderSelect = (event: any) => {
-    setFormdata((prevState) => ({
+    setformData((prevState) => ({
       ...prevState,
       gender: event.target.value,
     }));
   };
 
   const handleFormSubmit = () => {
-    console.log(formdata);
+    const handleSubmit = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/account/profile/update/`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify(formData),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem("userData", JSON.stringify(data));
+          updateUserprofile(data);
+        } else {
+          const error = await response.json();
+          console.log(error);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    handleSubmit();
   };
 
   return (
@@ -60,8 +86,8 @@ function UpdateAccount() {
             label="First Name"
             variant="outlined"
             name="first_name"
-            onChange={handleFormData}
-            value={formdata.first_name}
+            onChange={handleformData}
+            value={formData.first_name}
           />
           <TextField
             fullWidth
@@ -70,8 +96,8 @@ function UpdateAccount() {
             label="Last Name"
             variant="outlined"
             name="last_name"
-            onChange={handleFormData}
-            value={formdata.last_name}
+            onChange={handleformData}
+            value={formData.last_name}
           />
         </div>
         <div className="w-full flex gap-5">
@@ -83,8 +109,8 @@ function UpdateAccount() {
             label="Email"
             variant="outlined"
             name="email"
-            onChange={handleFormData}
-            value={formdata.email}
+            onChange={handleformData}
+            value={formData.email}
           />
           <TextField
             fullWidth
@@ -93,8 +119,8 @@ function UpdateAccount() {
             label="Phone Number"
             variant="outlined"
             name="phone_number"
-            onChange={handleFormData}
-            value={formdata.phone_number}
+            onChange={handleformData}
+            value={formData.phone_number}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -104,10 +130,10 @@ function UpdateAccount() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Gender"
-              value={formdata.gender}
+              value={formData.gender}
               onChange={handleGenderSelect}
             >
-              <NativeSelect defaultValue={formdata.gender} />
+              <NativeSelect defaultValue={formData.gender} />
               <MenuItem value="male">Male</MenuItem>
               <MenuItem value="female">Female</MenuItem>
               <MenuItem value="other">Other</MenuItem>
@@ -123,8 +149,8 @@ function UpdateAccount() {
             label="Country"
             variant="outlined"
             name="country"
-            onChange={handleFormData}
-            value={formdata.country}
+            onChange={handleformData}
+            value={formData.country}
           />
           <TextField
             fullWidth
@@ -133,8 +159,8 @@ function UpdateAccount() {
             label="State"
             variant="outlined"
             name="state"
-            onChange={handleFormData}
-            value={formdata.state}
+            onChange={handleformData}
+            value={formData.state}
           />
         </div>
         <div className="w-full flex gap-5">
@@ -146,8 +172,8 @@ function UpdateAccount() {
             label="City"
             variant="outlined"
             name="city"
-            onChange={handleFormData}
-            value={formdata.city}
+            onChange={handleformData}
+            value={formData.city}
           />
           <TextField
             fullWidth
@@ -156,8 +182,8 @@ function UpdateAccount() {
             label="Zip Code"
             variant="outlined"
             name="zip_code"
-            onChange={handleFormData}
-            value={formdata.zip_code}
+            onChange={handleformData}
+            value={formData.zip_code}
           />
         </div>
         <div className="w-full flex gap-5">
