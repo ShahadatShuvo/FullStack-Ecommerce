@@ -85,8 +85,6 @@ export default function MenuBarIcon({
     setAnchorEl(null);
   };
 
-  console.log("image url", userProfile.image_url);
-
   // Get user Profile data
   React.useEffect(() => {
     const userProdileData = async () => {
