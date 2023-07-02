@@ -3,7 +3,7 @@
 import "./globals.css";
 import Footer from "@/components/HomePage/Footer";
 import { CartItemContext } from "./context";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ProductCardProps, initialUserDetail } from "../../interfaces";
 
 const metadata = {
@@ -21,6 +21,15 @@ export default function RootLayout({
   // Function to update the context value
   const [contextValue, setContextValue] = useState([]);
   const [userProfile, setUserProfile] = useState(initialUserDetail);
+
+  useEffect(() => {
+    // Check if localStorage is available before accessing it
+    const userData = localStorage.getItem("userData");
+    if (userData) {
+      setUserProfile(JSON.parse(userData));
+    }
+  }, []);
+
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState(
     typeof localStorage !== "undefined"
@@ -31,8 +40,6 @@ export default function RootLayout({
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [check, setCheck] = useState(false);
-
-  console.log("user profile", userProfile);
 
   const toggleTheme = () => {
     setIsLightTheme((prevTheme: boolean) => !prevTheme);
