@@ -23,7 +23,9 @@ export default function RootLayout({
   const [userProfile, setUserProfile] = useState(initialUserDetail);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState(
-    localStorage.getItem("accessToken") || ""
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("accessToken") || ""
+      : ""
   );
   const [isLoginComplete, setIsLoginComplete] = useState(false);
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
