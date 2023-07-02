@@ -30,7 +30,6 @@ export default function RootLayout({
     }
   }, []);
 
-  console.log("user profile **", userProfile);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState(
     typeof localStorage !== "undefined"
@@ -41,8 +40,6 @@ export default function RootLayout({
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [check, setCheck] = useState(false);
-
-  console.log("user profile", userProfile);
 
   const toggleTheme = () => {
     setIsLightTheme((prevTheme: boolean) => !prevTheme);
