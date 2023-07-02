@@ -68,10 +68,17 @@ export default function CartViewDialogue(props: ProductCardProps) {
     <div>
       <Button
         onClick={handleClickOpen}
-        className="text-xs font-semibold py-1 rounded-full bg-white hover:bg-gray-50 flex justify-center items-center drop-shadow-md hover:drop-shadow-xl"
+        sx={{
+          ":hover": {
+            backgroundColor: "#dbeafe",
+          },
+          ":active": {
+            backgroundColor: "#bfdbfe",
+          },
+        }}
       >
         <FullscreenOutlinedIcon />
-        <span className="">Quick View</span>
+        <span>Quick View</span>
       </Button>
 
       <BootstrapDialog

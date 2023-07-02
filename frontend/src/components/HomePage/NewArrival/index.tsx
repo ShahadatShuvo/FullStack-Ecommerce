@@ -86,7 +86,7 @@ function NewArrival() {
       stock={product.stock}
       image_url={
         product.image_url[0] === "/"
-          ? `http://127.0.0.1:8000${product.image_url}`
+          ? `${apiUrl}${product.image_url}`
           : product.image_url
       }
     />

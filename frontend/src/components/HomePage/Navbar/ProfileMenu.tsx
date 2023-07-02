@@ -54,6 +54,8 @@ export default function MenuBarIcon({
     setAnchorEl(null);
   };
 
+  console.log("image url", userProfile.image_url);
+
   // Get user Profile data
   React.useEffect(() => {
     const userProdileData = async () => {
@@ -152,7 +154,12 @@ export default function MenuBarIcon({
           <div className="w-full flex justify-between">
             <div className="mr-2">
               <Image
-                src="/img/me.jpg"
+                // src="/img/me.jpg"
+                src={
+                  userProfile.image_url
+                    ? `${apiUrl}${userProfile.image_url}`
+                    : "/img/me.jpg"
+                }
                 alt="shopbag"
                 width={45}
                 height={45}
