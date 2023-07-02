@@ -100,9 +100,8 @@ export default function MenuBarIcon({
         });
         if (response.ok) {
           const data = await response.json();
-          // setUserProfile(data);
+          localStorage.setItem("userData", JSON.stringify(data));
           updateUserprofile(data);
-          console.log("user profile data", data);
         } else {
           console.log("Error fetching user profile data");
         }

@@ -1,3 +1,5 @@
+"use cleint";
+
 import React from "react";
 import Button from "@mui/material/Button";
 import Input from "../SubComponent/Input/Input";

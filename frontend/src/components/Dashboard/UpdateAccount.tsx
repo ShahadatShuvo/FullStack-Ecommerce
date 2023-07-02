@@ -45,6 +45,10 @@ function UpdateAccount() {
     }));
   };
 
+  const handleFormSubmit = () => {
+    console.log(formdata);
+  };
+
   return (
     <div className="my-16 min-h-[55vh] flex justify-center items-center">
       <div className="w-[50%] flex flex-col gap-3 ">
@@ -108,9 +112,6 @@ function UpdateAccount() {
               <MenuItem value="female">Female</MenuItem>
               <MenuItem value="other">Other</MenuItem>
             </Select>
-            <p className="text-xs text-red-500 mt-1">
-              {/* {formik.touched.gender && formik.errors.gender}  */}
-            </p>
           </FormControl>
         </div>
         <div className="w-full flex gap-5">
@@ -167,7 +168,7 @@ function UpdateAccount() {
           </LocalizationProvider>
         </div>
         <div className="w-full flex gap-5 bg-black rounded-md">
-          <Button fullWidth variant="contained">
+          <Button fullWidth variant="contained" onClick={handleFormSubmit}>
             Update
           </Button>
         </div>
