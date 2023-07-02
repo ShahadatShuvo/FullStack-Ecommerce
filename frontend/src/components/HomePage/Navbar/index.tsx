@@ -19,13 +19,8 @@ import AuthSuccess from "@/components/Accounts/AuthSuccess";
 function Navbar() {
   const router = useRouter();
 
-  const {
-    contextValue,
-    accessToken,
-    setToken,
-    isLoginComplete,
-    isLogoutComplete,
-  } = useContext(CartItemContext);
+  const { contextValue, accessToken, isLoginComplete, isLogoutComplete } =
+    useContext(CartItemContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
