@@ -21,8 +21,10 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
-import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import { useRouter } from "next/navigation";
+import { initialUserDetail } from "../../../../interfaces";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function MenuBarIcon({
   openHeadline,
@@ -33,8 +35,16 @@ export default function MenuBarIcon({
 }) {
   const router = useRouter();
 
-  const { checkLogin, checkSignUp, accessToken, checkLogout, setToken } =
-    useContext(CartItemContext);
+  const {
+    isLoginComplete,
+    checkLogin,
+    checkSignUp,
+    accessToken,
+    checkLogout,
+    updateUserprofile,
+    setToken,
+    userProfile,
+  } = useContext(CartItemContext);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -44,8 +54,36 @@ export default function MenuBarIcon({
     setAnchorEl(null);
   };
 
+  // Get user Profile data
+  React.useEffect(() => {
+    const userProdileData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/account/profile/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          // setUserProfile(data);
+          updateUserprofile(data);
+          console.log("user profile data", data);
+        } else {
+          console.log("Error fetching user profile data");
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    };
+    userProdileData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessToken, isLoginComplete]);
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
+    updateUserprofile(initialUserDetail);
     setToken("");
     checkLogin(false);
     checkSignUp(false);
@@ -121,9 +159,17 @@ export default function MenuBarIcon({
                 className="rounded-full"
               />
             </div>
-            <div>
-              <p className="text-lg font-semibold">{fullName}</p>
-              <p className="text-sm">Cumilla, Bangladesh</p>
+            <div className="w-[70%] flex flex-col items-start ">
+              <p className="text-lg font-semibold">
+                {userProfile.first_name
+                  ? `${userProfile.first_name}, ${userProfile.last_name}`
+                  : "Unknown User"}
+              </p>
+              <p className="text-sm">
+                {userProfile.country
+                  ? `${userProfile.city} | ${userProfile.country}`
+                  : "Unknown Location"}
+              </p>
             </div>
           </div>
         </MenuItem>

@@ -1,19 +1,15 @@
 // React useContext decleared here
 
 import { createContext } from "react";
-
-interface ProductCardProps {
-  id: number | string;
-  title: string;
-  description: string;
-  price: number;
-  stock: number;
-  qty: number;
-  image_url: string;
-}
+import {
+  ProductCardProps,
+  UserDetailInterface,
+  initialUserDetail,
+} from "../../interfaces";
 
 interface ContextValue {
   contextValue: ProductCardProps[];
+  userProfile: UserDetailInterface;
   accessToken: string;
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
@@ -24,6 +20,7 @@ interface ContextValue {
   checkSignUp: (value: boolean) => void;
   checkLogin: (value: boolean) => void;
   checkLogout: (value: boolean) => void;
+  updateUserprofile: (newValue: UserDetailInterface) => void;
   increaseContextValue: (newValue: ProductCardProps) => void;
   decreaseContextValue: (newValue: ProductCardProps) => void;
   deleteContextValue: (newValue: ProductCardProps) => void;
@@ -31,6 +28,7 @@ interface ContextValue {
 
 export const CartItemContext = createContext<ContextValue>({
   contextValue: [],
+  userProfile: initialUserDetail,
   isSignUpComplete: false,
   accessToken: "",
   isLoginComplete: false,
@@ -41,6 +39,7 @@ export const CartItemContext = createContext<ContextValue>({
   checkSignUp: () => {},
   checkLogin: () => {},
   checkLogout: () => {},
+  updateUserprofile: () => {},
   increaseContextValue: () => {},
   decreaseContextValue: () => {},
   deleteContextValue: () => {},
