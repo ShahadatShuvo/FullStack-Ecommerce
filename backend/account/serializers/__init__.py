@@ -3,3 +3,4 @@ from .userLoginSerializer import UserLoginSerializer
 from .userprofileSerializer import UserProfileSerializer
 from .userChangePasswordSerializer import UserChangePasswordSerializer
 from .userPasswordResetSerializer import *
+from .userProfileUpdateSerializer import UpdateUserProfileSerializer
