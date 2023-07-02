@@ -1,21 +1,11 @@
 "use client";
 
-import Navbar from "@/components/HomePage/Navbar";
 import "./globals.css";
 import Footer from "@/components/HomePage/Footer";
 import { CartItemContext } from "./context";
 import React, { useState } from "react";
-import { set } from "date-fns";
+import { ProductCardProps, initialUserDetail } from "../../interfaces";
 
-interface ProductCardProps {
-  id: number | string;
-  title: string;
-  description: string;
-  price: number;
-  stock: number;
-  qty: number;
-  image_url: string;
-}
 const metadata = {
   title: "FullStack Ecommerce",
   description: "A fullstack ecommerce application built with React and Django",
@@ -30,6 +20,7 @@ export default function RootLayout({
 }) {
   // Function to update the context value
   const [contextValue, setContextValue] = useState([]);
+  const [userProfile, setUserProfile] = useState(initialUserDetail);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [isLoginComplete, setIsLoginComplete] = useState(false);
@@ -175,6 +166,7 @@ export default function RootLayout({
       <body className="text-black" suppressHydrationWarning={true}>
         <CartItemContext.Provider
           value={{
+            userProfile,
             isLightTheme,
             toggleTheme,
             isSignUpComplete,
