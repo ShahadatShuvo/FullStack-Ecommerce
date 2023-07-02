@@ -9,7 +9,11 @@ function ChangePassword() {
         <Input labelName="Current password" type="text" id="name-input" />
         <Input labelName="New password" type="text" id="name-input" />
         <Input labelName="Confirm password" type="text" id="name-input" />
-        <Button variant="contained">Update</Button>
+        <div className="bg-black rounded-md">
+          <Button fullWidth variant="contained">
+            Update
+          </Button>
+        </div>
       </div>
     </div>
   );
