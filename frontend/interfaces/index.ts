@@ -19,6 +19,16 @@ export interface ProductCardProps {
   image_url: string;
 }
 
+export const demoProductCard: ProductCardProps = {
+  id: 1,
+  title: "Demo Product",
+  description: "Demo Product Description",
+  price: 100,
+  stock: 10,
+  qty: 1,
+  image_url: "/img/cart/sshoe.png",
+};
+
 export interface UserDetailInterface {
   email: string;
   first_name: string;

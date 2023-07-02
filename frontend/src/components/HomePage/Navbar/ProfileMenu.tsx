@@ -98,7 +98,6 @@ export default function MenuBarIcon({
     }
   };
 
-  let fullName = "Shahadat Shuvo";
   return (
     <div>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -111,7 +110,18 @@ export default function MenuBarIcon({
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <AccountCircleIcon fontSize="large" />
+            {userProfile.image_url ? (
+              <Avatar
+                alt="Remy Sharp"
+                src={
+                  userProfile.image_url
+                    ? `${apiUrl}${userProfile.image_url}`
+                    : "/img/me.jpg"
+                }
+              />
+            ) : (
+              <AccountCircleIcon fontSize="large" />
+            )}
           </IconButton>
         </Tooltip>
       </Box>
@@ -158,7 +168,7 @@ export default function MenuBarIcon({
                 src={
                   userProfile.image_url
                     ? `${apiUrl}${userProfile.image_url}`
-                    : "/img/me.jpg"
+                    : "/img/icon.png"
                 }
                 alt="shopbag"
                 width={45}
@@ -181,7 +191,7 @@ export default function MenuBarIcon({
           </div>
         </MenuItem>
         <Divider />
-        <Link href="/account">
+        <Link href="/dashboard">
           <MenuItem onClick={handleClose}>
             <Avatar /> My account
           </MenuItem>
