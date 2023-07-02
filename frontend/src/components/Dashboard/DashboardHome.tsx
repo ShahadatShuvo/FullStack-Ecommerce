@@ -7,12 +7,16 @@ import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import Image from "next/image";
 import { Avatar } from "@mui/material";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/context";
 import Link from "next/link";
 import AccountInfo from "./AccountInfo";
 import UpdateAccount from "./UpdateAccount";
 import SaveLists from "./SaveLists";
 import MyOrder from "./MyOrder";
 import ChangePassword from "./ChangePassword";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -44,6 +48,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function DashboardHome() {
+  const { userProfile } = useContext(CartItemContext);
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -81,7 +87,14 @@ export default function DashboardHome() {
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             variant="dot"
           >
-            <Avatar alt="Remy Sharp" src="/img/me.jpg" />
+            <Avatar
+              alt="Remy Sharp"
+              src={
+                userProfile.image_url
+                  ? `${apiUrl}${userProfile.image_url}`
+                  : "/img/me.jpg"
+              }
+            />
           </StyledBadge>
         </div>
       </div>
