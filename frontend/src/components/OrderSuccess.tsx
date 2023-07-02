@@ -41,8 +41,15 @@ function MyApp({
     <React.Fragment>
       {type === "btn" ? (
         <Button
-          className="text-xs font-semibold py-1 rounded-full bg-black hover:bg-gray-600 text-white flex justify-center items-center drop-shadow-md hover:drop-shadow-xl"
           onClick={handleClickVariant("success")}
+          sx={{
+            ":hover": {
+              backgroundColor: "#dbeafe",
+            },
+            ":active": {
+              backgroundColor: "#bfdbfe",
+            },
+          }}
         >
           <NextWeekOutlinedIcon />
           <span className="ml-1">Add to bag</span>
