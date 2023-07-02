@@ -40,6 +40,7 @@ export interface UserDetailInterface {
   city: string;
   zip_code: string;
   date_of_birth: string;
+  created_at: string;
   image_url: string | null;
 }
 
@@ -54,5 +55,6 @@ export const initialUserDetail: UserDetailInterface = {
   city: "",
   zip_code: "",
   date_of_birth: "",
+  created_at: "",
   image_url: null,
 };
