@@ -1,4 +1,4 @@
-import DashboardHome from "@/components/Accounts/DashboardHome";
+import DashboardHome from "@/components/Dashboard/DashboardHome";
 
 function page() {
   return (
