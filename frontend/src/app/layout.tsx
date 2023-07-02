@@ -22,14 +22,22 @@ export default function RootLayout({
   const [contextValue, setContextValue] = useState([]);
   const [userProfile, setUserProfile] = useState(initialUserDetail);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
-  const [accessToken, setAccessToken] = useState("");
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem("accessToken") || ""
+  );
   const [isLoginComplete, setIsLoginComplete] = useState(false);
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [check, setCheck] = useState(false);
 
+  console.log("user profile", userProfile);
+
   const toggleTheme = () => {
     setIsLightTheme((prevTheme: boolean) => !prevTheme);
+  };
+
+  const updateUserprofile = (data: any) => {
+    setUserProfile(data);
   };
 
   const setToken = (value: string) => {
@@ -167,6 +175,7 @@ export default function RootLayout({
         <CartItemContext.Provider
           value={{
             userProfile,
+            updateUserprofile,
             isLightTheme,
             toggleTheme,
             isSignUpComplete,

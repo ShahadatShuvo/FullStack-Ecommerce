@@ -20,6 +20,7 @@ interface ContextValue {
   checkSignUp: (value: boolean) => void;
   checkLogin: (value: boolean) => void;
   checkLogout: (value: boolean) => void;
+  updateUserprofile: (newValue: UserDetailInterface) => void;
   increaseContextValue: (newValue: ProductCardProps) => void;
   decreaseContextValue: (newValue: ProductCardProps) => void;
   deleteContextValue: (newValue: ProductCardProps) => void;
@@ -38,6 +39,7 @@ export const CartItemContext = createContext<ContextValue>({
   checkSignUp: () => {},
   checkLogin: () => {},
   checkLogout: () => {},
+  updateUserprofile: () => {},
   increaseContextValue: () => {},
   decreaseContextValue: () => {},
   deleteContextValue: () => {},

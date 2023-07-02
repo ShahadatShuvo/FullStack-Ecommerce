@@ -77,13 +77,13 @@ function LoginForm() {
           },
           body: JSON.stringify(formData),
         });
-
         if (response.ok) {
           const data = await response.json();
           // Store the access token in localStorage or any other state management solution
           localStorage.setItem("accessToken", data.token.access);
           checkLogin(true);
-          router.push("/");
+          // router.push("/");
+          window.location.href = "/";
         } else if (response.status === 404) {
           const errorData = await response.json();
           setErrorMsg(errorData.errors.non_field_errors[0]);
