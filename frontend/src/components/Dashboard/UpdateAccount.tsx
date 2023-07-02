@@ -17,12 +17,16 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import AuthSuccess from "../Accounts/AuthSuccess";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function UpdateAccount() {
   const { userProfile, accessToken, updateUserprofile } =
     useContext(CartItemContext);
+
+  const [snackbar, setSnackbar] = React.useState(0);
+  const [show, setShow] = React.useState(false);
 
   const [formData, setformData] = React.useState({
     first_name: `${userProfile?.first_name}`,
@@ -39,6 +43,7 @@ function UpdateAccount() {
 
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
+    setShow(false);
   };
 
   const handleGenderSelect = (event: any) => {
@@ -46,6 +51,7 @@ function UpdateAccount() {
       ...prevState,
       gender: event.target.value,
     }));
+    setShow(false);
   };
 
   const handleFormSubmit = () => {
@@ -73,10 +79,21 @@ function UpdateAccount() {
     };
 
     handleSubmit();
+    setSnackbar((prevData) => prevData + 1);
+    setShow(true);
   };
 
   return (
     <div className="my-16 min-h-[55vh] flex justify-center items-center">
+      {show && (
+        <div>
+          <AuthSuccess
+            msg="Profile Successfully Updated!"
+            type="success"
+            show={snackbar}
+          />
+        </div>
+      )}
       <div className="w-[50%] flex flex-col gap-3 ">
         <div className="w-full flex gap-5">
           <TextField
