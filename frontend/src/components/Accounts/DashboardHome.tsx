@@ -69,14 +69,12 @@ export default function DashboardHome() {
         </div>
 
         <div>
-          <Box sx={{ width: "100%" }}>
-            <Tabs value={value} onChange={handleChange} centered>
-              <Tab label="Account info" />
-              <Tab label="Save lists" />
-              <Tab label="My order" />
-              <Tab label="Change password" />
-            </Tabs>
-          </Box>
+          <Tabs value={value} onChange={handleChange} centered>
+            <Tab label="Account info" />
+            <Tab label="Save lists" />
+            <Tab label="My order" />
+            <Tab label="Change password" />
+          </Tabs>
         </div>
 
         <div>
@@ -89,16 +87,6 @@ export default function DashboardHome() {
           </StyledBadge>
         </div>
       </div>
-      {/* <div className=" border-y-2 border-gray-100  border-dotted my-4">
-        <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-          <Tabs value={value} onChange={handleChange} centered>
-            <Tab label="Account info" />
-            <Tab label="Save lists" />
-            <Tab label="My order" />
-            <Tab label="Change password" />
-          </Tabs>
-        </Box>
-      </div> */}
 
       <div className=" w-[100%] my-8 ">
         {value === 0 && (
