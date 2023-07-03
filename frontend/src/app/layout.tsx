@@ -32,7 +32,7 @@ export default function RootLayout({
 
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [accessToken, setAccessToken] = useState(
-    localStorage.getItem("accessToken")
+    typeof localStorage !== "undefined"
       ? localStorage.getItem("accessToken") || ""
       : ""
   );
