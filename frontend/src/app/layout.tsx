@@ -36,7 +36,9 @@ export default function RootLayout({
       ? localStorage.getItem("accessToken") || ""
       : ""
   );
-  const [isLoginComplete, setIsLoginComplete] = useState(false);
+  const [isLoginComplete, setIsLoginComplete] = useState(
+    localStorage.getItem("accessToken") ? true : false
+  );
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [check, setCheck] = useState(false);
@@ -55,7 +57,7 @@ export default function RootLayout({
   const checkSignUp = (value: boolean) => {
     setIsSignUpComplete(value);
   };
-  const checkLogin = (value: boolean) => {
+  const checkLogin = (value: any) => {
     setIsLoginComplete(value);
   };
   const checkLogout = (value: boolean) => {
