@@ -13,7 +13,7 @@ const style = {
   p: 4,
 };
 
-function OrderSuccess() {
+function OrderConfirmed() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -67,4 +67,4 @@ function OrderSuccess() {
   );
 }
 
-export default OrderSuccess;
+export default OrderConfirmed;

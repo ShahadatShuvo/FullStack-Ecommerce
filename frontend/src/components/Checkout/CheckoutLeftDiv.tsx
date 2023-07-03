@@ -20,11 +20,6 @@ import { CartItemContext } from "@/app/context";
 function CheckoutLeftDiv() {
   const { userProfile } = useContext(CartItemContext);
 
-  const [checked, setChecked] = React.useState(true);
-
-  const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-  };
   const [autoFill, setAutoFill] = React.useState(false);
 
   const [formData, setformData] = React.useState({
@@ -32,16 +27,15 @@ function CheckoutLeftDiv() {
     last_name: "",
     email: "",
     phone_number: "",
-    gender: "",
     country: "",
     state: "",
     city: "",
     zip_code: "",
-    date_of_birth: "YYYY-MM-DD",
-    detail: "Please enter your address in detail if needed.",
+    address_type: "home",
+    detail: "",
   });
 
-  console.log("autoFill", autoFill);
+  console.log("formData", JSON.stringify(formData));
 
   const handleAutofill = () => {
     setAutoFill(!autoFill);
@@ -52,12 +46,10 @@ function CheckoutLeftDiv() {
         last_name: `${userProfile?.last_name}`,
         email: `${userProfile?.email}`,
         phone_number: `${userProfile?.phone_number}`,
-        gender: `${userProfile?.gender}`,
         country: `${userProfile?.country}`,
         state: `${userProfile?.state}`,
         city: `${userProfile?.city}`,
         zip_code: `${userProfile?.zip_code}`,
-        date_of_birth: "1999-10-05",
       }));
     } else {
       setformData((prevDate) => ({
@@ -66,12 +58,10 @@ function CheckoutLeftDiv() {
         last_name: "",
         email: "",
         phone_number: "",
-        gender: "",
         country: "",
         state: "",
         city: "",
         zip_code: "",
-        date_of_birth: "YYYY-MM-DD",
       }));
     }
   };
@@ -120,7 +110,7 @@ function CheckoutLeftDiv() {
 
         <div className="border-t  border-slate-200  px-6 py-7 space-y-4 sm:space-y-6 block uppercase">
           <p className="text-center font-semibold  rounded-xl capitalize">
-            Change Billing Address
+            Change Shipping Address
           </p>
 
           <div className="capitalize select-none">
@@ -249,8 +239,9 @@ function CheckoutLeftDiv() {
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group"
+                name="address_type"
+                value={formData.address_type}
+                onChange={handleformData}
               >
                 <FormControlLabel
                   value="home"

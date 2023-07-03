@@ -39,7 +39,9 @@ export default function RootLayout({
 
   console.log("accessToken11", accessToken);
   const [isLoginComplete, setIsLoginComplete] = useState(
-    localStorage.getItem("accessToken") ? true : false
+    typeof localStorage !== "undefined" && localStorage.getItem("accessToken")
+      ? true
+      : false
   );
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);

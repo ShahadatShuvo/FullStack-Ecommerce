@@ -7,11 +7,7 @@ function Footer() {
   let currentYear = new Date().getFullYear();
   return (
     <div>
-      <AuthSuccess
-        msg="Login Successfully Completed!"
-        type="success"
-        show={0}
-      />
+      <AuthSuccess msg="You are now Logged In!" type="success" show={0} />
 
       <section className="bg-white">
         <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
