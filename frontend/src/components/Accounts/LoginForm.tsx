@@ -37,7 +37,7 @@ const validationSchema = yup.object({
 function LoginForm() {
   const router = useRouter();
 
-  const { isSignUpComplete, checkLogin, checkSignUp, checkLogout } =
+  const { isSignUpComplete, checkLogin, checkSignUp, checkLogout, setToken } =
     useContext(CartItemContext);
 
   const formik = useFormik({
@@ -81,6 +81,7 @@ function LoginForm() {
           const data = await response.json();
           // Store the access token in localStorage or any other state management solution
           localStorage.setItem("accessToken", data.token.access);
+          setToken(data.token.access);
           checkLogin(true);
           // router.push("/");
           window.location.href = "/";
