@@ -46,7 +46,9 @@ function AccountInfo() {
             src={
               userProfile.image_url
                 ? `${apiUrl}${userProfile.image_url}`
-                : "/img/me.jpg"
+                : userProfile.gender === "male"
+                ? "/img/male.svg"
+                : "/img/female.svg"
             }
             alt=""
             width={300}
@@ -56,11 +58,27 @@ function AccountInfo() {
         </div>
         <div className="flex flex-col gap-2 font-semibold text-gray-600">
           <div className="flex ">
-            <p className="text-2xl font-medium">Shahadat Shuvo</p>
-            <p className="text-gray-400 text-xs mt-2 ml-2 font-medium">
-              <LocationOnIcon fontSize="small" />
-              {`${userProfile.city} | ${userProfile.country}`}
-            </p>
+            <div>
+              <p className="mb-5 text-md">Welcome to Dashboard ... </p>
+              <p className="text-2xl text-gray-400">
+                Hi{" "}
+                {userProfile.gender === "male"
+                  ? "Mr."
+                  : userProfile.gender === "female"
+                  ? "Mrs"
+                  : ""}
+              </p>
+              <div className="mt-[-24px] flex">
+                <p className="ml-20 text-2xl font-medium">{`${userProfile.first_name} ${userProfile.last_name}`}</p>
+                {userProfile.city ||
+                  (userProfile.country && (
+                    <p className="text-gray-400 text-xs mt-2 ml-2 font-medium">
+                      <LocationOnIcon fontSize="small" />
+                      {`${userProfile.city} | ${userProfile.country}`}
+                    </p>
+                  ))}
+              </div>
+            </div>
           </div>
           <div className="flex gap-16 mt-5">
             <div>
@@ -80,13 +98,17 @@ function AccountInfo() {
               <p>{`${userProfile.first_name}`}</p>
               <p>{`${userProfile.last_name}`}</p>
               <p>{`${userProfile.email}`}</p>
-              <p>{`${userProfile.phone_number}`}</p>
-              <p>{`${userProfile.gender}`}</p>
-              <p>{`${userProfile.country}`}</p>
-              <p>{`${userProfile.state}`}</p>
-              <p>{`${userProfile.city}`}</p>
-              <p>{`${userProfile.zip_code}`}</p>
-              <p>{`${userProfile.date_of_birth}`}</p>
+              <p>
+                {userProfile.phone_number ? userProfile.phone_number : "N/A"}
+              </p>
+              <p>{userProfile.gender ? userProfile.gender : "N/A"}</p>
+              <p>{userProfile.country ? userProfile.country : "N/A"}</p>
+              <p>{userProfile.state ? userProfile.state : "N/A"}</p>
+              <p>{userProfile.city ? userProfile.city : "N/A"}</p>
+              <p>{userProfile.zip_code ? userProfile.zip_code : "N/A"}</p>
+              <p>
+                {userProfile.date_of_birth ? userProfile.date_of_birth : "N/A"}
+              </p>
               <p>{`${userProfile.created_at}`}</p>
             </div>
           </div>
