@@ -92,7 +92,9 @@ export default function DashboardHome() {
               src={
                 userProfile.image_url
                   ? `${apiUrl}${userProfile.image_url}`
-                  : "/img/me.jpg"
+                  : userProfile.gender === "male"
+                  ? "/img/male.svg"
+                  : "/img/female.svg"
               }
             />
           </StyledBadge>
