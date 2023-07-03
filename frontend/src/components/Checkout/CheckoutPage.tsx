@@ -3,7 +3,7 @@
 import { SnackbarProvider } from "notistack";
 import CheckoutLeftDiv from "./CheckoutLeftDiv";
 import CheckoutRightDiv from "./CheckoutRightDiv";
-import OrderSuccess from "./OrderSuccess";
+import OrderConfirmed from "./OrderConfirmed";
 
 function CheckoutPage() {
   return (
@@ -30,7 +30,7 @@ function CheckoutPage() {
         <CheckoutRightDiv />
       </div>
       {/* End */}
-      <OrderSuccess />
+      <OrderConfirmed />
     </div>
   );
 }
