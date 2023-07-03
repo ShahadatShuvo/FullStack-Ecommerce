@@ -6,6 +6,7 @@ import ChaletIcon from "@mui/icons-material/Chalet";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import {
+  Checkbox,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -24,6 +25,7 @@ function CheckoutLeftDiv() {
   const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
+  const [autoFill, setAutoFill] = React.useState(false);
 
   const [formData, setformData] = React.useState({
     first_name: `${userProfile?.first_name}`,
@@ -38,6 +40,41 @@ function CheckoutLeftDiv() {
     date_of_birth: "1999-10-05",
     detail: "Please enter your address in detail if needed.",
   });
+
+  console.log("autoFill", autoFill);
+
+  const handleAutofill = () => {
+    setAutoFill(!autoFill);
+    if (autoFill) {
+      setformData((prevDate) => ({
+        ...prevDate,
+        first_name: `${userProfile?.first_name}`,
+        last_name: `${userProfile?.last_name}`,
+        email: `${userProfile?.email}`,
+        phone_number: `${userProfile?.phone_number}`,
+        gender: `${userProfile?.gender}`,
+        country: `${userProfile?.country}`,
+        state: `${userProfile?.state}`,
+        city: `${userProfile?.city}`,
+        zip_code: `${userProfile?.zip_code}`,
+        date_of_birth: "1999-10-05",
+      }));
+    } else {
+      setformData((prevDate) => ({
+        ...prevDate,
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone_number: "",
+        gender: "",
+        country: "",
+        state: "",
+        city: "",
+        zip_code: "",
+        date_of_birth: "YYYY-MM-DD",
+      }));
+    }
+  };
 
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
@@ -82,9 +119,16 @@ function CheckoutLeftDiv() {
         </div>
 
         <div className="border-t  border-slate-200  px-6 py-7 space-y-4 sm:space-y-6 block uppercase">
-          <p className="pb-5 text-center font-semibold  rounded-xl capitalize">
+          <p className="text-center font-semibold  rounded-xl capitalize">
             Change Billing Address
           </p>
+
+          <div className="capitalize select-none">
+            <FormControlLabel
+              control={<Checkbox size="small" onClick={handleAutofill} />}
+              label="Autofill"
+            />
+          </div>
 
           <div className="w-full flex justify-between gap-5">
             <div className="w-full flex gap-5">
