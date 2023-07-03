@@ -36,6 +36,7 @@ function CheckoutLeftDiv() {
     city: `${userProfile?.city}`,
     zip_code: `${userProfile?.zip_code}`,
     date_of_birth: "1999-10-05",
+    detail: "Please enter your address in detail if needed.",
   });
 
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -184,8 +185,10 @@ function CheckoutLeftDiv() {
               label="Detail Address"
               multiline
               rows={4}
-              value="Please enter your address in detail if needed."
               className="w-full"
+              name="detail"
+              onChange={handleformData}
+              value={formData.detail}
             />
           </div>
 
