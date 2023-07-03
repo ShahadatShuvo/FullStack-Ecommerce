@@ -21,6 +21,7 @@ function Navbar() {
 
   const { contextValue, accessToken, isLoginComplete, isLogoutComplete } =
     useContext(CartItemContext);
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
@@ -42,7 +43,14 @@ function Navbar() {
   return (
     <div>
       {isLogoutComplete && (
-        <AuthSuccess msg="You have loged out!" type="warning" show={1} />
+        <AuthSuccess msg="You have logged out!" type="warning" show={1} />
+      )}
+      {accessToken && (
+        <AuthSuccess
+          msg="You have successfully logged in!"
+          type="success"
+          show={1}
+        />
       )}
       <div>
         <Collapse in={openHeadline}>
