@@ -6,7 +6,6 @@ import ChaletIcon from "@mui/icons-material/Chalet";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import {
-  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -14,16 +13,44 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/context";
 
 function CheckoutLeftDiv() {
+  const { userProfile } = useContext(CartItemContext);
+
   const [checked, setChecked] = React.useState(true);
 
   const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
 
+  const [formData, setformData] = React.useState({
+    first_name: `${userProfile?.first_name}`,
+    last_name: `${userProfile?.last_name}`,
+    email: `${userProfile?.email}`,
+    phone_number: `${userProfile?.phone_number}`,
+    gender: `${userProfile?.gender}`,
+    country: `${userProfile?.country}`,
+    state: `${userProfile?.state}`,
+    city: `${userProfile?.city}`,
+    zip_code: `${userProfile?.zip_code}`,
+    date_of_birth: "1999-10-05",
+    detail: "Please enter your address in detail if needed.",
+  });
+
+  const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div className="space-y-10 w-[50%]">
+    <div className="space-y-5 w-[50%]">
+      <div>
+        <p className="text-center font-semibold p-3 border border-slate-200 rounded-xl">
+          Default Billing Address
+        </p>
+      </div>
+      {/* Contact Info */}
       <div className="p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center ">
         <AccountCircleOutlinedIcon className=" text-3xl" />
         <div className="ml-5 ">
@@ -32,8 +59,9 @@ function CheckoutLeftDiv() {
             <CheckOutlinedIcon />
           </p>
           <p className="text-black font-medium">
-            <span>Shahadat Hossain</span>
-            <span className="ml-4">+019 54677860</span>
+            <span>{`${userProfile.first_name} ${userProfile.last_name}`}</span>
+            <span className="ml-4">{userProfile.email}</span>
+            <span className="ml-4">{userProfile.phone_number}</span>
           </p>
         </div>
       </div>
@@ -48,50 +76,107 @@ function CheckoutLeftDiv() {
               <CheckOutlinedIcon />
             </p>
             <p className="text-black font-medium">
-              <span>Cumilla, Chittagong, Cumilla-3500</span>
+              <span>{`${userProfile.country}, ${userProfile.state}, ${userProfile.city} - ${userProfile.zip_code}`}</span>
             </p>
           </div>
         </div>
+
         <div className="border-t  border-slate-200  px-6 py-7 space-y-4 sm:space-y-6 block uppercase">
+          <p className="pb-5 text-center font-semibold  rounded-xl capitalize">
+            Change Billing Address
+          </p>
+
           <div className="w-full flex justify-between gap-5">
+            <div className="w-full flex gap-5">
+              <TextField
+                fullWidth
+                size="small"
+                id="outlined-basic"
+                label="First Name"
+                variant="outlined"
+                name="first_name"
+                onChange={handleformData}
+                value={formData.first_name}
+              />
+              <TextField
+                fullWidth
+                size="small"
+                id="outlined-basic"
+                label="Last Name"
+                variant="outlined"
+                name="last_name"
+                onChange={handleformData}
+                value={formData.last_name}
+              />
+            </div>
+          </div>
+          <div className="w-full flex gap-5">
             <TextField
+              fullWidth
+              size="small"
+              type="email"
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              name="email"
+              onChange={handleformData}
+              value={formData.email}
+            />
+            <TextField
+              fullWidth
               size="small"
               id="outlined-basic"
-              label="Full Name"
+              label="Phone Number"
               variant="outlined"
-              className="w-full"
+              name="phone_number"
+              onChange={handleformData}
+              value={formData.phone_number}
             />
           </div>
           <div className="w-full flex justify-between gap-5">
             <TextField
+              fullWidth
               size="small"
+              type="text"
               id="outlined-basic"
               label="Country"
               variant="outlined"
-              className="w-full"
+              name="country"
+              onChange={handleformData}
+              value={formData.country}
             />
             <TextField
+              fullWidth
               size="small"
               id="outlined-basic"
               label="State"
               variant="outlined"
-              className="w-full"
+              name="state"
+              onChange={handleformData}
+              value={formData.state}
             />
           </div>
           <div className="w-full flex justify-between gap-5">
             <TextField
+              fullWidth
               size="small"
+              type="text"
               id="outlined-basic"
               label="City"
               variant="outlined"
-              className="w-full"
+              name="city"
+              onChange={handleformData}
+              value={formData.city}
             />
             <TextField
+              fullWidth
               size="small"
               id="outlined-basic"
-              label="ZIP / Postal Code"
+              label="Zip Code"
               variant="outlined"
-              className="w-full"
+              name="zip_code"
+              onChange={handleformData}
+              value={formData.zip_code}
             />
           </div>
           <div className="w-full flex justify-between gap-5 pt-5">
@@ -100,8 +185,10 @@ function CheckoutLeftDiv() {
               label="Detail Address"
               multiline
               rows={4}
-              value="Please enter your address in detail if needed."
               className="w-full"
+              name="detail"
+              onChange={handleformData}
+              value={formData.detail}
             />
           </div>
 
@@ -140,21 +227,6 @@ function CheckoutLeftDiv() {
                 />
               </RadioGroup>
             </FormControl>
-          </div>
-
-          <div className="w-full flex gap-5 pt-6">
-            <Button
-              variant="contained"
-              className="mt-5 bg-black rounded-full w-[60%]"
-            >
-              Save and next to payment
-            </Button>
-            <Button
-              variant="contained"
-              className="mt-5 bg-black rounded-full hover:bg-red-600"
-            >
-              Cancel
-            </Button>
           </div>
         </div>
       </div>
