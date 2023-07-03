@@ -76,7 +76,6 @@ function ChangePassword() {
 
         if (response.ok) {
           const data = await response.json();
-          console.log("Success:", data);
           setAlert((prevState) => ({
             ...prevState,
             msg: data.msg,

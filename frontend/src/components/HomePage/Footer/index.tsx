@@ -1,10 +1,18 @@
+import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+
 function Footer() {
   let currentYear = new Date().getFullYear();
   return (
     <div>
+      <AuthSuccess
+        msg="Login Successfully Completed!"
+        type="success"
+        show={0}
+      />
+
       <section className="bg-white">
         <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <nav className="flex flex-wrap justify-center -mx-5 -my-2">

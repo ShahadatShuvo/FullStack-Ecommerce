@@ -45,13 +45,7 @@ function Navbar() {
       {isLogoutComplete && (
         <AuthSuccess msg="You have logged out!" type="warning" show={1} />
       )}
-      {accessToken && (
-        <AuthSuccess
-          msg="You have successfully logged in!"
-          type="success"
-          show={1}
-        />
-      )}
+
       <div>
         <Collapse in={openHeadline}>
           <Alert
