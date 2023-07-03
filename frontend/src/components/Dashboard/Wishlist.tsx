@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from "../ProductCard";
 import { demoProductCard } from "../../../interfaces";
 
-function Favourites() {
+function Wishlist() {
   return (
     <div className="py-24">
       <div className="flex flex-wrap justify-center items-center gap-5 px-16">
@@ -18,4 +18,4 @@ function Favourites() {
   );
 }
 
-export default Favourites;
+export default Wishlist;
