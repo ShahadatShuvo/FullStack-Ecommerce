@@ -28,16 +28,16 @@ function CheckoutLeftDiv() {
   const [autoFill, setAutoFill] = React.useState(false);
 
   const [formData, setformData] = React.useState({
-    first_name: `${userProfile?.first_name}`,
-    last_name: `${userProfile?.last_name}`,
-    email: `${userProfile?.email}`,
-    phone_number: `${userProfile?.phone_number}`,
-    gender: `${userProfile?.gender}`,
-    country: `${userProfile?.country}`,
-    state: `${userProfile?.state}`,
-    city: `${userProfile?.city}`,
-    zip_code: `${userProfile?.zip_code}`,
-    date_of_birth: "1999-10-05",
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    gender: "",
+    country: "",
+    state: "",
+    city: "",
+    zip_code: "",
+    date_of_birth: "YYYY-MM-DD",
     detail: "Please enter your address in detail if needed.",
   });
 
@@ -45,7 +45,7 @@ function CheckoutLeftDiv() {
 
   const handleAutofill = () => {
     setAutoFill(!autoFill);
-    if (autoFill) {
+    if (!autoFill) {
       setformData((prevDate) => ({
         ...prevDate,
         first_name: `${userProfile?.first_name}`,
@@ -125,7 +125,13 @@ function CheckoutLeftDiv() {
 
           <div className="capitalize select-none">
             <FormControlLabel
-              control={<Checkbox size="small" onClick={handleAutofill} />}
+              control={
+                <Checkbox
+                  size="small"
+                  checked={autoFill}
+                  onClick={handleAutofill}
+                />
+              }
               label="Autofill"
             />
           </div>
