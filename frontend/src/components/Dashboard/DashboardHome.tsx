@@ -12,9 +12,9 @@ import { CartItemContext } from "@/app/context";
 import Link from "next/link";
 import AccountInfo from "./AccountInfo";
 import UpdateAccount from "./UpdateAccount";
-import SaveLists from "./SaveLists";
 import MyOrder from "./MyOrder";
 import ChangePassword from "./ChangePassword";
+import Favourites from "./Favourites";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -75,8 +75,8 @@ export default function DashboardHome() {
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Account info" />
             <Tab label="Update Account" />
-            <Tab label="Save lists" />
-            <Tab label="My order" />
+            <Tab label="Favourites" />
+            <Tab label="My orders" />
             <Tab label="Change password" />
           </Tabs>
         </div>
@@ -102,7 +102,7 @@ export default function DashboardHome() {
       <div className=" w-[100%]">
         {value === 0 && <AccountInfo />}
         {value === 1 && <UpdateAccount />}
-        {value === 2 && <SaveLists />}
+        {value === 2 && <Favourites />}
         {value === 3 && <MyOrder />}
         {value === 4 && <ChangePassword />}
       </div>
