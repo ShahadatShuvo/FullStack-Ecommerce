@@ -34,7 +34,11 @@ function AccountInfo() {
         console.error("Error parsing JSON:", error);
       }
     };
-    userProfileData();
+    if (accessToken) {
+      userProfileData();
+    } else {
+      return;
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken, isLoginComplete]);
 
