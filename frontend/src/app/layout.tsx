@@ -27,7 +27,6 @@ export default function RootLayout({
   const [shippingAddress, setShippingAddress] = useState(
     initialShippingAddress
   );
-  console.log("shippingAddress", shippingAddress);
   const [userProfile, setUserProfile] = useState(initialUserDetail);
 
   useEffect(() => {
@@ -45,7 +44,6 @@ export default function RootLayout({
       : ""
   );
 
-  console.log("accessToken11", accessToken);
   const [isLoginComplete, setIsLoginComplete] = useState(
     typeof localStorage !== "undefined" && localStorage.getItem("accessToken")
       ? true

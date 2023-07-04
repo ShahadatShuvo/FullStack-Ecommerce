@@ -20,6 +20,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function CheckoutRightDiv() {
   const {
+    shippingAddress,
     contextValue,
     increaseContextValue,
     decreaseContextValue,
@@ -35,6 +36,7 @@ function CheckoutRightDiv() {
 
   console.log("ordered products:", JSON.stringify(contextValue));
   console.log("Cupon:", JSON.stringify(cupon));
+  console.log("shippingAddress:", shippingAddress);
 
   const [userCupon, setUserCupon] = React.useState("");
 
