@@ -5,6 +5,8 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CartItemContext } from "@/app/context";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import OrderConfirmed from "./OrderConfirmed";
+import ProgressBtn from "./ProgressBtn";
 
 interface CuponInterface {
   id: number;
@@ -153,6 +155,11 @@ function CheckoutRightDiv() {
       </div>
     );
   });
+  const [showProgress, setShowProgress] = React.useState(false);
+  const handleOrderConfirm = () => {
+    console.log("Order Confirmed");
+    setShowProgress(true);
+  };
   return (
     <div className="w-[50%] border border-slate-200  rounded-xl p-5">
       <div className="rounded-lg bg-white">{allCartItems}</div>
@@ -205,9 +212,22 @@ function CheckoutRightDiv() {
             <p className="text-blue-400">{orderTotal.toFixed(2)} TK</p>
           </div>
 
-          <Button variant="contained" className="mt-5 bg-black rounded-full">
-            Confirm Order
-          </Button>
+          {/* <OrderConfirmed />  */}
+          {!showProgress ? (
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={handleOrderConfirm}
+              className="mt-5 bg-black rounded-full"
+            >
+              Confirm Order
+            </Button>
+          ) : (
+            <div className="flex justify-center">
+              <ProgressBtn />
+            </div>
+          )}
+
           <Alert severity="info" className="bg-blue-50 rounded-full">
             Learn more
             <a href="/" className="mx-1 underline hover:text-red-500">
