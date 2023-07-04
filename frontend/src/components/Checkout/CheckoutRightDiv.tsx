@@ -159,8 +159,13 @@ function CheckoutRightDiv() {
   });
   const [showProgress, setShowProgress] = React.useState(false);
   const handleOrderConfirm = () => {
-    console.log("Order Confirmed");
-    setShowProgress(true);
+    if (shippingAddress.email === "") {
+      alert("Please Confirm Your Shipping Address  [STEP:1]");
+    } else {
+      console.log("Order Confirmed");
+      //Post request to backend
+      setShowProgress(true);
+    }
   };
   return (
     <div className="w-[50%] border border-slate-200  rounded-xl p-5">
@@ -180,7 +185,6 @@ function CheckoutRightDiv() {
           />
           <Button
             onClick={takeCuponFromBackend}
-            // onClick={() => enqueueSnackbar("That was easy!")}
             variant="contained"
             color="success"
             className=" bg-black rounded-full"
