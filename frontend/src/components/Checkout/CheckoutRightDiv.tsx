@@ -20,6 +20,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function CheckoutRightDiv() {
   const {
+    userProfile,
     shippingAddress,
     contextValue,
     increaseContextValue,
@@ -33,10 +34,10 @@ function CheckoutRightDiv() {
     created_at: "",
     updated_at: "",
   });
-
-  console.log("ordered products:", JSON.stringify(contextValue));
-  console.log("Cupon:", JSON.stringify(cupon));
-  console.log("shippingAddress:", shippingAddress);
+  // console.log("userProfile:", userProfile);
+  // console.log("ordered products:", JSON.stringify(contextValue));
+  // console.log("Cupon:", JSON.stringify(cupon));
+  // console.log("shippingAddress:", shippingAddress);
 
   const [userCupon, setUserCupon] = React.useState("");
 
@@ -61,6 +62,52 @@ function CheckoutRightDiv() {
 
   const onHandleRemove = (product: any) => {
     deleteContextValue(product);
+  };
+
+  const [showProgress, setShowProgress] = React.useState(false);
+  const handleOrderConfirm = () => {
+    if (shippingAddress.email === "") {
+      alert("Please Confirm Your Shipping Address  [STEP:1]");
+    } else {
+      console.log("Order Confirmed");
+      //Post request to backend
+      const orderData = {
+        customer: userProfile.id,
+        complete: false,
+        shipping_address: JSON.stringify(shippingAddress),
+        ordered_products: JSON.stringify(contextValue),
+      };
+      const handleSubmit = async (formData: any) => {
+        try {
+          const response = await fetch(`${apiUrl}//api/orders/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            // Store the access token in localStorage or any other state management solution
+            // localStorage.setItem("accessToken", data.token);
+            // checkSignUp(true);
+            // router.push("/account/login");
+            console.log("Success:", data);
+          } else if (response.status === 400) {
+            const errorData = await response.json();
+
+            // Display error message to the user
+            // You can use state or a UI library to show the error message else {
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+
+      handleSubmit(orderData);
+      setShowProgress(true);
+    }
   };
 
   useEffect(() => {
@@ -157,16 +204,7 @@ function CheckoutRightDiv() {
       </div>
     );
   });
-  const [showProgress, setShowProgress] = React.useState(false);
-  const handleOrderConfirm = () => {
-    if (shippingAddress.email === "") {
-      alert("Please Confirm Your Shipping Address  [STEP:1]");
-    } else {
-      console.log("Order Confirmed");
-      //Post request to backend
-      setShowProgress(true);
-    }
-  };
+
   return (
     <div className="w-[50%] border border-slate-200  rounded-xl p-5">
       <div className="rounded-lg bg-white">{allCartItems}</div>

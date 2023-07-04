@@ -32,6 +32,7 @@ export const demoProductCard: ProductCardProps = {
 };
 
 export interface UserDetailInterface {
+  id: number | null;
   email: string;
   first_name: string;
   last_name: string;
@@ -47,6 +48,7 @@ export interface UserDetailInterface {
 }
 
 export const initialUserDetail: UserDetailInterface = {
+  id: null,
   email: "",
   first_name: "",
   last_name: "",
