@@ -31,6 +31,9 @@ function CheckoutRightDiv() {
     updated_at: "",
   });
 
+  console.log("ordered products:", JSON.stringify(contextValue));
+  console.log("Cupon:", JSON.stringify(cupon));
+
   const [userCupon, setUserCupon] = React.useState("");
 
   const [discount, setDiscount] = React.useState(0);

@@ -1,12 +1,18 @@
 from django.db import models
-# from .customer import Customer
+from django.contrib.auth.models import User
+from django.conf import settings
+import uuid
 
 
 class Order(models.Model):
-    # customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name="orders")
+    transaction_id = models.CharField(
+        max_length=100, unique=True, default=uuid.uuid4)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
-    transaction_id = models.CharField(max_length=100, null=True)
+    shipping_address = models.TextField(null=True)
+    ordered_products = models.TextField(null=True)
 
     def __str__(self):
-        return self.customer.user.username
+        return self.customer.email

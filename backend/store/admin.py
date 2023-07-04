@@ -20,10 +20,8 @@ class AdminProduct(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(Order)
 class AdminOrder(ImportExportModelAdmin, admin.ModelAdmin):
-    def get_customer(self, obj):
-        return obj.customer.user.username
-
-    list_display = [get_customer, 'date_ordered', 'complete', 'transaction_id']
+    list_display = ['customer', 'transaction_id',
+                    'date_ordered', 'complete', 'shipping_address', 'ordered_products']
 
 
 @admin.register(Category)
