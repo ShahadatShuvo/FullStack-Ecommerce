@@ -6,6 +6,7 @@ import ChaletIcon from "@mui/icons-material/Chalet";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import {
+  Button,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -16,11 +17,20 @@ import {
 } from "@mui/material";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import { green } from "@mui/material/colors";
+import Fab from "@mui/material/Fab";
+import CheckIcon from "@mui/icons-material/Check";
+import NoCrashIcon from "@mui/icons-material/NoCrash";
 
 function CheckoutLeftDiv() {
-  const { userProfile } = useContext(CartItemContext);
+  const { userProfile, updateShippingAddress } = useContext(CartItemContext);
 
   const [autoFill, setAutoFill] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const timer = React.useRef<number>();
 
   const [formData, setformData] = React.useState({
     first_name: "",
@@ -34,8 +44,6 @@ function CheckoutLeftDiv() {
     address_type: "home",
     detail: "",
   });
-
-  console.log("formData", JSON.stringify(formData));
 
   const handleAutofill = () => {
     setAutoFill(!autoFill);
@@ -63,6 +71,49 @@ function CheckoutLeftDiv() {
         city: "",
         zip_code: "",
       }));
+    }
+  };
+  const buttonSx = {
+    ...(success && {
+      bgcolor: green[500],
+      "&:hover": {
+        bgcolor: green[700],
+      },
+    }),
+  };
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timer.current);
+    };
+  }, []);
+
+  const handleButtonClick = () => {
+    if (formData.email === "" || formData.first_name === "") {
+      const formObj = {
+        first_name: `${userProfile?.first_name}`,
+        last_name: `${userProfile?.last_name}`,
+        email: `${userProfile?.email}`,
+        phone_number: `${userProfile?.phone_number}`,
+        country: `${userProfile?.country}`,
+        state: `${userProfile?.state}`,
+        city: `${userProfile?.city}`,
+        zip_code: `${userProfile?.zip_code}`,
+        address_type: "home",
+        detail: "",
+      };
+      updateShippingAddress(formObj);
+    } else {
+      updateShippingAddress(formData);
+    }
+
+    if (!loading) {
+      setSuccess(false);
+      setLoading(true);
+      timer.current = window.setTimeout(() => {
+        setSuccess(true);
+        setLoading(false);
+      }, 2000);
     }
   };
 
@@ -268,6 +319,80 @@ function CheckoutLeftDiv() {
                 />
               </RadioGroup>
             </FormControl>
+          </div>
+
+          <div className="flex justify-center bg-transparent">
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box
+                sx={{
+                  m: 1,
+                  position: "relative",
+                  backgroundColor: success ? "#4caf50" : "#3f51b5",
+                  borderRadius: "50%",
+                }}
+              >
+                <Fab
+                  size="small"
+                  aria-label="save"
+                  color="primary"
+                  onClick={handleButtonClick}
+                  sx={{
+                    buttonSx,
+                    backgroundColor: success ? "#4caf50" : "#3f51b5",
+                  }}
+                >
+                  {success ? <CheckIcon /> : <NoCrashIcon />}
+                </Fab>
+                {loading && (
+                  <CircularProgress
+                    size={52}
+                    sx={{
+                      color: green[500],
+                      position: "absolute",
+                      top: -6,
+                      left: -6,
+                      zIndex: 1,
+                    }}
+                  />
+                )}
+              </Box>
+              <Box
+                sx={{
+                  m: 1,
+                  position: "relative",
+                  backgroundColor: success ? "#4caf50" : "#3f51b5",
+                }}
+              >
+                <Button
+                  size="medium"
+                  variant="contained"
+                  sx={{
+                    buttonSx,
+                    color: "white",
+                  }}
+                  disabled={loading}
+                  onClick={handleButtonClick}
+                >
+                  {!success
+                    ? "Step:1 -- Confirm Shipping Address"
+                    : "Shipping Address Confirmed!"}
+                </Button>
+
+                {loading && (
+                  <CircularProgress
+                    size={24}
+                    sx={{
+                      color: green[500],
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      marginTop: "-12px",
+                      marginLeft: "-12px",
+                    }}
+                  />
+                )}
+              </Box>
+            </Box>
           </div>
         </div>
       </div>

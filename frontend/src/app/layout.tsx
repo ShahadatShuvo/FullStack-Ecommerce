@@ -4,7 +4,11 @@ import "./globals.css";
 import Footer from "@/components/HomePage/Footer";
 import { CartItemContext } from "./context";
 import React, { useEffect, useState } from "react";
-import { ProductCardProps, initialUserDetail } from "../../interfaces";
+import {
+  ProductCardProps,
+  initialUserDetail,
+  initialShippingAddress,
+} from "../../interfaces";
 
 const metadata = {
   title: "FullStack Ecommerce",
@@ -20,6 +24,10 @@ export default function RootLayout({
 }) {
   // Function to update the context value
   const [contextValue, setContextValue] = useState([]);
+  const [shippingAddress, setShippingAddress] = useState(
+    initialShippingAddress
+  );
+  console.log("shippingAddress", shippingAddress);
   const [userProfile, setUserProfile] = useState(initialUserDetail);
 
   useEffect(() => {
@@ -53,6 +61,10 @@ export default function RootLayout({
 
   const updateUserprofile = (data: any) => {
     setUserProfile(data);
+  };
+
+  const updateShippingAddress = (data: any) => {
+    setShippingAddress(data);
   };
 
   const setToken = (value: string) => {
@@ -190,6 +202,8 @@ export default function RootLayout({
         <CartItemContext.Provider
           value={{
             userProfile,
+            shippingAddress,
+            updateShippingAddress,
             updateUserprofile,
             isLightTheme,
             toggleTheme,
