@@ -74,13 +74,12 @@ function AccountInfo() {
               </p>
               <div className="mt-[-24px] flex">
                 <p className="ml-20 text-2xl font-medium">{`${userProfile.first_name} ${userProfile.last_name}`}</p>
-                {userProfile.city ||
-                  (userProfile.country && (
-                    <p className="text-gray-400 text-xs mt-2 ml-2 font-medium">
-                      <LocationOnIcon fontSize="small" />
-                      {`${userProfile.city} | ${userProfile.country}`}
-                    </p>
-                  ))}
+                {(userProfile.country || userProfile.city) && (
+                  <p className="text-gray-400 text-xs mt-2 ml-2 font-medium">
+                    <LocationOnIcon fontSize="small" />
+                    {`${userProfile.city} | ${userProfile.country}`}
+                  </p>
+                )}
               </div>
             </div>
           </div>
