@@ -220,7 +220,7 @@ function CheckoutRightDiv() {
               onClick={handleOrderConfirm}
               className="mt-5 bg-black rounded-full"
             >
-              Confirm Order
+              step:2 -- Confirm Order
             </Button>
           ) : (
             <div className="flex justify-center">
