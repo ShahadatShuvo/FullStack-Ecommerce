@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CartItemContext } from "@/app/context";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import OrderConfirmed from "./OrderConfirmed";
 
 interface CuponInterface {
   id: number;
@@ -205,9 +206,7 @@ function CheckoutRightDiv() {
             <p className="text-blue-400">{orderTotal.toFixed(2)} TK</p>
           </div>
 
-          <Button variant="contained" className="mt-5 bg-black rounded-full">
-            Confirm Order
-          </Button>
+          <OrderConfirmed />
           <Alert severity="info" className="bg-blue-50 rounded-full">
             Learn more
             <a href="/" className="mx-1 underline hover:text-red-500">

@@ -30,7 +30,6 @@ function CheckoutPage() {
         <CheckoutRightDiv />
       </div>
       {/* End */}
-      <OrderConfirmed />
     </div>
   );
 }
