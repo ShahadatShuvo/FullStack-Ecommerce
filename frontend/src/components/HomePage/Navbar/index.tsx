@@ -15,6 +15,7 @@ import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import MenuBarIcon from "./ProfileMenu";
 import AuthSuccess from "@/components/Accounts/AuthSuccess";
+import Link from "next/link";
 
 function Navbar() {
   const router = useRouter();
@@ -104,7 +105,7 @@ function Navbar() {
 
       <header className="text-gray-600 body-font bg-white">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
-          <a href="/">
+          <Link href="/">
             <Image
               src="/img/VMi.png"
               alt=""
@@ -112,7 +113,7 @@ function Navbar() {
               height={80}
               className="w-[160px] h-[80px] py-2"
             />
-          </a>
+          </Link>
 
           {/* Navigation Start */}
           <nav className="hidden md:block md:ml-auto md:mr-auto">
