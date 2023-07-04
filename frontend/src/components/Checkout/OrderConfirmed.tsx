@@ -32,7 +32,7 @@ function OrderConfirmed() {
         onClick={handleOpen}
         className="mt-5 bg-black rounded-full"
       >
-        order processed! Go to Payment
+        Confirm Payment
       </Button>
       <Modal
         keepMounted

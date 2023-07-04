@@ -70,7 +70,7 @@ export default function CircularStatic() {
           onClick={handleOrderConfirm}
           className="mt-5 bg-black rounded-full"
         >
-          Confirm Order
+          Order processed! Go to Payment
         </Button>
       ) : (
         <ProgressBtn value={progress} />
