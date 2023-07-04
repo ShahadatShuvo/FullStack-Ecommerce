@@ -5,10 +5,13 @@ import {
   ProductCardProps,
   UserDetailInterface,
   initialUserDetail,
+  ShippingAddressInterface,
+  initialShippingAddress,
 } from "../../interfaces";
 
 interface ContextValue {
   contextValue: ProductCardProps[];
+  shippingAddress: ShippingAddressInterface;
   userProfile: UserDetailInterface;
   accessToken: string;
   isSignUpComplete: boolean;
@@ -21,6 +24,7 @@ interface ContextValue {
   checkLogin: (value: boolean) => void;
   checkLogout: (value: boolean) => void;
   updateUserprofile: (newValue: UserDetailInterface) => void;
+  updateShippingAddress: (newValue: ShippingAddressInterface) => void;
   increaseContextValue: (newValue: ProductCardProps) => void;
   decreaseContextValue: (newValue: ProductCardProps) => void;
   deleteContextValue: (newValue: ProductCardProps) => void;
@@ -28,6 +32,7 @@ interface ContextValue {
 
 export const CartItemContext = createContext<ContextValue>({
   contextValue: [],
+  shippingAddress: initialShippingAddress,
   userProfile: initialUserDetail,
   isSignUpComplete: false,
   accessToken: "",
@@ -40,6 +45,7 @@ export const CartItemContext = createContext<ContextValue>({
   checkLogin: () => {},
   checkLogout: () => {},
   updateUserprofile: () => {},
+  updateShippingAddress: () => {},
   increaseContextValue: () => {},
   decreaseContextValue: () => {},
   deleteContextValue: () => {},

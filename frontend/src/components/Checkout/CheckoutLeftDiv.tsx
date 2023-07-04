@@ -25,7 +25,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
 
 function CheckoutLeftDiv() {
-  const { userProfile } = useContext(CartItemContext);
+  const { userProfile, updateShippingAddress } = useContext(CartItemContext);
 
   const [autoFill, setAutoFill] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -44,8 +44,6 @@ function CheckoutLeftDiv() {
     address_type: "home",
     detail: "",
   });
-
-  console.log("formData", JSON.stringify(formData));
 
   const handleAutofill = () => {
     setAutoFill(!autoFill);
@@ -91,6 +89,24 @@ function CheckoutLeftDiv() {
   }, []);
 
   const handleButtonClick = () => {
+    if (formData.email === "" || formData.first_name === "") {
+      const formObj = {
+        first_name: `${userProfile?.first_name}`,
+        last_name: `${userProfile?.last_name}`,
+        email: `${userProfile?.email}`,
+        phone_number: `${userProfile?.phone_number}`,
+        country: `${userProfile?.country}`,
+        state: `${userProfile?.state}`,
+        city: `${userProfile?.city}`,
+        zip_code: `${userProfile?.zip_code}`,
+        address_type: "home",
+        detail: "",
+      };
+      updateShippingAddress(formObj);
+    } else {
+      updateShippingAddress(formData);
+    }
+
     if (!loading) {
       setSuccess(false);
       setLoading(true);
@@ -103,10 +119,6 @@ function CheckoutLeftDiv() {
 
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleConfirmShippingAddress = () => {
-    console.log("formData", JSON.stringify(formData));
   };
 
   return (
