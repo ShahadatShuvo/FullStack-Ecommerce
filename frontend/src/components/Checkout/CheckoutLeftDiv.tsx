@@ -101,11 +101,6 @@ function CheckoutLeftDiv() {
     }
   };
 
-  // const handleOrderConfirm = () => {
-  //   console.log("Order Confirmed");
-  //
-  // };
-
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
