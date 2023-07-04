@@ -20,10 +20,10 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    first_name = models.CharField(max_length=50, blank=True)
-    last_name = models.CharField(max_length=50, blank=True)
+    first_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
     gender = models.CharField(
-        max_length=10, choices=GENDER_CHOICES, blank=True)
+        max_length=10, choices=GENDER_CHOICES, blank=True, null=True)
     phone_number = models.CharField(max_length=15, blank=True)
     country = models.CharField(max_length=50, blank=True)
     state = models.CharField(max_length=255, blank=True)
