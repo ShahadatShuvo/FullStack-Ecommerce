@@ -21,7 +21,7 @@ class AdminProduct(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Order)
 class AdminOrder(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['customer', 'transaction_id',
-                    'date_ordered', 'complete', 'shipping_address', 'ordered_products']
+                    'date_ordered', 'complete', 'applied_coupon', 'shipping_address', 'ordered_products']
 
 
 @admin.register(Category)
