@@ -2,9 +2,7 @@
 
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
-import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
 import StarIcon from "@mui/icons-material/Star";
-import { Button } from "@mui/material";
 import Image from "next/image";
 import React, { useContext } from "react";
 import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
@@ -17,8 +15,8 @@ interface ProductCardProps {
   title: string;
   description: string;
   price: number;
-  stock: number;
-  qty: number;
+  stock?: number;
+  qty?: number;
   image_url: string;
 }
 
@@ -32,6 +30,28 @@ function ProductCard(props: ProductCardProps) {
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
+
+    // Retrieve existing wishlist from localStorage
+    const existingWishlist = JSON.parse(
+      localStorage.getItem("wishlist") || "[]"
+    );
+
+    // Find the index of the current product in the wishlist
+    const index = existingWishlist.findIndex(
+      (item: ProductCardProps) => item.id === id
+    );
+
+    if (index === -1) {
+      // If the product is not already in the wishlist, add it
+      const updatedWishlist = [...existingWishlist, props];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    } else {
+      // If the product is already in the wishlist, remove it
+      const updatedWishlist = existingWishlist.filter(
+        (item: ProductCardProps) => item.id !== id
+      );
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    }
   };
   const onHandleViewOpen = () => {
     setView(true);
