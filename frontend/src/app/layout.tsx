@@ -56,7 +56,12 @@ export default function RootLayout({
   );
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
+  const [activeTab, setActiveTab] = useState<string>("account_info");
   const [check, setCheck] = useState(false);
+
+  const toggleTab = (value: string) => {
+    setActiveTab(value);
+  };
 
   const toggleTheme = () => {
     setIsLightTheme((prevTheme: boolean) => !prevTheme);
@@ -219,7 +224,9 @@ export default function RootLayout({
             updateShippingAddress,
             updateUserprofile,
             isLightTheme,
+            activeTab,
             toggleTheme,
+            toggleTab,
             isSignUpComplete,
             isLoginComplete,
             accessToken,

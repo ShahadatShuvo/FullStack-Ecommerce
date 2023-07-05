@@ -48,12 +48,18 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function DashboardHome() {
-  const { userProfile } = useContext(CartItemContext);
+  const { userProfile, activeTab } = useContext(CartItemContext);
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(activeTab);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  console.log("tab value:", value);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(activeTab);
+  };
+
+  const handleTabs = (value: string) => {
+    setValue(value);
   };
 
   return (
@@ -73,11 +79,20 @@ export default function DashboardHome() {
 
         <div>
           <Tabs value={value} onChange={handleChange} centered>
-            <Tab label="Account info" />
-            <Tab label="Update Account" />
-            <Tab label="Wishlist" />
-            <Tab label="My orders" />
-            <Tab label="Change password" />
+            <Tab
+              label="Account info"
+              onClick={() => handleTabs("account_info")}
+            />
+            <Tab
+              label="Update Account"
+              onClick={() => handleTabs("update_account")}
+            />
+            <Tab label="Wishlist" onClick={() => handleTabs("wishlist")} />
+            <Tab label="My orders" onClick={() => handleTabs("my_orders")} />
+            <Tab
+              label="Change password"
+              onClick={() => handleTabs("change_password")}
+            />
           </Tabs>
         </div>
 
@@ -102,11 +117,11 @@ export default function DashboardHome() {
       </div>
 
       <div className=" w-[100%]">
-        {value === 0 && <AccountInfo />}
-        {value === 1 && <UpdateAccount />}
-        {value === 2 && <Wishlist />}
-        {value === 3 && <MyOrder />}
-        {value === 4 && <ChangePassword />}
+        {value === "account_info" && <AccountInfo />}
+        {value === "update_account" && <UpdateAccount />}
+        {value === "wishlist" && <Wishlist />}
+        {value === "my_orders" && <MyOrder />}
+        {value === "change_password" && <ChangePassword />}
       </div>
     </div>
   );
