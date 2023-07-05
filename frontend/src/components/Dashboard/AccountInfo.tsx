@@ -12,6 +12,8 @@ function AccountInfo() {
   const { userProfile, accessToken, updateUserprofile, isLoginComplete } =
     useContext(CartItemContext);
 
+  const date = userProfile.created_at.split("T")[0];
+
   // Get user Profile data
   React.useEffect(() => {
     const userProfileData = async () => {
@@ -113,7 +115,7 @@ function AccountInfo() {
               <p>
                 {userProfile.date_of_birth ? userProfile.date_of_birth : "N/A"}
               </p>
-              <p>{`${userProfile.created_at}`}</p>
+              <p>{date}</p>
             </div>
           </div>
         </div>
