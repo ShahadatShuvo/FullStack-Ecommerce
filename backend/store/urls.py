@@ -10,8 +10,9 @@ urlpatterns = [
          name='last_updated_products'),
 
     # order endpoints
-    path("api/orders/", views.OrderList.as_view()),
-
+    path("api/orders", views.OrderList.as_view()),
+    path('search/orders/<str:customer_email>/',
+         views.OrderSearchView.as_view(), name='order-search'),
 
     # category endpoints
     path('api/category/<str:category_name>/',
