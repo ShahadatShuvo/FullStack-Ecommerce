@@ -31,7 +31,6 @@ function UpdateAccount() {
   const [formData, setformData] = React.useState({
     first_name: `${userProfile?.first_name}`,
     last_name: `${userProfile?.last_name}`,
-    email: `${userProfile?.email}`,
     phone_number: `${userProfile?.phone_number}`,
     gender: `${userProfile?.gender}`,
     country: `${userProfile?.country}`,
@@ -118,17 +117,6 @@ function UpdateAccount() {
           />
         </div>
         <div className="w-full flex gap-5">
-          <TextField
-            fullWidth
-            size="small"
-            type="email"
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            name="email"
-            onChange={handleformData}
-            value={formData.email}
-          />
           <TextField
             fullWidth
             size="small"
