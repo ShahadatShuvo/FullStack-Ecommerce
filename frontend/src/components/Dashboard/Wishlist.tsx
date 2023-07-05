@@ -24,7 +24,9 @@ function Wishlist() {
             />
           ))
         ) : (
-          <p>Your wishlist is empty.</p>
+          <div className="font-semibold text-2xl h-[30vh] flex items-center">
+            Your order list is empthy!
+          </div>
         )}
       </div>
     </div>
