@@ -154,9 +154,6 @@ function RegistrationForm() {
           <div className="flex flex-col gap-3">
             <div className="flex justify-between gap-2">
               <div className="flex flex-col gap-2">
-                <label htmlFor="first_name" className="font-semibold">
-                  First Name:
-                </label>
                 <TextField
                   id="first_name"
                   label="First Name"
@@ -175,9 +172,6 @@ function RegistrationForm() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="last_name" className="font-semibold">
-                  Last Name:
-                </label>
                 <TextField
                   id="last_name"
                   label="Last Name"
@@ -196,9 +190,6 @@ function RegistrationForm() {
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="gender" className="font-semibold">
-                Gender:
-              </label>
               <FormControl fullWidth size="small">
                 <InputLabel id="demo-simple-select-label">Gender</InputLabel>
                 <Select
@@ -220,9 +211,6 @@ function RegistrationForm() {
               </FormControl>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="font-semibold">
-                Email Address:
-              </label>
               <TextField
                 id="email"
                 label="Email"
@@ -236,9 +224,6 @@ function RegistrationForm() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="password1" className="font-semibold">
-                Password:
-              </label>
               <FormControl
                 sx={{ width: "100%" }}
                 variant="outlined"
@@ -274,9 +259,6 @@ function RegistrationForm() {
               </FormControl>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="password2" className="font-semibold">
-                Confirm Password:
-              </label>
               <FormControl
                 sx={{ width: "100%" }}
                 variant="outlined"

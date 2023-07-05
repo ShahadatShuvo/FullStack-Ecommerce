@@ -138,9 +138,6 @@ function LoginForm() {
       >
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="font-semibold">
-              Email Address:
-            </label>
             <TextField
               id="email"
               label="Email"
@@ -154,9 +151,6 @@ function LoginForm() {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="password1" className="font-semibold">
-              Password:
-            </label>
             <FormControl sx={{ width: "100%" }} variant="outlined" size="small">
               <InputLabel htmlFor="password1">Password</InputLabel>
               <OutlinedInput
