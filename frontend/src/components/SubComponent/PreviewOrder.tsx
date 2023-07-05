@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 
 function PreviewOrder({ ...props }) {
-  console.log("props", props);
   const date = props.date_ordered.split("T")[0];
   const time = props.date_ordered.slice(date.length + 1, -11);
 

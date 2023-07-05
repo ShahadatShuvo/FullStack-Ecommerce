@@ -57,7 +57,6 @@ export default function CircularStatic() {
   }, [progress]);
 
   const handleOrderConfirm = () => {
-    console.log("Order Confirmed");
     router.push("/checkout/payment");
   };
 

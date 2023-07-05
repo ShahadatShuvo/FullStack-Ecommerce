@@ -9,10 +9,17 @@ import { CartItemContext } from "@/app/context";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function AccountInfo() {
-  const { userProfile, accessToken, updateUserprofile, isLoginComplete } =
-    useContext(CartItemContext);
+  const {
+    setToken,
+    userProfile,
+    accessToken,
+    updateUserprofile,
+    isLoginComplete,
+  } = useContext(CartItemContext);
 
-  const date = userProfile.created_at.split("T")[0];
+  const date = userProfile.created_at
+    ? userProfile.created_at.split("T")[0]
+    : "null";
 
   // Get user Profile data
   React.useEffect(() => {
@@ -31,6 +38,7 @@ function AccountInfo() {
           updateUserprofile(data);
         } else {
           console.log("Error fetching user profile data");
+          setToken("", "");
         }
       } catch (error) {
         console.error("Error parsing JSON:", error);

@@ -114,7 +114,7 @@ export default function MenuBarIcon({
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     updateUserprofile(initialUserDetail);
-    setToken("");
+    setToken("", "logout");
     checkLogin(false);
     checkSignUp(false);
     checkLogout(true);

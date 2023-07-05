@@ -34,10 +34,6 @@ function CheckoutRightDiv() {
     created_at: "",
     updated_at: "",
   });
-  // console.log("userProfile:", userProfile);
-  // console.log("ordered products:", JSON.stringify(contextValue));
-  // console.log("Cupon:", JSON.stringify(cupon));
-  // console.log("shippingAddress:", shippingAddress);
 
   const [userCupon, setUserCupon] = React.useState("");
 
@@ -69,7 +65,6 @@ function CheckoutRightDiv() {
     if (shippingAddress.email === "") {
       alert("Please Confirm Your Shipping Address  [STEP:1]");
     } else {
-      console.log("Order Confirmed");
       //Post request to backend
       const orderData = {
         customer: userProfile.id,
@@ -93,7 +88,6 @@ function CheckoutRightDiv() {
             // localStorage.setItem("accessToken", data.token);
             // checkSignUp(true);
             // router.push("/account/login");
-            console.log("Success:", data);
           } else if (response.status === 400) {
             const errorData = await response.json();
 

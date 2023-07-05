@@ -80,8 +80,11 @@ function LoginForm() {
         if (response.ok) {
           const data = await response.json();
           // Store the access token in localStorage or any other state management solution
+          console.log(data);
           localStorage.setItem("accessToken", data.token.access);
-          setToken(data.token.access);
+          localStorage.setItem("refreshToken", data.token.refresh);
+          setToken(data.token.access, "accessToken");
+          setToken(data.token.refresh, "refreshToken");
           checkLogin(true);
           // router.push("/");
           window.location.href = "/";

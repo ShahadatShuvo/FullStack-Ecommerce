@@ -30,3 +30,18 @@ class UserLoginView(APIView):
             return Response({'token': token, 'msg': 'Login Success'}, status=status.HTTP_200_OK)
         else:
             return Response({'errors': {'non_field_errors': ['Email or Password is not Valid']}}, status=status.HTTP_404_NOT_FOUND)
+
+
+class RefreshTokenView(APIView):
+    def post(self, request):
+        refresh_token = request.data.get('refreshToken')
+
+        if not refresh_token:
+            return Response({'error': 'Refresh token is required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            refresh_token = RefreshToken(refresh_token)
+            access_token = str(refresh_token.access_token)
+            return Response({'accessToken': access_token}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
