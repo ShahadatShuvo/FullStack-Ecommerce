@@ -17,23 +17,27 @@ function PreviewOrder({ ...props }) {
             <div className="flex justify-between ">
               <div>
                 <h3 className="text-base font-medium line-clamp-1">
+                  Transaction ID: {props.transaction_id}
+                </h3>
+                <h3 className="text-sm  line-clamp-1 text-slate-500 ">
                   Date: {`${date} | Time: ${time}`}
                 </h3>
                 <p className="mt-1 text-sm text-slate-500 ">
                   <span>Order ID:</span>
-                  <span className="mx-2 border-l border-slate-200  h-4"></span>
-                  <span>{props.id}</span>
+                  <span className="ml-1">{props.id}</span>
                 </p>
               </div>
               <div className="mt-0.5 ml-2">
                 <div className="flex items-center border-2 border-green-500 rounded-lg py-1 px-2 md:py-1.5 md:px-2.5 text-sm font-medium">
-                  <span className="text-green-500 !leading-none">$33</span>
+                  <span className="text-green-500 !leading-none">
+                    ${props.amount}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
           <div className="flex flex-1 items-end justify-between text-sm">
-            <p className="text-gray-500  flex items-center">
+            <p className="text-gray-500  flex items-center mt-4">
               <span className="hidden sm:inline-block">Status:</span>
               <span className="ml-1">{props.complete ? "Paid" : "Unpaid"}</span>
             </p>
