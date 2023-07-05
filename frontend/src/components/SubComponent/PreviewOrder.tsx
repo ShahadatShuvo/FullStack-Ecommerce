@@ -1,33 +1,35 @@
+import Image from "next/image";
 import Button from "./Button";
 
-function PreviewOrder() {
+function PreviewOrder({ ...props }) {
+  console.log("props", props);
+  const date = props.date_ordered.split("T")[0];
+  const time = props.date_ordered.slice(date.length + 1, -11);
+
   return (
     <div className=" w-[50vw] shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4  rounded-lg">
       <span className="flex justify-between">
-        <h1 className="text-lg font-semibold flex items-center  w-full">
-          Order Id: M8698
+        <h1 className="text-sm font-semibold flex items-center  w-full">
+          Transaction Id: {props.transaction_id}
         </h1>
         <Button btnTitle="View Order" />
       </span>
 
-      <div className="flex py-4 sm:py-7 last:pb-0 first:pt-0">
+      <div className="flex  sm:py-7 last:pb-0 first:pt-0">
         <div className="relative h-24 w-16 sm:w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
-          <img
-            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
-            alt=""
-          />
+          <Image src="/img/me.jpg" alt="" height={100} width={100} />
         </div>
         <div className="ml-4 flex flex-1 flex-col">
           <div>
             <div className="flex justify-between ">
               <div>
                 <h3 className="text-base font-medium line-clamp-1">
-                  Rey Nylon Backpack
+                  Date: {`${date} | Time: ${time}`}
                 </h3>
                 <p className="mt-1 text-sm text-slate-500 ">
-                  <span>Natural</span>
+                  <span>Ordser ID:</span>
                   <span className="mx-2 border-l border-slate-200  h-4"></span>
-                  <span>XL</span>
+                  <span>{props.id}</span>
                 </p>
               </div>
               <div className="mt-0.5 ml-2">
@@ -39,9 +41,8 @@ function PreviewOrder() {
           </div>
           <div className="flex flex-1 items-end justify-between text-sm">
             <p className="text-gray-500  flex items-center">
-              <span className="hidden sm:inline-block">Qty</span>
-              <span className="inline-block sm:hidden">x</span>
-              <span className="ml-2">1</span>
+              <span className="hidden sm:inline-block">Status:</span>
+              <span className="ml-1">{props.complete ? "Paid" : "Unpaid"}</span>
             </p>
             <div className="flex">
               <button

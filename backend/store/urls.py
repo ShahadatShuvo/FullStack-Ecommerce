@@ -11,7 +11,7 @@ urlpatterns = [
 
     # order endpoints
     path("api/orders", views.OrderList.as_view()),
-    path('search/orders/<str:customer_email>/',
+    path('api/search/orders/<str:customer_email>/',
          views.OrderSearchView.as_view(), name='order-search'),
 
     # category endpoints

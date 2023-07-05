@@ -88,3 +88,13 @@ export const initialShippingAddress: ShippingAddressInterface = {
   address_type: "home",
   detail: "",
 };
+
+export interface OrsdersInterface {
+  id: number;
+  complete: boolean;
+  customer: number;
+  ordered_products: string;
+  shipping_address: string;
+  transaction_id: string;
+  date_ordered: string;
+}
