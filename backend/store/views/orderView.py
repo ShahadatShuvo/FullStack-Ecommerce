@@ -1,6 +1,7 @@
 from store.serializers import OrderSerializer
 from store.models import Order
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -12,6 +13,7 @@ class OrderList(generics.ListCreateAPIView):
 
 class OrderSearchView(generics.ListAPIView):
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         customer_email = self.kwargs['customer_email']

@@ -55,6 +55,7 @@ function AccountInfo() {
                 : "/img/female.svg"
             }
             alt=""
+            priority={true}
             width={300}
             height={300}
             className="rounded-lg"
