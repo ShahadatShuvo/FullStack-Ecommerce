@@ -67,6 +67,7 @@ export default function MenuBarIcon({
   const router = useRouter();
 
   const {
+    toggleTab,
     isLoginComplete,
     checkLogin,
     checkSignUp,
@@ -124,6 +125,12 @@ export default function MenuBarIcon({
     if (isSubstringPresent) {
       router.push("/");
     }
+  };
+
+  const handleTabs = (value: string) => {
+    handleClose();
+    toggleTab(value);
+    router.push("/dashboard");
   };
 
   return (
@@ -226,15 +233,15 @@ export default function MenuBarIcon({
         </MenuItem>
         <Divider />
         <Link href="/dashboard">
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={() => handleTabs("account_info")}>
             <Avatar /> My account
           </MenuItem>
         </Link>
 
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleTabs("my_orders")}>
           <ListAltOutlinedIcon /> <p className="ml-3">My Order</p>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleTabs("wishlist")}>
           <FavoriteBorderIcon /> <p className="ml-3">Wishlist</p>
         </MenuItem>
         <MenuItem
@@ -252,18 +259,18 @@ export default function MenuBarIcon({
             </div>
           )}
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleTabs("update_account")}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          Add another account
+          Update Account
         </MenuItem>
         <Link href="/dashboard">
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={() => handleTabs("change_password")}>
             <ListItemIcon>
               <Settings fontSize="small" />
             </ListItemIcon>
-            Settings
+            Change Password
           </MenuItem>
         </Link>
         <MenuItem onClick={handleLogout}>
