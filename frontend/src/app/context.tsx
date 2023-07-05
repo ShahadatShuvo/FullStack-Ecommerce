@@ -14,12 +14,13 @@ interface ContextValue {
   shippingAddress: ShippingAddressInterface;
   userProfile: UserDetailInterface;
   accessToken: string;
+  refreshToken: string;
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
   isLogoutComplete: boolean;
   isLightTheme: boolean;
   toggleTheme: () => void;
-  setToken: (value: string) => void;
+  setToken: (value: string, name: string) => void;
   checkSignUp: (value: boolean) => void;
   checkLogin: (value: boolean) => void;
   checkLogout: (value: boolean) => void;
@@ -36,6 +37,7 @@ export const CartItemContext = createContext<ContextValue>({
   userProfile: initialUserDetail,
   isSignUpComplete: false,
   accessToken: "",
+  refreshToken: "",
   isLoginComplete: false,
   isLogoutComplete: false,
   isLightTheme: true,

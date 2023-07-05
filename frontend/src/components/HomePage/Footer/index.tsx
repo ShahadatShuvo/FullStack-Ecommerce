@@ -2,12 +2,53 @@ import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { use, useContext, useEffect } from "react";
+import { CartItemContext } from "@/app/context";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function Footer() {
+  const { refreshToken, accessToken, setToken } = useContext(CartItemContext);
+
   let currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    // Function to request a new access token using the refresh token
+    const requestNewAccessToken = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/account/refresh-token/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            refreshToken: refreshToken,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setToken(data, "accessToken");
+          console.log("new access token", data);
+        } else {
+          // Handle error response
+          console.error("Failed to refresh access token");
+        }
+      } catch (error) {
+        console.error("Error occurred while refreshing access token", error);
+      }
+    };
+    if (!accessToken && refreshToken) {
+      requestNewAccessToken();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
-      <AuthSuccess msg="You are now Logged In!" type="success" show={0} />
+      {refreshToken && (
+        <AuthSuccess msg="You are now Logged In!" type="success" show={0} />
+      )}
 
       <section className="bg-white">
         <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">

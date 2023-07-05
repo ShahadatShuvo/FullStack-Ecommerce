@@ -22,7 +22,7 @@ import AuthSuccess from "../Accounts/AuthSuccess";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function UpdateAccount() {
-  const { userProfile, accessToken, updateUserprofile } =
+  const { setToken, userProfile, accessToken, updateUserprofile } =
     useContext(CartItemContext);
 
   const [snackbar, setSnackbar] = React.useState(0);
@@ -68,9 +68,11 @@ function UpdateAccount() {
           const data = await response.json();
           localStorage.setItem("userData", JSON.stringify(data));
           updateUserprofile(data);
+        } else if (response.status === 401) {
+          setToken("", "");
         } else {
           const error = await response.json();
-          console.log(error);
+          console.log("error p", error);
         }
       } catch (error) {
         console.error("Error:", error);

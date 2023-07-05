@@ -43,6 +43,11 @@ export default function RootLayout({
       ? localStorage.getItem("accessToken") || ""
       : ""
   );
+  const [refreshToken, setRefreshToken] = useState(
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("refreshToken") || ""
+      : ""
+  );
 
   const [isLoginComplete, setIsLoginComplete] = useState(
     typeof localStorage !== "undefined" && localStorage.getItem("accessToken")
@@ -64,9 +69,18 @@ export default function RootLayout({
   const updateShippingAddress = (data: any) => {
     setShippingAddress(data);
   };
-
-  const setToken = (value: string) => {
-    setAccessToken(value);
+  // handle tokens
+  const setToken = (value: string, name: string) => {
+    if (name === "accessToken") {
+      setAccessToken(value);
+    } else if (name === "refreshToken") {
+      setRefreshToken(value);
+    } else if (name === "logout") {
+      setAccessToken("");
+      setRefreshToken("");
+    } else {
+      setAccessToken("");
+    }
   };
   const checkSignUp = (value: boolean) => {
     setIsSignUpComplete(value);
@@ -200,6 +214,7 @@ export default function RootLayout({
         <CartItemContext.Provider
           value={{
             userProfile,
+            refreshToken,
             shippingAddress,
             updateShippingAddress,
             updateUserprofile,
