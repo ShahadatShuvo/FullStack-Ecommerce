@@ -2,14 +2,12 @@ import React, { use, useEffect, useState } from "react";
 import PreviewOrder from "../SubComponent/PreviewOrder";
 import { useContext } from "react";
 import { CartItemContext } from "@/app/context";
-import { OrsdersInterface } from "@/../interfaces/index";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function MyOrder() {
   const { userProfile, accessToken } = useContext(CartItemContext);
   const [orderList, setOrderList] = useState([]);
-  // console.log("orderList", orderList);
 
   useEffect(() => {
     const handleSubmit = async () => {
@@ -38,7 +36,7 @@ function MyOrder() {
     handleSubmit();
   }, [userProfile, accessToken]);
 
-  const showOrderList = orderList ? (
+  const showOrderList = orderList.length ? (
     orderList.map((order: any) => {
       return (
         <div key={order.id}>
@@ -47,7 +45,9 @@ function MyOrder() {
       );
     })
   ) : (
-    <div></div>
+    <div className="font-semibold text-2xl h-[30vh] flex items-center">
+      Your order list is empthy!
+    </div>
   );
 
   return (
