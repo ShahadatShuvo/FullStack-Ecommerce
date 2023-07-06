@@ -9,6 +9,9 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { CartItemContext } from "@/app/context";
+import { useContext, useState } from "react";
+
 function DiscoverNav({
   setSearch,
   setFilter,
@@ -22,6 +25,7 @@ function DiscoverNav({
   activeCategory: string;
   setActiveCategory: any;
 }) {
+  const { isDarkTheme } = useContext(CartItemContext);
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
   };
@@ -34,14 +38,20 @@ function DiscoverNav({
         className=" mb-4 lg:mb-8 relative flex justify-center w-full text-sm md:text-base"
         id="Nav"
       >
-        <ul className="flex items-center  md:p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
+        <ul
+          className={
+            isDarkTheme
+              ? "flex items-center  md:p-1 bg-white text-slate-600  rounded-full shadow-lg overflow-x-auto hiddenScrollbar"
+              : "flex items-center  md:p-1 bg-white  rounded-full shadow-lg overflow-x-auto hiddenScrollbar"
+          }
+        >
           <li className="mx-3  relative" id="NavItem2">
             <div
               onClick={() => handleCategoryClick("all")}
               className={`
               categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
                 activeCategory === "all"
-                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  ? "rounded-full bg-blue-200  focus:outline-none"
                   : ""
               }`}
             >
@@ -59,7 +69,7 @@ function DiscoverNav({
               className={`
               categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
                 activeCategory === "women"
-                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  ? "rounded-full bg-blue-200  focus:outline-none"
                   : ""
               }`}
             >
@@ -76,7 +86,7 @@ function DiscoverNav({
               onClick={() => handleCategoryClick("men")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize  ${
                 activeCategory === "men"
-                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  ? "rounded-full bg-blue-200 focus:outline-none"
                   : ""
               }`}
             >
@@ -94,7 +104,7 @@ function DiscoverNav({
               onClick={() => handleCategoryClick("sports")}
               className={`categoryBtn block font-medium whitespace-nowrap px-3.5 py-2 text-sm sm:px-7 sm:py-3 capitalize ${
                 activeCategory === "sports"
-                  ? "rounded-full bg-slate-900 text-slate-50 focus:outline-none"
+                  ? "rounded-full bg-blue-200  focus:outline-none"
                   : ""
               }`}
             >
