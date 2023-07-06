@@ -31,6 +31,8 @@ interface ContextValue {
   increaseCartData: (newValue: ProductCardProps) => void;
   decreaseCartData: (newValue: ProductCardProps) => void;
   deleteCartData: (newValue: ProductCardProps) => void;
+  errorMsg: string;
+  catchErrorMsg: (value: string) => void;
 }
 
 export const GlobalStates = createContext<ContextValue>({
@@ -55,4 +57,6 @@ export const GlobalStates = createContext<ContextValue>({
   increaseCartData: () => {},
   decreaseCartData: () => {},
   deleteCartData: () => {},
+  errorMsg: "",
+  catchErrorMsg: () => {},
 });
