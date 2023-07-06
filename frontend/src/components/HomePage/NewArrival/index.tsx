@@ -2,14 +2,37 @@
 
 import ProductCard from "@/components/ProductCard";
 import MagicLine from "@/components/SubComponent/MagicLine";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
+import React, { useRef } from "react";
+import { MutableRefObject } from "react";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
+import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import { IconButton } from "@mui/material";
+import { useContext } from "react";
+import { CartItemContext } from "@/app/context";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function NewArrival() {
+  const { isDarkTheme } = useContext(CartItemContext);
+
   const [newArrival, setNewArrival] = useState([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const scrollRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current !== null) {
+      scrollRef.current.scrollLeft -= 400; // Adjust the scroll amount as needed
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current !== null) {
+      scrollRef.current.scrollLeft += 400; // Adjust the scroll amount as needed
+    }
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -93,13 +116,48 @@ function NewArrival() {
   ));
 
   return (
-    <div className=" my-8 md:my-16 ">
-      <MagicLine title="New Arrivals" />
+    <div className="my-8  relative">
+      <div className="py-16">
+        <MagicLine title="New Arrivals" />
+      </div>
+
+      <div className="hidden md:block absolute right-16">
+        <IconButton
+          aria-label="left"
+          sx={{
+            color: !isDarkTheme ? "gray" : "white",
+          }}
+          className={
+            !isDarkTheme
+              ? "active:text-blue-400"
+              : "text-white active:text-blue-400"
+          }
+          onClick={scrollLeft}
+        >
+          <ArrowCircleLeftOutlinedIcon />
+        </IconButton>
+        <IconButton
+          aria-label="right"
+          sx={{
+            color: !isDarkTheme ? "gray" : "white",
+          }}
+          className={
+            !isDarkTheme
+              ? "active:text-blue-400"
+              : "text-white active:text-blue-400"
+          }
+          onClick={scrollRight}
+        >
+          <ArrowCircleRightOutlinedIcon />
+        </IconButton>
+      </div>
 
       <div
-        ref={containerRef}
-        className="flex overflow-x-auto hide-scrollbar my-24  mx-16 justify-between gap-5"
-        style={{ cursor: "grab" }}
+        className="flex overflow-x-auto hide-scrollbar my-16 mx-16 justify-between gap-5 custom-scrollbar"
+        style={{
+          scrollBehavior: "smooth",
+        }}
+        ref={scrollRef}
       >
         {displayProducts}
       </div>

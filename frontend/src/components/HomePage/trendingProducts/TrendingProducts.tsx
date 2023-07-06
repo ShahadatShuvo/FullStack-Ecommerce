@@ -46,7 +46,7 @@ const prodImg = [
 ];
 
 function TrendingProducts() {
-  const { isLightTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(CartItemContext);
 
   const scrollRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
@@ -71,55 +71,22 @@ function TrendingProducts() {
       <div className="px-5 md:px-0 py-10 md:py-0 md:w-screen md:h-[70vh] md:my-24">
         <div className="md:my-10 flex flex-col items-center">
           <h1 className="mb-3 md:mb-0 capitalize md:text-4xl font-bold md:font-semibold">
-            Shop our trending products
+            Best Selling products
           </h1>
           <p className="md:mt-10 text-sm md:text-lg text-center">
-            Life is hard enough already. Let us make it a little easier.
+            Innovation meets demand, creating irresistible bestsellers that
+            redefine consumer experiences.
           </p>
         </div>
         <div className="md:pb-16 flex justify-center items-center relative">
-          <ul className="mt-5 md:mt-0 w-full md:w-[30%] flex justify-between text-sm md:text-lg">
-            <li>
-              <a
-                href="/"
-                className="font-semibold hover:border-b-2 hover:border-black"
-              >
-                Fashion
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="font-semibold hover:border-b-2 hover:border-black"
-              >
-                Technology
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="font-semibold hover:border-b-2 hover:border-black"
-              >
-                Service
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="font-semibold hover:border-b-2 hover:border-black"
-              >
-                Food & Drink
-              </a>
-            </li>
-          </ul>
           <div className="hidden md:block absolute right-16">
             <IconButton
               aria-label="left"
               sx={{
-                color: isLightTheme ? "gray" : "white",
+                color: !isDarkTheme ? "gray" : "white",
               }}
               className={
-                isLightTheme
+                !isDarkTheme
                   ? "active:text-blue-400"
                   : "text-white active:text-blue-400"
               }
@@ -130,10 +97,10 @@ function TrendingProducts() {
             <IconButton
               aria-label="right"
               sx={{
-                color: isLightTheme ? "gray" : "white",
+                color: !isDarkTheme ? "gray" : "white",
               }}
               className={
-                isLightTheme
+                !isDarkTheme
                   ? "active:text-blue-400"
                   : "text-white active:text-blue-400"
               }
