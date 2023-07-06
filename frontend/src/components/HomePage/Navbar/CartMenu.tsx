@@ -20,15 +20,15 @@ export default function CartMenu() {
   const router = useRouter();
 
   const {
-    contextValue,
-    deleteContextValue,
+    cartData,
+    deleteCartData,
     isLoginComplete,
     accessToken,
     isDarkTheme,
   } = useContext(GlobalStates);
 
   const handleRemove = (product: any) => {
-    deleteContextValue(product);
+    deleteCartData(product);
   };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -40,7 +40,7 @@ export default function CartMenu() {
     setAnchorEl(null);
   };
 
-  const subTotal = contextValue.reduce(
+  const subTotal = cartData.reduce(
     (acc: number, item: any) => acc + item.price * item.qty,
     0
   );
@@ -53,7 +53,7 @@ export default function CartMenu() {
     }
   };
 
-  const allCartItems = contextValue.map((product: any) => {
+  const allCartItems = cartData.map((product: any) => {
     return (
       <div key={product.id}>
         <div id="single-product" className="my-5 flex justify-between">

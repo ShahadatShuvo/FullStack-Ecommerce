@@ -10,7 +10,7 @@ import {
 } from "../../interfaces";
 
 interface ContextValue {
-  contextValue: ProductCardProps[];
+  cartData: ProductCardProps[];
   shippingAddress: ShippingAddressInterface;
   userProfile: UserDetailInterface;
   accessToken: string;
@@ -28,13 +28,13 @@ interface ContextValue {
   checkLogout: (value: boolean) => void;
   updateUserprofile: (newValue: UserDetailInterface) => void;
   updateShippingAddress: (newValue: ShippingAddressInterface) => void;
-  increaseContextValue: (newValue: ProductCardProps) => void;
-  decreaseContextValue: (newValue: ProductCardProps) => void;
-  deleteContextValue: (newValue: ProductCardProps) => void;
+  increaseCartData: (newValue: ProductCardProps) => void;
+  decreaseCartData: (newValue: ProductCardProps) => void;
+  deleteCartData: (newValue: ProductCardProps) => void;
 }
 
 export const GlobalStates = createContext<ContextValue>({
-  contextValue: [],
+  cartData: [],
   shippingAddress: initialShippingAddress,
   userProfile: initialUserDetail,
   isSignUpComplete: false,
@@ -52,7 +52,7 @@ export const GlobalStates = createContext<ContextValue>({
   checkLogout: () => {},
   updateUserprofile: () => {},
   updateShippingAddress: () => {},
-  increaseContextValue: () => {},
-  decreaseContextValue: () => {},
-  deleteContextValue: () => {},
+  increaseCartData: () => {},
+  decreaseCartData: () => {},
+  deleteCartData: () => {},
 });

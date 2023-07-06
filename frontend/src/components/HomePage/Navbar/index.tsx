@@ -76,7 +76,7 @@ function Navbar() {
   const {
     isDarkTheme,
     toggleTheme,
-    contextValue,
+    cartData,
     accessToken,
     isLoginComplete,
     isLogoutComplete,
@@ -303,7 +303,7 @@ function Navbar() {
               />
             </div>
             <Badge
-              badgeContent={contextValue.length}
+              badgeContent={cartData.length}
               color="primary"
               sx={{
                 mt: "2px",
