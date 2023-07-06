@@ -18,11 +18,12 @@ import {
   TextField,
 } from "@mui/material";
 import AuthSuccess from "../Accounts/AuthSuccess";
+import { is } from "date-fns/locale";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function UpdateAccount() {
-  const { setToken, userProfile, accessToken, updateUserprofile } =
+  const { setToken, userProfile, accessToken, updateUserprofile, isDarkTheme } =
     useContext(CartItemContext);
 
   const [snackbar, setSnackbar] = React.useState(0);
@@ -101,6 +102,17 @@ function UpdateAccount() {
             fullWidth
             size="small"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="First Name"
             variant="outlined"
             name="first_name"
@@ -111,6 +123,17 @@ function UpdateAccount() {
             fullWidth
             size="small"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="Last Name"
             variant="outlined"
             name="last_name"
@@ -123,6 +146,17 @@ function UpdateAccount() {
             fullWidth
             size="small"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="Phone Number"
             variant="outlined"
             name="phone_number"
@@ -132,13 +166,24 @@ function UpdateAccount() {
         </div>
         <div className="flex flex-col gap-2">
           <FormControl fullWidth size="small">
-            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ color: isDarkTheme ? "white" : "gray" }}
+            >
+              Gender
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Gender"
               value={formData.gender}
               onChange={handleGenderSelect}
+              style={{ color: isDarkTheme ? "white" : "black" }}
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                },
+              }}
             >
               <NativeSelect defaultValue={formData.gender} />
               <MenuItem value="male">Male</MenuItem>
@@ -153,6 +198,17 @@ function UpdateAccount() {
             size="small"
             type="text"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="Country"
             variant="outlined"
             name="country"
@@ -163,6 +219,17 @@ function UpdateAccount() {
             fullWidth
             size="small"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="State"
             variant="outlined"
             name="state"
@@ -176,6 +243,17 @@ function UpdateAccount() {
             size="small"
             type="text"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="City"
             variant="outlined"
             name="city"
@@ -186,6 +264,17 @@ function UpdateAccount() {
             fullWidth
             size="small"
             id="outlined-basic"
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             label="Zip Code"
             variant="outlined"
             name="zip_code"
@@ -196,11 +285,42 @@ function UpdateAccount() {
         <div className="w-full flex gap-5">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]} sx={{ width: "100%" }}>
-              <DatePicker label="Date of Birth" sx={{ width: "100%" }} />
+              <DatePicker
+                label="Date of Birth"
+                sx={{
+                  width: "100%",
+                  "& .MuiInputBase-root": {
+                    color: isDarkTheme ? "white" : "black",
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: isDarkTheme ? "white" : "gray",
+                  },
+                  "& .MuiInput-underline:before, & .MuiInput-underline:after": {
+                    borderBottomColor: isDarkTheme ? "white" : "gray",
+                  },
+                  "& .MuiIconButton-root": {
+                    color: isDarkTheme ? "white" : "black",
+                  },
+                  "& .MuiPickersDay-daySelected": {
+                    backgroundColor: isDarkTheme ? "white" : "black",
+                    color: isDarkTheme ? "black" : "white",
+                  },
+                  "& .MuiPickersToolbar-toolbar": {
+                    backgroundColor: isDarkTheme ? "white" : "black",
+                    color: isDarkTheme ? "black" : "white",
+                  },
+                }}
+              />
             </DemoContainer>
           </LocalizationProvider>
         </div>
-        <div className="w-full flex gap-5 bg-black rounded-md">
+        <div
+          className={
+            isDarkTheme
+              ? "w-full flex gap-5 bg-gray-500 rounded-md"
+              : "w-full flex gap-5 bg-black rounded-md"
+          }
+        >
           <Button fullWidth variant="contained" onClick={handleFormSubmit}>
             Update
           </Button>

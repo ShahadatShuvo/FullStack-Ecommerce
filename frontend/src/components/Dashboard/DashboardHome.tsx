@@ -48,7 +48,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function DashboardHome() {
-  const { userProfile, activeTab } = useContext(CartItemContext);
+  const { userProfile, activeTab, isDarkTheme } = useContext(CartItemContext);
 
   const [value, setValue] = React.useState(activeTab);
 
@@ -63,12 +63,20 @@ export default function DashboardHome() {
   };
 
   return (
-    <div className="w-[100vw] bg-white ">
-      <div className="flex justify-between items-center px-10 py-1 bg-gray-50">
+    <div
+      className={isDarkTheme ? "w-[100vw] bg-gray-900" : "w-[100vw] bg-white "}
+    >
+      <div
+        className={
+          isDarkTheme
+            ? "flex justify-between items-center px-10 py-1 bg-gray-900"
+            : "flex justify-between items-center px-10 py-1 bg-gray-50"
+        }
+      >
         <div>
           <Link href="/">
             <Image
-              src="/img/VMi.png"
+              src={isDarkTheme ? "/img/logo_dark.svg" : "/img/logo_light.svg"}
               alt=""
               width={150}
               height={65}
@@ -78,17 +86,33 @@ export default function DashboardHome() {
         </div>
 
         <div>
-          <Tabs value={value} onChange={handleChange} centered>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            textColor=""
+            indicatorColor="primary"
+            centered
+          >
             <Tab
               label="Account info"
+              value="account_info"
               onClick={() => handleTabs("account_info")}
             />
             <Tab
               label="Update Account"
+              value="update_account"
               onClick={() => handleTabs("update_account")}
             />
-            <Tab label="Wishlist" onClick={() => handleTabs("wishlist")} />
-            <Tab label="My orders" onClick={() => handleTabs("my_orders")} />
+            <Tab
+              label="Wishlist"
+              value="wishlist"
+              onClick={() => handleTabs("wishlist")}
+            />
+            <Tab
+              label="My orders"
+              value="my_orders"
+              onClick={() => handleTabs("my_orders")}
+            />
             <Tab
               label="Change password"
               onClick={() => handleTabs("change_password")}
