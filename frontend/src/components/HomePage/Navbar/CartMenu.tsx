@@ -152,13 +152,21 @@ export default function CartMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <div className="w-[30vw]">
+        <div
+          className={
+            isDarkTheme ? "w-[30vw] bg-gray-900 text-white" : "w-[30vw]"
+          }
+        >
           <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll hide-scrollbar">
             <h1 className=" text-xl font-bold text-gray-500">Shopping Cart</h1>
             {allCartItems}
           </div>
 
-          <div className="mt-3 pb-3 bg-blue-50">
+          <div
+            className={
+              isDarkTheme ? "mt-3 pb-3 bg-gray-900" : "mt-3 pb-3 bg-blue-50"
+            }
+          >
             <div className="pt-3 px-5 font-bold flex justify-between">
               <p>Subtotal</p>
               <p>{subTotal} TK</p>

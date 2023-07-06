@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { SingleStepInterface } from "../../../../interfaces";
+import { CartItemContext } from "@/app/context";
+import { useContext } from "react";
 
 function SingleStep(props: SingleStepInterface) {
+  const { isDarkTheme } = useContext(CartItemContext);
+
   const { image, step, title, description, extraStyle } = props.step;
   return (
     <div className=" text-center   text-black mx-auto w-64 md:w-72 mb-16 hover:shadow-[rgba(0,_0,_0,_0.12)_0px_3px_8px] p-8 rounded-xl  ">
@@ -18,7 +22,15 @@ function SingleStep(props: SingleStepInterface) {
         >
           {step}
         </span>
-        <h6 className="text-base font-semibold">{title}</h6>
+        <h6
+          className={
+            isDarkTheme
+              ? "text-base font-semibold text-white"
+              : "text-base font-semibold"
+          }
+        >
+          {title}
+        </h6>
         <p className="text-slate-600 leading-6">{description}</p>
       </div>
     </div>

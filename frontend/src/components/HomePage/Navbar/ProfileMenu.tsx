@@ -176,6 +176,8 @@ export default function MenuBarIcon({
         PaperProps={{
           elevation: 0,
           sx: {
+            background: isDarkTheme ? "#111827" : "#fff",
+            color: isDarkTheme ? "#fff" : "#111827",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
@@ -261,23 +263,17 @@ export default function MenuBarIcon({
           )}
         </MenuItem>
         <MenuItem onClick={() => handleTabs("update_account")}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
+          <PersonAdd fontSize="small" sx={{ mr: 2 }} />
           Update Account
         </MenuItem>
         <Link href="/dashboard">
           <MenuItem onClick={() => handleTabs("change_password")}>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
+            <Settings fontSize="small" sx={{ mr: 2 }} />
             Change Password
           </MenuItem>
         </Link>
         <MenuItem onClick={handleLogout}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
+          <Logout fontSize="small" sx={{ mr: 2 }} />
           Logout
         </MenuItem>
       </Menu>

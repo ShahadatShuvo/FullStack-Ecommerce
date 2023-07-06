@@ -6,10 +6,14 @@ import { IconButton, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DiscoverNav from "./DiscoverNav";
 import ProductDisplay from "./ProductDisplay";
+import { CartItemContext } from "@/app/context";
+import { useContext } from "react";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function DiscoverMore() {
+  const { isDarkTheme } = useContext(CartItemContext);
+
   const [search, setSearch] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const [page, setPage] = React.useState(1);
@@ -111,14 +115,15 @@ function DiscoverMore() {
       </div>
       <div className="mt-5">
         <ProductDisplay data={data} resultMap={resultMap} />
-        <div className="my-5 mb-12 w-full flex justify-center items-center select-none">
+        <div className="my-10 flex justify-center">
           <Pagination
-            count={10}
+            count={5}
+            color="primary"
             page={page}
             onChange={handlePageChange}
-            variant="outlined"
-            shape="rounded"
-            color="primary"
+            className={
+              !isDarkTheme ? "" : "bg-white py-2 md:px-4 rounded-xl mb-5"
+            }
           />
         </div>
       </div>
