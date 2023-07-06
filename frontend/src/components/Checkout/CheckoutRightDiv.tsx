@@ -8,7 +8,7 @@ import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import OrderConfirmed from "./OrderConfirmed";
 import ProgressBtn from "./ProgressBtn";
 
-interface CuponInterface {
+interface CouponInterface {
   id: number;
   code: string;
   discount: number;
@@ -27,15 +27,16 @@ function CheckoutRightDiv() {
     decreaseContextValue,
     deleteContextValue,
   } = useContext(CartItemContext);
-  const [cupon, setCupon] = React.useState({
-    id: 0,
+
+  const [coupon, setCoupon] = React.useState({
     code: "",
     discount: 0,
+    active: false,
     created_at: "",
     updated_at: "",
   });
 
-  const [userCupon, setUserCupon] = React.useState("");
+  const [userCoupon, setUserCoupon] = React.useState("");
 
   const [discount, setDiscount] = React.useState(0);
 
@@ -47,6 +48,7 @@ function CheckoutRightDiv() {
   const taxAmount = subTotal * 0.05;
 
   const orderTotal = subTotal - discount + taxAmount + 100;
+  console.log("orderTotal:", orderTotal);
 
   const onHandleIncreament = (product: any) => {
     increaseContextValue(product);
@@ -71,6 +73,8 @@ function CheckoutRightDiv() {
         complete: false,
         shipping_address: JSON.stringify(shippingAddress),
         ordered_products: JSON.stringify(contextValue),
+        amount: orderTotal,
+        applied_coupon: coupon.code,
       };
       const handleSubmit = async (formData: any) => {
         try {
@@ -107,11 +111,11 @@ function CheckoutRightDiv() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response = await fetch(`${apiUrl}/api/cupon/${userCupon}`);
+        let response = await fetch(`${apiUrl}/api/coupon/${userCoupon}/`);
 
         if (response.ok) {
           const result = await response.json();
-          setCupon(result);
+          setCoupon(result);
           setDiscount(result.discount);
         } else {
           throw new Error("Request failed");
@@ -122,11 +126,11 @@ function CheckoutRightDiv() {
       }
     };
     fetchData();
-  }, [userCupon]);
+  }, [userCoupon]);
 
-  const takeCuponFromBackend = () => {
-    if (userCupon === cupon?.code) {
-      enqueueSnackbar(`Congrats! you got ${cupon?.discount} TK discount!`, {
+  const takeCouponFromBackend = () => {
+    if (userCoupon === coupon?.code) {
+      enqueueSnackbar(`Congrats! you got ${coupon?.discount} TK discount!`, {
         variant: "success",
       });
     } else {
@@ -206,9 +210,9 @@ function CheckoutRightDiv() {
         <p className="font-medium text-lg">Discount code</p>
         <div className="mt-3 flex gap-3">
           <TextField
-            value={userCupon}
+            value={userCoupon}
             name="cupon"
-            onChange={(e) => setUserCupon(e.target.value)}
+            onChange={(e) => setUserCoupon(e.target.value)}
             size="small"
             id="outlined-basic"
             label="Enter code here"
@@ -216,7 +220,7 @@ function CheckoutRightDiv() {
             className="w-full rounded-full"
           />
           <Button
-            onClick={takeCuponFromBackend}
+            onClick={takeCouponFromBackend}
             variant="contained"
             color="success"
             className=" bg-black rounded-full"

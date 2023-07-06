@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Cupon(models.Model):
+class Coupon(models.Model):
     code = models.CharField(max_length=50, unique=True, primary_key=True)
     discount = models.FloatField()
     active = models.BooleanField(default=True)
