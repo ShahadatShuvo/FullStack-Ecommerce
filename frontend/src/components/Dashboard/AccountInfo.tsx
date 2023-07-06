@@ -13,7 +13,6 @@ function AccountInfo() {
   const {
     catchErrorMsg,
     isDarkTheme,
-    setToken,
     userProfile,
     accessToken,
     updateUserprofile,
