@@ -7,6 +7,7 @@ import { CartItemContext } from "@/app/context";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import OrderConfirmed from "./OrderConfirmed";
 import ProgressBtn from "./ProgressBtn";
+import Link from "next/link";
 
 interface CouponInterface {
   id: number;
@@ -257,7 +258,6 @@ function CheckoutRightDiv() {
             <p className="">Order Total</p>
             <p className="text-blue-400">{orderTotal.toFixed(2)} TK</p>
           </div>
-
           {/* <OrderConfirmed />  */}
           {!showProgress ? (
             <Button
@@ -273,14 +273,19 @@ function CheckoutRightDiv() {
               <ProgressBtn />
             </div>
           )}
-
           <Alert severity="info" className="bg-blue-50 rounded-full">
             Learn more
-            <a href="/" className="mx-1 underline hover:text-red-500">
+            <Link
+              href="/checkout/terms&conditions/tax"
+              className="mx-1 underline hover:text-red-500"
+            >
               Taxes
-            </a>
+            </Link>
             and
-            <a href="/" className="mx-1 underline hover:text-red-500">
+            <a
+              href="/checkout/terms&conditions/shipping"
+              className="mx-1 underline hover:text-red-500"
+            >
               Shipping
             </a>
             infomation
