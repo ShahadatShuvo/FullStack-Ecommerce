@@ -8,7 +8,7 @@ import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOu
 import { IconButton } from "@mui/material";
 import "./card.css";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 
 const prodImg = [
   {
@@ -46,7 +46,7 @@ const prodImg = [
 ];
 
 function TrendingProducts() {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
 
   const scrollRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 

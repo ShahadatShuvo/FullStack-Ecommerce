@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -16,7 +16,7 @@ function AccountInfo() {
     accessToken,
     updateUserprofile,
     isLoginComplete,
-  } = useContext(CartItemContext);
+  } = useContext(GlobalStates);
 
   const date = userProfile.created_at
     ? userProfile.created_at.split("T")[0]

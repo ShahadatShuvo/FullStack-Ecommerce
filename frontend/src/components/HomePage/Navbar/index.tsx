@@ -1,5 +1,5 @@
 "use client";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import CloseIcon from "@mui/icons-material/Close";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -80,7 +80,7 @@ function Navbar() {
     accessToken,
     isLoginComplete,
     isLogoutComplete,
-  } = useContext(CartItemContext);
+  } = useContext(GlobalStates);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);

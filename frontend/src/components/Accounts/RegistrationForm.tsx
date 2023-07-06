@@ -20,7 +20,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import AuthSuccess from "./AuthSuccess";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -51,7 +51,7 @@ const validationSchema = yup.object({
 function RegistrationForm() {
   const router = useRouter();
 
-  const { checkSignUp, isDarkTheme } = useContext(CartItemContext);
+  const { checkSignUp, isDarkTheme } = useContext(GlobalStates);
 
   const formik = useFormik({
     initialValues: {

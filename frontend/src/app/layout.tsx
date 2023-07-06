@@ -7,7 +7,7 @@ import {
   initialShippingAddress,
   initialUserDetail,
 } from "../../interfaces";
-import { CartItemContext } from "./context";
+import { GlobalStates } from "./context";
 import "./globals.css";
 
 const metadata = {
@@ -219,7 +219,7 @@ export default function RootLayout({
         className={!isDarkTheme ? "bg-white" : "bg-gray-900 text-white"}
         suppressHydrationWarning={true}
       >
-        <CartItemContext.Provider
+        <GlobalStates.Provider
           value={{
             userProfile,
             refreshToken,
@@ -245,7 +245,7 @@ export default function RootLayout({
           }}
         >
           {children}
-        </CartItemContext.Provider>
+        </GlobalStates.Provider>
         <Footer />
       </body>
     </html>

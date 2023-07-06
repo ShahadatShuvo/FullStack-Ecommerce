@@ -22,7 +22,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useContext } from "react";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { useRouter } from "next/navigation";
 import { initialUserDetail } from "../../../../interfaces";
 
@@ -77,7 +77,7 @@ export default function MenuBarIcon({
     updateUserprofile,
     setToken,
     userProfile,
-  } = useContext(CartItemContext);
+  } = useContext(GlobalStates);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

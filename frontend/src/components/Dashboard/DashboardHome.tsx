@@ -1,6 +1,6 @@
 "use client";
 
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { Avatar } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import Tab from "@mui/material/Tab";
@@ -48,7 +48,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function DashboardHome() {
-  const { userProfile, activeTab, isDarkTheme } = useContext(CartItemContext);
+  const { userProfile, activeTab, isDarkTheme } = useContext(GlobalStates);
 
   const [value, setValue] = React.useState(activeTab);
 

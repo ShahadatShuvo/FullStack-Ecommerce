@@ -33,7 +33,7 @@ interface ContextValue {
   deleteContextValue: (newValue: ProductCardProps) => void;
 }
 
-export const CartItemContext = createContext<ContextValue>({
+export const GlobalStates = createContext<ContextValue>({
   contextValue: [],
   shippingAddress: initialShippingAddress,
   userProfile: initialUserDetail,

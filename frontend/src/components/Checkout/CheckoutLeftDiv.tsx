@@ -15,7 +15,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { green } from "@mui/material/colors";
@@ -26,7 +26,7 @@ import { is } from "date-fns/locale";
 
 function CheckoutLeftDiv() {
   const { userProfile, updateShippingAddress, isDarkTheme } =
-    useContext(CartItemContext);
+    useContext(GlobalStates);
 
   const [autoFill, setAutoFill] = React.useState(false);
   const [loading, setLoading] = React.useState(false);

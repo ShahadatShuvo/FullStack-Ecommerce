@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { useContext, useState } from "react";
 
 function DiscoverNav({
@@ -25,7 +25,7 @@ function DiscoverNav({
   activeCategory: string;
   setActiveCategory: any;
 }) {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
   };
