@@ -1,9 +1,18 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
+import OrderDetail from "./OrderDetail";
+import { useState } from "react";
 
 function PreviewOrder({ ...props }) {
   const date = props.date_ordered.split("T")[0];
   const time = props.date_ordered.slice(date.length + 1, -11);
+
+  const [open, setOpen] = useState(false);
+  console.log("open: ", open);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div className=" w-[50vw] shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4  rounded-lg">
@@ -41,9 +50,17 @@ function PreviewOrder({ ...props }) {
               <span className="ml-1">{props.complete ? "Paid" : "Unpaid"}</span>
             </p>
             <div className="flex">
-              <Button variant="text" size="small">
+              <Button variant="text" size="small" onClick={handleOpen}>
                 View More
               </Button>
+              {open && (
+                <OrderDetail
+                  open={open}
+                  setOpen={setOpen}
+                  product={props.ordered_products}
+                  shippingAddress={props.shipping_address}
+                />
+              )}
             </div>
           </div>
         </div>
