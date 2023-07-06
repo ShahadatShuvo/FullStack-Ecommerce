@@ -1,5 +1,8 @@
 "use client";
 
+import { CartItemContext } from "@/app/context";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
   Button,
   FormControl,
@@ -8,17 +11,13 @@ import {
   OutlinedInput,
   TextField,
 } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
 import { useFormik } from "formik";
-import * as yup from "yup";
 import Image from "next/image";
 import Link from "next/link";
-import InputAdornment from "@mui/material/InputAdornment";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import React from "react";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import React, { useContext } from "react";
+import * as yup from "yup";
 import AuthSuccess from "./AuthSuccess";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -86,7 +85,7 @@ function LoginForm() {
         if (response.ok) {
           const data = await response.json();
           // Store the access token in localStorage or any other state management solution
-          console.log(data);
+
           localStorage.setItem("accessToken", data.token.access);
           localStorage.setItem("refreshToken", data.token.refresh);
           setToken(data.token.access, "accessToken");

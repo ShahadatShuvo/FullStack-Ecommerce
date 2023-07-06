@@ -1,14 +1,12 @@
-import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
-import Image from "next/image";
-import React, { useContext, useEffect } from "react";
+import { CartItemContext } from "@/app/context";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { CartItemContext } from "@/app/context";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
-import OrderConfirmed from "./OrderConfirmed";
-import ProgressBtn from "./ProgressBtn";
+import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
-import { is } from "date-fns/locale";
+import { enqueueSnackbar } from "notistack";
+import React, { useContext, useEffect } from "react";
+import ProgressBtn from "./ProgressBtn";
 
 interface CouponInterface {
   id: number;
@@ -51,7 +49,6 @@ function CheckoutRightDiv() {
   const taxAmount = subTotal * 0.05;
 
   const orderTotal = subTotal - discount + taxAmount + 100;
-  console.log("orderTotal:", orderTotal);
 
   const onHandleIncreament = (product: any) => {
     increaseContextValue(product);
@@ -83,7 +80,7 @@ function CheckoutRightDiv() {
       };
       const handleSubmit = async (formData: any) => {
         try {
-          const response = await fetch(`${apiUrl}//api/orders/`, {
+          const response = await fetch(`${apiUrl}/api/orders/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

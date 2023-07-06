@@ -1,8 +1,7 @@
-import React from "react";
+import { CartItemContext } from "@/app/context";
 import { Button, Fade, Modal } from "@mui/material";
 import Image from "next/image";
-import { CartItemContext } from "@/app/context";
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 function OrderDetail({
   open,
@@ -23,7 +22,6 @@ function OrderDetail({
 
   const productArray = JSON.parse(product);
   const address = JSON.parse(shippingAddress);
-  console.log("address: ", address);
 
   return (
     <div>
