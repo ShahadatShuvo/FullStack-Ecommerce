@@ -19,6 +19,6 @@ urlpatterns = [
          views.CategoryProductListView.as_view(), name='category-product-list'),
 
     # cupon endpoints
-    path('api/cupons/', views.CuponList.as_view(), name='cupon-list'),
-    path('api/cupon/<str:pk>/', views.CuponDetail.as_view(), name='cupon-detail'),
+    path('api/coupons/', views.CouponList.as_view(), name='coupon-list'),
+    path('api/coupon/<str:pk>/', views.CouponDetail.as_view(), name='coupon-detail'),
 ]
