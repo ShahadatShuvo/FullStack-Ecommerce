@@ -5,11 +5,13 @@ import React from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
+import { useRouter } from "next/navigation";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function AccountInfo() {
   const {
+    catchErrorMsg,
     isDarkTheme,
     setToken,
     userProfile,
@@ -17,6 +19,8 @@ function AccountInfo() {
     updateUserprofile,
     isLoginComplete,
   } = useContext(GlobalStates);
+
+  const router = useRouter();
 
   const date = userProfile.created_at
     ? userProfile.created_at.split("T")[0]
@@ -39,10 +43,13 @@ function AccountInfo() {
           updateUserprofile(data);
         } else {
           console.log("Error fetching user profile data");
-          setToken("", "");
+          router.push("/error/404");
+          catchErrorMsg("Error fetching user profile data");
         }
       } catch (error) {
         console.error("Error parsing JSON:", error);
+        router.push("/error/404");
+        catchErrorMsg(JSON.stringify(error));
       }
     };
     if (accessToken) {

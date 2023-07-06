@@ -2,11 +2,15 @@ import React, { use, useEffect, useState } from "react";
 import PreviewOrder from "./orders/PreviewOrder";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
+import { useRouter } from "next/navigation";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function MyOrder() {
-  const { userProfile, accessToken } = useContext(GlobalStates);
+  const { userProfile, accessToken, catchErrorMsg } = useContext(GlobalStates);
+
+  const router = useRouter();
+
   const [orderList, setOrderList] = useState([]);
 
   useEffect(() => {
@@ -28,12 +32,17 @@ function MyOrder() {
         } else {
           const errorData = await response.json();
           console.log("Error  1:", errorData);
+          router.push("/error/404");
+          catchErrorMsg(JSON.stringify(errorData));
         }
       } catch (error) {
         console.error("Error 2:", error);
+        router.push("/error/404");
+        catchErrorMsg(JSON.stringify(error));
       }
     };
     handleSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userProfile, accessToken]);
 
   const showOrderList = orderList.length ? (

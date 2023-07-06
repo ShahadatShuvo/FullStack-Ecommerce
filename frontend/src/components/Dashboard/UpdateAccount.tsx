@@ -18,12 +18,11 @@ import {
   TextField,
 } from "@mui/material";
 import AuthSuccess from "../Accounts/AuthSuccess";
-import { is } from "date-fns/locale";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function UpdateAccount() {
-  const { setToken, userProfile, accessToken, updateUserprofile, isDarkTheme } =
+  const { userProfile, accessToken, updateUserprofile, isDarkTheme } =
     useContext(GlobalStates);
 
   const [snackbar, setSnackbar] = React.useState(0);
@@ -70,7 +69,6 @@ function UpdateAccount() {
           localStorage.setItem("userData", JSON.stringify(data));
           updateUserprofile(data);
         } else if (response.status === 401) {
-          setToken("", "");
         } else {
           const error = await response.json();
           console.log("error p", error);

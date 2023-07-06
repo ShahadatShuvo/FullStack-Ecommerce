@@ -58,6 +58,7 @@ export default function RootLayout({
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("account_info");
   const [check, setCheck] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const toggleTab = (value: string) => {
     setActiveTab(value);
@@ -96,6 +97,7 @@ export default function RootLayout({
   const checkLogout = (value: boolean) => {
     setIsLogoutComplete(value);
   };
+  const catchErrorMsg = (value: string) => {};
 
   React.useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -242,6 +244,8 @@ export default function RootLayout({
             increaseCartData,
             decreaseCartData,
             deleteCartData,
+            errorMsg,
+            catchErrorMsg,
           }}
         >
           {children}
