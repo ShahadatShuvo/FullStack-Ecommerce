@@ -2,8 +2,12 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 import OrderDetail from "./OrderDetail";
 import { useState } from "react";
+import { CartItemContext } from "@/app/context";
+import { useContext } from "react";
 
 function PreviewOrder({ ...props }) {
+  const { isDarkTheme } = useContext(CartItemContext);
+
   const date = props.date_ordered.split("T")[0];
   const time = props.date_ordered.slice(date.length + 1, -11);
 
@@ -15,7 +19,13 @@ function PreviewOrder({ ...props }) {
   };
 
   return (
-    <div className=" w-[50vw] shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4  rounded-lg">
+    <div
+      className={
+        isDarkTheme
+          ? " w-[50vw] border border-blue-400 p-4  rounded-lg"
+          : " w-[50vw] shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4  rounded-lg"
+      }
+    >
       <div className="flex  sm:py-7 last:pb-0 first:pt-0">
         <div className="relative h-24 w-16 sm:w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
           <Image src="/img/order.svg" alt="" height={100} width={100} />
