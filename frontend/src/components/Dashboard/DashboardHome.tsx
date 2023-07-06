@@ -50,14 +50,35 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export default function DashboardHome() {
   const { userProfile, activeTab, isDarkTheme } = useContext(GlobalStates);
 
-  const [value, setValue] = React.useState(activeTab);
+  const [tabvalue, setTabvalue] = React.useState(0);
+  React.useEffect(() => {
+    setTabvalue(
+      activeTab === "account_info"
+        ? 0
+        : activeTab === "update_account"
+        ? 1
+        : activeTab === "wishlist"
+        ? 2
+        : activeTab === "my_orders"
+        ? 3
+        : 4
+    );
+  }, [activeTab]);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(activeTab);
-  };
+  // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  //   setValue(activeTab);
+  // };
 
-  const handleTabs = (value: string) => {
-    setValue(value);
+  const handleTabs = (name: string) => {
+    name === "account_info"
+      ? setTabvalue(0)
+      : name === "update_account"
+      ? setTabvalue(1)
+      : name === "wishlist"
+      ? setTabvalue(2)
+      : name === "my_orders"
+      ? setTabvalue(3)
+      : setTabvalue(4);
   };
 
   return (
@@ -85,34 +106,34 @@ export default function DashboardHome() {
 
         <div>
           <Tabs
-            value={value}
-            onChange={handleChange}
-            textColor=""
+            value={tabvalue}
+            // onChange={handleChange}
             indicatorColor="primary"
             centered
           >
             <Tab
               label="Account info"
-              value="account_info"
+              sx={{ color: isDarkTheme ? "#fff" : "#000" }}
               onClick={() => handleTabs("account_info")}
             />
             <Tab
               label="Update Account"
-              value="update_account"
+              sx={{ color: isDarkTheme ? "#fff" : "#000" }}
               onClick={() => handleTabs("update_account")}
             />
             <Tab
               label="Wishlist"
-              value="wishlist"
+              sx={{ color: isDarkTheme ? "#fff" : "#000" }}
               onClick={() => handleTabs("wishlist")}
             />
             <Tab
               label="My orders"
-              value="my_orders"
+              sx={{ color: isDarkTheme ? "#fff" : "#000" }}
               onClick={() => handleTabs("my_orders")}
             />
             <Tab
               label="Change password"
+              sx={{ color: isDarkTheme ? "#fff" : "#000" }}
               onClick={() => handleTabs("change_password")}
             />
           </Tabs>
@@ -139,11 +160,11 @@ export default function DashboardHome() {
       </div>
 
       <div className=" w-[100%]">
-        {value === "account_info" && <AccountInfo />}
-        {value === "update_account" && <UpdateAccount />}
-        {value === "wishlist" && <Wishlist />}
-        {value === "my_orders" && <MyOrder />}
-        {value === "change_password" && <ChangePassword />}
+        {tabvalue === 0 && <AccountInfo />}
+        {tabvalue === 1 && <UpdateAccount />}
+        {tabvalue === 2 && <Wishlist />}
+        {tabvalue === 3 && <MyOrder />}
+        {tabvalue === 4 && <ChangePassword />}
       </div>
     </div>
   );
