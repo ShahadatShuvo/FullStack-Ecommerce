@@ -124,10 +124,10 @@ function Navbar() {
                 <CloseIcon fontSize="inherit" />
               </IconButton>
             }
-            className="bg-gray-100 text-gray-600"
+            // className="bg-gray-100 text-gray-600"
             sx={{
               padding: "0px 16px",
-              // bgcolor: "white",
+              background: isDarkTheme ? "#111827" : "white",
               marginTop: "5px",
               marginX: "5px",
               border: "1px solid black",
@@ -144,10 +144,10 @@ function Navbar() {
                 <div className=" w-full md:w-[85%]">
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
-                      <span>
+                      <span className={isDarkTheme ? "text-[#38BDF8]" : ""}>
                         Virtual Mart (VMart). Here, You will quickly get all
                         kinds of your daily Shopping, with only 1 click from
-                        your{" "}
+                        your
                         <span className="text-blue-400">Home or Office</span>.
                         ভার্চুয়াল মার্ট (ভিমার্ট) এখানে, আপনি আপনার বাসা বা
                         অফিস থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের
@@ -166,11 +166,11 @@ function Navbar() {
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <Link href="/">
             <Image
-              src="/img/VMi.png"
+              src={isDarkTheme ? "/img/logo_dark.svg" : "/img/logo_light.svg"}
               alt=""
-              width={130}
+              width={145}
               height={80}
-              className="w-[160px] h-[80px] py-2"
+              className=" py-2"
             />
           </Link>
 
