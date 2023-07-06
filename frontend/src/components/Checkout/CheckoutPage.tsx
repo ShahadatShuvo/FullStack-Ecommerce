@@ -4,8 +4,26 @@ import { SnackbarProvider } from "notistack";
 import CheckoutLeftDiv from "./CheckoutLeftDiv";
 import CheckoutRightDiv from "./CheckoutRightDiv";
 import OrderConfirmed from "./OrderConfirmed";
+import { GlobalStates } from "@/app/context";
+import { useContext } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 function CheckoutPage() {
+  const router = useRouter();
+
+  const { accessToken } = useContext(GlobalStates);
+
+  useEffect(() => {
+    // Access the router object and perform logic
+    console.log(window.location.href);
+    let url = window.location.href;
+    if (url.includes("/checkout") && !accessToken) {
+      router.push("/account/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessToken]);
+
   return (
     <div className="w-full p-16 border-y-2">
       <SnackbarProvider />
