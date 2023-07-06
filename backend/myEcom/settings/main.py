@@ -170,7 +170,7 @@ SIMPLE_JWT = {
 }
 
 
-PASSWORD_RESET_TIMEOUT = 3600          # 900 Sec = 15 Min
+PASSWORD_RESET_TIMEOUT = 86400          # 900 Sec = [24 hours == 1 day]
 
 
 # CORS_ORIGIN_WHITELIST = [
