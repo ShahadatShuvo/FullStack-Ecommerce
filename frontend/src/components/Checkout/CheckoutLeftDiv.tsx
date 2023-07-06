@@ -22,9 +22,11 @@ import { green } from "@mui/material/colors";
 import Fab from "@mui/material/Fab";
 import CheckIcon from "@mui/icons-material/Check";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
+import { is } from "date-fns/locale";
 
 function CheckoutLeftDiv() {
-  const { userProfile, updateShippingAddress } = useContext(CartItemContext);
+  const { userProfile, updateShippingAddress, isDarkTheme } =
+    useContext(CartItemContext);
 
   const [autoFill, setAutoFill] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -130,12 +132,16 @@ function CheckoutLeftDiv() {
       {/* Contact Info */}
       <div className="p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center ">
         <AccountCircleOutlinedIcon className=" text-3xl" />
-        <div className="ml-5 ">
+        <div className="ml-5">
           <p className=" flex items-center">
             <span className="uppercase mr-2">Contact Info</span>
             <CheckOutlinedIcon />
           </p>
-          <p className="text-black font-medium">
+          <p
+            className={
+              isDarkTheme ? "text-white font-medium" : "text-black font-medium"
+            }
+          >
             <span>{`${userProfile.first_name} ${userProfile.last_name}`}</span>
             <span className="ml-4">{userProfile.email}</span>
             <span className="ml-4">{userProfile.phone_number}</span>
@@ -152,7 +158,13 @@ function CheckoutLeftDiv() {
               <span className="uppercase mr-2">SHIPPING ADDRESS</span>
               <CheckOutlinedIcon />
             </p>
-            <p className="text-black font-medium">
+            <p
+              className={
+                isDarkTheme
+                  ? "text-white font-medium"
+                  : "text-black font-medium"
+              }
+            >
               <span>{`${userProfile.country}, ${userProfile.state}, ${userProfile.city} - ${userProfile.zip_code}`}</span>
             </p>
           </div>
@@ -182,6 +194,17 @@ function CheckoutLeftDiv() {
                 fullWidth
                 size="small"
                 id="outlined-basic"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "gray",
+                  },
+                }}
                 label="First Name"
                 variant="outlined"
                 name="first_name"
@@ -192,6 +215,17 @@ function CheckoutLeftDiv() {
                 fullWidth
                 size="small"
                 id="outlined-basic"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "gray",
+                  },
+                }}
                 label="Last Name"
                 variant="outlined"
                 name="last_name"
@@ -206,6 +240,17 @@ function CheckoutLeftDiv() {
               size="small"
               type="email"
               id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="Email"
               variant="outlined"
               name="email"
@@ -216,6 +261,17 @@ function CheckoutLeftDiv() {
               fullWidth
               size="small"
               id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="Phone Number"
               variant="outlined"
               name="phone_number"
@@ -229,6 +285,17 @@ function CheckoutLeftDiv() {
               size="small"
               type="text"
               id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="Country"
               variant="outlined"
               name="country"
@@ -239,6 +306,17 @@ function CheckoutLeftDiv() {
               fullWidth
               size="small"
               id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="State"
               variant="outlined"
               name="state"
@@ -252,6 +330,17 @@ function CheckoutLeftDiv() {
               size="small"
               type="text"
               id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="City"
               variant="outlined"
               name="city"
@@ -262,6 +351,17 @@ function CheckoutLeftDiv() {
               fullWidth
               size="small"
               id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="Zip Code"
               variant="outlined"
               name="zip_code"
@@ -272,6 +372,19 @@ function CheckoutLeftDiv() {
           <div className="w-full flex justify-between gap-5 pt-5">
             <TextField
               id="outlined-multiline-static"
+              sx={{
+                background: isDarkTheme ? "#333" : "white",
+              }}
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
               label="Detail Address"
               multiline
               rows={4}
@@ -285,7 +398,15 @@ function CheckoutLeftDiv() {
           <div className="w-full">
             <FormControl>
               <FormLabel id="demo-radio-buttons-group-label">
-                <span className="text-black font-semibold">Address type:</span>
+                <span
+                  className={
+                    isDarkTheme
+                      ? "text-white font-semibold"
+                      : "text-black font-semibold"
+                  }
+                >
+                  Address type:
+                </span>
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"

@@ -3,7 +3,7 @@ import Navbar from "@/components/HomePage/Navbar";
 
 function Checkout() {
   return (
-    <div className="bg-white ">
+    <div>
       <Navbar />
       <CheckoutPage />
     </div>
