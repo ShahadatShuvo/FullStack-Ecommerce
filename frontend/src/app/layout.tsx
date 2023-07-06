@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // Function to update the context value
-  const [contextValue, setContextValue] = useState([]);
+  const [cartData, setCartData] = useState([]);
   const [shippingAddress, setShippingAddress] = useState(
     initialShippingAddress
   );
@@ -112,30 +112,30 @@ export default function RootLayout({
   React.useEffect(() => {
     // const check = JSON.parse(localStorage.getItem("check") || "true");
 
-    if (contextValue.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(contextValue));
+    if (cartData.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cartData));
     } else {
       const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
       if (cartData.length === 1 && check === true) {
         localStorage.removeItem("cart");
       }
     }
-  }, [contextValue, check]);
+  }, [cartData, check]);
 
   React.useEffect(() => {
     const cartData = localStorage.getItem("cart");
     if (cartData) {
       try {
         const parsedData = JSON.parse(cartData);
-        setContextValue(parsedData);
+        setCartData(parsedData);
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
     }
   }, []);
 
-  const increaseContextValue = (newValue: ProductCardProps) => {
-    setContextValue((prevState: ProductCardProps[] | any) => {
+  const increaseCartData = (newValue: ProductCardProps) => {
+    setCartData((prevState: ProductCardProps[] | any) => {
       const isExist = prevState.find(
         (item: ProductCardProps) => item.id === newValue.id
       );
@@ -154,8 +154,8 @@ export default function RootLayout({
     });
   };
 
-  const decreaseContextValue = (newValue: ProductCardProps) => {
-    setContextValue((prevState: ProductCardProps[] | any) => {
+  const decreaseCartData = (newValue: ProductCardProps) => {
+    setCartData((prevState: ProductCardProps[] | any) => {
       const isExist = prevState.find(
         (item: ProductCardProps) => item.id === newValue.id
       );
@@ -181,8 +181,8 @@ export default function RootLayout({
     });
   };
 
-  const deleteContextValue = (newValue: ProductCardProps) => {
-    setContextValue((prevState) => {
+  const deleteCartData = (newValue: ProductCardProps) => {
+    setCartData((prevState) => {
       // Search for the index of the product to delete
       const index = prevState.findIndex(
         (product: ProductCardProps) => product.id === newValue.id
@@ -201,7 +201,7 @@ export default function RootLayout({
       return prevState;
     });
 
-    if (contextValue.length === 1) {
+    if (cartData.length === 1) {
       setCheck(true);
     }
   };
@@ -238,10 +238,10 @@ export default function RootLayout({
             setToken,
             checkSignUp,
             checkLogin,
-            contextValue,
-            increaseContextValue,
-            decreaseContextValue,
-            deleteContextValue,
+            cartData,
+            increaseCartData,
+            decreaseCartData,
+            deleteCartData,
           }}
         >
           {children}

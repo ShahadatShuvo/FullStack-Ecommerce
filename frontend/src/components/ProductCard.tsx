@@ -15,7 +15,7 @@ function ProductCard(props: ProductCardProps) {
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
-  const { increaseContextValue, isDarkTheme } = useContext(GlobalStates);
+  const { increaseCartData, isDarkTheme } = useContext(GlobalStates);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
@@ -50,7 +50,7 @@ function ProductCard(props: ProductCardProps) {
   };
   const onHandleClick = (props: ProductCardProps) => {
     // setCartItems((prevState: ProductCardProps[]) => [...prevState, props]);
-    increaseContextValue(props);
+    increaseCartData(props);
   };
 
   return (

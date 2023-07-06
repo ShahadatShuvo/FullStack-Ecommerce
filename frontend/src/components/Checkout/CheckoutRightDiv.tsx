@@ -23,10 +23,10 @@ function CheckoutRightDiv() {
     isDarkTheme,
     userProfile,
     shippingAddress,
-    contextValue,
-    increaseContextValue,
-    decreaseContextValue,
-    deleteContextValue,
+    cartData,
+    increaseCartData,
+    decreaseCartData,
+    deleteCartData,
   } = useContext(GlobalStates);
 
   const [coupon, setCoupon] = React.useState({
@@ -41,7 +41,7 @@ function CheckoutRightDiv() {
 
   const [discount, setDiscount] = React.useState(0);
 
-  const subTotal = contextValue.reduce(
+  const subTotal = cartData.reduce(
     (acc: number, item: any) => acc + item.price * item.qty,
     0
   );
@@ -51,22 +51,22 @@ function CheckoutRightDiv() {
   const orderTotal = subTotal - discount + taxAmount + 100;
 
   const onHandleIncreament = (product: any) => {
-    increaseContextValue(product);
+    increaseCartData(product);
   };
 
   const onHandleDecreament = (product: any) => {
-    decreaseContextValue(product);
+    decreaseCartData(product);
   };
 
   const onHandleRemove = (product: any) => {
-    deleteContextValue(product);
+    deleteCartData(product);
   };
 
   const [showProgress, setShowProgress] = React.useState(false);
   const handleOrderConfirm = () => {
     if (shippingAddress.email === "") {
       alert("Please Confirm Your Shipping Address  [STEP:1]");
-    } else if (contextValue.length === 0) {
+    } else if (cartData.length === 0) {
       alert("Sorry! Your Cart is Empty! First Add Some Product");
     } else {
       //Post request to backend
@@ -74,7 +74,7 @@ function CheckoutRightDiv() {
         customer: userProfile.id,
         complete: false,
         shipping_address: JSON.stringify(shippingAddress),
-        ordered_products: JSON.stringify(contextValue),
+        ordered_products: JSON.stringify(cartData),
         amount: orderTotal,
         applied_coupon: coupon.code,
       };
@@ -144,7 +144,7 @@ function CheckoutRightDiv() {
     }
   };
 
-  const allCartItems = contextValue.map((product: any) => {
+  const allCartItems = cartData.map((product: any) => {
     return (
       <div key={product.id}>
         <div id="single-product" className="my-5 flex justify-between">
