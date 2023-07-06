@@ -36,7 +36,7 @@ const validationSchema = yup.object({
 });
 
 function ChangePassword() {
-  const { checkSignUp, accessToken } = useContext(CartItemContext);
+  const { isDarkTheme, accessToken } = useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -116,6 +116,12 @@ function ChangePassword() {
             <InputLabel htmlFor="password1">New Password</InputLabel>
             <OutlinedInput
               id="password"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
               type={showPassword ? "text" : "password"}
               name="password"
               value={formik.values.password}
@@ -128,6 +134,9 @@ function ChangePassword() {
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
+                    sx={{
+                      color: "gray",
+                    }}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -145,6 +154,12 @@ function ChangePassword() {
             <InputLabel htmlFor="password2">Confirm New Password</InputLabel>
             <OutlinedInput
               id="password2"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
               type={showPassword ? "text" : "password"}
               name="password2"
               value={formik.values.password2}
@@ -159,6 +174,9 @@ function ChangePassword() {
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
+                    sx={{
+                      color: "gray",
+                    }}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -171,7 +189,13 @@ function ChangePassword() {
             </p>
           </FormControl>
         </div>
-        <div className="bg-black rounded-md">
+        <div
+          className={
+            isDarkTheme
+              ? "flex flex-col gap-2 bg-gray-500 text-black rounded-md"
+              : "flex flex-col gap-2 bg-black rounded-md"
+          }
+        >
           <Button fullWidth variant="contained" type="submit">
             Submit New password
           </Button>
