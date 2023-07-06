@@ -51,7 +51,7 @@ const validationSchema = yup.object({
 function RegistrationForm() {
   const router = useRouter();
 
-  const { checkSignUp } = useContext(CartItemContext);
+  const { checkSignUp, isDarkTheme } = useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -128,7 +128,7 @@ function RegistrationForm() {
   };
 
   return (
-    <div>
+    <div className={isDarkTheme ? "bg-gray-900" : ""}>
       <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <span className="w-[200px]">
@@ -156,6 +156,17 @@ function RegistrationForm() {
               <div className="flex flex-col gap-2">
                 <TextField
                   id="first_name"
+                  inputProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "black",
+                      background: isDarkTheme ? "#333" : "white",
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "gray",
+                    },
+                  }}
                   label="First Name"
                   variant="outlined"
                   size="small"
@@ -174,6 +185,17 @@ function RegistrationForm() {
               <div className="flex flex-col gap-2">
                 <TextField
                   id="last_name"
+                  inputProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "black",
+                      background: isDarkTheme ? "#333" : "white",
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "gray",
+                    },
+                  }}
                   label="Last Name"
                   variant="outlined"
                   size="small"
@@ -191,10 +213,21 @@ function RegistrationForm() {
             </div>
             <div className="flex flex-col gap-2">
               <FormControl fullWidth size="small">
-                <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+                <InputLabel
+                  id="demo-simple-select-label"
+                  style={{ color: isDarkTheme ? "white" : "gray" }}
+                >
+                  Gender
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
+                  style={{ color: isDarkTheme ? "white" : "black" }}
+                  inputProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "black",
+                    },
+                  }}
                   label="Gender"
                   name="gender"
                   value={formik.values.gender}
@@ -213,6 +246,17 @@ function RegistrationForm() {
             <div className="flex flex-col gap-2">
               <TextField
                 id="email"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "gray",
+                  },
+                }}
                 label="Email"
                 variant="outlined"
                 size="small"
@@ -232,6 +276,12 @@ function RegistrationForm() {
                 <InputLabel htmlFor="password1">Password</InputLabel>
                 <OutlinedInput
                   id="password1"
+                  inputProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "black",
+                      background: isDarkTheme ? "#333" : "white",
+                    },
+                  }}
                   type={showPassword ? "text" : "password"}
                   name="password1"
                   value={formik.values.password1}
@@ -245,6 +295,9 @@ function RegistrationForm() {
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
+                        sx={{
+                          color: "gray",
+                        }}
                         edge="end"
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -267,6 +320,12 @@ function RegistrationForm() {
                 <InputLabel htmlFor="password2">Confirm Password</InputLabel>
                 <OutlinedInput
                   id="password2"
+                  inputProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "black",
+                      background: isDarkTheme ? "#333" : "white",
+                    },
+                  }}
                   type={showPassword ? "text" : "password"}
                   name="password2"
                   value={formik.values.password2}
@@ -280,6 +339,9 @@ function RegistrationForm() {
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
+                        sx={{
+                          color: "gray",
+                        }}
                         edge="end"
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -293,7 +355,13 @@ function RegistrationForm() {
                 </p>
               </FormControl>
             </div>
-            <div className="flex flex-col gap-2 bg-black rounded-full">
+            <div
+              className={
+                isDarkTheme
+                  ? "flex flex-col gap-2 bg-gray-500 text-black rounded-full"
+                  : "flex flex-col gap-2 bg-black rounded-full"
+              }
+            >
               <Button
                 variant="contained"
                 className="rounded-full"
