@@ -2,11 +2,11 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 import OrderDetail from "./OrderDetail";
 import { useState } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { useContext } from "react";
 
 function PreviewOrder({ ...props }) {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
 
   const date = props.date_ordered.split("T")[0];
   const time = props.date_ordered.slice(date.length + 1, -11);

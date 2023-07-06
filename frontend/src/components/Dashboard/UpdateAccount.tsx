@@ -6,7 +6,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 
 import {
   Button,
@@ -24,7 +24,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function UpdateAccount() {
   const { setToken, userProfile, accessToken, updateUserprofile, isDarkTheme } =
-    useContext(CartItemContext);
+    useContext(GlobalStates);
 
   const [snackbar, setSnackbar] = React.useState(0);
   const [show, setShow] = React.useState(false);

@@ -1,4 +1,4 @@
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { Button, Fade, Modal } from "@mui/material";
 import Image from "next/image";
 import React, { useContext } from "react";
@@ -14,7 +14,7 @@ function OrderDetail({
   product: string;
   shippingAddress: string;
 }) {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
 
   const handleClose = () => {
     setOpen(false);

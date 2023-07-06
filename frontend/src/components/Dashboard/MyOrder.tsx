@@ -1,12 +1,12 @@
 import React, { use, useEffect, useState } from "react";
 import PreviewOrder from "../SubComponent/PreviewOrder";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function MyOrder() {
-  const { userProfile, accessToken } = useContext(CartItemContext);
+  const { userProfile, accessToken } = useContext(GlobalStates);
   const [orderList, setOrderList] = useState([]);
 
   useEffect(() => {

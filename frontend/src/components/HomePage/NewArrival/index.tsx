@@ -10,12 +10,12 @@ import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutl
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import { IconButton } from "@mui/material";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function NewArrival() {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
 
   const [newArrival, setNewArrival] = useState([]);
   const containerRef = useRef<HTMLDivElement>(null);

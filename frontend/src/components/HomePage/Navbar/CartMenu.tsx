@@ -2,8 +2,8 @@
 
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useContext } from "react";
-// import { CartItemContext } from "@/app/_page";
-import { CartItemContext } from "@/app/context";
+// import { GlobalStates } from "@/app/_page";
+import { GlobalStates } from "@/app/context";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -25,7 +25,7 @@ export default function CartMenu() {
     isLoginComplete,
     accessToken,
     isDarkTheme,
-  } = useContext(CartItemContext);
+  } = useContext(GlobalStates);
 
   const handleRemove = (product: any) => {
     deleteContextValue(product);

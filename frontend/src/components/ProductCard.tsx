@@ -6,7 +6,7 @@ import StarIcon from "@mui/icons-material/Star";
 import Image from "next/image";
 import React, { useContext } from "react";
 import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import OrderSuccess from "./OrderSuccess";
 import { ProductCardProps } from "../../interfaces";
 
@@ -15,7 +15,7 @@ function ProductCard(props: ProductCardProps) {
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
-  const { increaseContextValue, isDarkTheme } = useContext(CartItemContext);
+  const { increaseContextValue, isDarkTheme } = useContext(GlobalStates);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);

@@ -6,13 +6,13 @@ import { IconButton, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DiscoverNav from "./DiscoverNav";
 import ProductDisplay from "./ProductDisplay";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { useContext } from "react";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function DiscoverMore() {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
 
   const [search, setSearch] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");

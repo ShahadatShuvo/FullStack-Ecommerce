@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { SingleStepInterface } from "../../../../interfaces";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { useContext } from "react";
 
 function SingleStep(props: SingleStepInterface) {
-  const { isDarkTheme } = useContext(CartItemContext);
+  const { isDarkTheme } = useContext(GlobalStates);
 
   const { image, step, title, description, extraStyle } = props.step;
   return (

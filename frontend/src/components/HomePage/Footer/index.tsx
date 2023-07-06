@@ -2,14 +2,14 @@ import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import { useContext } from "react";
 import Link from "next/link";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function Footer() {
-  const { refreshToken, isDarkTheme } = useContext(CartItemContext);
+  const { refreshToken, isDarkTheme } = useContext(GlobalStates);
 
   let currentYear = new Date().getFullYear();
 

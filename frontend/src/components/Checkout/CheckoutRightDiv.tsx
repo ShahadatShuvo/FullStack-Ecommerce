@@ -1,4 +1,4 @@
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Alert, Button, Divider, IconButton, TextField } from "@mui/material";
@@ -27,7 +27,7 @@ function CheckoutRightDiv() {
     increaseContextValue,
     decreaseContextValue,
     deleteContextValue,
-  } = useContext(CartItemContext);
+  } = useContext(GlobalStates);
 
   const [coupon, setCoupon] = React.useState({
     code: "",

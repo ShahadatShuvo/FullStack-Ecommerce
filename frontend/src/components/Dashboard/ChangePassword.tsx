@@ -14,7 +14,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import AuthSuccess from "../Accounts/AuthSuccess";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -36,7 +36,7 @@ const validationSchema = yup.object({
 });
 
 function ChangePassword() {
-  const { isDarkTheme, accessToken } = useContext(CartItemContext);
+  const { isDarkTheme, accessToken } = useContext(GlobalStates);
 
   const formik = useFormik({
     initialValues: {

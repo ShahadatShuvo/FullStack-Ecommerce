@@ -1,6 +1,6 @@
 "use client";
 
-import { CartItemContext } from "@/app/context";
+import { GlobalStates } from "@/app/context";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
@@ -43,7 +43,7 @@ function LoginForm() {
     checkLogout,
     setToken,
     isDarkTheme,
-  } = useContext(CartItemContext);
+  } = useContext(GlobalStates);
 
   const formik = useFormik({
     initialValues: {
@@ -91,8 +91,8 @@ function LoginForm() {
           setToken(data.token.access, "accessToken");
           setToken(data.token.refresh, "refreshToken");
           checkLogin(true);
-          // router.push("/");
-          window.location.href = "/";
+          router.push("/");
+          // window.location.href = "/";
         } else if (response.status === 404) {
           const errorData = await response.json();
           setErrorMsg(errorData.errors.non_field_errors[0]);
