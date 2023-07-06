@@ -10,48 +10,48 @@ import {
 } from "../../interfaces";
 
 interface ContextValue {
-  cartData: ProductCardProps[];
-  shippingAddress: ShippingAddressInterface;
-  userProfile: UserDetailInterface;
   accessToken: string;
   refreshToken: string;
+  setToken: (value: string, name: string) => void;
+  isDarkTheme: boolean;
+  toggleTheme: () => void;
   activeTab: string;
+  toggleTab: (value: string) => void;
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
   isLogoutComplete: boolean;
-  isDarkTheme: boolean;
-  toggleTheme: () => void;
-  toggleTab: (value: string) => void;
-  setToken: (value: string, name: string) => void;
+  userProfile: UserDetailInterface;
+  shippingAddress: ShippingAddressInterface;
   checkSignUp: (value: boolean) => void;
   checkLogin: (value: boolean) => void;
   checkLogout: (value: boolean) => void;
   updateUserprofile: (newValue: UserDetailInterface) => void;
   updateShippingAddress: (newValue: ShippingAddressInterface) => void;
+  cartData: ProductCardProps[];
   increaseCartData: (newValue: ProductCardProps) => void;
   decreaseCartData: (newValue: ProductCardProps) => void;
   deleteCartData: (newValue: ProductCardProps) => void;
 }
 
 export const GlobalStates = createContext<ContextValue>({
-  cartData: [],
-  shippingAddress: initialShippingAddress,
-  userProfile: initialUserDetail,
-  isSignUpComplete: false,
-  activeTab: "",
   accessToken: "",
   refreshToken: "",
-  isLoginComplete: false,
-  isLogoutComplete: false,
+  setToken: () => {},
   isDarkTheme: true,
   toggleTheme: () => {},
+  activeTab: "",
   toggleTab: () => {},
-  setToken: () => {},
+  isSignUpComplete: false,
+  isLoginComplete: false,
+  isLogoutComplete: false,
+  userProfile: initialUserDetail,
+  shippingAddress: initialShippingAddress,
   checkSignUp: () => {},
   checkLogin: () => {},
   checkLogout: () => {},
   updateUserprofile: () => {},
   updateShippingAddress: () => {},
+  cartData: [],
   increaseCartData: () => {},
   decreaseCartData: () => {},
   deleteCartData: () => {},
