@@ -19,8 +19,13 @@ import Link from "next/link";
 export default function CartMenu() {
   const router = useRouter();
 
-  const { contextValue, deleteContextValue, isLoginComplete, accessToken } =
-    useContext(CartItemContext);
+  const {
+    contextValue,
+    deleteContextValue,
+    isLoginComplete,
+    accessToken,
+    isDarkTheme,
+  } = useContext(CartItemContext);
 
   const handleRemove = (product: any) => {
     deleteContextValue(product);
@@ -96,7 +101,11 @@ export default function CartMenu() {
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2, mt: "4px", p: "4px" }}
+            sx={{
+              ml: 2,
+              mt: "4px",
+              p: "4px",
+            }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}

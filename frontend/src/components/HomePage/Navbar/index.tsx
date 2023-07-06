@@ -281,7 +281,13 @@ function Navbar() {
                 Login
               </Button>
             )}
-
+            <div className="ml-2">
+              <IOSSwitch
+                sx={{ m: 1 }}
+                onClick={toggleTheme}
+                checked={isDarkTheme}
+              />
+            </div>
             <Badge
               badgeContent={contextValue.length}
               color="primary"
@@ -292,13 +298,6 @@ function Navbar() {
                 },
               }}
             >
-              <div className="ml-2">
-                <IOSSwitch
-                  sx={{ m: 1 }}
-                  onClick={toggleTheme}
-                  checked={isDarkTheme}
-                />
-              </div>
               {/* <MailIcon color="action" /> */}
               <CartMenu />
             </Badge>
