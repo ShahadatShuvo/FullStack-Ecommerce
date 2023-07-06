@@ -1,14 +1,14 @@
 "use client";
 
-import "./globals.css";
 import Footer from "@/components/HomePage/Footer";
-import { CartItemContext } from "./context";
 import React, { useEffect, useState } from "react";
 import {
   ProductCardProps,
-  initialUserDetail,
   initialShippingAddress,
+  initialUserDetail,
 } from "../../interfaces";
+import { CartItemContext } from "./context";
+import "./globals.css";
 
 const metadata = {
   title: "FullStack Ecommerce",
@@ -58,8 +58,6 @@ export default function RootLayout({
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("account_info");
   const [check, setCheck] = useState(false);
-
-  console.log("isDarkTheme", isDarkTheme);
 
   const toggleTab = (value: string) => {
     setActiveTab(value);

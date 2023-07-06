@@ -1,19 +1,19 @@
 "use client";
 
+import { CartItemContext } from "@/app/context";
+import { Avatar } from "@mui/material";
+import Badge from "@mui/material/Badge";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import * as React from "react";
 import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
 import Image from "next/image";
-import { Avatar } from "@mui/material";
-import { useContext } from "react";
-import { CartItemContext } from "@/app/context";
 import Link from "next/link";
+import * as React from "react";
+import { useContext } from "react";
 import AccountInfo from "./AccountInfo";
-import UpdateAccount from "./UpdateAccount";
-import MyOrder from "./MyOrder";
 import ChangePassword from "./ChangePassword";
+import MyOrder from "./MyOrder";
+import UpdateAccount from "./UpdateAccount";
 import Wishlist from "./Wishlist";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -51,8 +51,6 @@ export default function DashboardHome() {
   const { userProfile, activeTab, isDarkTheme } = useContext(CartItemContext);
 
   const [value, setValue] = React.useState(activeTab);
-
-  console.log("tab value:", value);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(activeTab);
