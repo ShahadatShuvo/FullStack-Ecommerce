@@ -59,7 +59,6 @@ export default function CartMenu() {
         <div id="single-product" className="my-5 flex justify-between">
           <div className="min-w-[70%] flex">
             <Image
-              // src="/img/cart/shoe.jpg"
               src={product.image_url}
               alt="shopbag"
               width={90}
@@ -105,6 +104,7 @@ export default function CartMenu() {
               ml: 2,
               mt: "4px",
               p: "4px",
+              color: isDarkTheme ? "white" : "gray",
             }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"

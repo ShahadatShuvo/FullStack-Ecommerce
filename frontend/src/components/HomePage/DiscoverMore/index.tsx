@@ -18,8 +18,6 @@ function DiscoverMore() {
   const [resultMap, setResultMap] = useState<any>(true); // dataMap = data["results"
   const [activeCategory, setActiveCategory] = useState("all");
 
-  const [error, setError] = useState<string | null>(null || "Error");
-
   function handleSearchChange(event: any) {
     setSearchValue(event.target.value);
   }

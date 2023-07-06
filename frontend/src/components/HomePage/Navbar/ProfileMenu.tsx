@@ -67,6 +67,7 @@ export default function MenuBarIcon({
   const router = useRouter();
 
   const {
+    isDarkTheme,
     toggleTab,
     isLoginComplete,
     checkLogin,
@@ -140,7 +141,7 @@ export default function MenuBarIcon({
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2 }}
+            sx={{ ml: 2, color: isDarkTheme ? "white" : "gray" }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}

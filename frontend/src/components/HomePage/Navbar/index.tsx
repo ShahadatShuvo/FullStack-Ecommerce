@@ -110,7 +110,12 @@ function Navbar() {
         <Collapse in={openHeadline}>
           <Alert
             icon={
-              <FeedOutlinedIcon fontSize="inherit" className="text-gray-600" />
+              <FeedOutlinedIcon
+                fontSize="inherit"
+                sx={{
+                  color: isDarkTheme ? "white" : "gray",
+                }}
+              />
             }
             action={
               <IconButton
@@ -119,6 +124,9 @@ function Navbar() {
                 size="small"
                 onClick={() => {
                   setOpenHeadline(false);
+                }}
+                sx={{
+                  color: isDarkTheme ? "white" : "gray",
                 }}
               >
                 <CloseIcon fontSize="inherit" />
@@ -137,7 +145,13 @@ function Navbar() {
             }}
           >
             <div className="relative">
-              <p className="absolute hidden md:block top-1 font-semibold text-gray-500">
+              <p
+                className={
+                  isDarkTheme
+                    ? "absolute hidden md:block top-1 font-semibold text-white"
+                    : "absolute hidden md:block top-1 font-semibold text-gray-500"
+                }
+              >
                 Headline
               </p>
               <div className="w-full flex justify-center">
@@ -298,7 +312,6 @@ function Navbar() {
                 },
               }}
             >
-              {/* <MailIcon color="action" /> */}
               <CartMenu />
             </Badge>
             {/* Hamburger Menu */}
