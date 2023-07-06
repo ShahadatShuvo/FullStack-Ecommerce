@@ -152,8 +152,8 @@ EMAIL_USE_TLS = True
 
 # JWT Settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=4320),  # 72 hours || 3 days
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # 7 days
 
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
@@ -170,7 +170,7 @@ SIMPLE_JWT = {
 }
 
 
-PASSWORD_RESET_TIMEOUT = 259200          # 259200 Sec = [72 hours || 3 days]
+PASSWORD_RESET_TIMEOUT = 1200          # 1200 Sec = [20 minutes]
 
 
 # CORS_ORIGIN_WHITELIST = [
