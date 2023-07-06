@@ -19,7 +19,7 @@ interface ContextValue {
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
   isLogoutComplete: boolean;
-  isLightTheme: boolean;
+  isDarkTheme: boolean;
   toggleTheme: () => void;
   toggleTab: (value: string) => void;
   setToken: (value: string, name: string) => void;
@@ -43,7 +43,7 @@ export const CartItemContext = createContext<ContextValue>({
   refreshToken: "",
   isLoginComplete: false,
   isLogoutComplete: false,
-  isLightTheme: true,
+  isDarkTheme: true,
   toggleTheme: () => {},
   toggleTab: () => {},
   setToken: () => {},

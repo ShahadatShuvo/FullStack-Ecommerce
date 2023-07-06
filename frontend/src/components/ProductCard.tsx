@@ -6,27 +6,16 @@ import StarIcon from "@mui/icons-material/Star";
 import Image from "next/image";
 import React, { useContext } from "react";
 import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
-// import { CartItemContext } from "../app/_page";
 import { CartItemContext } from "@/app/context";
 import OrderSuccess from "./OrderSuccess";
-
-interface ProductCardProps {
-  id: number | string;
-  title: string;
-  description: string;
-  price: number;
-  stock?: number;
-  qty?: number;
-  image_url: string;
-}
+import { ProductCardProps } from "../../interfaces";
 
 function ProductCard(props: ProductCardProps) {
   const { id, title, description, price, image_url } = props;
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
-  const [cartItems, setCartItems] = React.useState<ProductCardProps[]>([]);
 
-  const { contextValue, increaseContextValue } = useContext(CartItemContext);
+  const { increaseContextValue } = useContext(CartItemContext);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);

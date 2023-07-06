@@ -2,13 +2,13 @@ import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { use, useContext, useEffect } from "react";
 import { CartItemContext } from "@/app/context";
+import { useContext } from "react";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function Footer() {
-  const { refreshToken, accessToken, setToken } = useContext(CartItemContext);
+  const { refreshToken } = useContext(CartItemContext);
 
   let currentYear = new Date().getFullYear();
 
@@ -50,7 +50,7 @@ function Footer() {
         <AuthSuccess msg="You are now Logged In!" type="success" show={0} />
       )}
 
-      <section className="bg-white">
+      <section>
         <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <nav className="flex flex-wrap justify-center -mx-5 -my-2">
             <div className="px-5 py-2">
