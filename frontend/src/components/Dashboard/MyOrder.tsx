@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import PreviewOrder from "../SubComponent/PreviewOrder";
+import PreviewOrder from "./orders/PreviewOrder";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
 
