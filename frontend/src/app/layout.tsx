@@ -55,16 +55,18 @@ export default function RootLayout({
       : false
   );
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
-  const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("account_info");
   const [check, setCheck] = useState(false);
+
+  console.log("isDarkTheme", isDarkTheme);
 
   const toggleTab = (value: string) => {
     setActiveTab(value);
   };
 
   const toggleTheme = () => {
-    setIsLightTheme((prevTheme: boolean) => !prevTheme);
+    setIsDarkTheme(!isDarkTheme);
   };
 
   const updateUserprofile = (data: any) => {
@@ -215,7 +217,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href={metadata.icons.icon} />
       </head>
-      <body className="text-black" suppressHydrationWarning={true}>
+      <body
+        className={!isDarkTheme ? "bg-white" : "bg-gray-900 text-white"}
+        suppressHydrationWarning={true}
+      >
         <CartItemContext.Provider
           value={{
             userProfile,
@@ -223,7 +228,7 @@ export default function RootLayout({
             shippingAddress,
             updateShippingAddress,
             updateUserprofile,
-            isLightTheme,
+            isDarkTheme,
             activeTab,
             toggleTheme,
             toggleTab,

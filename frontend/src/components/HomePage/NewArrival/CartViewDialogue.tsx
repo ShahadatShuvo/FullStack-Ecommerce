@@ -66,17 +66,7 @@ export default function CartViewDialogue(props: ProductCardProps) {
 
   return (
     <div>
-      <Button
-        onClick={handleClickOpen}
-        sx={{
-          ":hover": {
-            backgroundColor: "#dbeafe",
-          },
-          ":active": {
-            backgroundColor: "#bfdbfe",
-          },
-        }}
-      >
+      <Button onClick={handleClickOpen}>
         <FullscreenOutlinedIcon />
         <span>Quick View</span>
       </Button>
