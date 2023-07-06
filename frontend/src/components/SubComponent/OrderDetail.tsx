@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Fade, Modal } from "@mui/material";
 import Image from "next/image";
+import { CartItemContext } from "@/app/context";
+import { useContext } from "react";
 
 function OrderDetail({
   open,
@@ -13,6 +15,8 @@ function OrderDetail({
   product: string;
   shippingAddress: string;
 }) {
+  const { isDarkTheme } = useContext(CartItemContext);
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -27,7 +31,7 @@ function OrderDetail({
         <Fade in={open}>
           <div className="flex justify-center items-center h-screen">
             <div className=" bg-slate-100 p-3 rounded-lg  w-[40%]">
-              <h1 className="text-2xl font-semibold text-center my-3">
+              <h1 className="text-black text-2xl font-semibold text-center my-3">
                 Ordered Products
               </h1>
               <div className="flex justify-center items-center">
