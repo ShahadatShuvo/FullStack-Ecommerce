@@ -31,7 +31,15 @@ function SingleStep(props: SingleStepInterface) {
         >
           {title}
         </h6>
-        <p className="text-slate-600 leading-6">{description}</p>
+        <p
+          className={
+            isDarkTheme
+              ? "text-slate-400 leading-6"
+              : "text-slate-600 leading-6"
+          }
+        >
+          {description}
+        </p>
       </div>
     </div>
   );

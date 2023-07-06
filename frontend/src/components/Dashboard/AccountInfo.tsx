@@ -10,6 +10,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function AccountInfo() {
   const {
+    isDarkTheme,
     setToken,
     userProfile,
     accessToken,
@@ -74,7 +75,13 @@ function AccountInfo() {
         <div className="flex flex-col gap-2 font-semibold text-gray-600">
           <div className="flex ">
             <div>
-              <p className="mb-5 text-md">Welcome to Dashboard ... </p>
+              <p
+                className={
+                  isDarkTheme ? "text-slate-500 mb-5 text-md" : "mb-5 text-md"
+                }
+              >
+                Welcome to Dashboard ...{" "}
+              </p>
               <p className="text-2xl text-gray-400">
                 Hi{" "}
                 {userProfile.gender === "male"
@@ -84,7 +91,13 @@ function AccountInfo() {
                   : ""}
               </p>
               <div className="mt-[-24px] flex">
-                <p className="ml-20 text-2xl font-medium">{`${userProfile.first_name} ${userProfile.last_name}`}</p>
+                <p
+                  className={
+                    isDarkTheme
+                      ? "ml-20 text-2xl font-medium text-slate-200"
+                      : "ml-20 text-2xl font-medium"
+                  }
+                >{`${userProfile.first_name} ${userProfile.last_name}`}</p>
                 {(userProfile.country || userProfile.city) && (
                   <p className="text-gray-400 text-xs mt-2 ml-2 font-medium">
                     <LocationOnIcon fontSize="small" />
@@ -95,7 +108,7 @@ function AccountInfo() {
             </div>
           </div>
           <div className="flex gap-16 mt-5">
-            <div>
+            <div className={isDarkTheme ? "text-slate-400" : ""}>
               <p>First Name</p>
               <p>Last Name</p>
               <p>Email</p>
