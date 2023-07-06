@@ -85,7 +85,7 @@ export default function RootLayout({
       setAccessToken("");
       setRefreshToken("");
     } else {
-      setAccessToken("");
+      return;
     }
   };
   const checkSignUp = (value: boolean) => {
@@ -97,7 +97,9 @@ export default function RootLayout({
   const checkLogout = (value: boolean) => {
     setIsLogoutComplete(value);
   };
-  const catchErrorMsg = (value: string) => {};
+  const catchErrorMsg = (value: string) => {
+    setErrorMsg(value);
+  };
 
   React.useEffect(() => {
     const token = localStorage.getItem("accessToken");
