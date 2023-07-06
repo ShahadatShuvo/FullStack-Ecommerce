@@ -12,7 +12,6 @@ function PreviewOrder({ ...props }) {
   const time = props.date_ordered.slice(date.length + 1, -11);
 
   const [open, setOpen] = useState(false);
-  console.log("open: ", open);
 
   const handleOpen = () => {
     setOpen(true);
