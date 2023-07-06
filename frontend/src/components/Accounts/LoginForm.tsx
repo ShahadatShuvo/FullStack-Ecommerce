@@ -37,8 +37,14 @@ const validationSchema = yup.object({
 function LoginForm() {
   const router = useRouter();
 
-  const { isSignUpComplete, checkLogin, checkSignUp, checkLogout, setToken } =
-    useContext(CartItemContext);
+  const {
+    isSignUpComplete,
+    checkLogin,
+    checkSignUp,
+    checkLogout,
+    setToken,
+    isDarkTheme,
+  } = useContext(CartItemContext);
 
   const formik = useFormik({
     initialValues: {
@@ -108,104 +114,136 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
-      {errorMsg && <AuthSuccess msg={errorMsg} type="error" show={show} />}
-      {isSignUpComplete && (
-        <AuthSuccess
-          msg="Signup Successfully Completed!"
-          type="success"
-          show={0}
-        />
-      )}
-
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <span className="w-[200px]">
-          <Image
-            alt="shopping"
-            src="/img/account/login1.svg"
-            width={200}
-            height={200}
-            priority={true}
-            className="mx-auto w-1/2 md:w-[60vw]"
+    <div className={isDarkTheme ? "bg-gray-900" : ""}>
+      <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
+        {errorMsg && <AuthSuccess msg={errorMsg} type="error" show={show} />}
+        {isSignUpComplete && (
+          <AuthSuccess
+            msg="Signup Successfully Completed!"
+            type="success"
+            show={0}
           />
-        </span>
+        )}
 
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 ">
-          Sign in to your account
-        </h2>
-      </div>
-
-      <form
-        className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
-        onSubmit={formik.handleSubmit}
-      >
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-col gap-2">
-            <TextField
-              id="email"
-              label="Email"
-              variant="outlined"
-              size="small"
-              name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <span className="w-[200px]">
+            <Image
+              alt="shopping"
+              src="/img/account/login1.svg"
+              width={200}
+              height={200}
+              priority={true}
+              className="mx-auto w-1/2 md:w-[60vw]"
             />
-          </div>
-          <div className="flex flex-col gap-2">
-            <FormControl sx={{ width: "100%" }} variant="outlined" size="small">
-              <InputLabel htmlFor="password1">Password</InputLabel>
-              <OutlinedInput
-                id="password1"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-              <p className="text-xs text-red-500 mt-1">
-                {formik.touched.password && formik.errors.password}
-              </p>
-            </FormControl>
-          </div>
+          </span>
 
-          <div className="flex flex-col gap-2 bg-black rounded-full">
-            <Button
-              variant="contained"
-              className="rounded-full"
-              // onClick={handleLogin}
-              type="submit"
-            >
-              Log In
-            </Button>
-          </div>
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 ">
+            Sign in to your account
+          </h2>
         </div>
-      </form>
 
-      <div className="mt-10 text-center text-sm text-gray-500">
-        Not a member?
-        <Link
-          href="/account/signup"
-          className="ml-3 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        <form
+          className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+          onSubmit={formik.handleSubmit}
         >
-          Register here
-        </Link>
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
+              <TextField
+                id="email"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "gray",
+                  },
+                }}
+                label="Email"
+                variant="outlined"
+                size="small"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <FormControl
+                sx={{ width: "100%" }}
+                variant="outlined"
+                size="small"
+              >
+                <InputLabel htmlFor="password1">Password</InputLabel>
+                <OutlinedInput
+                  id="password1"
+                  inputProps={{
+                    style: {
+                      color: isDarkTheme ? "white" : "black",
+                      background: isDarkTheme ? "#333" : "white",
+                    },
+                  }}
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                        sx={{
+                          color: "gray",
+                        }}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                />
+                <p className="text-xs text-red-500 mt-1">
+                  {formik.touched.password && formik.errors.password}
+                </p>
+              </FormControl>
+            </div>
+
+            <div
+              className={
+                isDarkTheme
+                  ? "flex flex-col gap-2 bg-gray-500 text-black rounded-full"
+                  : "flex flex-col gap-2 bg-black rounded-full"
+              }
+            >
+              <Button
+                variant="contained"
+                className="rounded-full"
+                // onClick={handleLogin}
+                type="submit"
+              >
+                Log In
+              </Button>
+            </div>
+          </div>
+        </form>
+
+        <div className="mt-10 text-center text-sm text-gray-500">
+          Not a member?
+          <Link
+            href="/account/signup"
+            className="ml-3 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+          >
+            Register here
+          </Link>
+        </div>
       </div>
     </div>
   );
