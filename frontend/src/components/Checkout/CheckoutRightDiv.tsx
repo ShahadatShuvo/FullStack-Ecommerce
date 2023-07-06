@@ -8,6 +8,7 @@ import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import OrderConfirmed from "./OrderConfirmed";
 import ProgressBtn from "./ProgressBtn";
 import Link from "next/link";
+import { is } from "date-fns/locale";
 
 interface CouponInterface {
   id: number;
@@ -21,6 +22,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function CheckoutRightDiv() {
   const {
+    isDarkTheme,
     userProfile,
     shippingAddress,
     contextValue,
@@ -159,7 +161,13 @@ function CheckoutRightDiv() {
               className="bg-blue-50 rounded-md h-[100px] object-cover my-auto mr-5"
             />
             <div>
-              <h3 className="font-semibold text-gray-700 text-lg">
+              <h3
+                className={
+                  !isDarkTheme
+                    ? "font-semibold text-gray-700 text-lg"
+                    : "font-semibold text-white text-lg"
+                }
+              >
                 {product.title}
               </h3>
               <p className="text-gray-400 font-medium mb-5">
@@ -210,7 +218,7 @@ function CheckoutRightDiv() {
 
   return (
     <div className="w-[50%] border border-slate-200  rounded-xl p-5">
-      <div className="rounded-lg bg-white">{allCartItems}</div>
+      <div className="rounded-lg">{allCartItems}</div>
       <div className="mt-5">
         <p className="font-medium text-lg">Discount code</p>
         <div className="mt-3 flex gap-3">
@@ -222,13 +230,29 @@ function CheckoutRightDiv() {
             id="outlined-basic"
             label="Enter code here"
             variant="outlined"
+            fullWidth
+            inputProps={{
+              style: {
+                color: isDarkTheme ? "white" : "black",
+                background: isDarkTheme ? "#333" : "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: isDarkTheme ? "white" : "gray",
+              },
+            }}
             className="w-full rounded-full"
           />
           <Button
             onClick={takeCouponFromBackend}
             variant="contained"
             color="success"
-            className=" bg-black rounded-full"
+            className={
+              !isDarkTheme
+                ? " bg-black rounded-full"
+                : " bg-gray-50 text-black hover:text-white rounded-full"
+            }
           >
             Apply
           </Button>
@@ -264,7 +288,11 @@ function CheckoutRightDiv() {
               fullWidth
               variant="contained"
               onClick={handleOrderConfirm}
-              className="mt-5 bg-black rounded-full"
+              className={
+                !isDarkTheme
+                  ? "mt-5 bg-black rounded-full"
+                  : "mt-5 bg-gray-50 text-black hover:text-white rounded-full"
+              }
             >
               step:2 -- Confirm Order
             </Button>
