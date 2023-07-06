@@ -66,6 +66,8 @@ function CheckoutRightDiv() {
   const handleOrderConfirm = () => {
     if (shippingAddress.email === "") {
       alert("Please Confirm Your Shipping Address  [STEP:1]");
+    } else if (contextValue.length === 0) {
+      alert("Sorry! Your Cart is Empty! First Add Some Product");
     } else {
       //Post request to backend
       const orderData = {
@@ -105,6 +107,8 @@ function CheckoutRightDiv() {
 
       handleSubmit(orderData);
       setShowProgress(true);
+      //empty cart
+      localStorage.setItem("cart", JSON.stringify([]));
     }
   };
 
