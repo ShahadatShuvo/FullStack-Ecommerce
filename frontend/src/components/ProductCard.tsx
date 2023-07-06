@@ -15,7 +15,7 @@ function ProductCard(props: ProductCardProps) {
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
-  const { increaseContextValue } = useContext(CartItemContext);
+  const { increaseContextValue, isDarkTheme } = useContext(CartItemContext);
 
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
@@ -106,7 +106,15 @@ function ProductCard(props: ProductCardProps) {
         </div>
       </div>
       <div className="mt-3">
-        <h3 className="text-gray-800 text-lg font-semibold"> {title}</h3>
+        <h3
+          className={
+            isDarkTheme
+              ? "text-white text-lg font-semibold"
+              : "text-gray-800 text-lg font-semibold"
+          }
+        >
+          {title}
+        </h3>
         <p className="text-gray-400">{description}</p>
         <div className="mt-5 flex justify-between items-center">
           <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
