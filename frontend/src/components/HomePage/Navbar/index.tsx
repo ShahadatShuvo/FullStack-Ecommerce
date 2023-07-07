@@ -10,7 +10,7 @@ import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
@@ -18,6 +18,7 @@ import MenuBarIcon from "./ProfileMenu";
 import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import Link from "next/link";
 import "./toggleBtn.css";
+import { set } from "date-fns";
 
 function Navbar() {
   const router = useRouter();
@@ -30,6 +31,18 @@ function Navbar() {
     isLoginComplete,
     isLogoutComplete,
   } = useContext(GlobalStates);
+
+  const [displayNav, setDisplayNav] = useState(false);
+
+  useEffect(() => {
+    const url = window.location.pathname;
+
+    if (url === "/") {
+      setDisplayNav(true);
+    } else {
+      setDisplayNav(false);
+    }
+  }, []);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
@@ -137,93 +150,95 @@ function Navbar() {
           </Link>
 
           {/* Navigation Start */}
-          <nav className="hidden md:block md:ml-auto md:mr-auto">
-            <ul className="flex space-x-4 font-bold text-gray-500">
-              <li
-                className={`${
-                  isActive === "all"
-                    ? "text-gray-900 bg-gray-200"
-                    : "hover:text-gray-900 hover:bg-blue-200"
-                } px-5 py-1 rounded-full select-none cursor-pointer`}
-                onClick={() => handleClick("all")}
-              >
-                <ScrollLink
-                  onClick={() => handleCategoryClick("all")}
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-10}
-                  duration={500}
+          {displayNav && (
+            <nav className="hidden md:block md:ml-auto md:mr-auto">
+              <ul className="flex space-x-4 font-bold text-gray-500">
+                <li
+                  className={`${
+                    isActive === "all"
+                      ? "text-gray-900 bg-gray-200"
+                      : "hover:text-gray-900 hover:bg-blue-200"
+                  } px-5 py-1 rounded-full select-none cursor-pointer`}
+                  onClick={() => handleClick("all")}
                 >
-                  All
-                </ScrollLink>
-              </li>
-              <li
-                className={`${
-                  isActive === "men"
-                    ? "text-gray-900 bg-gray-200"
-                    : "hover:text-gray-900 hover:bg-blue-200"
-                } px-5 py-1 rounded-full select-none cursor-pointer`}
-                onClick={() => handleClick("men")}
-              >
-                <ScrollLink
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-10}
-                  duration={500}
+                  <ScrollLink
+                    onClick={() => handleCategoryClick("all")}
+                    to="home"
+                    spy={true}
+                    smooth={true}
+                    offset={-10}
+                    duration={500}
+                  >
+                    All
+                  </ScrollLink>
+                </li>
+                <li
+                  className={`${
+                    isActive === "men"
+                      ? "text-gray-900 bg-gray-200"
+                      : "hover:text-gray-900 hover:bg-blue-200"
+                  } px-5 py-1 rounded-full select-none cursor-pointer`}
+                  onClick={() => handleClick("men")}
                 >
-                  Men
-                </ScrollLink>
-              </li>
-              <li
-                className={`${
-                  isActive === "women"
-                    ? "text-gray-900 bg-gray-200"
-                    : "hover:text-gray-900 hover:bg-blue-200"
-                } px-5 py-1 rounded-full select-none cursor-pointer`}
-                onClick={() => handleClick("women")}
-              >
-                <ScrollLink
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-10}
-                  duration={500}
+                  <ScrollLink
+                    to="home"
+                    spy={true}
+                    smooth={true}
+                    offset={-10}
+                    duration={500}
+                  >
+                    Men
+                  </ScrollLink>
+                </li>
+                <li
+                  className={`${
+                    isActive === "women"
+                      ? "text-gray-900 bg-gray-200"
+                      : "hover:text-gray-900 hover:bg-blue-200"
+                  } px-5 py-1 rounded-full select-none cursor-pointer`}
+                  onClick={() => handleClick("women")}
                 >
-                  Women
-                </ScrollLink>
-              </li>
+                  <ScrollLink
+                    to="home"
+                    spy={true}
+                    smooth={true}
+                    offset={-10}
+                    duration={500}
+                  >
+                    Women
+                  </ScrollLink>
+                </li>
 
-              <li
-                className={`${
-                  isActive === "sport"
-                    ? "text-gray-900 bg-gray-200"
-                    : "hover:text-gray-900 hover:bg-blue-200"
-                } px-5 py-1 rounded-full select-none cursor-pointer`}
-                onClick={() => handleClick("sport")}
-              >
-                <ScrollLink
-                  onClick={() => handleCategoryClick("sports")}
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-10}
-                  duration={500}
+                <li
+                  className={`${
+                    isActive === "sport"
+                      ? "text-gray-900 bg-gray-200"
+                      : "hover:text-gray-900 hover:bg-blue-200"
+                  } px-5 py-1 rounded-full select-none cursor-pointer`}
+                  onClick={() => handleClick("sport")}
                 >
-                  Sport
-                </ScrollLink>
-              </li>
-              <li
-                className={`${
-                  isActive === "explore" ? "text-gray-900 bg-gray-200" : ""
-                } px-5 py-1 rounded-full select-none cursor-pointer`}
-                onClick={() => handleClick("explore")}
-              >
-                <ExploreMenu setExplore={setExplore} />
-              </li>
-            </ul>
-          </nav>
+                  <ScrollLink
+                    onClick={() => handleCategoryClick("sports")}
+                    to="home"
+                    spy={true}
+                    smooth={true}
+                    offset={-10}
+                    duration={500}
+                  >
+                    Sport
+                  </ScrollLink>
+                </li>
+                <li
+                  className={`${
+                    isActive === "explore" ? "text-gray-900 bg-gray-200" : ""
+                  } px-5 py-1 rounded-full select-none cursor-pointer`}
+                  onClick={() => handleClick("explore")}
+                >
+                  <ExploreMenu setExplore={setExplore} />
+                </li>
+              </ul>
+            </nav>
+          )}
 
           {/* Navigation Ends  */}
 
