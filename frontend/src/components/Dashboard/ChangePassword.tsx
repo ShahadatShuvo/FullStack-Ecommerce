@@ -119,7 +119,7 @@ function ChangePassword() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               type={showPassword ? "text" : "password"}
@@ -157,7 +157,7 @@ function ChangePassword() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               type={showPassword ? "text" : "password"}
@@ -192,7 +192,7 @@ function ChangePassword() {
         <div
           className={
             isDarkTheme
-              ? "flex flex-col gap-2 bg-gray-500 text-black rounded-md"
+              ? "flex flex-col gap-2 bg-gray-400 text-black rounded-md"
               : "flex flex-col gap-2 bg-black rounded-md"
           }
         >
