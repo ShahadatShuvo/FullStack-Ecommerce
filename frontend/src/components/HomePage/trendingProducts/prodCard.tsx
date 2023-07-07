@@ -13,10 +13,15 @@ function TrendingprodCard({ img }: { img: string }) {
         <Image
           src={img}
           alt=""
-          style={{ width: "100%", height: "auto" }}
+          style={{
+            width: "120px",
+            height: "200px",
+            position: "absolute",
+            top: "-52px",
+            right: "-16px",
+          }}
           width={60}
           height={60}
-          className="w-[120px] h-[200px] absolute -top-14 -right-6"
         />
       </div>
     </div>
