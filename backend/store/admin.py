@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Order, Category, Coupon, Contact
+from .models import Product, Order, Category, Coupon, Contact, Headline
 from import_export.admin import ImportExportModelAdmin
 
 
@@ -42,3 +42,9 @@ class AdminContact(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['name', 'email', 'phone',
                     'created_at', 'subject', 'message']
     ordering = ['name', 'email', 'phone', 'created_at']
+
+
+@admin.register(Headline)
+class HeadlineContact(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ['id', 'created_at', 'text']
+    ordering = ['created_at']
