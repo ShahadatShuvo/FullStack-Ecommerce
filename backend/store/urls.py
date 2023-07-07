@@ -21,4 +21,9 @@ urlpatterns = [
     # cupon endpoints
     path('api/coupons/', views.CouponList.as_view(), name='coupon-list'),
     path('api/coupon/<str:pk>/', views.CouponDetail.as_view(), name='coupon-detail'),
+
+    # contact endpoints
+    path('api/contact/create/', views.ContactCreateAPIView.as_view(),
+         name='contact-create'),
+
 ]
