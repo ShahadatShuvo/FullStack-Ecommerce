@@ -21,9 +21,9 @@
 }
 
 .animate-slide-in {
-  animation: slideIn 0.8s forwards;
+  animation: slideIn 1s forwards;
 }
 
 .animate-slide-out {
-  animation: slideOut 0.5s forwards;
+  animation: slideOut 1s forwards;
 }
