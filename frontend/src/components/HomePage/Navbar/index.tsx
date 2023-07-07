@@ -5,7 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Badge, Button } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -18,37 +18,32 @@ import MenuBarIcon from "./ProfileMenu";
 import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import Link from "next/link";
 import "./toggleBtn.css";
-import { set } from "date-fns";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function Navbar() {
   const router = useRouter();
 
-  const {
-    isDarkTheme,
-    toggleTheme,
-    cartData,
-    accessToken,
-    isLoginComplete,
-    isLogoutComplete,
-  } = useContext(GlobalStates);
+  const { isDarkTheme, toggleTheme, cartData, accessToken, isLogoutComplete } =
+    useContext(GlobalStates);
 
   const [displayNav, setDisplayNav] = useState(false);
 
+  const pathname = usePathname();
   useEffect(() => {
-    const url = window.location.pathname;
-
-    if (url === "/") {
+    if (pathname === "/") {
       setDisplayNav(true);
     } else {
       setDisplayNav(false);
     }
-  }, []);
+  }, [pathname]);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [explore, setExplore] = useState(false);
   const [isActive, setIsActive] = useState("all");
   const [activeCategory, setActiveCategory] = useState("all");
   const [openHeadline, setOpenHeadline] = useState(true);
+  const [headline, setHeadline] = useState("");
 
   const handleCategoryClick = (category: any) => {
     setActiveCategory(category);
@@ -61,6 +56,31 @@ function Navbar() {
   const handleHamburger = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  useEffect(() => {
+    const getHeadline = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/headlines/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setHeadline(data.results[0].text);
+          setOpenHeadline(true);
+        } else {
+          console.log("Error fetching user profile data");
+          setOpenHeadline(false);
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+        setOpenHeadline(false);
+      }
+    };
+    getHeadline();
+  }, []);
 
   return (
     <div className={!isDarkTheme ? "bg-white" : "bg-gray-900 text-white"}>
@@ -120,13 +140,7 @@ function Navbar() {
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
                       <span className={isDarkTheme ? "text-[#38BDF8]" : ""}>
-                        Virtual Mart (VMart). Here, You will quickly get all
-                        kinds of your daily Shopping, with only 1 click from
-                        your
-                        <span className="text-blue-400">Home or Office</span>.
-                        ভার্চুয়াল মার্ট (ভিমার্ট) এখানে, আপনি আপনার বাসা বা
-                        অফিস থেকে মাত্র 1 ক্লিকে আপনার দৈনন্দিন সব ধরনের
-                        কেনাকাটা পেয়ে যাবেন, খুব সহজে।
+                        {headline}
                       </span>
                     </div>
                   </div>

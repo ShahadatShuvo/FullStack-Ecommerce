@@ -11,9 +11,9 @@ function TrendingprodCard({ img }: { img: string }) {
           <p className="text-red-500 font-bold text-sm mt-5">$10.00</p>
         </div>
         <Image
-          // src="/img/trending/bottle.svg"
           src={img}
           alt=""
+          style={{ width: "100%", height: "auto" }}
           width={60}
           height={60}
           className="w-[120px] h-[200px] absolute -top-14 -right-6"
