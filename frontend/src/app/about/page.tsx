@@ -1,4 +1,5 @@
 import DeveloperProfile from "@/components/About/DeveloperProfile";
+import Navbar from "@/components/HomePage/Navbar";
 import MagicLine from "@/components/SubComponent/MagicLine";
 
 function About() {
@@ -29,16 +30,19 @@ function About() {
     },
   ];
   return (
-    <section className="about pt-5 bg-light text-dark">
-      <div className="container">
-        <MagicLine title="About Us" />
+    <div>
+      <Navbar />
+      <div className="about pt-10 bg-light text-dark">
+        <div className="mx-10">
+          <MagicLine title="About Us" />
+        </div>
+        <div className="w-screen min-h-[80vh] flex justify-center  gap-5 py-16">
+          {devs.map((dev) => (
+            <DeveloperProfile developerData={dev} key={dev.id} />
+          ))}
+        </div>
       </div>
-      <div className="w-screen min-h-[80vh] flex justify-center  gap-5 py-16">
-        {devs.map((dev) => (
-          <DeveloperProfile developerData={dev} key={dev.id} />
-        ))}
-      </div>
-    </section>
+    </div>
   );
 }
 
