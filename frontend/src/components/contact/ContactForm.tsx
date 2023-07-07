@@ -250,7 +250,7 @@ function ContactForm() {
                       color: isDarkTheme ? "white" : "gray",
                     },
                   }}
-                  label="Detail Address"
+                  label="Message"
                   multiline
                   rows={4}
                   className="w-full"
