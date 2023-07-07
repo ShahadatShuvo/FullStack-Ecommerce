@@ -3,6 +3,10 @@ from . import views
 
 
 urlpatterns = [
+    # headline endpoints
+    path("api/headlines/", views.HeadlineList.as_view()),
+
+
     # product endpoints
     path("api/products/", views.ProductList.as_view()),
     path("api/product/<str:pk>/", views.ProductDetail.as_view()),
