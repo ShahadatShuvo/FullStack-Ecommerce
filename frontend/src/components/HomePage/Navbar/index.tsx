@@ -61,7 +61,7 @@ function Navbar() {
   const handleHamburger = () => {
     setMobileOpen(!mobileOpen);
   };
-  console.log("isLogoutComplete:", isLogoutComplete);
+
   return (
     <div className={!isDarkTheme ? "bg-white" : "bg-gray-900 text-white"}>
       {isLogoutComplete && (

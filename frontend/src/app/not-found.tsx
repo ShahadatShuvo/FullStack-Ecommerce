@@ -1,8 +1,11 @@
 import Navbar from "@/components/HomePage/Navbar";
 import Image from "next/image";
-import React from "react";
 
-function Error() {
+interface Props {
+  // Define the props for your NotFound component here
+}
+
+export default function NotFound({}: Props) {
   return (
     <div>
       <Navbar />
@@ -12,5 +15,3 @@ function Error() {
     </div>
   );
 }
-
-export default Error;
