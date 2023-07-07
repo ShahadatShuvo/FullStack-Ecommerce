@@ -80,7 +80,7 @@ function Footer() {
             </div>
             <div className="px-5 py-2">
               <Link
-                href="/pageNotFound"
+                href="/team"
                 className={
                   isDarkTheme
                     ? "text-base leading-6 text-gray-500 hover:text-gray-200"
