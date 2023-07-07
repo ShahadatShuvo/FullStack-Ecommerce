@@ -39,7 +39,7 @@ class AdminCoupon(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(Contact)
 class AdminContact(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ['name', 'email', 'phone',
+    list_display = ['id', 'name', 'email', 'phone',
                     'created_at', 'subject', 'message']
     ordering = ['name', 'email', 'phone', 'created_at']
 

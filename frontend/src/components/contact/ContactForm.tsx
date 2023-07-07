@@ -22,6 +22,8 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
 import Navbar from "../HomePage/Navbar";
+import { set } from "date-fns";
+import AuthSuccess from "../Accounts/AuthSuccess";
 // import AuthSuccess from "./AuthSuccess";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -47,9 +49,15 @@ const validationSchema = yup.object({
 });
 
 function ContactForm() {
-  const { isDarkTheme } = useContext(GlobalStates);
+  const { isDarkTheme, catchErrorMsg } = useContext(GlobalStates);
 
   const router = useRouter();
+
+  const [alert, setAlert] = React.useState({
+    msg: "",
+    type: "",
+    show: 0,
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -61,13 +69,43 @@ function ContactForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       handleSubmit(values);
     },
   });
 
   const handleSubmit = (formData: any) => {
-    console.log("contact formData", formData);
+    const handleSubmit = async (formData: any) => {
+      try {
+        const response = await fetch(`${apiUrl}/api/contact/create/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setAlert((prevState) => ({
+            ...prevState,
+            msg: "Your message has been sent successfully",
+            type: "success",
+            show: (prevState.show += 1),
+          }));
+          formik.resetForm();
+        } else if (response.status === 400) {
+          const errorData = await response.json();
+          catchErrorMsg(errorData);
+          router.push("/error/404");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        catchErrorMsg(JSON.stringify(error));
+        router.push("/error/404");
+      }
+    };
+
+    handleSubmit(formData);
   };
 
   return (
@@ -238,13 +276,17 @@ function ContactForm() {
                   className="rounded-full"
                   type="submit"
                 >
-                  Sign Up
+                  Submit Message
                 </Button>
               </div>
             </div>
-            {/* {alert.msg && (
-            <AuthSuccess msg={alert.msg} type={alert.type} show={alert.show} />
-          )} */}
+            {alert.msg && (
+              <AuthSuccess
+                msg={alert.msg}
+                type={alert.type}
+                show={alert.show}
+              />
+            )}
           </form>
         </div>
       </div>
