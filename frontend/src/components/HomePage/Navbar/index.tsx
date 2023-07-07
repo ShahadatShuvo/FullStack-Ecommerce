@@ -81,13 +81,12 @@ function Navbar() {
                 <CloseIcon fontSize="inherit" />
               </IconButton>
             }
-            // className="bg-gray-100 text-gray-600"
             sx={{
               padding: "0px 16px",
               background: isDarkTheme ? "#111827" : "white",
               marginTop: "5px",
               marginX: "5px",
-              border: "1px solid black",
+              border: isDarkTheme ? "1px solid #38BDF8" : "1px solid #111827",
               ".css-1pxa9xg-MuiAlert-message": {
                 padding: "3px 0px",
               },
