@@ -56,7 +56,7 @@ function Footer() {
           <nav className="flex flex-wrap justify-center -mx-5 -my-2">
             <div className="px-5 py-2">
               <Link
-                href="/pageNotFound"
+                href="/about"
                 className={
                   isDarkTheme
                     ? "text-base leading-6 text-gray-500 hover:text-gray-200"
@@ -92,7 +92,7 @@ function Footer() {
             </div>
             <div className="px-5 py-2">
               <Link
-                href="/pageNotFound"
+                href="/contact"
                 className={
                   isDarkTheme
                     ? "text-base leading-6 text-gray-500 hover:text-gray-200"
