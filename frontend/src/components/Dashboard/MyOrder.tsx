@@ -7,7 +7,14 @@ import { useRouter } from "next/navigation";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function MyOrder() {
-  const { userProfile, accessToken, catchErrorMsg } = useContext(GlobalStates);
+  const {
+    userProfile,
+    accessToken,
+    catchErrorMsg,
+    setToken,
+    checkLogout,
+    checkLogin,
+  } = useContext(GlobalStates);
 
   const router = useRouter();
 
@@ -34,11 +41,17 @@ function MyOrder() {
           console.log("Error  1:", errorData);
           router.push("/error/404");
           catchErrorMsg(JSON.stringify(errorData));
+          setToken("", "logout");
+          checkLogout(true);
+          checkLogin(false);
         }
       } catch (error) {
         console.error("Error 2:", error);
         router.push("/error/404");
         catchErrorMsg(JSON.stringify(error));
+        setToken("", "logout");
+        checkLogout(true);
+        checkLogin(false);
       }
     };
     handleSubmit();
