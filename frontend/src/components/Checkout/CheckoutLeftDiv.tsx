@@ -197,7 +197,7 @@ function CheckoutLeftDiv() {
                 inputProps={{
                   style: {
                     color: isDarkTheme ? "white" : "black",
-                    background: isDarkTheme ? "#333" : "white",
+                    background: isDarkTheme ? "#475569" : "white",
                   },
                 }}
                 InputLabelProps={{
@@ -218,7 +218,7 @@ function CheckoutLeftDiv() {
                 inputProps={{
                   style: {
                     color: isDarkTheme ? "white" : "black",
-                    background: isDarkTheme ? "#333" : "white",
+                    background: isDarkTheme ? "#475569" : "white",
                   },
                 }}
                 InputLabelProps={{
@@ -243,7 +243,7 @@ function CheckoutLeftDiv() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               InputLabelProps={{
@@ -264,7 +264,7 @@ function CheckoutLeftDiv() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               InputLabelProps={{
@@ -288,7 +288,7 @@ function CheckoutLeftDiv() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               InputLabelProps={{
@@ -309,7 +309,7 @@ function CheckoutLeftDiv() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               InputLabelProps={{
@@ -333,7 +333,7 @@ function CheckoutLeftDiv() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               InputLabelProps={{
@@ -354,7 +354,7 @@ function CheckoutLeftDiv() {
               inputProps={{
                 style: {
                   color: isDarkTheme ? "white" : "black",
-                  background: isDarkTheme ? "#333" : "white",
+                  background: isDarkTheme ? "#475569" : "white",
                 },
               }}
               InputLabelProps={{
@@ -373,7 +373,7 @@ function CheckoutLeftDiv() {
             <TextField
               id="outlined-multiline-static"
               sx={{
-                background: isDarkTheme ? "#333" : "white",
+                background: isDarkTheme ? "#475569" : "white",
               }}
               inputProps={{
                 style: {

@@ -62,7 +62,10 @@ function ProductCard(props: ProductCardProps) {
       >
         <div className="absolute right-2 top-1 p-2 bg-white rounded-full">
           {!favourite && (
-            <FavoriteBorderRoundedIcon onClick={onHandleFavourite} />
+            <FavoriteBorderRoundedIcon
+              sx={{ color: "black" }}
+              onClick={onHandleFavourite}
+            />
           )}
           {favourite && (
             <FavoriteRoundedIcon

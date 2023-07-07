@@ -231,7 +231,7 @@ function CheckoutRightDiv() {
             inputProps={{
               style: {
                 color: isDarkTheme ? "white" : "black",
-                background: isDarkTheme ? "#333" : "white",
+                background: isDarkTheme ? "#475569" : "white",
               },
             }}
             InputLabelProps={{
