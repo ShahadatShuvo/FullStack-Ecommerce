@@ -36,7 +36,7 @@ class CategoryProductListView(APIView):
             products = category.product_set.all()
             serializer = ProductSerializer(products, many=True)
             return Response(serializer.data)
-        except Category.DoesNotExist:
+        except:
             return Response({'error': 'Category not found'}, status=404)
 
 
