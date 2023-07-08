@@ -1,34 +1,48 @@
+"use client";
+
 import DeveloperProfile from "@/components/About/DeveloperProfile";
 import Navbar from "@/components/HomePage/Navbar";
 import MagicLine from "@/components/SubComponent/MagicLine";
+import { useEffect, useState } from "react";
+import { GlobalStates } from "@/app/context";
+import { useContext } from "react";
+import { useRouter } from "next/navigation";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function Team() {
-  const devs = [
-    {
-      id: 1,
-      name: "Shahadat Hossain",
-      jobTitle: "Frontend Developer",
-      portfolio: "https://shahadat-shuvo.me",
-      emailLink: "mdmahin.pro@gmail.com",
-      imgUrl: "/img/shahadat.jpg",
-      about:
-        "I am a frontend developer with a particular interest in making things simple and automating daily tasks. I try to keep up with security and best practices, and am always looking for new things to learn.",
-      interests:
-        "Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.",
-    },
-    {
-      id: 2,
-      name: "Mahin Bin Raihan",
-      jobTitle: "Frontend Developer",
-      portfolio: "www.mdmahin.netlify.app",
-      emailLink: "mdmahin.pro@gmail.com",
-      imgUrl: "/img/mukto.jpg",
-      about:
-        "I am a frontend developer with a particular interest in making things simple and automating daily tasks. I try to keep up with security and best practices, and am always looking for new things to learn.",
-      interests:
-        "Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.",
-    },
-  ];
+  const router = useRouter();
+
+  const { catchErrorMsg } = useContext(GlobalStates);
+
+  const [teams, setTeams] = useState([]);
+
+  useEffect(() => {
+    const getHeadline = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/newsroom/teams/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setTeams(data.results);
+        } else {
+          catchErrorMsg("Error fetching user profile data");
+          router.push("/error/404");
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+        catchErrorMsg(JSON.stringify(error));
+        router.push("/error/404");
+      }
+    };
+    getHeadline();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -37,7 +51,7 @@ function Team() {
           <MagicLine title="Our Team" />
         </div>
         <div className="w-screen min-h-[80vh] flex justify-center  gap-5 py-16">
-          {devs.map((dev) => (
+          {teams.map((dev: any) => (
             <DeveloperProfile developerData={dev} key={dev.id} />
           ))}
         </div>
