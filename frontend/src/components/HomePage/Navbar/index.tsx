@@ -60,7 +60,7 @@ function Navbar() {
   useEffect(() => {
     const getHeadline = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/headlines/`, {
+        const response = await fetch(`${apiUrl}/api/newsroom/headlines/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

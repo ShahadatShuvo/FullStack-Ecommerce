@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from store.models import Headline
+from newsroom.models import Headline
 
 
 class HeadlineSerializer(serializers.ModelSerializer):

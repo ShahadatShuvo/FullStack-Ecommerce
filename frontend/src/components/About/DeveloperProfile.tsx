@@ -18,7 +18,6 @@ interface DeveloperProfileProps {
   imgUrl: string;
   about: string;
   interests: string;
-
   // social: {
   //   facebook: string;
   //   twitter: string;
