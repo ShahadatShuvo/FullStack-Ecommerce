@@ -47,7 +47,7 @@ function DeveloperProfile({
   };
 
   return (
-    <div className="w-[22%] rounded-lg" onMouseLeave={handleMouseLeave}>
+    <div className="w-[24%] rounded-lg" onMouseLeave={handleMouseLeave}>
       <div onMouseEnter={handleMouseHover}>
         <span>
           <Image
