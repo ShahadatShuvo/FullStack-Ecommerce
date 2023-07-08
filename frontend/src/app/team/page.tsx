@@ -50,7 +50,7 @@ function Team() {
         <div className="mx-10">
           <MagicLine title="Our Team" />
         </div>
-        <div className="w-screen min-h-[80vh] flex justify-center  gap-5 py-16">
+        <div className="w-screen  flex justify-center  gap-5 pt-16 mb-10">
           {teams.map((dev: any) => (
             <DeveloperProfile developerData={dev} key={dev.id} />
           ))}
