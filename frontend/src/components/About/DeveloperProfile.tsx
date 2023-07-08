@@ -7,6 +7,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import "./animate.css";
 
 interface DeveloperProfileProps {
   id: number;
@@ -17,7 +18,6 @@ interface DeveloperProfileProps {
   imgUrl: string;
   about: string;
   interests: string;
-
   // social: {
   //   facebook: string;
   //   twitter: string;
@@ -71,7 +71,10 @@ function DeveloperProfile({
 
       {/* 2nd Div */}
       {showDetails ? (
-        <div>
+        <div
+          className="animate-slide-in bg-black"
+          // className={showDetails ? "animate-slide-down" : ""}
+        >
           <div className="bg-black ">
             <div className="text-center">
               <button className="bg-[#fff] w-2/3  hover:bg-blue-300 active:bg-red-200 font-bold py-1 text-lg px-4 rounded text-center">
@@ -122,7 +125,57 @@ function DeveloperProfile({
           </div>
         </div>
       ) : (
-        <div></div>
+        <div className="animate-slide-out">
+          {" "}
+          <div className="bg-black ">
+            <div className="text-center">
+              <button className="bg-[#fff] w-2/3  hover:bg-blue-300 active:bg-red-200 font-bold py-1 text-lg px-4 rounded text-center">
+                <div className="flex justify-center items-center">
+                  <EmailOutlinedIcon />
+                  <span className="flex justify-center items-center  ">
+                    Email
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div className="p-5  bg-black">
+            <h2 className="text-lg font-bold mb-3 text-white">About</h2>
+            <p className="text-gray-300 text-sm">{developerData.about}</p>
+          </div>
+          <div className="p-5  bg-black">
+            <h2 className="text-lg font-bold mb-3 text-white">Interests</h2>
+            <p className="text-gray-300 text-sm">{developerData.interests}</p>
+          </div>
+          <div className="p-5 bg-black rounded-b-md">
+            <div className="flex justify-center text-black">
+              <Link
+                href="/"
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
+              >
+                <FacebookIcon />
+              </Link>
+              <Link
+                href="/"
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
+              >
+                <TwitterIcon />
+              </Link>
+              <Link
+                href="/"
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
+              >
+                <InstagramIcon />
+              </Link>
+              <Link
+                href="/"
+                className="text-2xl mx-2 px-2 pb-1  rounded-md bg-gray-300"
+              >
+                <LinkedInIcon />
+              </Link>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

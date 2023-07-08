@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'rest_framework',  # new
     'rest_framework_simplejwt',  # new
     'account',  # new
-    # 'django_filters',  # new
+    'newsroom',  # new
 ]
 
 MIDDLEWARE = [
