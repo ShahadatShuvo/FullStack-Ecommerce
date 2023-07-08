@@ -76,7 +76,7 @@ function ContactForm() {
   const handleSubmit = (formData: any) => {
     const handleSubmit = async (formData: any) => {
       try {
-        const response = await fetch(`${apiUrl}/api/contact/create/`, {
+        const response = await fetch(`${apiUrl}/api/newsroom/contact/create/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

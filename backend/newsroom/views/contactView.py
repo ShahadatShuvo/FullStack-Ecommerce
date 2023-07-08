@@ -1,7 +1,7 @@
 # views.py
 from rest_framework import generics
-from store.serializers import ContactSerializer
-from store.models import Contact
+from newsroom.serializers import ContactSerializer
+from newsroom.models import Contact
 
 
 class ContactCreateAPIView(generics.CreateAPIView):
