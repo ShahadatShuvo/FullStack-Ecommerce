@@ -4,6 +4,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -91,89 +92,128 @@ function DeveloperProfile({
             </Button>
           </div>
           <div className="p-5  bg-black">
-            <h2 className="text-lg font-bold mb-3 text-white">About</h2>
+            {developerData.about.length && (
+              <h2 className="text-lg font-bold mb-3 text-white">About</h2>
+            )}
             <p className="text-gray-300 text-sm">{developerData.about}</p>
           </div>
           <div className="p-5  bg-black">
-            <h2 className="text-lg font-bold mb-3 text-white">Interests</h2>
+            {developerData.interests.length && (
+              <h2 className="text-lg font-bold mb-3 text-white">Interests</h2>
+            )}
             <p className="text-gray-300 text-sm">{developerData.interests}</p>
           </div>
-          <div className="p-5 bg-black rounded-b-md flex justify-center text-black">
-            <Link
-              href="/"
-              className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
-            >
-              <FacebookIcon />
-            </Link>
-            <Link
-              href="/"
-              className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
-            >
-              <TwitterIcon />
-            </Link>
-            <Link
-              href="/"
-              className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
-            >
-              <InstagramIcon />
-            </Link>
-            <Link
-              href="/"
-              className="text-2xl mx-2 px-2 pb-1  rounded-md bg-gray-300"
-            >
-              <LinkedInIcon />
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <div className="animate-slide-out relative">
-          <div className="bg-black absolute top-0">
-            <div className="text-center">
-              <button className="bg-[#fff] w-2/3  hover:bg-blue-300 active:bg-red-200 font-bold py-1 text-lg px-4 rounded text-center">
-                <div className="flex justify-center items-center">
-                  <EmailOutlinedIcon />
-                  <span className="flex justify-center items-center  ">
-                    Email
-                  </span>
-                </div>
-              </button>
-            </div>
-          </div>
-          <div className="p-5  bg-black">
-            <h2 className="text-lg font-bold mb-3 text-white">About</h2>
-            <p className="text-gray-300 text-sm">{developerData.about}</p>
-          </div>
-          <div className="p-5  bg-black">
-            <h2 className="text-lg font-bold mb-3 text-white">Interests</h2>
-            <p className="text-gray-300 text-sm">{developerData.interests}</p>
-          </div>
-          <div className="p-5 bg-black rounded-b-md">
-            <div className="flex justify-center text-black">
+          <div className="flex justify-center text-black pb-5">
+            {developerData.facebook_link && (
               <Link
-                href="/"
-                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
+                href={developerData.facebook_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 
+              hover:bg-blue-300 active:bg-red-200"
               >
                 <FacebookIcon />
               </Link>
+            )}
+            {developerData.whatsapp_link && (
               <Link
-                href="/"
-                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
+                href={developerData.whatsapp_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
+              >
+                <WhatsAppIcon />
+              </Link>
+            )}
+            {developerData.twitter_link && (
+              <Link
+                href={developerData.twitter_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
               >
                 <TwitterIcon />
               </Link>
+            )}
+            {developerData.instagram_link && (
               <Link
-                href="/"
-                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300"
+                href={developerData.instagram_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
               >
                 <InstagramIcon />
               </Link>
+            )}
+            {developerData.linkedin_link && (
               <Link
-                href="/"
-                className="text-2xl mx-2 px-2 pb-1  rounded-md bg-gray-300"
+                href={developerData.linkedin_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1  rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
               >
                 <LinkedInIcon />
               </Link>
-            </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="animate-slide-out bg-black">
+          <div className="bg-black text-center">
+            <Button
+              onClick={handleEmailClick}
+              variant="outlined"
+              startIcon={<EmailOutlinedIcon />}
+              sx={{ background: "white", bgcolor: "white" }}
+              className="bg-white text-black w-2/3  font-semibold hover:bg-red-50  rounded text-center"
+            >
+              Email
+            </Button>
+          </div>
+          <div className="p-5  bg-black">
+            {developerData.about.length && (
+              <h2 className="text-lg font-bold mb-3 text-white">About</h2>
+            )}
+            <p className="text-gray-300 text-sm">{developerData.about}</p>
+          </div>
+          <div className="p-5  bg-black">
+            {developerData.interests.length && (
+              <h2 className="text-lg font-bold mb-3 text-white">Interests</h2>
+            )}
+            <p className="text-gray-300 text-sm">{developerData.interests}</p>
+          </div>
+          <div className="flex justify-center text-black pb-5">
+            {developerData.facebook_link && (
+              <Link
+                href={developerData.facebook_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 
+              hover:bg-blue-300 active:bg-red-200"
+              >
+                <FacebookIcon />
+              </Link>
+            )}
+            {developerData.whatsapp_link && (
+              <Link
+                href={developerData.whatsapp_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
+              >
+                <WhatsAppIcon />
+              </Link>
+            )}
+            {developerData.twitter_link && (
+              <Link
+                href={developerData.twitter_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
+              >
+                <TwitterIcon />
+              </Link>
+            )}
+            {developerData.instagram_link && (
+              <Link
+                href={developerData.instagram_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1 rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
+              >
+                <InstagramIcon />
+              </Link>
+            )}
+            {developerData.linkedin_link && (
+              <Link
+                href={developerData.linkedin_link || "/"}
+                className="text-2xl mx-2 px-2 pb-1  rounded-md bg-gray-300 hover:bg-blue-300 active:bg-red-200"
+              >
+                <LinkedInIcon />
+              </Link>
+            )}
           </div>
         </div>
       )}
