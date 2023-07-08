@@ -1,1 +1,2 @@
 from .headlineSerializer import HeadlineSerializer
+from .contactSerializer import ContactSerializer

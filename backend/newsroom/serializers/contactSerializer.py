@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from store.models import Contact
+from newsroom.models import Contact
 
 
 class ContactSerializer(serializers.ModelSerializer):
