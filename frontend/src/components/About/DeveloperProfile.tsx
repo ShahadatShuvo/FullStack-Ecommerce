@@ -79,31 +79,35 @@ function DeveloperProfile({
 
       {/* 2nd Div */}
       {showDetails ? (
-        <div className="animate-slide-in bg-black">
+        <div className="animate-slide-in bg-black rounded-b-md">
           <div className="bg-black text-center">
             <Button
               onClick={handleEmailClick}
               variant="outlined"
               startIcon={<EmailOutlinedIcon />}
               sx={{ background: "white", bgcolor: "white" }}
-              className="bg-white text-black w-2/3  font-semibold hover:bg-red-50  rounded text-center"
+              className="bg-white text-black w-2/3  font-semibold hover:bg-red-50  rounded text-center mb-5"
             >
               Email
             </Button>
           </div>
-          <div className="p-5  bg-black">
-            {developerData.about.length && (
+          {developerData.about.length ? (
+            <div className="px-5 pb-5  bg-black">
               <h2 className="text-lg font-bold mb-3 text-white">About</h2>
-            )}
-            <p className="text-gray-300 text-sm">{developerData.about}</p>
-          </div>
-          <div className="p-5  bg-black">
-            {developerData.interests.length && (
-              <h2 className="text-lg font-bold mb-3 text-white">Interests</h2>
-            )}
-            <p className="text-gray-300 text-sm">{developerData.interests}</p>
-          </div>
-          <div className="flex justify-center text-black pb-5">
+              <p className="text-gray-300 text-sm">{developerData.about}</p>
+            </div>
+          ) : (
+            ""
+          )}
+          {developerData.interests.length ? (
+            <div className="p-5  bg-black">
+              <h2 className="text-lg font-bold text-white">Interests</h2>
+              <p className="text-gray-300 text-sm">{developerData.interests}</p>
+            </div>
+          ) : (
+            ""
+          )}
+          <div className="flex justify-center text-black pb-5 mt-3">
             {developerData.facebook_link && (
               <Link
                 href={developerData.facebook_link || "/"}
