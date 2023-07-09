@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/HomePage/Footer";
 import React, { useEffect, useState } from "react";
 import {
   ProductCardProps,
@@ -252,7 +251,6 @@ export default function RootLayout({
         >
           {children}
         </GlobalStates.Provider>
-        <Footer />
       </body>
     </html>
   );
