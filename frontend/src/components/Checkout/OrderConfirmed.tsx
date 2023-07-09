@@ -14,26 +14,24 @@ const style = {
   p: 4,
 };
 
-function OrderConfirmed() {
+function OrderConfirmed({
+  open,
+  setOpen,
+  msg,
+}: {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  msg: string;
+}) {
   const router = useRouter();
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    router.push("/");
+    // router.push("/");
   };
 
   return (
     <div className="w-full">
-      <Button
-        fullWidth
-        variant="contained"
-        onClick={handleOpen}
-        className="mt-5 bg-black rounded-full"
-      >
-        Confirm Payment
-      </Button>
       <Modal
         keepMounted
         open={open}
@@ -55,10 +53,7 @@ function OrderConfirmed() {
                   Payment successful
                 </span>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur amet labore.
-                  </p>
+                  <p className="text-sm text-gray-500">{msg}</p>
                 </div>
               </div>
             </div>

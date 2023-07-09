@@ -25,16 +25,27 @@ import Fab from "@mui/material/Fab";
 import CheckIcon from "@mui/icons-material/Check";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
 import Image from "next/image";
+import OrderConfirmed from "../OrderConfirmed";
 
 function PaymentMethod() {
   const { isDarkTheme } = useContext(GlobalStates);
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+
   const [formData, setformData] = React.useState({
-    payment_type: "home",
+    payment_type: "",
   });
+  console.log(formData);
 
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePayment = () => {
+    console.log("Payment");
+    console.log("formData", formData);
+    handleOpen();
   };
 
   return (
@@ -59,7 +70,7 @@ function PaymentMethod() {
             onChange={handleformData}
           >
             <FormControlLabel
-              value="home"
+              value="cash_on"
               // checked={true}
               control={<Radio />}
               label={
@@ -75,7 +86,7 @@ function PaymentMethod() {
               className="text-gray-500 capitalize ml-32"
             />
             <FormControlLabel
-              value="office"
+              value="stripe"
               control={<Radio />}
               label={
                 <div className="flex items-center">
@@ -94,9 +105,24 @@ function PaymentMethod() {
           </RadioGroup>
         </FormControl>
       </div>
-      <Button variant="contained" className="bg-black mt-16 ">
+      <Button
+        variant="contained"
+        className="bg-blue-500 mt-16"
+        onClick={handlePayment}
+      >
         Make Payment
       </Button>
+      {open && formData.payment_type && (
+        <OrderConfirmed
+          open={open}
+          setOpen={setOpen}
+          msg={
+            formData.payment_type === "cash_on"
+              ? "You Choose Cash On delivery for payment, Our delivery man will reach your location at a minimum time."
+              : "Stripe"
+          }
+        />
+      )}
     </div>
   );
 }

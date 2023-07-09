@@ -67,7 +67,7 @@ export default function CircularStatic() {
           fullWidth
           variant="contained"
           onClick={handleOrderConfirm}
-          className="mt-5 bg-black rounded-full"
+          className="mt-5 bg-green-600 rounded-full"
         >
           Order processed! Go to Payment
         </Button>
