@@ -22,7 +22,6 @@ import { green } from "@mui/material/colors";
 import Fab from "@mui/material/Fab";
 import CheckIcon from "@mui/icons-material/Check";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
-import { is } from "date-fns/locale";
 
 function CheckoutLeftDiv() {
   const { userProfile, updateShippingAddress, isDarkTheme } =
