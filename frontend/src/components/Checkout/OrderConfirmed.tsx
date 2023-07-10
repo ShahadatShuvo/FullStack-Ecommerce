@@ -17,17 +17,19 @@ const style = {
 function OrderConfirmed({
   open,
   setOpen,
+  info,
   msg,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  info: string;
   msg: string;
 }) {
   const router = useRouter();
 
   const handleClose = () => {
     setOpen(false);
-    // router.push("/");
+    router.push("/");
   };
 
   return (
@@ -50,7 +52,7 @@ function OrderConfirmed({
               </div>
               <div className="mt-3 text-center sm:mt-5">
                 <span className="text-lg leading-6 font-medium text-gray-900">
-                  Payment successful
+                  {info}
                 </span>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">{msg}</p>

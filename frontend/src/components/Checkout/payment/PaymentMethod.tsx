@@ -116,6 +116,11 @@ function PaymentMethod() {
         <OrderConfirmed
           open={open}
           setOpen={setOpen}
+          info={
+            formData.payment_type === "cash_on"
+              ? "Order Successfully Taken"
+              : "Stripe"
+          }
           msg={
             formData.payment_type === "cash_on"
               ? "You Choose Cash On delivery for payment, Our delivery man will reach your location at a minimum time."
