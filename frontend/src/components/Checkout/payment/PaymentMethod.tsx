@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import BusinessIcon from "@mui/icons-material/Business";
 import ChaletIcon from "@mui/icons-material/Chalet";
@@ -30,6 +31,11 @@ import OrderConfirmed from "../OrderConfirmed";
 function PaymentMethod() {
   const { isDarkTheme } = useContext(GlobalStates);
 
+  const [autoFill, setAutoFill] = React.useState(false);
+  const handleAutofill = () => {
+    setAutoFill(!autoFill);
+  };
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
 
@@ -50,7 +56,7 @@ function PaymentMethod() {
 
   return (
     <div className="w-screen min-h-[50vh] my-16 flex flex-col items-center justify-center">
-      <div className="">
+      <div className="flex ">
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">
             <span
@@ -63,55 +69,82 @@ function PaymentMethod() {
               Choose Payment type:
             </span>
           </FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            name="payment_type"
-            value={formData.payment_type}
-            onChange={handleformData}
-          >
-            <FormControlLabel
-              value="cash_on"
-              // checked={true}
-              control={<Radio />}
-              label={
-                <div className="flex items-center">
-                  <Image
-                    src="/img/payment/cash_on1.png"
-                    alt=""
-                    width={220}
-                    height={150}
-                  />
-                </div>
-              }
-              className="text-gray-500 capitalize ml-32"
-            />
-            <FormControlLabel
-              value="stripe"
-              control={<Radio />}
-              label={
-                <div className="flex items-center">
-                  {/* <BusinessIcon className="text-3xl" />
-                  <p className="ml-2">Office(Delivery 9AM - 5 PM)</p> */}
-                  <Image
-                    src="/img/payment/stripe.svg"
-                    alt=""
-                    width={220}
-                    height={100}
-                  />
-                </div>
-              }
-              className="text-gray-500 capitalize ml-32 mt-5"
-            />
-          </RadioGroup>
         </FormControl>
+
+        <div className="capitalize select-none">
+          <FormControlLabel
+            control={
+              <Checkbox
+                size="small"
+                checked={autoFill}
+                onClick={handleAutofill}
+              />
+            }
+            label={
+              <div className="flex items-center">
+                <Image
+                  src="/img/payment/cash_on1.png"
+                  alt=""
+                  width={220}
+                  height={150}
+                />
+              </div>
+            }
+          />
+        </div>
+        {autoFill && (
+          <div>
+            <Button
+              variant="contained"
+              className="bg-blue-500 mt-16"
+              onClick={handlePayment}
+            >
+              Complete Payment
+            </Button>
+          </div>
+        )}
       </div>
-      <Button
-        variant="contained"
-        className="bg-blue-500 mt-16"
-        onClick={handlePayment}
-      >
-        Make Payment
-      </Button>
+      <div className="mt-16 w-screen flex justify-center">
+        <div className="w-[30%]">
+          <PayPalScriptProvider
+            options={{
+              clientId:
+                "AWYQ2vfyaBrCVHixp5SB5Bi47JrCFZzfDSTcnlL2alu2V9tDYpvQN4fGurXFTZ1O2n_ZazZltZkKN-AL",
+            }}
+          >
+            <PayPalButtons
+              style={{ layout: "vertical" }}
+              createOrder={(data, actions) => {
+                return actions.order
+                  .create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          currency_code: "USD",
+                          value: "100.00",
+                        },
+                      },
+                    ],
+                  })
+                  .then((orderId) => {
+                    // Your code here after create the order
+                    alert("Order ID: " + orderId);
+                    return orderId;
+                  });
+              }}
+              // onApprove={function (data, actions) {
+              //   return actions?.order?.capture().then(function () {
+              //     // Your code here after capture the order
+              //     alert(
+              //       "Transaction completed by " + data?.payer?.name?.given_name
+              //     );
+              //   });
+              // }}
+            />
+          </PayPalScriptProvider>
+        </div>
+      </div>
+
       {open && formData.payment_type && (
         <OrderConfirmed
           open={open}
