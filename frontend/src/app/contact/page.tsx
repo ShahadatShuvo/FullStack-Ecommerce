@@ -6,9 +6,10 @@ import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
 import Navbar from "@/components/HomePage/Navbar";
 import ContactForm from "@/components/contact/ContactForm";
+import Link from "next/link";
 
 function Contact() {
-  const { isDarkTheme } = useContext(GlobalStates);
+  const { isDarkTheme, userProfile } = useContext(GlobalStates);
 
   return (
     <div>
@@ -37,6 +38,15 @@ function Contact() {
               Contact with us
             </h2>
             <ContactForm />
+
+            {userProfile.email && (
+              <p className="py-8 text-center">
+                See your previous
+                <span className="ml-1 text-violet-500 hover:text-violet-600 text-lg font-semibold">
+                  <Link href="/contact/messages">Messages</Link>
+                </span>
+              </p>
+            )}
           </div>
         </div>
       </div>
