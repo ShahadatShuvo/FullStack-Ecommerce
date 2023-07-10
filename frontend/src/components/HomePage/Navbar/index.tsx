@@ -68,7 +68,8 @@ function Navbar() {
         });
         if (response.ok) {
           const data = await response.json();
-          setHeadline(data.results[0].text);
+          const len = data.results.length;
+          setHeadline(data.results[len - 1].text);
           setOpenHeadline(true);
         } else {
           console.log("Error fetching user profile data");
