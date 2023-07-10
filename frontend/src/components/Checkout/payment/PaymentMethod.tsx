@@ -2,29 +2,15 @@
 
 import React from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import BusinessIcon from "@mui/icons-material/Business";
-import ChaletIcon from "@mui/icons-material/Chalet";
-import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import {
   Button,
   Checkbox,
   FormControl,
   FormControlLabel,
   FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
 } from "@mui/material";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
-import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
-import { green } from "@mui/material/colors";
-import Fab from "@mui/material/Fab";
-import CheckIcon from "@mui/icons-material/Check";
-import NoCrashIcon from "@mui/icons-material/NoCrash";
 import Image from "next/image";
 import OrderConfirmed from "../OrderConfirmed";
 
@@ -36,22 +22,12 @@ function PaymentMethod() {
     setAutoFill(!autoFill);
   };
 
+  console.log("autoFill", autoFill);
+
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-
-  const [formData, setformData] = React.useState({
-    payment_type: "",
-  });
-  console.log(formData);
-
-  const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setformData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handlePayment = () => {
-    console.log("Payment");
-    console.log("formData", formData);
-    handleOpen();
+    setOpen(true);
   };
 
   return (
@@ -145,19 +121,13 @@ function PaymentMethod() {
         </div>
       </div>
 
-      {open && formData.payment_type && (
+      {open && (
         <OrderConfirmed
           open={open}
           setOpen={setOpen}
-          info={
-            formData.payment_type === "cash_on"
-              ? "Order Successfully Taken"
-              : "Stripe"
-          }
+          info={"Order Successfully Taken"}
           msg={
-            formData.payment_type === "cash_on"
-              ? "You Choose Cash On delivery for payment, Our delivery man will reach your location at a minimum time."
-              : "Stripe"
+            "You Choose Cash On delivery for payment, Our delivery man will reach your location at a minimum time."
           }
         />
       )}
