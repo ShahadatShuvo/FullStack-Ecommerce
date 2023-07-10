@@ -13,7 +13,7 @@ class AdminHeadline(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(Contact)
 class AdminContact(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ['id', 'name', 'email', 'phone',
+    list_display = ['id', 'name', 'sender', 'email', 'phone',
                     'created_at', 'subject', 'message']
     ordering = ['name', 'email', 'phone', 'created_at']
 
