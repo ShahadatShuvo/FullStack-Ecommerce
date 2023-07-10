@@ -48,7 +48,7 @@ const validationSchema = yup.object({
     .required("Confirm Password is required"),
 });
 
-function RegistrationForm() {
+function RegistrationForm({ setAlert }: { setAlert: any }) {
   const router = useRouter();
 
   const { checkSignUp, isDarkTheme } = useContext(GlobalStates);
@@ -70,11 +70,6 @@ function RegistrationForm() {
   });
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const [alert, setAlert] = React.useState({
-    msg: "",
-    type: "",
-    show: 0,
-  });
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -109,7 +104,7 @@ function RegistrationForm() {
           router.push("/account/login");
         } else if (response.status === 400) {
           const errorData = await response.json();
-          setAlert((prevState) => ({
+          setAlert((prevState: any) => ({
             ...prevState,
             msg: errorData.errors.email[0],
             type: "error",
@@ -128,124 +123,16 @@ function RegistrationForm() {
   };
 
   return (
-    <div className={isDarkTheme ? "bg-gray-900" : ""}>
-      <div className="flex min-h-full flex-1 ] flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <span className="w-[200px]">
-            <Image
-              alt="shopping"
-              src="/img/account/register.svg"
-              width={200}
-              height={200}
-              priority={true}
-              className="mx-auto w-1/2 md:w-[50vw]"
-            />
-          </span>
-
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 ">
-            Sign in to your account
-          </h2>
-        </div>
-
-        <form
-          className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
-          onSubmit={formik.handleSubmit}
-        >
-          <div className="flex flex-col gap-3">
-            <div className="flex justify-between gap-2">
-              <div className="flex flex-col gap-2">
-                <TextField
-                  id="first_name"
-                  inputProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "black",
-                      background: isDarkTheme ? "#333" : "white",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "gray",
-                    },
-                  }}
-                  label="First Name"
-                  variant="outlined"
-                  size="small"
-                  name="first_name"
-                  value={formik.values.first_name}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched.first_name &&
-                    Boolean(formik.errors.first_name)
-                  }
-                  helperText={
-                    formik.touched.first_name && formik.errors.first_name
-                  }
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <TextField
-                  id="last_name"
-                  inputProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "black",
-                      background: isDarkTheme ? "#333" : "white",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "gray",
-                    },
-                  }}
-                  label="Last Name"
-                  variant="outlined"
-                  size="small"
-                  name="last_name"
-                  value={formik.values.last_name}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched.last_name && Boolean(formik.errors.last_name)
-                  }
-                  helperText={
-                    formik.touched.last_name && formik.errors.last_name
-                  }
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <FormControl fullWidth size="small">
-                <InputLabel
-                  id="demo-simple-select-label"
-                  style={{ color: isDarkTheme ? "white" : "gray" }}
-                >
-                  Gender
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  style={{ color: isDarkTheme ? "white" : "black" }}
-                  inputProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "black",
-                    },
-                  }}
-                  label="Gender"
-                  name="gender"
-                  value={formik.values.gender}
-                  onChange={formik.handleChange}
-                  error={formik.touched.gender && Boolean(formik.errors.gender)}
-                >
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                  <MenuItem value="other">Other</MenuItem>
-                </Select>
-                <p className="text-xs text-red-500 mt-1">
-                  {formik.touched.gender && formik.errors.gender}
-                </p>
-              </FormControl>
-            </div>
+    <div>
+      <form
+        className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+        onSubmit={formik.handleSubmit}
+      >
+        <div className="flex flex-col gap-3">
+          <div className="flex justify-between gap-2">
             <div className="flex flex-col gap-2">
               <TextField
-                id="email"
+                id="first_name"
                 inputProps={{
                   style: {
                     color: isDarkTheme ? "white" : "black",
@@ -257,135 +144,196 @@ function RegistrationForm() {
                     color: isDarkTheme ? "white" : "gray",
                   },
                 }}
-                label="Email"
+                label="First Name"
                 variant="outlined"
                 size="small"
-                name="email"
-                value={formik.values.email}
+                name="first_name"
+                value={formik.values.first_name}
                 onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
+                error={
+                  formik.touched.first_name && Boolean(formik.errors.first_name)
+                }
+                helperText={
+                  formik.touched.first_name && formik.errors.first_name
+                }
               />
             </div>
             <div className="flex flex-col gap-2">
-              <FormControl
-                sx={{ width: "100%" }}
+              <TextField
+                id="last_name"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "gray",
+                  },
+                }}
+                label="Last Name"
                 variant="outlined"
                 size="small"
-              >
-                <InputLabel htmlFor="password1">Password</InputLabel>
-                <OutlinedInput
-                  id="password1"
-                  inputProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "black",
-                      background: isDarkTheme ? "#333" : "white",
-                    },
-                  }}
-                  type={showPassword ? "text" : "password"}
-                  name="password1"
-                  value={formik.values.password1}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched.password1 && Boolean(formik.errors.password1)
-                  }
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        sx={{
-                          color: "gray",
-                        }}
-                        edge="end"
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password"
-                />
-                <p className="text-xs text-red-500 mt-1">
-                  {formik.touched.password1 && formik.errors.password1}
-                </p>
-              </FormControl>
-            </div>
-            <div className="flex flex-col gap-2">
-              <FormControl
-                sx={{ width: "100%" }}
-                variant="outlined"
-                size="small"
-              >
-                <InputLabel htmlFor="password2">Confirm Password</InputLabel>
-                <OutlinedInput
-                  id="password2"
-                  inputProps={{
-                    style: {
-                      color: isDarkTheme ? "white" : "black",
-                      background: isDarkTheme ? "#333" : "white",
-                    },
-                  }}
-                  type={showPassword ? "text" : "password"}
-                  name="password2"
-                  value={formik.values.password2}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched.password2 && Boolean(formik.errors.password2)
-                  }
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        sx={{
-                          color: "gray",
-                        }}
-                        edge="end"
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Confirm Password"
-                />
-                <p className="text-xs text-red-500 mt-1">
-                  {formik.touched.password2 && formik.errors.password2}
-                </p>
-              </FormControl>
-            </div>
-            <div
-              className={
-                isDarkTheme
-                  ? "flex flex-col gap-2 bg-gray-500 text-black rounded-full"
-                  : "flex flex-col gap-2 bg-black rounded-full"
-              }
-            >
-              <Button
-                variant="contained"
-                className="rounded-full"
-                type="submit"
-              >
-                Sign Up
-              </Button>
+                name="last_name"
+                value={formik.values.last_name}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.last_name && Boolean(formik.errors.last_name)
+                }
+                helperText={formik.touched.last_name && formik.errors.last_name}
+              />
             </div>
           </div>
-          {alert.msg && (
-            <AuthSuccess msg={alert.msg} type={alert.type} show={alert.show} />
-          )}
-
-          <h4 className="mt-10 text-center text-sm text-gray-500">
-            Already have account?
-            <Link
-              href="/account/login"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 ml-2"
-            >
-              Log in
-            </Link>
-          </h4>
-        </form>
-      </div>
+          <div className="flex flex-col gap-2">
+            <FormControl fullWidth size="small">
+              <InputLabel
+                id="demo-simple-select-label"
+                style={{ color: isDarkTheme ? "white" : "gray" }}
+              >
+                Gender
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                style={{ color: isDarkTheme ? "white" : "black" }}
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                  },
+                }}
+                label="Gender"
+                name="gender"
+                value={formik.values.gender}
+                onChange={formik.handleChange}
+                error={formik.touched.gender && Boolean(formik.errors.gender)}
+              >
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+              </Select>
+              <p className="text-xs text-red-500 mt-1">
+                {formik.touched.gender && formik.errors.gender}
+              </p>
+            </FormControl>
+          </div>
+          <div className="flex flex-col gap-2">
+            <TextField
+              id="email"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#333" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
+              label="Email"
+              variant="outlined"
+              size="small"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <FormControl sx={{ width: "100%" }} variant="outlined" size="small">
+              <InputLabel htmlFor="password1">Password</InputLabel>
+              <OutlinedInput
+                id="password1"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                type={showPassword ? "text" : "password"}
+                name="password1"
+                value={formik.values.password1}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password1 && Boolean(formik.errors.password1)
+                }
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      sx={{
+                        color: "gray",
+                      }}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+              <p className="text-xs text-red-500 mt-1">
+                {formik.touched.password1 && formik.errors.password1}
+              </p>
+            </FormControl>
+          </div>
+          <div className="flex flex-col gap-2">
+            <FormControl sx={{ width: "100%" }} variant="outlined" size="small">
+              <InputLabel htmlFor="password2">Confirm Password</InputLabel>
+              <OutlinedInput
+                id="password2"
+                inputProps={{
+                  style: {
+                    color: isDarkTheme ? "white" : "black",
+                    background: isDarkTheme ? "#333" : "white",
+                  },
+                }}
+                type={showPassword ? "text" : "password"}
+                name="password2"
+                value={formik.values.password2}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password2 && Boolean(formik.errors.password2)
+                }
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      sx={{
+                        color: "gray",
+                      }}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Confirm Password"
+              />
+              <p className="text-xs text-red-500 mt-1">
+                {formik.touched.password2 && formik.errors.password2}
+              </p>
+            </FormControl>
+          </div>
+          <div
+            className={
+              isDarkTheme
+                ? "flex flex-col gap-2 bg-gray-500 text-black rounded-full"
+                : "flex flex-col gap-2 bg-black rounded-full"
+            }
+          >
+            <Button variant="contained" className="rounded-full" type="submit">
+              Sign Up
+            </Button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
