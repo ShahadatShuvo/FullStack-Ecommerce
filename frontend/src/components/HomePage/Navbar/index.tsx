@@ -136,8 +136,8 @@ function Navbar() {
               >
                 Headline
               </p>
-              <div className="w-full flex justify-center">
-                <div className=" w-full md:w-[85%]">
+              <div className="mx-24 min-w-[80vw] flex justify-cente">
+                <div className=" w-full ">
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
                       <span className={isDarkTheme ? "text-[#38BDF8]" : ""}>
