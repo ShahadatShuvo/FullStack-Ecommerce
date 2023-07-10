@@ -41,22 +41,13 @@ function MyApp({
     <React.Fragment>
       {type === "btn" ? (
         <Button onClick={handleClickVariant("success")}>
-          <NextWeekOutlinedIcon />
-          <span className="ml-1">Add to bag</span>
+          <NextWeekOutlinedIcon fontSize="small" />
+          <span className="ml-1 text-xs">Add to Cart</span>
         </Button>
-      ) : type === "icon" ? (
+      ) : (
         <IconButton aria-label="added" onClick={handleClickVariant("success")}>
           <AddCircleOutlineIcon color="success" />
         </IconButton>
-      ) : (
-        <Button
-          variant="contained"
-          className="text-sm md:text-md w-[60%] bg-black text-white rounded-full flex justify-center items-center md:gap-2"
-          onClick={handleClickVariant("success")}
-        >
-          <NextWeekOutlinedIcon />
-          <span className="md:mt-1">Add to Cart</span>
-        </Button>
       )}
     </React.Fragment>
   );

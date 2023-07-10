@@ -9,6 +9,7 @@ import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
 import { GlobalStates } from "@/app/context";
 import OrderSuccess from "./OrderSuccess";
 import { ProductCardProps } from "../../interfaces";
+import AuthSuccess from "./Accounts/AuthSuccess";
 
 function ProductCard(props: ProductCardProps) {
   const { id, title, description, price, image_url } = props;
@@ -55,6 +56,13 @@ function ProductCard(props: ProductCardProps) {
 
   return (
     <div className="min-w-[270px] mb-8">
+      {favourite && (
+        <AuthSuccess
+          msg="Product added to my faviorites"
+          type="success"
+          show={0}
+        />
+      )}
       <div
         className="card relative"
         onMouseEnter={onHandleViewOpen}

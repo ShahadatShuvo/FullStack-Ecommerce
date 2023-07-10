@@ -67,8 +67,8 @@ export default function CartViewDialogue(props: ProductCardProps) {
   return (
     <div>
       <Button onClick={handleClickOpen}>
-        <FullscreenOutlinedIcon />
-        <span>Quick View</span>
+        <FullscreenOutlinedIcon fontSize="small" />
+        <span className="text-xs">Quick View</span>
       </Button>
 
       <BootstrapDialog
