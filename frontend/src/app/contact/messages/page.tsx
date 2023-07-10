@@ -53,7 +53,9 @@ function MessageList() {
         catchErrorMsg(JSON.stringify(error));
       }
     };
-    handleSubmit();
+    if (userProfile.email) {
+      handleSubmit();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userProfile]);
 
