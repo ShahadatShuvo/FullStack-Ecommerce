@@ -4,6 +4,7 @@ import OrderDetail from "./OrderDetail";
 import { useState } from "react";
 import { GlobalStates } from "@/app/context";
 import { useContext } from "react";
+import Link from "next/link";
 
 function PreviewOrder({ ...props }) {
   const { isDarkTheme } = useContext(GlobalStates);
@@ -57,7 +58,25 @@ function PreviewOrder({ ...props }) {
             <p className="text-gray-500  flex items-center mt-4">
               <span className="hidden sm:inline-block">Status:</span>
               <span className="ml-1">{props.complete ? "Paid" : "Unpaid"}</span>
+
+              {!props.complete && (
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{
+                    marginLeft: "5px",
+                    backgroundColor: "black",
+                    fontSize: "12px",
+                  }}
+                  className="bg-black text-xs"
+                >
+                  <Link href={`/checkout/payment`}>
+                    <span>Pay Now</span>
+                  </Link>
+                </Button>
+              )}
             </p>
+
             <div className="flex">
               <Button variant="text" size="small" onClick={handleOpen}>
                 View More
