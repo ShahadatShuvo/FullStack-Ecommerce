@@ -6,6 +6,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useContext } from "react";
+import dayjs, { Dayjs } from "dayjs";
 import { GlobalStates } from "@/app/context";
 
 import {
@@ -18,6 +19,7 @@ import {
   TextField,
 } from "@mui/material";
 import AuthSuccess from "../Accounts/AuthSuccess";
+import { setFips } from "crypto";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -26,6 +28,8 @@ function UpdateAccount() {
     useContext(GlobalStates);
 
   const [snackbar, setSnackbar] = React.useState(0);
+  const [value, setValue] = React.useState<Dayjs | null>(dayjs("2022-04-17"));
+
   const [show, setShow] = React.useState(false);
 
   const today = new Date();
@@ -48,11 +52,17 @@ function UpdateAccount() {
     date_of_birth: `${formattedDate}`,
   });
 
-  console.log("formData", formData);
-
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
     setShow(false);
+  };
+
+  const handleDate = (newValue: any) => {
+    setValue(newValue);
+    setformData((prevState) => ({
+      ...prevState,
+      date_of_birth: newValue.format("YYYY-MM-DD"),
+    }));
   };
 
   const handleGenderSelect = (event: any) => {
@@ -294,7 +304,9 @@ function UpdateAccount() {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]} sx={{ width: "100%" }}>
               <DatePicker
-                label="Date of Birth"
+                label="Controlled picker"
+                value={value}
+                onChange={(newValue) => handleDate(newValue)}
                 sx={{
                   width: "100%",
                   "& .MuiInputBase-root": {
