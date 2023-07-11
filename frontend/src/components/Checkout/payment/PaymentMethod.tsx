@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   FormLabel,
 } from "@mui/material";
+import Confetti from "react-confetti";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
 import Image from "next/image";
@@ -30,6 +31,7 @@ function PaymentMethod() {
 
   return (
     <div className="w-screen min-h-[50vh] my-16 flex flex-col items-center justify-center">
+      {open && <Confetti />}
       <div className="flex ">
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">
