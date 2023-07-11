@@ -21,11 +21,13 @@ function Wishlist() {
               description={product.description}
               price={product.price}
               image_url={product.image_url}
+              stock={product.stock}
+              qty={product.qty}
             />
           ))
         ) : (
           <div className="font-semibold text-2xl h-[30vh] flex items-center">
-            Your order list is empthy!
+            Your order list is empty!
           </div>
         )}
       </div>
