@@ -136,7 +136,7 @@ function Navbar() {
               >
                 Headline
               </p>
-              <div className="mx-24 min-w-[80vw] flex justify-cente">
+              <div className="md:mx-24 min-w-[80vw] flex justify-cente">
                 <div className=" w-full ">
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
