@@ -49,7 +49,7 @@ const validationSchema = yup.object({
 });
 
 function ContactForm() {
-  const { isDarkTheme, catchErrorMsg } = useContext(GlobalStates);
+  const { isDarkTheme, catchErrorMsg, userProfile } = useContext(GlobalStates);
 
   const router = useRouter();
 
@@ -74,6 +74,10 @@ function ContactForm() {
   });
 
   const handleSubmit = (formData: any) => {
+    if (userProfile.id) {
+      formData.sender = userProfile.id;
+    }
+    console.log("contact detail:", formData);
     const handleSubmit = async (formData: any) => {
       try {
         const response = await fetch(`${apiUrl}/api/newsroom/contact/create/`, {
