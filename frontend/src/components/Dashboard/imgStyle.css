@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.img {
+  /* height: 40px;
+  width: 150px; */
+  border: "2px dotted gray";
+  border-style: dotted;
+  color: rgb(168, 164, 164);
+  font-weight: 600;
+  font-size: 16px;
+}
+.img:hover {
+  height: 150px;
+  transition: height 400ms ease-in-out;
+  /* transition-delay: 1s;  */
+}
+.img {
+  height: 40px;
+  transition: height 400ms ease-in-out;
+  z-index: 999;
+}
+.imgAfterUpload:hover {
+  /* display: none; */
+  /* height: 40px;  */
+  /* width: 300px;  */
+  border: "1px dotted gray";
+  border-style: dotted;
+  color: rgb(168, 164, 164);
+  font-weight: 600;
+  font-size: 16px;
+  z-index: -2;
+}
+
+/* Parent Container */
+.content_img {
+  position: relative;
+  /* width: 100px;  */
+  /* height: 100px;  */
+  float: left;
+}
+
+/* Child Text Container */
+.content_img .update {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  background: rgb(119, 115, 115);
+  color: black;
+  font-size: 14px;
+  font-weight: 800;
+  /* opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear; */
+}
+
+.content_img .update p {
+  background: white;
+  text-align: center;
+  margin-top: 50%;
+}
+
+/* Hover on Parent Container */
+.content_img:hover {
+  cursor: pointer;
+}
+
+/* .content_img:hover .update {
+  width: 100px;
+  height: 100%;
+  visibility: visible;
+  opacity: 0.8;
+  border: 1px dotted red;
+} */
+
+.content_img .delete {
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.content_img:hover .delete {
+  width: 20px;
+  height: 20px;
+  visibility: visible;
+  opacity: 1;
+}

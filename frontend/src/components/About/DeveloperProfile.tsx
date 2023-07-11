@@ -43,7 +43,6 @@ function DeveloperProfile({
 
   const handleEmailClick = () => {
     window.location.href = `mailto:${developerData.email}`;
-    console.log("Email Clicked:", developerData.email);
   };
 
   return (

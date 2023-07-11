@@ -2,15 +2,30 @@
 import React from "react";
 import ImageUploading from "react-images-uploading";
 import CancelIcon from "@mui/icons-material/Cancel";
+import "./imgStyle.css";
 
-function ImageUpload() {
-  const [images, setImages] = React.useState([]);
-  const maxNumber = 69;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+function ImageUpload({ img }: { img: any }) {
+  const [images, setImages] = React.useState<{ dataURL: string; file: File }[]>(
+    []
+  );
+
+  React.useEffect(() => {
+    if (img) {
+      // Set the initial image URL
+      setImages([
+        {
+          dataURL: img,
+          file: new File([], img), // Create a dummy file object
+        },
+      ]);
+    }
+  }, [img]);
+
   const onChange = (imageList: any, addUpdateIndex: any) => {
     setImages(imageList);
   };
-
-  console.log("images", images);
 
   return (
     <div>
@@ -18,7 +33,6 @@ function ImageUpload() {
         <ImageUploading
           value={images}
           onChange={onChange}
-          maxNumber={maxNumber}
           dataURLKey="data_url"
         >
           {({
@@ -46,7 +60,7 @@ function ImageUpload() {
                   <div className="content_img">
                     <img
                       className="w-[300px] h-[300px] object-cover rounded-lg"
-                      src={image.data_url}
+                      src={image.data_url ? image.data_url : img}
                       alt=""
                       width={300}
                       height={300}

@@ -28,6 +28,14 @@ function UpdateAccount() {
   const [snackbar, setSnackbar] = React.useState(0);
   const [show, setShow] = React.useState(false);
 
+  const today = new Date();
+
+  const year = today.getFullYear(); // Get the full year (e.g., 2023)
+  const month = String(today.getMonth() + 1).padStart(2, "0"); // Get the month (0-11) and add leading zero if needed
+  const day = String(today.getDate()).padStart(2, "0"); // Get the day of the month and add leading zero if needed
+
+  const formattedDate = `${year}-${month}-${day}`;
+
   const [formData, setformData] = React.useState({
     first_name: `${userProfile?.first_name}`,
     last_name: `${userProfile?.last_name}`,
@@ -37,8 +45,10 @@ function UpdateAccount() {
     state: `${userProfile?.state}`,
     city: `${userProfile?.city}`,
     zip_code: `${userProfile?.zip_code}`,
-    date_of_birth: "1999-10-05",
+    date_of_birth: `${formattedDate}`,
   });
+
+  console.log("formData", formData);
 
   const handleformData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
