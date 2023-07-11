@@ -14,14 +14,11 @@ import * as yup from "yup";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
-import AuthSuccess from "./AuthSuccess";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

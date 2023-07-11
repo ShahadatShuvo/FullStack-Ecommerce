@@ -136,7 +136,7 @@ function Navbar() {
               >
                 Headline
               </p>
-              <div className="mx-24 min-w-[80vw] flex justify-cente">
+              <div className="md:mx-24 min-w-[80vw] flex justify-cente">
                 <div className=" w-full ">
                   <div className="relative flex overflow-x-hidden text-lg">
                     <div className="animate-marquee whitespace-nowrap">
@@ -160,7 +160,7 @@ function Navbar() {
               alt=""
               width={145}
               height={80}
-              className=" py-2"
+              className="py-3 md:py-2 w-[100px] md:w-[145px] cursor-pointer"
             />
           </Link>
 
@@ -257,7 +257,7 @@ function Navbar() {
 
           {/* Navigation Ends  */}
 
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mx-5 md:mx-0">
             {accessToken || !isLogoutComplete ? (
               <MenuBarIcon
                 openHeadline={openHeadline}
@@ -301,7 +301,7 @@ function Navbar() {
               <CartMenu />
             </Badge>
             {/* Hamburger Menu */}
-            <div className="md:hidden ml-5 relative">
+            {/* <div className="md:hidden ml-5 relative">
               <input type="checkbox" id="menu-toggle" className="hidden" />
               <label
                 htmlFor="menu-toggle"
@@ -398,7 +398,7 @@ function Navbar() {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
             {/* Hamburger Menu Ends */}
           </div>
         </div>
