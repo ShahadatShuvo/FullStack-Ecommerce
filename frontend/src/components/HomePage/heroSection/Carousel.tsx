@@ -1,13 +1,15 @@
 "use client";
+import { Button } from "@mui/material";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Link as ScrollLink } from "react-scroll";
+// import { Link as ScrollLink } from "react-scroll";
 
-function HeroSection() {
+function Carousel() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [
-    "https://i.ibb.co/j8G3k01/Enjoy-the-best-shopping-experience-with-us.png",
-    "https://i.ibb.co/qJdhL8n/hero-Img-No-Text2.png",
-    "https://i.ibb.co/kcWpz4C/hero-Img-No-Text3.png",
+    "/img/banner/banner1.png",
+    "/img/banner/banner2.png",
+    "/img/banner/banner3.png",
   ];
 
   const texts = [
@@ -23,33 +25,30 @@ function HeroSection() {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [images.length]);
 
   return (
     <div className="relative  md:w-full ">
       <img
         src={images[currentImage]}
         alt="Carousel Image"
+        height={50}
+        width={50}
         className="max-h-full w-full md:object-cover object-fill"
       />
-      <div className=" space-y-6 md:my-10 my-0 absolute top-4 md:top-16 lg:top-32 left-4 md:left-10 right-64 lg:right-[600px]">
-        <h2 className="text-blue-950 text-lg font-serif md:text-5xl lg:text-6xl font-bold break-words">
+      <div className="mt-10 md:mt-0 space-y-6 md:my-10 my-0 absolute top-5 lg:top-32 left-2 md:left-10 right-48 lg:right-[600px]">
+        <h2 className="text-blue-950 text-sm font-serif md:text-5xl lg:text-6xl font-bold break-words">
           {texts[currentImage]}
         </h2>
 
-        <button className="mt-4 my-8 bg-blue-950 text-white rounded-3xl py-2 px-4 ">
-          <ScrollLink
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={-10}
-            duration={500}
-          >
-            Explore Now
-          </ScrollLink>
-        </button>
+        <Button
+          variant="contained"
+          className="text-sm md:text-lg rounded-full bg-black"
+        >
+          <a href="/">Explore Now</a>
+        </Button>
       </div>
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+      <div className="absolute -bottom-16 md:bottom-4 left-0 right-0 flex justify-center space-x-2">
         {images.map((image, index) => (
           <button
             key={index}
@@ -58,10 +57,11 @@ function HeroSection() {
               index === currentImage ? "bg-gray-900" : "bg-gray-400"
             }`}
           ></button>
+          // <div></div>
         ))}
       </div>
     </div>
   );
 }
 
-export default HeroSection;
+export default Carousel;
