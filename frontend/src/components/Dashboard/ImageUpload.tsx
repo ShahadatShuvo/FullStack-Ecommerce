@@ -27,8 +27,6 @@ function ImageUpload({ img }: { img: any }) {
     setImages(imageList);
   };
 
-  console.log("images", images);
-
   return (
     <div>
       <div className="App">

@@ -24,8 +24,6 @@ function MessageList() {
 
   const [messageList, setMessageList] = useState([]);
 
-  console.log("messageList", messageList);
-
   useEffect(() => {
     const handleSubmit = async () => {
       try {

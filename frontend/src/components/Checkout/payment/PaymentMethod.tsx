@@ -22,8 +22,6 @@ function PaymentMethod() {
     setAutoFill(!autoFill);
   };
 
-  console.log("autoFill", autoFill);
-
   const [open, setOpen] = React.useState(false);
 
   const handlePayment = () => {

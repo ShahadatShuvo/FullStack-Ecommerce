@@ -77,7 +77,6 @@ function ContactForm() {
     if (userProfile.id) {
       formData.sender = userProfile.id;
     }
-    console.log("contact detail:", formData);
     const handleSubmit = async (formData: any) => {
       try {
         const response = await fetch(`${apiUrl}/api/newsroom/contact/create/`, {
