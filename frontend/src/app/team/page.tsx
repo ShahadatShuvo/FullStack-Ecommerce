@@ -1,6 +1,6 @@
 "use client";
 
-import DeveloperProfile from "@/components/About/DeveloperProfile";
+import DeveloperProfile from "@/components/Team/DeveloperProfile";
 import Navbar from "@/components/HomePage/Navbar";
 import MagicLine from "@/components/SubComponent/MagicLine";
 import { useEffect, useState } from "react";
