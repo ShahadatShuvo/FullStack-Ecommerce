@@ -6,6 +6,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
 import { useRouter } from "next/navigation";
+import ImageUpload from "./ImageUpload";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -63,7 +64,7 @@ function AccountInfo() {
     <div className="min-h-[60vh] w-screen flex justify-center">
       <div className="w-[60%] flex justify-between items-center">
         <div>
-          <Image
+          {/* <Image
             src={
               userProfile.image_url
                 ? `${apiUrl}${userProfile.image_url}`
@@ -76,7 +77,8 @@ function AccountInfo() {
             width={300}
             height={300}
             className="rounded-lg"
-          />
+          /> */}
+          <ImageUpload />
         </div>
         <div className="flex flex-col gap-2 font-semibold text-gray-600">
           <div className="flex ">
