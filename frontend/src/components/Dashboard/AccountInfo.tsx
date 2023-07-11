@@ -62,8 +62,8 @@ function AccountInfo() {
 
   return (
     <div className="min-h-[60vh] w-screen flex justify-center">
-      <div className="w-[60%] flex justify-between items-center">
-        <div>
+      <div className="w-[60%] flex justify-between mt-16">
+        <div className="mt-16">
           {/* <Image
             src={
               userProfile.image_url
@@ -78,7 +78,15 @@ function AccountInfo() {
             height={300}
             className="rounded-lg"
           /> */}
-          <ImageUpload />
+          <ImageUpload
+            img={
+              userProfile.image_url
+                ? `${apiUrl}${userProfile.image_url}`
+                : userProfile.gender === "male"
+                ? "/img/male.svg"
+                : "/img/female.svg"
+            }
+          />
         </div>
         <div className="flex flex-col gap-2 font-semibold text-gray-600">
           <div className="flex ">
