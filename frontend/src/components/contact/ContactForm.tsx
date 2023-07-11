@@ -1,28 +1,13 @@
 "use client";
 
-import {
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  TextField,
-} from "@mui/material";
+import { TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import InputAdornment from "@mui/material/InputAdornment";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
-import Navbar from "../HomePage/Navbar";
-import { set } from "date-fns";
 import AuthSuccess from "../Accounts/AuthSuccess";
 // import AuthSuccess from "./AuthSuccess";
 

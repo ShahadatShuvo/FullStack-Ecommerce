@@ -20,7 +20,7 @@ interface MessageCardinterface {
 
 function MessageList() {
   const router = useRouter();
-  const { isDarkTheme, userProfile, catchErrorMsg } = useContext(GlobalStates);
+  const { userProfile, catchErrorMsg } = useContext(GlobalStates);
 
   const [messageList, setMessageList] = useState([]);
 
