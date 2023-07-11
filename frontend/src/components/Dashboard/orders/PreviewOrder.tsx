@@ -1,10 +1,9 @@
+import { GlobalStates } from "@/app/context";
 import { Button } from "@mui/material";
 import Image from "next/image";
-import OrderDetail from "./OrderDetail";
-import { useState } from "react";
-import { GlobalStates } from "@/app/context";
-import { useContext } from "react";
 import Link from "next/link";
+import { useContext, useState } from "react";
+import OrderDetail from "./OrderDetail";
 
 function PreviewOrder({ ...props }) {
   const { isDarkTheme } = useContext(GlobalStates);
@@ -22,8 +21,8 @@ function PreviewOrder({ ...props }) {
     <div
       className={
         isDarkTheme
-          ? " w-[50vw] border border-blue-400 p-4  rounded-lg"
-          : " w-[50vw] shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4  rounded-lg"
+          ? " w-[70vw] md:w-[50vw] border border-blue-400 p-4  rounded-lg"
+          : " w-[90vw] md:w-[50vw] shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4  rounded-lg"
       }
     >
       <div className="flex  sm:py-7 last:pb-0 first:pt-0">
@@ -71,7 +70,7 @@ function PreviewOrder({ ...props }) {
                   className="bg-black text-xs"
                 >
                   <Link href={`/checkout/payment`}>
-                    <span>Pay Now</span>
+                    <span className="text-base">Pay</span>
                   </Link>
                 </Button>
               )}
