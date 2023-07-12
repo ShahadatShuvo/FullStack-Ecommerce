@@ -175,11 +175,11 @@ function ShopByCategory() {
                 <Select
                   labelId="demo-select-small-label"
                   id="demo-select-small"
-                  value="men"
+                  value=""
                   label="Select a Category"
                   onChange={handleCategoryChange}
                   sx={{
-                    color: !isDarkTheme ? "black" : "white",
+                    color: !isDarkTheme ? "black" : "blue",
                     borderColor: !isDarkTheme ? "black" : "white",
                   }}
                 >
