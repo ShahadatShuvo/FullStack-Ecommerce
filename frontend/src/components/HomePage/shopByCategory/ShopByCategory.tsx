@@ -21,7 +21,6 @@ function ShopByCategory() {
   const { isDarkTheme } = useContext(GlobalStates);
   const [allCategories, setAllCategories] = useState<any>([]);
 
-  console.log("allCategories:", allCategories);
   // pp
   const [searchValue, setSearchValue] = React.useState("");
   const [page, setPage] = React.useState(1);
@@ -30,8 +29,9 @@ function ShopByCategory() {
   const [resultMap, setResultMap] = useState<any>(true); // dataMap = data["results"
   const [activeCategory, setActiveCategory] = useState("all");
   // pp
+  console.log("activeCategory:", activeCategory);
+  console.log("data:", data);
 
-  const [category, setCategory] = React.useState("");
   const [displaySearch, setDisplaySearch] = React.useState(false);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -54,7 +54,7 @@ function ShopByCategory() {
         }
         if (response.ok) {
           const result = await response.json();
-          setData(result.results);
+          setData(result.results ? result.results : result);
         } else {
           throw new Error("Request failed");
         }
@@ -92,10 +92,10 @@ function ShopByCategory() {
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    setCategory("");
+    setActiveCategory("all");
   };
   const handleCategoryChange = (event: SelectChangeEvent) => {
-    setCategory(event.target.value);
+    setActiveCategory(event.target.value);
     setSearchValue("");
   };
   const onhandleSearchClose = () => {
@@ -164,26 +164,27 @@ function ShopByCategory() {
                 </IconButton>
               </div>
             )}
-            <div className={isDarkTheme ? "bg-white" : ""}>
+            {/* className={isDarkTheme ? "bg-blue-400" : ""}  */}
+            <div>
               <FormControl sx={{ minWidth: 188 }} size="small">
                 <InputLabel
                   id="demo-select-small-label"
-                  sx={{ color: isDarkTheme ? "black" : "white" }}
+                  sx={{ color: !isDarkTheme ? "black" : "white" }}
                 >
                   Select a Category
                 </InputLabel>
                 <Select
                   labelId="demo-select-small-label"
                   id="demo-select-small"
-                  value=""
+                  value={activeCategory}
                   label="Select a Category"
                   onChange={handleCategoryChange}
                   sx={{
-                    color: !isDarkTheme ? "black" : "blue",
+                    color: !isDarkTheme ? "black" : "white",
                     borderColor: !isDarkTheme ? "black" : "white",
                   }}
                 >
-                  <MenuItem value="">
+                  <MenuItem value="all">
                     <em>All products</em>
                   </MenuItem>
                   {allCategories?.map((category: any) => (

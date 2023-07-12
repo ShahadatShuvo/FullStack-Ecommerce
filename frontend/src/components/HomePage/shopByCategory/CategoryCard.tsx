@@ -9,6 +9,8 @@ import OrderSuccess from "./Ordersuccess";
 import CartViewDialogue from "./CartViewDialogue";
 import { ProductCardProps } from "../../../../interfaces";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 function CategoryCard({ product }: { product: ProductCardProps }) {
   const { increaseCartData } = useContext(GlobalStates);
 
@@ -21,7 +23,11 @@ function CategoryCard({ product }: { product: ProductCardProps }) {
       <div className="p-3 border-2 rounded-xl hover:shadow-xl w-[250px] min-h-[200px]">
         <div className="pb-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
-            src={product.image_url || "/img/order.svg"}
+            src={
+              product?.image_url?.startsWith("/")
+                ? `${apiUrl}${product.image_url}`
+                : product.image_url || "/img/order.svg"
+            }
             alt=""
             width={230}
             height={230}

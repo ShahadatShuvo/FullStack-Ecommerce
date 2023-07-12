@@ -11,6 +11,8 @@ import React from "react";
 import { sign } from "crypto";
 import OrderSuccess from "./Ordersuccess";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 interface ProductCardProps {
   // key: number | string;
   id: number | string;
@@ -50,7 +52,11 @@ function ProductDetails({ product }: { product: ProductCardProps }) {
               height: "auto",
               width: "auto",
             }}
-            src={product.image_url || "/img/order.svg"}
+            src={
+              product?.image_url?.startsWith("/")
+                ? `${apiUrl}${product.image_url}`
+                : product.image_url || "/img/order.svg"
+            }
             alt=""
             width={250}
             height={250}
@@ -127,10 +133,7 @@ function ProductDetails({ product }: { product: ProductCardProps }) {
           </div>
           {accordion2 && (
             <div className="mt-3 p-3 rounded-lg bg-gray-100 text-sm md:text-md">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
-              repellat, iure veritatis facilis commodi similique ratione sunt
-              temporibus saepe cum porro, excepturi quae exercitationem autem
-              odio! Hic dignissimos itaque fugiat corporis quod minus minima.
+              {product.features}
             </div>
           )}
         </div>
