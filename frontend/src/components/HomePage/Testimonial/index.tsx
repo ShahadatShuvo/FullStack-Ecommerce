@@ -63,8 +63,8 @@ const Testimonial = () => {
   const testimonial = testimonials[currentTestimonial];
 
   return (
-    <div className="w-full space-y-24 py-16 ">
-      <div>
+    <div className="w-screen space-y-24 py-16 ">
+      <div className="mx-16">
         <MagicLine title="Testimonial" />
       </div>
 
