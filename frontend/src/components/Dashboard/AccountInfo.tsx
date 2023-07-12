@@ -58,7 +58,7 @@ function AccountInfo() {
   }, [accessToken, isLoginComplete]);
 
   return (
-    <div className="w-full flex-col md:flex gap-20 justify-center items-center mt-16">
+    <div className=" flex-col md:flex gap-20 justify-center items-center">
       <div>
         <ImageUpload
           img={
@@ -71,7 +71,7 @@ function AccountInfo() {
         />
       </div>
       <div>
-        <div className=" gap-2 font-semibold text-gray-600">
+        <div className=" font-semibold text-gray-600">
           <div>
             {/* Extra Details */}
             <div>

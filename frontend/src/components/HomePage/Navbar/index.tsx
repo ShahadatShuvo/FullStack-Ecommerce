@@ -260,6 +260,7 @@ function Navbar() {
               <MenuBarIcon
                 openHeadline={openHeadline}
                 setOpenHeadline={setOpenHeadline}
+                name="home"
               />
             ) : (
               <Button

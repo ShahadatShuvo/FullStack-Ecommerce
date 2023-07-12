@@ -59,9 +59,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export default function MenuBarIcon({
   openHeadline,
   setOpenHeadline,
+  name,
 }: {
   openHeadline: boolean;
   setOpenHeadline: any;
+  name: string;
 }) {
   const router = useRouter();
 
@@ -116,15 +118,10 @@ export default function MenuBarIcon({
     checkLogin(false);
     checkSignUp(false);
     checkLogout(true);
-    const currentPageUrl = window.location.href;
-    const searchString = "checkout";
-    const isSubstringPresent = currentPageUrl.indexOf(searchString) !== -1;
-    if (isSubstringPresent) {
-      router.push("/");
-    }
+    router.push("/");
   };
 
-  const handleTabs = (value: string) => {
+  const handleTabs = (value: number) => {
     handleClose();
     toggleTab(value);
     router.push("/dashboard");
@@ -231,43 +228,53 @@ export default function MenuBarIcon({
           </div>
         </MenuItem>
         <Divider />
-        <Link href="/dashboard">
-          <MenuItem onClick={() => handleTabs("account_info")}>
+        {name === "home" && (
+          <MenuItem onClick={() => handleTabs(0)}>
             <Avatar /> My account
           </MenuItem>
-        </Link>
+        )}
 
-        <MenuItem onClick={() => handleTabs("my_orders")}>
-          <ListAltOutlinedIcon /> <p className="ml-3">My Order</p>
-        </MenuItem>
-        <MenuItem onClick={() => handleTabs("wishlist")}>
-          <FavoriteBorderIcon /> <p className="ml-3">Wishlist</p>
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            setOpenHeadline((prevState: any) => !prevState);
-          }}
-        >
-          {openHeadline ? (
-            <div className="flex">
-              <LockOutlinedIcon /> <p className="ml-3">Close Headline Bar</p>
-            </div>
-          ) : (
-            <div className="flex">
-              <LockOpenIcon /> <p className="ml-3">Open Headline Bar</p>
-            </div>
-          )}
-        </MenuItem>
-        <MenuItem onClick={() => handleTabs("update_account")}>
-          <PersonAdd fontSize="small" sx={{ mr: 2 }} />
-          Update Account
-        </MenuItem>
-        <Link href="/dashboard">
-          <MenuItem onClick={() => handleTabs("change_password")}>
+        {name === "home" && (
+          <MenuItem onClick={() => handleTabs(3)}>
+            <ListAltOutlinedIcon /> <p className="ml-3">My Order</p>
+          </MenuItem>
+        )}
+        {name === "home" && (
+          <MenuItem onClick={() => handleTabs(2)}>
+            <FavoriteBorderIcon /> <p className="ml-3">Wishlist</p>
+          </MenuItem>
+        )}
+        {name === "home" && (
+          <MenuItem
+            onClick={() => {
+              setOpenHeadline((prevState: any) => !prevState);
+            }}
+          >
+            {openHeadline ? (
+              <div className="flex">
+                <LockOutlinedIcon /> <p className="ml-3">Close Headline Bar</p>
+              </div>
+            ) : (
+              <div className="flex">
+                <LockOpenIcon /> <p className="ml-3">Open Headline Bar</p>
+              </div>
+            )}
+          </MenuItem>
+        )}
+        {name === "home" && (
+          <MenuItem onClick={() => handleTabs(1)}>
+            <PersonAdd fontSize="small" sx={{ mr: 2 }} />
+            Update Account
+          </MenuItem>
+        )}
+
+        {name === "home" && (
+          <MenuItem onClick={() => handleTabs(4)}>
             <Settings fontSize="small" sx={{ mr: 2 }} />
             Change Password
           </MenuItem>
-        </Link>
+        )}
+
         <MenuItem onClick={handleLogout}>
           <Logout fontSize="small" sx={{ mr: 2 }} />
           Logout

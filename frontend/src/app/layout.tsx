@@ -55,11 +55,11 @@ export default function RootLayout({
   );
   const [isLogoutComplete, setIsLogoutComplete] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("account_info");
+  const [activeTab, setActiveTab] = useState<number>(0);
   const [check, setCheck] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const toggleTab = (value: string) => {
+  const toggleTab = (value: number) => {
     setActiveTab(value);
   };
 
