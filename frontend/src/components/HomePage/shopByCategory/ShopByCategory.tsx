@@ -107,7 +107,7 @@ function ShopByCategory() {
       <Element name="search" className="section">
         {/* Content of Section 1 */}
         <div className="flex flex-col md:flex-row items-center md:justify-between">
-          <div className="w-[60%]">
+          <div className="w-[90%] my-5">
             <h1 className="capitalize text-xl md:text-4xl font-bold md:font-semibold">
               Shop by category
             </h1>

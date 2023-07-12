@@ -16,10 +16,14 @@ function HomePage() {
       <Navbar />
       <HeroSection />
       <TrendingProducts />
-      <DiscoverMore />
+      <div className="hidden md:block">
+        <DiscoverMore />
+      </div>
+      <div className="md:hidden">
+        <ShopByCategory />
+      </div>
       <NewArrival />
       <Steps />
-      <ShopByCategory />
       <Testimonial />
       <Footer />
     </div>
