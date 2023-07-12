@@ -94,9 +94,7 @@ function NewArrival() {
         } else {
           throw new Error("Request failed");
         }
-      } catch (error) {
-        console.log("error:", error);
-      }
+      } catch (error) {}
     };
     fetchData();
   }, []);

@@ -84,7 +84,6 @@ function ChangePassword() {
           }));
         } else {
           const errorData = await response.json();
-          console.log("Error:", errorData);
           setAlert((prevState) => ({
             ...prevState,
             msg: errorData.errors.email[0],

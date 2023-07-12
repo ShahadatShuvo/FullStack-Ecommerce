@@ -91,11 +91,8 @@ function UpdateAccount() {
         } else if (response.status === 401) {
         } else {
           const error = await response.json();
-          console.log("error p", error);
         }
-      } catch (error) {
-        console.error("Error:", error);
-      }
+      } catch (error) {}
     };
 
     handleSubmit();

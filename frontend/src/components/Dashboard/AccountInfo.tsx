@@ -40,7 +40,6 @@ function AccountInfo() {
           localStorage.setItem("userData", JSON.stringify(data));
           updateUserprofile(data);
         } else {
-          console.log("Error fetching user profile data");
           router.push("/error/404");
           catchErrorMsg("Error fetching user profile data");
         }

@@ -71,7 +71,6 @@ function Navbar() {
           setHeadline(data.results[len - 1].text);
           setOpenHeadline(true);
         } else {
-          console.log("Error fetching user profile data");
           setOpenHeadline(false);
         }
       } catch (error) {

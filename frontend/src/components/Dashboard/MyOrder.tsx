@@ -38,7 +38,6 @@ function MyOrder() {
           setOrderList(data.results);
         } else {
           const errorData = await response.json();
-          console.log("Error  1:", errorData);
           router.push("/error/404");
           catchErrorMsg(JSON.stringify(errorData));
           setToken("", "logout");
