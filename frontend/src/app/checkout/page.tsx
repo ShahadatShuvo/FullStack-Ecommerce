@@ -31,11 +31,13 @@ function Checkout() {
         {/* Magic headline */}
         <div className="mb-16">
           <div className="flex justify-start">
-            <div className="border-4 border-gradient w-[30vw]"></div>
+            <div className="border-2 md:border-4 border-gradient w-[30vw]"></div>
           </div>
-          <h1 className="text-4xl font-medium text-center">Checkout Page</h1>
+          <h1 className="text-xl py-2 md:py-0 md:text-4xl font-medium text-center">
+            Checkout Page
+          </h1>
           <div className="flex justify-end">
-            <div className="border-4 border-gradient w-[30vw]"></div>
+            <div className="border-2 md:border-4 border-gradient w-[30vw]"></div>
           </div>
         </div>
 
