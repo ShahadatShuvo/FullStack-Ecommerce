@@ -72,8 +72,8 @@ function MyOrder() {
   );
 
   return (
-    <div className="py-16">
-      <div className="w-full flex flex-col items-center space-y-4 justify-center ">
+    <div className="w-[70vw]">
+      <div className="w-full flex flex-col items-start space-y-4 justify-center ">
         {showOrderList}
       </div>
     </div>
