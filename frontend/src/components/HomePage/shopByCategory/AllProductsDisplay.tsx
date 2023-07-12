@@ -25,7 +25,7 @@ function AllProductsDisplay({ data }: { data: ProductCardProps[] }) {
   );
 
   return (
-    <div className="mt-16 w-[80vw] flex flex-wrap gap-7 flax-wrap justify-center">
+    <div className="mt-16 flex flex-wrap justify-center gap-5">
       {displayProducts}
     </div>
   );

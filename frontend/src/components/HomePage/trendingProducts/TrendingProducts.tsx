@@ -66,7 +66,7 @@ function TrendingProducts() {
 
   return (
     <div>
-      <div className="py-10 md:py-0 md:h-[70vh] md:my-24">
+      <div className="py-16 md:py-0 md:h-[70vh] md:my-24">
         <div className="md:my-10 flex flex-col items-center">
           <h1 className="mb-3 md:mb-0 capitalize md:text-4xl font-bold md:font-semibold">
             Best Selling products
