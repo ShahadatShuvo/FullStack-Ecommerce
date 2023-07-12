@@ -30,9 +30,9 @@ function PaymentMethod() {
   };
 
   return (
-    <div className="w-screen min-h-[50vh] my-16 flex flex-col items-center justify-center">
+    <div className="w-[80vw] h-[100vh] mx-auto my-auto md:w-screen min-h-[50vh] md:my-16 flex flex-col items-center justify-center">
       {open && <Confetti />}
-      <div className="flex ">
+      <div className="flex flex-col md:flex-row">
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">
             <span
@@ -71,11 +71,12 @@ function PaymentMethod() {
         {autoFill && (
           <div>
             <Button
+              size="small"
               variant="contained"
               className="bg-blue-500 mt-16"
               onClick={handlePayment}
             >
-              Complete Payment
+              <span className="text-sx md:text-base">Complete Payment</span>
             </Button>
           </div>
         )}
