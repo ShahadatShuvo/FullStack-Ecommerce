@@ -14,7 +14,8 @@ import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
 import * as React from "react";
 import "../NewArrival/index.css";
-import Link from "next/link";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function CartMenu() {
   const router = useRouter();
@@ -59,7 +60,12 @@ export default function CartMenu() {
         <div id="single-product" className="my-5 flex justify-between">
           <div className="min-w-[70%] flex">
             <Image
-              src={product.image_url}
+              // src={product.image_url}
+              src={
+                product?.image_url?.startsWith("/")
+                  ? `${apiUrl}${product.image_url}`
+                  : product.image_url || "/img/order.svg"
+              }
               alt="shopbag"
               width={90}
               height={50}
