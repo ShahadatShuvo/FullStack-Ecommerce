@@ -1,4 +1,4 @@
-function Button({ btnTitle }) {
+function Button({ btnTitle }: { btnTitle: string }) {
   return (
     <div>
       <button className="css-button-sliding-to-left--blue">{btnTitle}</button>

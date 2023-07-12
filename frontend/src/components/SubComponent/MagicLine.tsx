@@ -1,4 +1,4 @@
-function MagicLine({ title }) {
+function MagicLine({ title }: { title: string }) {
   return (
     <div>
       <div className="flex justify-start">
