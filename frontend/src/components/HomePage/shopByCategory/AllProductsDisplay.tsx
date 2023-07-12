@@ -25,7 +25,7 @@ function AllProductsDisplay({ data }: { data: ProductCardProps[] }) {
   );
 
   return (
-    <div className="mt-16 flex flex-wrap justify-center gap-5">
+    <div className="mt-16 flex flex-wrap justify-center gap-3">
       {displayProducts}
     </div>
   );
