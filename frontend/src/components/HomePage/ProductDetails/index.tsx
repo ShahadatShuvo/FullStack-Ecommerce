@@ -101,6 +101,7 @@ function ProductView(props: ProductCardProps) {
             <NextWeekOutlinedIcon /> <span className="mt-1">Add to Cart</span>
           </Button>
         </div>
+
         <div className="mt-5 w-full">
           <div
             className="w-full justify-between bg-blue-50 hover:bg-blue-100 px-5 py-1 rounded-full flex items-center"

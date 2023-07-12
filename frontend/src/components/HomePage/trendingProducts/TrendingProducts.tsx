@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
-import TrendingprodCard from "./prodCard";
-import { MutableRefObject } from "react";
+import { GlobalStates } from "@/app/context";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import { IconButton } from "@mui/material";
+import { MutableRefObject, useContext, useRef } from "react";
 import "./card.css";
-import { useContext } from "react";
-import { GlobalStates } from "@/app/context";
+import TrendingprodCard from "./prodCard";
 
 const prodImg = [
   {

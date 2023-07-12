@@ -18,7 +18,7 @@ function HomePage() {
       <DiscoverMore />
       <NewArrival />
       <Steps />
-      {/* <Testimonial />  */}
+      <Testimonial />
       <Footer />
     </div>
   );
