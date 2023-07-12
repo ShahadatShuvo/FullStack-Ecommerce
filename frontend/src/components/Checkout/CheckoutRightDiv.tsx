@@ -146,9 +146,9 @@ function CheckoutRightDiv() {
 
   const allCartItems = cartData.map((product: any) => {
     return (
-      <div key={product.id}>
+      <div key={product.id} className="space-y-5 w-full ">
         <div id="single-product" className="my-5 flex justify-between">
-          <div className="min-w-[70%] flex">
+          <div className=" flex">
             <Image
               // src="/img/cart/shoe.jpg"
               src={product.image_url}
@@ -157,17 +157,17 @@ function CheckoutRightDiv() {
               height={50}
               className="bg-blue-50 rounded-md h-[100px] object-cover my-auto mr-5"
             />
-            <div>
+            <div className="text-sm md:text-base">
               <h3
                 className={
                   !isDarkTheme
-                    ? "font-semibold text-gray-700 text-lg"
-                    : "font-semibold text-white text-lg"
+                    ? "font-semibold text-gray-700 text-sm md:text-base"
+                    : "font-semibold text-white text-sm md:text-base"
                 }
               >
                 {product.title}
               </h3>
-              <p className="text-gray-400 font-medium mb-5">
+              <p className="text-gray-400 text-sm md:text-base font-medium mb-5">
                 <span>Price: {product.price}</span>
                 <span className="mx-2">|</span>
                 <span>Qty: {product.qty}</span>
@@ -176,12 +176,12 @@ function CheckoutRightDiv() {
                 <IconButton
                   color="primary"
                   aria-label="delete"
-                  className="bg-blue-50"
+                  className="bg-blue-50 text-sm md:text-base"
                   onClick={() => onHandleDecreament(product)}
                 >
                   <RemoveIcon />
                 </IconButton>
-                <p className="px-5">{product.qty}</p>
+                <p className="px-2 md:px-5">{product.qty}</p>
 
                 <IconButton
                   color="primary"
@@ -195,13 +195,13 @@ function CheckoutRightDiv() {
             </div>
           </div>
           <div>
-            <p className="mb-8 text-center py-1 px-2 border-2 border-green-600 rounded-lg">
+            <p className="mb-8 text-xs md:text-md text-center py-1 ml-2 border-2 border-green-600 rounded-lg">
               {product.price * product.qty} TK
             </p>
             <Button
               size="medium"
               color="error"
-              className="rounded-md bg-red-50"
+              className="rounded-md bg-red-50 text-xs md:text-md ml-2 mt-2"
               onClick={() => onHandleRemove(product)}
             >
               Remove
@@ -214,10 +214,10 @@ function CheckoutRightDiv() {
   });
 
   return (
-    <div className="w-[50%] border border-slate-200  rounded-xl p-5">
+    <div className="w-full md:w-[50%] border border-slate-200  rounded-xl p-3">
       <div className="rounded-lg">{allCartItems}</div>
       <div className="mt-5">
-        <p className="font-medium text-lg">Discount code</p>
+        <p className="font-medium text-md">Discount code</p>
         <div className="mt-3 flex gap-3">
           <TextField
             value={userCoupon}
@@ -254,7 +254,7 @@ function CheckoutRightDiv() {
             Apply
           </Button>
         </div>
-        <div className="mt-8 w-full font-semibold flex flex-col gap-3">
+        <div className="mt-8 w-full text-sm md:text-base font-semibold flex flex-col gap-2">
           <div className="flex justify-between">
             <p className="text-gray-400">Subtotal</p>
             <p>{subTotal.toFixed(2)} TK</p>
@@ -298,7 +298,11 @@ function CheckoutRightDiv() {
               <ProgressBtn />
             </div>
           )}
-          <Alert severity="info" className="bg-blue-50 rounded-full">
+
+          <Alert
+            severity="info"
+            className="text-sm md:text-base bg-blue-50 rounded-full px-4"
+          >
             Learn more
             <Link
               href="/checkout/terms&conditions/tax"
