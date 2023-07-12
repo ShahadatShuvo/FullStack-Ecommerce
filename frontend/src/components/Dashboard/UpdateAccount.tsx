@@ -101,7 +101,7 @@ function UpdateAccount() {
   };
 
   return (
-    <div className="my-16 min-h-[55vh] flex justify-center items-center">
+    <div className="md:ml-0 w-[75vw] md:w-[65vw] min-h-[55vh] flex justify-start items-center">
       {show && (
         <div>
           <AuthSuccess
@@ -111,8 +111,8 @@ function UpdateAccount() {
           />
         </div>
       )}
-      <div className="w-[50%] flex flex-col gap-3 ">
-        <div className="w-full flex gap-5">
+      <div className="ml-5 w-[80%] md:w-[60%] flex flex-col gap-3 ">
+        <div className="w-full flex flex-col md:flex-row gap-3 md:gap-5">
           <TextField
             fullWidth
             size="small"
@@ -156,7 +156,7 @@ function UpdateAccount() {
             value={formData.last_name}
           />
         </div>
-        <div className="w-full flex gap-5">
+        <div className="w-full flex flex-col md:flex-row gap-3 md:gap-5">
           <TextField
             fullWidth
             size="small"
@@ -179,7 +179,7 @@ function UpdateAccount() {
             value={formData.phone_number}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="w-full flex flex-col md:flex-row gap-3 md:gap-5">
           <FormControl fullWidth size="small">
             <InputLabel
               id="demo-simple-select-label"
@@ -207,7 +207,7 @@ function UpdateAccount() {
             </Select>
           </FormControl>
         </div>
-        <div className="w-full flex gap-5">
+        <div className="w-full flex flex-col md:flex-row gap-3 md:gap-5">
           <TextField
             fullWidth
             size="small"
@@ -252,7 +252,7 @@ function UpdateAccount() {
             value={formData.state}
           />
         </div>
-        <div className="w-full flex gap-5">
+        <div className="w-full flex flex-col md:flex-row gap-3 md:gap-5">
           <TextField
             fullWidth
             size="small"
@@ -297,7 +297,7 @@ function UpdateAccount() {
             value={formData.zip_code}
           />
         </div>
-        <div className="w-full flex gap-5">
+        <div className="w-full flex flex-col md:flex-row gap-3 md:gap-5">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]} sx={{ width: "100%" }}>
               <DatePicker

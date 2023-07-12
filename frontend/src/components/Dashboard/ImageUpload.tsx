@@ -46,7 +46,7 @@ function ImageUpload({ img }: { img: any }) {
             <div className="upload__image-wrapper">
               {images.length < 1 ? (
                 <button
-                  className="w-[300px] h-[300px] bg-gray-200 text-gray-400 font-bold text-2xl rounded-lg flex justify-center items-center hover:bg-gray-300 hover:text-gray-500 transition duration-300 ease-in-out"
+                  className="w-[100px] h-[100px] md:w-[300px] md:h-[300px] bg-gray-200 text-gray-400 font-bold text-sm md:text-2xl rounded-lg flex justify-center items-center hover:bg-gray-300 hover:text-gray-500 transition duration-300 ease-in-out"
                   onClick={onImageUpload}
                   {...dragProps}
                 >
@@ -59,17 +59,17 @@ function ImageUpload({ img }: { img: any }) {
                 <div key={index} className="image-item">
                   <div className="content_img">
                     <img
-                      className="w-[300px] h-[300px] object-cover rounded-lg"
+                      className="w-[100px] h-[100px] md:w-[300px] md:h-[300px] object-cover rounded-lg"
                       src={image.data_url ? image.data_url : img}
                       alt=""
                       width={300}
                       height={300}
                     />
                     <div
-                      className="absolute top-0 left-0 w-[300px] h-[300px] object-cover rounded-lg flex opacity-0 justify-center items-center hover:bg-gray-300 hover:opacity-80 transition duration-300 ease-in-out "
+                      className="absolute top-0 left-0 w-[100px] h-[100px] md:w-[300px] md:h-[300px] object-cover rounded-lg flex opacity-0 justify-center items-center hover:bg-gray-300 hover:opacity-80 transition duration-300 ease-in-out "
                       onClick={() => onImageUpdate(index)}
                     >
-                      <p className="text-black font-semibold text-xl ">
+                      <p className="text-black font-semibold text-sm md:text-xl ">
                         Change Image
                       </p>
                     </div>

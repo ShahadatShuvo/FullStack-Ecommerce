@@ -39,7 +39,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -66,67 +66,47 @@ export default function DashboardHome() {
   };
 
   return (
-    <div
-      className={isDarkTheme ? "w-[100vw] bg-gray-900" : "w-[100vw] bg-white "}
-    >
+    <div className={isDarkTheme ? "bg-gray-900 " : "w-full bg-white "}>
       <div
         className={
           isDarkTheme
-            ? "flex justify-between items-center px-10 py-1 bg-gray-900"
-            : "flex justify-between items-center px-10 py-1 bg-gray-50"
+            ? "px-10 w-full flex justify-between items-center  bg-gray-900"
+            : "px-10 w-full flex justify-between items-center  bg-gray-50"
         }
       >
-        <div>
-          <Link href="/">
-            <Image
-              src={isDarkTheme ? "/img/logo_dark.svg" : "/img/logo_light.svg"}
-              alt=""
-              width={150}
-              height={65}
-              className="w-[150px] h-[65px]"
-            />
-          </Link>
-        </div>
-
-        <div>
-          {/* <StyledBadge
-            overlap="circular"
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            variant="dot"
-          >
-            <Avatar
-              alt="Remy Sharp"
-              src={
-                userProfile.image_url
-                  ? `${apiUrl}${userProfile.image_url}`
-                  : userProfile.gender === "male"
-                  ? "/img/male.svg"
-                  : "/img/female.svg"
-              }
-            />
-          </StyledBadge> */}
-          <MenuBarIcon
-            openHeadline={openHeadline}
-            setOpenHeadline={setOpenHeadline}
-            name="dashboard"
+        <Link href="/">
+          <Image
+            src={isDarkTheme ? "/img/logo_dark.svg" : "/img/logo_light.svg"}
+            alt=""
+            width={150}
+            height={65}
+            className="w-[150px] h-[65px]"
           />
-        </div>
+        </Link>
+
+        <MenuBarIcon
+          openHeadline={openHeadline}
+          setOpenHeadline={setOpenHeadline}
+          name="dashboard"
+        />
       </div>
-      <div className="flex md:mx-16 my-10">
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: "divider" }}
-        >
-          <Tab label="Account info" {...a11yProps(0)} />
-          <Tab label="Update Account" {...a11yProps(1)} />
-          <Tab label="Wishlist" {...a11yProps(2)} />
-          <Tab label="My orders" {...a11yProps(3)} />
-          <Tab label="Change password" {...a11yProps(4)} />
-        </Tabs>
+      <div className="w-[100vw] flex justify-between my-10">
+        <div className="w-[23%] md:w-[15%]">
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            sx={{ borderRight: 1, borderColor: "divider" }}
+          >
+            <Tab label="Account info" {...a11yProps(0)} />
+            <Tab label="Update Account" {...a11yProps(1)} />
+            <Tab label="Wishlist" {...a11yProps(2)} />
+            <Tab label="My orders" {...a11yProps(3)} />
+            <Tab label="Change password" {...a11yProps(4)} />
+          </Tabs>
+        </div>
         <TabPanel value={value} index={0}>
           <AccountInfo />
         </TabPanel>
