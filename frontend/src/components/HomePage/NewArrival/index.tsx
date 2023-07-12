@@ -1,16 +1,19 @@
 "use client";
 
+import { GlobalStates } from "@/app/context";
 import ProductCard from "@/components/ProductCard";
 import MagicLine from "@/components/SubComponent/MagicLine";
-import { useEffect, useState } from "react";
-import "./index.css";
-import React, { useRef } from "react";
-import { MutableRefObject } from "react";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import { IconButton } from "@mui/material";
-import { useContext } from "react";
-import { GlobalStates } from "@/app/context";
+import {
+  MutableRefObject,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import "./index.css";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

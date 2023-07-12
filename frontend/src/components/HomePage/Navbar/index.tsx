@@ -1,22 +1,21 @@
 "use client";
 
 import { GlobalStates } from "@/app/context";
+import AuthSuccess from "@/components/Accounts/AuthSuccess";
 import CloseIcon from "@mui/icons-material/Close";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Badge, Button } from "@mui/material";
-import { useRouter, usePathname } from "next/navigation";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import CartMenu from "./CartMenu";
 import ExploreMenu from "./Explore";
 import MenuBarIcon from "./ProfileMenu";
-import AuthSuccess from "@/components/Accounts/AuthSuccess";
-import Link from "next/link";
 import "./toggleBtn.css";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
