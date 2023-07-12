@@ -6,16 +6,7 @@ import { IconButton } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import NextWeekOutlinedIcon from "@mui/icons-material/NextWeekOutlined";
 import * as React from "react";
-
-interface ProductCardProps {
-  id: number | string;
-  title: string;
-  description: string;
-  price: number;
-  stock: number;
-  qty: number;
-  image_url: string;
-}
+import { ProductCardProps } from "../../interfaces";
 
 function MyApp({
   onHandleClick,

@@ -32,7 +32,7 @@ function ProductDisplay({
           features={product.features}
           price={product.price}
           stock={product.stock}
-          image_url={product.image_url}
+          image_url={product.image_url || "/img/icon.png"}
         />
       ))
     : null;

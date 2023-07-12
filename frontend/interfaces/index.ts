@@ -8,18 +8,19 @@ export interface SingleStepInterface {
     extraStyle: string;
   };
 }
+
 // { key: string | number; id: string | number; title: string; description: string; price: number; image_url: string; }
 export interface ProductCardProps {
   // key: string | number;
   id: number | string;
   title: string;
-  intro: string;
+  intro: string | null;
   description: string;
-  features: string;
+  features: string | null;
   price: number;
   stock: number;
   qty: number;
-  image_url: string;
+  image_url: string | null;
 }
 
 export const demoProductCard: ProductCardProps = {

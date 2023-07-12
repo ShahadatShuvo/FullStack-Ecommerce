@@ -95,10 +95,10 @@ function ProductCard(props: ProductCardProps) {
                 // key={props.key}
                 title={props.title}
                 description={props.description}
-                features={props.features}
+                features={props.features || ""}
                 stock={props.stock}
                 price={props.price}
-                image_url={props.image_url}
+                image_url={props.image_url || "/img/icon.png"}
               />
             </div>
           </div>
@@ -109,7 +109,7 @@ function ProductCard(props: ProductCardProps) {
               height: "250px",
               width: "250px",
             }}
-            src={image_url}
+            src={image_url || "/img/icon.png"}
             alt=""
             width={230}
             height={230}

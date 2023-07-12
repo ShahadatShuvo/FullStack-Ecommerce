@@ -92,7 +92,7 @@ export default function CartViewDialogue(props: ProductCardProps) {
             description={props.description}
             features={props.features}
             price={props.price}
-            image_url={props.image_url}
+            image_url={props.image_url || "/img/icon.png"}
           />
         </div>
       </BootstrapDialog>
