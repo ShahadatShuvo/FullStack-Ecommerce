@@ -154,7 +154,7 @@ export default function CartMenu() {
       >
         <div
           className={
-            isDarkTheme ? "w-[30vw] bg-gray-900 text-white" : "w-[30vw]"
+            isDarkTheme ? "md:w-[30vw] bg-gray-900 text-white" : "md:w-[30vw]"
           }
         >
           <div className="px-5 pt-5 max-h-[65vh] overflow-y-scroll hide-scrollbar">
