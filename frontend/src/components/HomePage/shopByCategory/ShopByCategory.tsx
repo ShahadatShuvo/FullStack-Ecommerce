@@ -15,8 +15,6 @@ import { IconButton, Pagination } from "@mui/material";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const scrollDuration = 500; // Animation duration in milliseconds
-
 function ShopByCategory() {
   const { isDarkTheme } = useContext(GlobalStates);
   const [allCategories, setAllCategories] = useState<any>([]);

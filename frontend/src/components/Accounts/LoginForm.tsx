@@ -99,9 +99,7 @@ function LoginForm({
           setErrorMsg(errorData.errors.email[0]);
           setShow((prevData: any) => prevData + 1);
         }
-      } catch (error) {
-        console.error("Error:", error);
-      }
+      } catch (error) {}
     };
 
     handleSubmit(formData);

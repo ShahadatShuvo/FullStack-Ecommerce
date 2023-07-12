@@ -87,7 +87,6 @@ function ContactForm() {
           router.push("/error/404");
         }
       } catch (error) {
-        console.error("Error:", error);
         catchErrorMsg(JSON.stringify(error));
         router.push("/error/404");
       }

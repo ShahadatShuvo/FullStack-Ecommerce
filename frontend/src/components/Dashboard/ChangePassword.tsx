@@ -92,7 +92,6 @@ function ChangePassword() {
           }));
         }
       } catch (error) {
-        console.error("Error:", error);
         setAlert((prevState: any) => ({
           ...prevState,
           msg: error,

@@ -92,9 +92,7 @@ function CheckoutRightDiv() {
             // Display error message to the user
             // You can use state or a UI library to show the error message else {
           }
-        } catch (error) {
-          console.error("Error:", error);
-        }
+        } catch (error) {}
       };
 
       handleSubmit(orderData);
