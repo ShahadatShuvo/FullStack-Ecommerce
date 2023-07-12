@@ -20,11 +20,8 @@ function CategoryCard({ product }: { product: ProductCardProps }) {
   };
   return (
     <div>
-      <div
-        // className="p-3 border-2 rounded-xl hover:shadow-xl w-[250px] min-h-[200px]"
-        className="w-[150px] md:min-w-[270px] md:mb-8 p-2 border-2 rounded-xl"
-      >
-        <div className="pb-5 bg-blue-50 rounded-lg flex justify-center items-center">
+      <div className="w-[150px] md:min-w-[270px] md:mb-8 p-2 border-2 rounded-xl">
+        <div className="bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
             src={
               product?.image_url?.startsWith("/")
