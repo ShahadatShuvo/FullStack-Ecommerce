@@ -136,7 +136,7 @@ const Testimonial = () => {
         </div>
         <div>
           <Image
-            className="h-16 w-16 ml-4  rounded-full absolute bottom-[-80px] transform rotate-180"
+            className="h-16 w-16 md:ml-4  rounded-full absolute bottom-[-80px] transform rotate-180"
             src="/img/quotes.png"
             height={64}
             width={64}
