@@ -1,5 +1,3 @@
-import { string } from "yup";
-
 export interface SingleStepInterface {
   step: {
     id: number;
@@ -10,8 +8,9 @@ export interface SingleStepInterface {
     extraStyle: string;
   };
 }
-
+// { key: string | number; id: string | number; title: string; description: string; price: number; image_url: string; }
 export interface ProductCardProps {
+  // key: string | number;
   id: number | string;
   title: string;
   intro: string;

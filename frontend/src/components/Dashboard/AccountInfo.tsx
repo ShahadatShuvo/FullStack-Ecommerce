@@ -1,11 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { useContext } from "react";
 import { GlobalStates } from "@/app/context";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useRouter } from "next/navigation";
+import React, { useContext } from "react";
 import ImageUpload from "./ImageUpload";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -61,35 +59,22 @@ function AccountInfo() {
   }, [accessToken, isLoginComplete]);
 
   return (
-    <div className="min-h-[60vh] w-screen flex justify-center">
-      <div className="w-[60%] flex justify-between mt-16">
-        <div className="mt-16">
-          {/* <Image
-            src={
-              userProfile.image_url
-                ? `${apiUrl}${userProfile.image_url}`
-                : userProfile.gender === "male"
-                ? "/img/male.svg"
-                : "/img/female.svg"
-            }
-            alt=""
-            priority={true}
-            width={300}
-            height={300}
-            className="rounded-lg"
-          /> */}
-          <ImageUpload
-            img={
-              userProfile.image_url
-                ? `${apiUrl}${userProfile.image_url}`
-                : userProfile.gender === "male"
-                ? "/img/male.svg"
-                : "/img/female.svg"
-            }
-          />
-        </div>
-        <div className="flex flex-col gap-2 font-semibold text-gray-600">
-          <div className="flex ">
+    <div className="w-full flex-col md:flex gap-20 justify-center items-center mt-16">
+      <div>
+        <ImageUpload
+          img={
+            userProfile.image_url
+              ? `${apiUrl}${userProfile.image_url}`
+              : userProfile.gender === "male"
+              ? "/img/male.svg"
+              : "/img/female.svg"
+          }
+        />
+      </div>
+      <div>
+        <div className=" gap-2 font-semibold text-gray-600">
+          <div>
+            {/* Extra Details */}
             <div>
               <p
                 className={
@@ -123,7 +108,7 @@ function AccountInfo() {
               </div>
             </div>
           </div>
-          <div className="flex gap-16 mt-5">
+          <div className="flex gap-24 mt-5">
             <div className={isDarkTheme ? "text-slate-400" : ""}>
               <p>First Name</p>
               <p>Last Name</p>
@@ -137,7 +122,7 @@ function AccountInfo() {
               <p>Date of Birth</p>
               <p>Account Created At</p>
             </div>
-            <div className="text-blue-400 font-medium">
+            <div className="text-blue-400 text-xm font-medium">
               <p>{`${userProfile.first_name}`}</p>
               <p>{`${userProfile.last_name}`}</p>
               <p>{`${userProfile.email}`}</p>
@@ -160,5 +145,4 @@ function AccountInfo() {
     </div>
   );
 }
-
 export default AccountInfo;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ProductCard from "../../ProductCard";
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 interface ProductDataProps {
   id: number;
@@ -34,7 +34,7 @@ function ProductDisplay({
           stock={product.stock}
           image_url={
             product.image_url[0] === "/"
-              ? `http://127.0.0.1:8000${product.image_url}`
+              ? `${apiUrl}${product.image_url}`
               : product.image_url
           }
         />
