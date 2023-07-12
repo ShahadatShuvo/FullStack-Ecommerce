@@ -1,29 +1,28 @@
 "use client";
 
+import { GlobalStates } from "@/app/context";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Logout from "@mui/icons-material/Logout";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Avatar from "@mui/material/Avatar";
+import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
-import * as React from "react";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { useContext } from "react";
-import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
-import { GlobalStates } from "@/app/context";
 import { useRouter } from "next/navigation";
+import * as React from "react";
+import { useContext } from "react";
 import { initialUserDetail } from "../../../../interfaces";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -192,8 +191,8 @@ export default function MenuBarIcon({
               display: "block",
               position: "absolute",
               top: 0,
-              right: 14,
-              width: 10,
+              right: 16,
+              width: 14,
               height: 10,
               bgcolor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
@@ -205,7 +204,7 @@ export default function MenuBarIcon({
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <div className="w-full flex justify-between">
+          <div className="w-full flex justify-between ">
             <div className="mr-2">
               <Image
                 // src="/img/me.jpg"
@@ -220,7 +219,7 @@ export default function MenuBarIcon({
                 className="rounded-full"
               />
             </div>
-            <div className="w-[70%] flex flex-col items-start ">
+            <div className="w-[90%] flex flex-col items-start ">
               <p className="text-lg font-semibold">
                 {userProfile.first_name
                   ? `${userProfile.first_name}, ${userProfile.last_name}`

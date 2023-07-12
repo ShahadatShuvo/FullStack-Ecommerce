@@ -1,10 +1,9 @@
 "use client";
-
 import { GlobalStates } from "@/app/context";
 import { Avatar } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
+import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,10 +64,6 @@ export default function DashboardHome() {
     );
   }, [activeTab]);
 
-  // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-  //   setValue(activeTab);
-  // };
-
   const handleTabs = (name: string) => {
     name === "account_info"
       ? setTabvalue(0)
@@ -79,6 +74,59 @@ export default function DashboardHome() {
       : name === "my_orders"
       ? setTabvalue(3)
       : setTabvalue(4);
+  };
+
+  const ScrollableTabs = styled(Tabs)(({ theme }) => ({
+    overflowX: "auto",
+    scrollBehavior: "smooth",
+    scrollbarWidth: "thin",
+    scrollbarColor: `${theme.palette.primary.main} ${theme.palette.background.paper}`,
+    "&::-webkit-scrollbar": {
+      height: 8,
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: 8,
+    },
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: theme.palette.background.paper,
+      borderRadius: 8,
+    },
+  }));
+
+  const ScrollButton = styled("div")(({ theme }) => ({
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    display: "flex",
+    alignItems: "center",
+    color: theme.palette.primary.main,
+    zIndex: 1,
+    "&.prevButton": {
+      left: 0,
+      paddingLeft: 8,
+    },
+    "&.nextButton": {
+      right: 0,
+      paddingRight: 8,
+    },
+    "&:hover": {
+      cursor: "pointer",
+    },
+  }));
+
+  const handleScrollToPrev = () => {
+    const container = document.querySelector("#tabs-container");
+    if (container) {
+      container.scrollLeft -= container.clientWidth;
+    }
+  };
+
+  const handleScrollToNext = () => {
+    const container = document.querySelector("#tabs-container");
+    if (container) {
+      container.scrollLeft += container.clientWidth;
+    }
   };
 
   return (
@@ -105,11 +153,17 @@ export default function DashboardHome() {
         </div>
 
         <div>
-          <Tabs
+          <ScrollableTabs
+            variant="scrollable"
             value={tabvalue}
-            // onChange={handleChange}
-            indicatorColor="primary"
-            centered
+            sx={{
+              [`& .${tabsClasses.scrollButtons}`]: {
+                "&.Mui-disabled": { opacity: 0.3 },
+              },
+            }}
+            scrollButtons
+            onScroll={() => {}}
+            id="tabs-container"
           >
             <Tab
               label="Account info"
@@ -136,7 +190,13 @@ export default function DashboardHome() {
               sx={{ color: isDarkTheme ? "#fff" : "#000" }}
               onClick={() => handleTabs("change_password")}
             />
-          </Tabs>
+          </ScrollableTabs>
+          <ScrollButton className="prevButton" onClick={handleScrollToPrev}>
+            &lt;
+          </ScrollButton>
+          <ScrollButton className="nextButton" onClick={handleScrollToNext}>
+            &gt;
+          </ScrollButton>
         </div>
 
         <div>
@@ -159,7 +219,7 @@ export default function DashboardHome() {
         </div>
       </div>
 
-      <div className=" w-[100%]">
+      <div className="w-[100%]">
         {tabvalue === 0 && <AccountInfo />}
         {tabvalue === 1 && <UpdateAccount />}
         {tabvalue === 2 && <Wishlist />}
