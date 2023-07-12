@@ -118,7 +118,6 @@ function CheckoutRightDiv() {
         }
       } catch (error) {
         setDiscount(0);
-        console.log("error:", error);
       }
     };
     fetchData();

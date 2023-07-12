@@ -102,11 +102,8 @@ export default function MenuBarIcon({
           localStorage.setItem("userData", JSON.stringify(data));
           updateUserprofile(data);
         } else {
-          console.log("Error fetching user profile data");
         }
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
+      } catch (error) {}
     };
     userProdileData();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -12,39 +12,6 @@ function Footer() {
   const { refreshToken, isDarkTheme } = useContext(GlobalStates);
 
   let currentYear = new Date().getFullYear();
-
-  // useEffect(() => {
-  //   // Function to request a new access token using the refresh token
-  //   const requestNewAccessToken = async () => {
-  //     try {
-  //       const response = await fetch(`${apiUrl}/api/account/refresh-token/`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           refreshToken: refreshToken,
-  //         }),
-  //       });
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         setToken(data, "accessToken");
-  //         console.log("new access token", data);
-  //       } else {
-  //         // Handle error response
-  //         console.error("Failed to refresh access token");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error occurred while refreshing access token", error);
-  //     }
-  //   };
-  //   if (!accessToken && refreshToken) {
-  //     requestNewAccessToken();
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   return (
     <div>
       {refreshToken && (

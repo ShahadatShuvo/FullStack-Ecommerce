@@ -29,8 +29,6 @@ function ShopByCategory() {
   const [resultMap, setResultMap] = useState<any>(true); // dataMap = data["results"
   const [activeCategory, setActiveCategory] = useState("all");
   // pp
-  console.log("activeCategory:", activeCategory);
-  console.log("data:", data);
 
   const [displaySearch, setDisplaySearch] = React.useState(false);
 
@@ -58,9 +56,7 @@ function ShopByCategory() {
         } else {
           throw new Error("Request failed");
         }
-      } catch (error) {
-        console.log("error:", error);
-      }
+      } catch (error) {}
     };
 
     fetchData();
@@ -77,9 +73,7 @@ function ShopByCategory() {
         } else {
           throw new Error("Request failed");
         }
-      } catch (error) {
-        console.log("error:", error);
-      }
+      } catch (error) {}
     };
     fetchData();
   }, [page]);
