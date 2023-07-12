@@ -112,7 +112,9 @@ function NewArrival() {
       features={product.features}
       price={product.price}
       stock={product.stock}
-      image_url={product.image_url || "/img/icon.png"}
+      image_url={
+        product.image_url ? `${apiUrl}${product.image_url}` : "/img/order.svg"
+      }
     />
   ));
 

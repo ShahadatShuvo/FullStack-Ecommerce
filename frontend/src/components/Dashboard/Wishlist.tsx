@@ -22,7 +22,7 @@ function Wishlist() {
               description={product.description}
               features={product.features}
               price={product.price}
-              image_url={product.image_url || "/img/icon.png"}
+              image_url={product.image_url || "/img/order.svg"}
               stock={product.stock}
               qty={product.qty}
             />

@@ -47,7 +47,7 @@ function ProductView(props: ProductCardProps) {
               height: "auto",
               width: "auto",
             }}
-            src={props.image_url || "/img/icon.png"}
+            src={props.image_url || "/img/order.svg"}
             alt=""
             width={350}
             height={350}
