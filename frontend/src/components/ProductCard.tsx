@@ -13,6 +13,7 @@ import AuthSuccess from "./Accounts/AuthSuccess";
 
 function ProductCard(props: ProductCardProps) {
   const { id, title, intro, description, features, price, image_url } = props;
+
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
@@ -98,7 +99,7 @@ function ProductCard(props: ProductCardProps) {
                 features={props.features || ""}
                 stock={props.stock}
                 price={props.price}
-                image_url={props.image_url || "/img/icon.png"}
+                image_url={props.image_url || "/img/order.svg"}
               />
             </div>
           </div>
@@ -109,7 +110,7 @@ function ProductCard(props: ProductCardProps) {
               height: "250px",
               width: "250px",
             }}
-            src={image_url || "/img/icon.png"}
+            src={image_url || "/img/order.svg"}
             alt=""
             width={230}
             height={230}

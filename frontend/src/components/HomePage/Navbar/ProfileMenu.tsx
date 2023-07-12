@@ -211,7 +211,7 @@ export default function MenuBarIcon({
                 src={
                   userProfile.image_url
                     ? `${apiUrl}${userProfile.image_url}`
-                    : "/img/icon.png"
+                    : "/img/order.svg"
                 }
                 alt="shopbag"
                 width={45}
