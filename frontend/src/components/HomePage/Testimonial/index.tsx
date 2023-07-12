@@ -63,7 +63,7 @@ const Testimonial = () => {
   const testimonial = testimonials[currentTestimonial];
 
   return (
-    <div className="w-screen my-24">
+    <div className="w-full my-24">
       <div className="py-5 md:py-10 mx-5 md:mx-16">
         <div className="mb-16">
           <div className="flex justify-start">

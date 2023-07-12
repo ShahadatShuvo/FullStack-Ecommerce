@@ -165,7 +165,7 @@ function NewArrival() {
 
       <div
         // className="flex overflow-x-auto hide-scrollbar my-16 mx-16 justify-between gap-5 custom-scrollbar"
-        className="flex flex-wrap md:flex-nowrap justify-center  gap-3  my-0  mx-5 pb-16 md:pb-0 md:flex overflow-x-auto hide-scrollbar md:my-16 md:mx-16 md:justify-between md:gap-5 custom-scrollbar"
+        className="flex flex-wrap md:flex-nowrap justify-center  gap-3  my-0  mx-5 pb-16 md:pb-0 md:flex overflow-x-auto hide-scrollbar md:my-16  md:justify-between md:gap-5 custom-scrollbar"
         style={{
           scrollBehavior: "smooth",
         }}

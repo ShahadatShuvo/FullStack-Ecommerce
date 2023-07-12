@@ -7,7 +7,7 @@ const scrollDuration = 500; // Animation duration in milliseconds
 
 function HeroSection() {
   return (
-    <div className="w-screen md:pb-5 ">
+    <div className=" md:pb-5 ">
       <div className="py-10 md:py-0 w-full md:h-full md:px-24">
         <div className="md:mt-3">
           <Carousel />
