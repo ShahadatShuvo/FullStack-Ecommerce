@@ -1,16 +1,6 @@
 "use client";
 
 import ProductCard from "../../ProductCard";
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-interface ProductDataProps {
-  id: number;
-  title: string;
-  qty: number;
-  description: string;
-  price: number;
-  stock: number;
-}
 
 function ProductDisplay({
   data,
