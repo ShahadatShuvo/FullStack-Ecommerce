@@ -44,6 +44,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Backend
 
+### Backend Live server: https://vmart-backend.up.railway.app
+
 The backend is built using Django, a high-level Python web framework. It handles the server-side logic and provides APIs for the front-end to interact with.
 
 ### Prerequisites
