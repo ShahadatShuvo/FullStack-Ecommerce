@@ -56,7 +56,7 @@ function ProductCard(props: ProductCardProps) {
   };
 
   return (
-    <div className="min-w-[270px] mb-8">
+    <div className="w-[150px] md:min-w-[270px] md:mb-8">
       {favourite && (
         <AuthSuccess
           msg="Product added to my faviorites"
@@ -84,7 +84,7 @@ function ProductCard(props: ProductCardProps) {
           )}
         </div>
         {view && (
-          <div className="absolute bottom-4 w-full">
+          <div className="hidden md:block absolute bottom-4 w-full">
             <div className="px-2 flex justify-around">
               <OrderSuccess
                 type="btn"
@@ -104,17 +104,13 @@ function ProductCard(props: ProductCardProps) {
             </div>
           </div>
         )}
-        <div className="p-5 bg-blue-50 rounded-lg flex justify-center items-center">
+        <div className="pb-5 bg-blue-50 rounded-lg flex justify-center items-center">
           <Image
-            style={{
-              height: "250px",
-              width: "250px",
-            }}
             src={image_url || "/img/order.svg"}
             alt=""
             width={230}
             height={230}
-            className="pt-5 h-[280px] object-contain"
+            className="h-[130px] w-[130px]  md:w-[230px] md:h-[230px] object-contain"
           />
         </div>
       </div>
@@ -122,18 +118,18 @@ function ProductCard(props: ProductCardProps) {
         <h3
           className={
             isDarkTheme
-              ? "text-white text-lg font-semibold"
-              : "text-gray-800 text-lg font-semibold"
+              ? "text-white text-sm md:text-lg font-semibold"
+              : "text-gray-800 text-sm md:text-lg font-semibold"
           }
         >
           {title}
         </h3>
-        <p className="text-gray-400">{intro}</p>
-        <div className="mt-5 flex justify-between items-center">
-          <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
+        <p className="text-gray-400 text-xs md:text-base">{intro}</p>
+        <div className="mt-2 md:mt-5 flex justify-between items-center text-xs md:text-base">
+          <p className="px-3 text-center py-1 border md:border-2 border-green-600 rounded-lg">
             TK {price}
           </p>
-          <p className="text-gray-500 font-medium">
+          <p className="hidden md:block text-gray-500 font-medium ml-2">
             <StarIcon className="text-yellow-600 mt-[-3px]" />
             <span>4.9 (98 reviews)</span>
           </p>

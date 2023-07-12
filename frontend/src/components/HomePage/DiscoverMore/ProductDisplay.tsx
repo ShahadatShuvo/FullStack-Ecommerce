@@ -27,9 +27,7 @@ function ProductDisplay({
       ))
     : null;
   return (
-    <div className="grid  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  mx-16">
-      {displayProducts}
-    </div>
+    <div className="flex flex-wrap justify-center gap-5">{displayProducts}</div>
   );
 }
 
