@@ -112,21 +112,23 @@ export default function DashboardHome() {
           />
         </div>
       </div>
-      <div className="flex md:mx-16 my-10">
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: "divider" }}
-        >
-          <Tab label="Account info" {...a11yProps(0)} />
-          <Tab label="Update Account" {...a11yProps(1)} />
-          <Tab label="Wishlist" {...a11yProps(2)} />
-          <Tab label="My orders" {...a11yProps(3)} />
-          <Tab label="Change password" {...a11yProps(4)} />
-        </Tabs>
+      <div className="w-[100vw] flex justify-between my-10">
+        <div className="w-[30%] md:w-[15%]">
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            sx={{ borderRight: 1, borderColor: "divider" }}
+          >
+            <Tab label="Account info" {...a11yProps(0)} />
+            <Tab label="Update Account" {...a11yProps(1)} />
+            <Tab label="Wishlist" {...a11yProps(2)} />
+            <Tab label="My orders" {...a11yProps(3)} />
+            <Tab label="Change password" {...a11yProps(4)} />
+          </Tabs>
+        </div>
         <TabPanel value={value} index={0}>
           <AccountInfo />
         </TabPanel>

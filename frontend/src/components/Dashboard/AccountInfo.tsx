@@ -58,7 +58,7 @@ function AccountInfo() {
   }, [accessToken, isLoginComplete]);
 
   return (
-    <div className=" flex-col md:flex gap-20 justify-center items-center">
+    <div className="w-[75vw] flex flex-col md:flex-row gap-20 justify-start items-center">
       <div>
         <ImageUpload
           img={
