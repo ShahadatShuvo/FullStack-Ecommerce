@@ -15,8 +15,8 @@ interface ContextValue {
   setToken: (value: string, name: string) => void;
   isDarkTheme: boolean;
   toggleTheme: () => void;
-  activeTab: string;
-  toggleTab: (value: string) => void;
+  activeTab: number;
+  toggleTab: (value: number) => void;
   isSignUpComplete: boolean;
   isLoginComplete: boolean;
   isLogoutComplete: boolean;
@@ -41,7 +41,7 @@ export const GlobalStates = createContext<ContextValue>({
   setToken: () => {},
   isDarkTheme: true,
   toggleTheme: () => {},
-  activeTab: "",
+  activeTab: 0,
   toggleTab: () => {},
   isSignUpComplete: false,
   isLoginComplete: false,
