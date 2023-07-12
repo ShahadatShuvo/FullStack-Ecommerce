@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+
 import { Button } from "@mui/material";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-// import { Link as ScrollLink } from "react-scroll";
+import { GlobalStates } from "@/app/context";
+import React, { useContext } from "react";
 
 function Carousel() {
+  const { isDarkTheme } = useContext(GlobalStates);
+
   const [currentImage, setCurrentImage] = useState(0);
   const images = [
     "/img/banner/banner1.png",
@@ -38,13 +41,23 @@ function Carousel() {
         className="max-h-full w-full md:object-cover object-fill"
       />
       <div className="mt-10 md:mt-0 space-y-6 md:my-10 my-0 absolute top-5 lg:top-32 left-2 md:left-10 right-48 lg:right-[600px]">
-        <h2 className="text-blue-950 text-sm font-serif md:text-5xl lg:text-6xl font-bold break-words">
+        <h2
+          className={
+            isDarkTheme
+              ? "text-slate-300 text-sm font-serif md:text-5xl lg:text-6xl font-bold break-words"
+              : "text-blue-950 text-sm font-serif md:text-5xl lg:text-6xl font-bold break-words"
+          }
+        >
           {texts[currentImage]}
         </h2>
 
         <Button
           variant="contained"
-          className="text-sm md:text-lg rounded-full bg-black"
+          className={
+            isDarkTheme
+              ? "text-sm md:text-lg rounded-full bg-blue-500"
+              : "text-sm md:text-lg rounded-full bg-black"
+          }
         >
           <a href="/">Explore Now</a>
         </Button>
