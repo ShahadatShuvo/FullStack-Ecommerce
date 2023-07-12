@@ -58,8 +58,8 @@ function AccountInfo() {
   }, [accessToken, isLoginComplete]);
 
   return (
-    <div className="w-[75vw] flex flex-col md:flex-row gap-20 justify-start items-center">
-      <div>
+    <div className="w-[75vw] flex flex-col md:flex-row gap-6 md:gap-20 justify-start items-center">
+      <div className="w-full md:w-auto flex justify-start">
         <ImageUpload
           img={
             userProfile.image_url
@@ -70,19 +70,21 @@ function AccountInfo() {
           }
         />
       </div>
-      <div>
-        <div className=" font-semibold text-gray-600">
+      <div className="w-full md:w-auto flex justify-start">
+        <div className="font-semibold text-gray-600">
           <div>
             {/* Extra Details */}
             <div>
               <p
                 className={
-                  isDarkTheme ? "text-slate-500 mb-5 text-md" : "mb-5 text-md"
+                  isDarkTheme
+                    ? "text-slate-500 mb-3 md:mb-5 text-xs md:text-md"
+                    : "mb-3 md:mb-5 text-sm md:text-md"
                 }
               >
                 Welcome to Dashboard ...{" "}
               </p>
-              <p className="text-2xl text-gray-400">
+              <p className="text-sm md:text-2xl text-gray-400">
                 Hi{" "}
                 {userProfile.gender === "male"
                   ? "Mr."
@@ -90,12 +92,12 @@ function AccountInfo() {
                   ? "Mrs"
                   : ""}
               </p>
-              <div className="mt-[-24px] flex">
+              <div className="md:mt-[-24px] flex">
                 <p
                   className={
                     isDarkTheme
-                      ? "ml-20 text-2xl font-medium text-slate-200"
-                      : "ml-20 text-2xl font-medium"
+                      ? "md:ml-20 text-sm md:text-2xl font-medium text-slate-200"
+                      : "md:ml-20 text-sm md:text-2xl font-medium"
                   }
                 >{`${userProfile.first_name} ${userProfile.last_name}`}</p>
                 {(userProfile.country || userProfile.city) && (
@@ -107,7 +109,7 @@ function AccountInfo() {
               </div>
             </div>
           </div>
-          <div className="flex gap-24 mt-5">
+          <div className="flex gap-5 md:gap-24 mt-5 text-xs md:text-base">
             <div className={isDarkTheme ? "text-slate-400" : ""}>
               <p>First Name</p>
               <p>Last Name</p>
