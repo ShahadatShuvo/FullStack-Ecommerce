@@ -180,7 +180,7 @@ function ShopByCategory() {
                     <em>All products</em>
                   </MenuItem>
                   {allCategories?.map((category: any) => (
-                    <MenuItem key={category.id} value={category.name}>
+                    <MenuItem key={category.name} value={category.name}>
                       {category.name}
                     </MenuItem>
                   ))}
