@@ -28,7 +28,7 @@ function Wishlist() {
             />
           ))
         ) : (
-          <div className="font-semibold text-2xl h-[30vh] flex items-center">
+          <div className=" md:w-[70vw] font-semibold text-sm md:text-2xl flex items-center justify-start">
             Your Wishlist is empty!
           </div>
         )}
