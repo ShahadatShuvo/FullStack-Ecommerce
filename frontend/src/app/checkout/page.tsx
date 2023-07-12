@@ -1,13 +1,12 @@
 "use client";
 
-import { SnackbarProvider } from "notistack";
 import { GlobalStates } from "@/app/context";
-import { useContext } from "react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import Navbar from "@/components/HomePage/Navbar";
 import CheckoutLeftDiv from "@/components/Checkout/CheckoutLeftDiv";
 import CheckoutRightDiv from "@/components/Checkout/CheckoutRightDiv";
+import Navbar from "@/components/HomePage/Navbar";
+import { useRouter } from "next/navigation";
+import { SnackbarProvider } from "notistack";
+import { useContext, useEffect } from "react";
 
 function Checkout() {
   const router = useRouter();
@@ -26,7 +25,7 @@ function Checkout() {
   return (
     <div>
       <Navbar />
-      <div className="w-screen py-10 px-5  md:py-16 md:px-16 border-y-2">
+      <div className=" py-10 px-5  md:py-16 md:px-16 border-y-2">
         <SnackbarProvider />
         {/* Magic headline */}
         <div className="mb-16">
