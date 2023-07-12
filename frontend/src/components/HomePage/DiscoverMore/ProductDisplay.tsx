@@ -32,11 +32,7 @@ function ProductDisplay({
           features={product.features}
           price={product.price}
           stock={product.stock}
-          image_url={
-            product.image_url[0] === "/"
-              ? `${apiUrl}${product.image_url}`
-              : product.image_url
-          }
+          image_url={product.image_url}
         />
       ))
     : null;
