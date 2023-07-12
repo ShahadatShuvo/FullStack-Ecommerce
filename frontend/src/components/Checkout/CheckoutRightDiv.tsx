@@ -8,14 +8,6 @@ import { enqueueSnackbar } from "notistack";
 import React, { useContext, useEffect } from "react";
 import ProgressBtn from "./ProgressBtn";
 
-interface CouponInterface {
-  id: number;
-  code: string;
-  discount: number;
-  created_at: string;
-  updated_at: string;
-}
-
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function CheckoutRightDiv() {
