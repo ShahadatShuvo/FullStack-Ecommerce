@@ -19,7 +19,9 @@ const scrollDuration = 500; // Animation duration in milliseconds
 
 function ShopByCategory() {
   const { isDarkTheme } = useContext(GlobalStates);
-  const [allCategories, setAllCategories] = useState<any>(null);
+  const [allCategories, setAllCategories] = useState<any>([]);
+
+  console.log("allCategories:", allCategories);
   // pp
   const [searchValue, setSearchValue] = React.useState("");
   const [page, setPage] = React.useState(1);
@@ -63,6 +65,24 @@ function ShopByCategory() {
 
     fetchData();
   }, [searchValue, page, filter, activeCategory]);
+
+  // get all categories
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await fetch(`${apiUrl}/api/products/categories`);
+        if (response.ok) {
+          const result = await response.json();
+          setAllCategories(result.results);
+        } else {
+          throw new Error("Request failed");
+        }
+      } catch (error) {
+        console.log("error:", error);
+      }
+    };
+    fetchData();
+  }, [page]);
 
   useEffect(() => {
     if (searchValue !== "") {
@@ -155,20 +175,20 @@ function ShopByCategory() {
                 <Select
                   labelId="demo-select-small-label"
                   id="demo-select-small"
-                  value={category}
+                  value="men"
                   label="Select a Category"
                   onChange={handleCategoryChange}
                   sx={{
-                    color: isDarkTheme ? "black" : "white",
-                    borderColor: isDarkTheme ? "black" : "white",
+                    color: !isDarkTheme ? "black" : "white",
+                    borderColor: !isDarkTheme ? "black" : "white",
                   }}
                 >
                   <MenuItem value="">
                     <em>All products</em>
                   </MenuItem>
                   {allCategories?.map((category: any) => (
-                    <MenuItem key={category} value={category}>
-                      {category}
+                    <MenuItem key={category.id} value={category.name}>
+                      {category.name}
                     </MenuItem>
                   ))}
                 </Select>

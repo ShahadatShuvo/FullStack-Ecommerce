@@ -38,7 +38,6 @@ function ProductDetails({ product }: { product: ProductCardProps }) {
   const onHandleFavourite = () => {
     setFavourite((prevState) => !prevState);
   };
-  console.log("counter", counter);
   const onhandleAddCart = (product: any) => {
     increaseCartData({ ...product, qty: counter - 1 });
   };

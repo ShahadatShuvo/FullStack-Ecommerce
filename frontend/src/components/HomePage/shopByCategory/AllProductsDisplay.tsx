@@ -16,8 +16,6 @@ interface ProductCardProps {
 }
 
 function AllProductsDisplay({ data }: { data: ProductCardProps[] }) {
-  console.log("data:", data);
-
   const displayProducts = Array.isArray(data) ? (
     data.map((product: any) => (
       <CategoryCard key={product.id} product={product} />
