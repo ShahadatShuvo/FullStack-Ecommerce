@@ -99,8 +99,8 @@ function DiscoverMore() {
       {/* nav end */}
       <div>
         {search && (
-          <div className="w-[40vw] mb-8 flex flex-wrap items-center text-base justify-center">
-            <div className="w-full relative flex items-center">
+          <div className="w-full mb-8 flex flex-wrap items-center text-base justify-center">
+            <div className="w-[40vw] relative flex items-center">
               <input
                 type="text"
                 name="search"
