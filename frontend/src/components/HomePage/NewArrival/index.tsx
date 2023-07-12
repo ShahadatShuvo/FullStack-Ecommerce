@@ -120,8 +120,18 @@ function NewArrival() {
 
   return (
     <div className="my-8  relative">
-      <div className="py-16 mx-16">
-        <MagicLine title="New Arrivals" />
+      <div className="py-5 md:py-10 mx-5 md:mx-16">
+        <div className="mb-16">
+          <div className="flex justify-start">
+            <div className="border-2 md:border-4 border-gradient w-[30vw]"></div>
+          </div>
+          <h1 className="text-xl py-2 md:py-0 md:text-4xl font-bold text-center">
+            New Arrival
+          </h1>
+          <div className="flex justify-end">
+            <div className="border-2 md:border-4 border-gradient w-[30vw]"></div>
+          </div>
+        </div>
       </div>
 
       <div className="hidden md:block absolute right-16">
