@@ -129,7 +129,13 @@ function CheckoutLeftDiv() {
         </p>
       </div>
       {/* Contact Info */}
-      <div className="p-2 md:p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center ">
+      <div
+        className={
+          isDarkTheme
+            ? "p-2 md:p-6 text-slate-300 border border-slate-200 rounded-xl flex items-center"
+            : "p-2 md:p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center"
+        }
+      >
         <AccountCircleOutlinedIcon className="text-2xl md:text-3xl" />
         <div className="ml-3 md:ml-5">
           <p className="text-sm md:text-base flex items-center">
@@ -152,7 +158,13 @@ function CheckoutLeftDiv() {
 
       {/* Shipping Info */}
       <div className="border border-slate-200  rounded-xl ">
-        <div className="p-2 md:p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center mb-4">
+        <div
+          className={
+            isDarkTheme
+              ? "p-2 md:p-6 text-slate-300 border border-slate-200 rounded-xl flex items-center mb-3"
+              : "p-2 md:p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center mb-3"
+          }
+        >
           <LocalShippingOutlinedIcon className="text-2xl md:text-3xl" />
           <div className="ml-3 md:ml-5">
             <p className="text-sm md:text-base flex items-center">
@@ -176,13 +188,16 @@ function CheckoutLeftDiv() {
             Change Shipping Address
           </p>
 
-          <div className="capitalize select-none ">
+          <div className="capitalize select-none">
             <FormControlLabel
               control={
                 <Checkbox
                   size="small"
                   checked={autoFill}
                   onClick={handleAutofill}
+                  sx={{
+                    color: isDarkTheme ? "white" : "black",
+                  }}
                 />
               }
               label="Autofill"
@@ -203,6 +218,7 @@ function CheckoutLeftDiv() {
               InputLabelProps={{
                 style: {
                   color: isDarkTheme ? "white" : "gray",
+                  // fontSize: "0.75rem",
                 },
               }}
               label="First Name"
@@ -269,6 +285,7 @@ function CheckoutLeftDiv() {
               InputLabelProps={{
                 style: {
                   color: isDarkTheme ? "white" : "gray",
+                  // fontSize: "0.75rem",
                 },
               }}
               label="Phone Number"
@@ -443,7 +460,7 @@ function CheckoutLeftDiv() {
           </div>
 
           <div className="flex justify-center bg-transparent">
-            <Box sx={{ display: "flex", alignItems: "center" }}>
+            <div className="flex items-center">
               <Box
                 sx={{
                   m: 1,
@@ -485,7 +502,7 @@ function CheckoutLeftDiv() {
                 }}
               >
                 <Button
-                  size="medium"
+                  size="small"
                   variant="contained"
                   sx={{
                     buttonSx,
@@ -513,7 +530,7 @@ function CheckoutLeftDiv() {
                   />
                 )}
               </Box>
-            </Box>
+            </div>
           </div>
         </div>
       </div>
