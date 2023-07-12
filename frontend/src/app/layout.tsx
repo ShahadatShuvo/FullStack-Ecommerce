@@ -106,9 +106,7 @@ export default function RootLayout({
       try {
         // const parsedData = JSON.parse(token);
         setAccessToken(token);
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
+      } catch (error) {}
     }
   }, []);
 
@@ -131,9 +129,7 @@ export default function RootLayout({
       try {
         const parsedData = JSON.parse(cartData);
         setCartData(parsedData);
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
+      } catch (error) {}
     }
   }, []);
 

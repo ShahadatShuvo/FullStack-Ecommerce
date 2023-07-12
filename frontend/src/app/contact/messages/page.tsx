@@ -45,7 +45,6 @@ function MessageList() {
           catchErrorMsg(JSON.stringify(errorData));
         }
       } catch (error) {
-        console.error("Error 2:", error);
         router.push("/error/404");
         catchErrorMsg(JSON.stringify(error));
       }

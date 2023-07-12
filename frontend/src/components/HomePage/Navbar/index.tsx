@@ -74,7 +74,6 @@ function Navbar() {
           setOpenHeadline(false);
         }
       } catch (error) {
-        console.error("Error parsing JSON:", error);
         setOpenHeadline(false);
       }
     };

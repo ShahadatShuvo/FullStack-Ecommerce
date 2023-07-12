@@ -45,7 +45,6 @@ function MyOrder() {
           checkLogin(false);
         }
       } catch (error) {
-        console.error("Error 2:", error);
         router.push("/error/404");
         catchErrorMsg(JSON.stringify(error));
         setToken("", "logout");

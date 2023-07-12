@@ -34,7 +34,6 @@ function Team() {
           router.push("/error/404");
         }
       } catch (error) {
-        console.error("Error parsing JSON:", error);
         catchErrorMsg(JSON.stringify(error));
         router.push("/error/404");
       }

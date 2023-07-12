@@ -44,7 +44,6 @@ function AccountInfo() {
           catchErrorMsg("Error fetching user profile data");
         }
       } catch (error) {
-        console.error("Error parsing JSON:", error);
         router.push("/error/404");
         catchErrorMsg(JSON.stringify(error));
       }
