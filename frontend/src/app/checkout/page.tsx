@@ -26,7 +26,7 @@ function Checkout() {
   return (
     <div>
       <Navbar />
-      <div className="w-full p-16 border-y-2">
+      <div className="w-screen py-10 px-5  md:py-16 md:px-16 border-y-2">
         <SnackbarProvider />
         {/* Magic headline */}
         <div className="mb-16">
@@ -41,7 +41,7 @@ function Checkout() {
 
         {/* Checkout Data */}
 
-        <div className="w-full flex justify-between gap-5">
+        <div className="w-full flex flex-col md:flex-row justify-between gap-5">
           {/* Left Side */}
           <CheckoutLeftDiv />
 

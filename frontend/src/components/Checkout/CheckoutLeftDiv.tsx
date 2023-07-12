@@ -122,46 +122,48 @@ function CheckoutLeftDiv() {
   };
 
   return (
-    <div className="space-y-5 w-[50%]">
+    <div className="space-y-5 w-full md:w-[50%]">
       <div>
-        <p className="text-center font-semibold p-3 border border-slate-200 rounded-xl">
+        <p className="text-sm md:text-base text-center font-semibold p-3 border border-slate-200 rounded-xl">
           Default Billing Address
         </p>
       </div>
       {/* Contact Info */}
-      <div className="p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center ">
-        <AccountCircleOutlinedIcon className=" text-3xl" />
-        <div className="ml-5">
-          <p className=" flex items-center">
+      <div className="p-2 md:p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center ">
+        <AccountCircleOutlinedIcon className="text-2xl md:text-3xl" />
+        <div className="ml-3 md:ml-5">
+          <p className="text-sm md:text-base flex items-center">
             <span className="uppercase mr-2">Contact Info</span>
             <CheckOutlinedIcon />
           </p>
           <p
             className={
-              isDarkTheme ? "text-white font-medium" : "text-black font-medium"
+              isDarkTheme
+                ? "text-white font-medium text-xs md:text-base"
+                : "text-black font-medium text-xs md:text-base"
             }
           >
             <span>{`${userProfile.first_name} ${userProfile.last_name}`}</span>
-            <span className="ml-4">{userProfile.email}</span>
-            <span className="ml-4">{userProfile.phone_number}</span>
+            <span className="ml-2 md:ml-4">{userProfile.email}</span>
+            <span className="ml-2 md:ml-4">{userProfile.phone_number}</span>
           </p>
         </div>
       </div>
 
       {/* Shipping Info */}
       <div className="border border-slate-200  rounded-xl ">
-        <div className="p-6 text-gray-600 flex flex-col sm:flex-row items-start">
-          <LocalShippingOutlinedIcon className=" text-3xl" />
-          <div className="ml-5 ">
-            <p className=" flex items-center">
+        <div className="p-2 md:p-6 text-gray-600 border border-slate-200 rounded-xl flex items-center mb-4">
+          <LocalShippingOutlinedIcon className="text-2xl md:text-3xl" />
+          <div className="ml-3 md:ml-5">
+            <p className="text-sm md:text-base flex items-center">
               <span className="uppercase mr-2">SHIPPING ADDRESS</span>
               <CheckOutlinedIcon />
             </p>
             <p
               className={
                 isDarkTheme
-                  ? "text-white font-medium"
-                  : "text-black font-medium"
+                  ? "text-white font-medium text-xs md:text-base"
+                  : "text-black font-medium text-xs md:text-base"
               }
             >
               <span>{`${userProfile.country}, ${userProfile.state}, ${userProfile.city} - ${userProfile.zip_code}`}</span>
@@ -169,12 +171,12 @@ function CheckoutLeftDiv() {
           </div>
         </div>
 
-        <div className="border-t  border-slate-200  px-6 py-7 space-y-4 sm:space-y-6 block uppercase">
-          <p className="text-center font-semibold  rounded-xl capitalize">
+        <div className="space-y-4 block border-t  border-slate-200 px-3 md:px-6 py-7  uppercase">
+          <p className="text-sm md:text-base text-center font-semibold  rounded-xl capitalize ">
             Change Shipping Address
           </p>
 
-          <div className="capitalize select-none">
+          <div className="capitalize select-none ">
             <FormControlLabel
               control={
                 <Checkbox
@@ -187,53 +189,51 @@ function CheckoutLeftDiv() {
             />
           </div>
 
-          <div className="w-full flex justify-between gap-5">
-            <div className="w-full flex gap-5">
-              <TextField
-                fullWidth
-                size="small"
-                id="outlined-basic"
-                inputProps={{
-                  style: {
-                    color: isDarkTheme ? "white" : "black",
-                    background: isDarkTheme ? "#475569" : "white",
-                  },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: isDarkTheme ? "white" : "gray",
-                  },
-                }}
-                label="First Name"
-                variant="outlined"
-                name="first_name"
-                onChange={handleformData}
-                value={formData.first_name}
-              />
-              <TextField
-                fullWidth
-                size="small"
-                id="outlined-basic"
-                inputProps={{
-                  style: {
-                    color: isDarkTheme ? "white" : "black",
-                    background: isDarkTheme ? "#475569" : "white",
-                  },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: isDarkTheme ? "white" : "gray",
-                  },
-                }}
-                label="Last Name"
-                variant="outlined"
-                name="last_name"
-                onChange={handleformData}
-                value={formData.last_name}
-              />
-            </div>
+          <div className="w-full flex justify-between gap-3 md:gap-5">
+            <TextField
+              fullWidth
+              size="small"
+              id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#475569" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
+              label="First Name"
+              variant="outlined"
+              name="first_name"
+              onChange={handleformData}
+              value={formData.first_name}
+            />
+            <TextField
+              fullWidth
+              size="small"
+              id="outlined-basic"
+              inputProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "black",
+                  background: isDarkTheme ? "#475569" : "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: isDarkTheme ? "white" : "gray",
+                },
+              }}
+              label="Last Name"
+              variant="outlined"
+              name="last_name"
+              onChange={handleformData}
+              value={formData.last_name}
+            />
           </div>
-          <div className="w-full flex gap-5">
+          <div className="w-full flex gap-3 md:gap-5">
             <TextField
               fullWidth
               size="small"
@@ -278,7 +278,7 @@ function CheckoutLeftDiv() {
               value={formData.phone_number}
             />
           </div>
-          <div className="w-full flex justify-between gap-5">
+          <div className="w-full flex justify-between gap-3 md:gap-5">
             <TextField
               fullWidth
               size="small"
@@ -323,7 +323,7 @@ function CheckoutLeftDiv() {
               value={formData.state}
             />
           </div>
-          <div className="w-full flex justify-between gap-5">
+          <div className="w-full flex justify-between gap-3 md:gap-5">
             <TextField
               fullWidth
               size="small"
@@ -368,7 +368,7 @@ function CheckoutLeftDiv() {
               value={formData.zip_code}
             />
           </div>
-          <div className="w-full flex justify-between gap-5 pt-5">
+          <div className="w-full flex justify-between gap-5 md:pt-5">
             <TextField
               id="outlined-multiline-static"
               sx={{
@@ -400,8 +400,8 @@ function CheckoutLeftDiv() {
                 <span
                   className={
                     isDarkTheme
-                      ? "text-white font-semibold"
-                      : "text-black font-semibold"
+                      ? "text-white font-semibold text-sm md:text-base"
+                      : "text-black font-semibold text-sm md:text-base"
                   }
                 >
                   Address type:
@@ -420,10 +420,10 @@ function CheckoutLeftDiv() {
                   label={
                     <div className="flex items-center">
                       <ChaletIcon className="text-3xl" />
-                      <p className="ml-2">Home (all day delivery)</p>
+                      <p className="ml-2 text-sm">Home (all day delivery)</p>
                     </div>
                   }
-                  className="text-gray-500 capitalize ml-32"
+                  className="text-gray-500 capitalize ml-10 md:ml-32"
                 />
                 <FormControlLabel
                   value="office"
@@ -431,10 +431,12 @@ function CheckoutLeftDiv() {
                   label={
                     <div className="flex items-center">
                       <BusinessIcon className="text-3xl" />
-                      <p className="ml-2">Office(Delivery 9AM - 5 PM)</p>
+                      <p className="ml-2 text-sm">
+                        Office(Delivery 9AM - 5 PM)
+                      </p>
                     </div>
                   }
-                  className="text-gray-500 capitalize ml-32"
+                  className="text-gray-500 capitalize ml-10 md:ml-32"
                 />
               </RadioGroup>
             </FormControl>
