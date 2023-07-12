@@ -18,7 +18,9 @@ function Wishlist() {
               key={product.id}
               id={product.id}
               title={product.title}
+              intro={product.intro}
               description={product.description}
+              features={product.features}
               price={product.price}
               image_url={product.image_url}
               stock={product.stock}

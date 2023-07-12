@@ -107,14 +107,12 @@ function NewArrival() {
       id={product.id}
       qty={product.qty}
       title={product.title}
+      intro={product.intro}
       description={product.description}
+      features={product.features}
       price={product.price}
       stock={product.stock}
-      image_url={
-        product.image_url[0] === "/"
-          ? `${apiUrl}${product.image_url}`
-          : product.image_url
-      }
+      image_url={product.image_url}
     />
   ));
 
