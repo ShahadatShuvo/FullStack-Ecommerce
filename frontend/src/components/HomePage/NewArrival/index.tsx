@@ -120,7 +120,7 @@ function NewArrival() {
 
   return (
     <div className="my-8  relative">
-      <div className="py-16">
+      <div className="py-16 mx-16">
         <MagicLine title="New Arrivals" />
       </div>
 
