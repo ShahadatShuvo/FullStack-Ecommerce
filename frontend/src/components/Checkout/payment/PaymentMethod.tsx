@@ -30,7 +30,7 @@ function PaymentMethod() {
   };
 
   return (
-    <div className="w-[80vw] h-[100vh] mx-auto my-auto md:w-screen min-h-[50vh] md:my-16 flex flex-col items-center justify-center">
+    <div className="w-[80%] mx-auto my-auto md:w-screen min-h-[50vh] md:my-16 flex flex-col items-center justify-center">
       {open && <Confetti />}
       <div className="flex flex-col md:flex-row">
         <FormControl>
