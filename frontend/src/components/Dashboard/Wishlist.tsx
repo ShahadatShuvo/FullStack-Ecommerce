@@ -29,7 +29,7 @@ function Wishlist() {
           ))
         ) : (
           <div className="font-semibold text-2xl h-[30vh] flex items-center">
-            Your order list is empty!
+            Your Wishlist is empty!
           </div>
         )}
       </div>
