@@ -27,7 +27,9 @@ function ProductDisplay({
           id={product.id}
           qty={product.qty}
           title={product.title}
+          intro={product.intro}
           description={product.description}
+          features={product.features}
           price={product.price}
           stock={product.stock}
           image_url={

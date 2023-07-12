@@ -50,6 +50,7 @@ interface ProductCardProps {
   // key: number | string;
   title: string;
   description: string;
+  features: string;
   price: number;
   stock: number;
   image_url: string;
@@ -89,6 +90,7 @@ export default function CartViewDialogue(props: ProductCardProps) {
             title={props.title}
             stock={props.stock}
             description={props.description}
+            features={props.features}
             price={props.price}
             image_url={props.image_url}
           />

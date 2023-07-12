@@ -1,35 +1,25 @@
-import { GlobalStates } from "@/app/context";
+"use client";
+
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import StarIcon from "@mui/icons-material/Star";
 import Image from "next/image";
 import React, { useContext } from "react";
+import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
+import { GlobalStates } from "@/app/context";
+import OrderSuccess from "./OrderSuccess";
 import { ProductCardProps } from "../../interfaces";
 import AuthSuccess from "./Accounts/AuthSuccess";
-import CartViewDialogue from "./HomePage/NewArrival/CartViewDialogue";
-import OrderSuccess from "./OrderSuccess";
 
 function ProductCard(props: ProductCardProps) {
-  const { id, title, description, price, image_url } = props;
-  const [favourite, setFavourite] = React.useState(() => {
-    // Retrieve existing wishlist from localStorage
-    const existingWishlist = JSON.parse(
-      localStorage.getItem("wishlist") || "[]"
-    );
-
-    // Check if the current product is already in the wishlist
-    const isProductInWishlist = existingWishlist.some(
-      (item: ProductCardProps) => item.id === id
-    );
-
-    return isProductInWishlist;
-  });
+  const { id, title, intro, description, features, price, image_url } = props;
+  const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
   const { increaseCartData, isDarkTheme } = useContext(GlobalStates);
 
   const onHandleFavourite = () => {
-    setFavourite((prevState: boolean) => !prevState);
+    setFavourite((prevState) => !prevState);
 
     // Retrieve existing wishlist from localStorage
     const existingWishlist = JSON.parse(
@@ -53,26 +43,22 @@ function ProductCard(props: ProductCardProps) {
       localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
     }
   };
-
   const onHandleViewOpen = () => {
     setView(true);
   };
-
   const onHandleViewClose = () => {
     setView(false);
   };
-
   const onHandleClick = (props: ProductCardProps) => {
+    // setCartItems((prevState: ProductCardProps[]) => [...prevState, props]);
     increaseCartData(props);
   };
-
-  console.log(favourite);
 
   return (
     <div className="min-w-[270px] mb-8">
       {favourite && (
         <AuthSuccess
-          msg="Product added to my favorites"
+          msg="Product added to my faviorites"
           type="success"
           show={0}
         />
@@ -83,14 +69,15 @@ function ProductCard(props: ProductCardProps) {
         onMouseLeave={onHandleViewClose}
       >
         <div className="absolute right-2 top-1 p-2 bg-white rounded-full">
-          {favourite ? (
-            <FavoriteRoundedIcon
-              sx={{ color: "red" }}
-              onClick={onHandleFavourite}
-            />
-          ) : (
+          {!favourite && (
             <FavoriteBorderRoundedIcon
               sx={{ color: "black" }}
+              onClick={onHandleFavourite}
+            />
+          )}
+          {favourite && (
+            <FavoriteRoundedIcon
+              sx={{ color: "red" }}
               onClick={onHandleFavourite}
             />
           )}
@@ -108,6 +95,7 @@ function ProductCard(props: ProductCardProps) {
                 // key={props.key}
                 title={props.title}
                 description={props.description}
+                features={props.features}
                 stock={props.stock}
                 price={props.price}
                 image_url={props.image_url}
@@ -139,7 +127,7 @@ function ProductCard(props: ProductCardProps) {
         >
           {title}
         </h3>
-        <p className="text-gray-400">{description}</p>
+        <p className="text-gray-400">{intro}</p>
         <div className="mt-5 flex justify-between items-center">
           <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
             TK {price}
@@ -155,3 +143,5 @@ function ProductCard(props: ProductCardProps) {
 }
 
 export default ProductCard;
+
+// export const ProductCard = React.memo(Card);
