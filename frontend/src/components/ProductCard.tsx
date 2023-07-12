@@ -12,7 +12,7 @@ import { ProductCardProps } from "../../interfaces";
 import AuthSuccess from "./Accounts/AuthSuccess";
 
 function ProductCard(props: ProductCardProps) {
-  const { id, title, description, price, image_url } = props;
+  const { id, title, intro, description, features, price, image_url } = props;
   const [favourite, setFavourite] = React.useState(false);
   const [view, setView] = React.useState(false);
 
@@ -95,6 +95,7 @@ function ProductCard(props: ProductCardProps) {
                 // key={props.key}
                 title={props.title}
                 description={props.description}
+                features={props.features}
                 stock={props.stock}
                 price={props.price}
                 image_url={props.image_url}
@@ -126,7 +127,7 @@ function ProductCard(props: ProductCardProps) {
         >
           {title}
         </h3>
-        <p className="text-gray-400">{description}</p>
+        <p className="text-gray-400">{intro}</p>
         <div className="mt-5 flex justify-between items-center">
           <p className="px-3 text-center py-1 border-2 border-green-600 rounded-lg">
             TK {price}

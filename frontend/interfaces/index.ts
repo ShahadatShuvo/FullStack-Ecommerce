@@ -14,7 +14,9 @@ export interface SingleStepInterface {
 export interface ProductCardProps {
   id: number | string;
   title: string;
+  intro: string;
   description: string;
+  features: string;
   price: number;
   stock: number;
   qty: number;
@@ -24,7 +26,9 @@ export interface ProductCardProps {
 export const demoProductCard: ProductCardProps = {
   id: 1,
   title: "Demo Product",
+  intro: "Demo Product Intro",
   description: "Demo Product Description",
+  features: "Demo Product Features",
   price: 100,
   stock: 10,
   qty: 1,

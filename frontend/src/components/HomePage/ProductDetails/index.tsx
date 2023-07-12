@@ -9,9 +9,9 @@ import Image from "next/image";
 import React from "react";
 
 interface ProductCardProps {
-  // key: number | string;
   title: string;
   description: string;
+  features: string;
   price: number;
   stock: number;
   image_url: string;
@@ -125,10 +125,7 @@ function ProductView(props: ProductCardProps) {
           </div>
           {accordion2 && (
             <div className="mt-3 p-3 rounded-lg bg-gray-100">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
-              repellat, iure veritatis facilis commodi similique ratione sunt
-              temporibus saepe cum porro, excepturi quae exercitationem autem
-              odio! Hic dignissimos itaque fugiat corporis quod minus minima.
+              {props.features}
             </div>
           )}
         </div>
