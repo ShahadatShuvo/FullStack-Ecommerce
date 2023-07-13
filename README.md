@@ -5,7 +5,7 @@ This repository contains the code for the front-end and back-end components of a
 
 ## Frontend
 
-### frontend Live Preview: vmart-frontend.vercel.app
+### frontend Live Server: [vmart-frontend.vercel.app](https://vmart-frontend.vercel.app/)
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
