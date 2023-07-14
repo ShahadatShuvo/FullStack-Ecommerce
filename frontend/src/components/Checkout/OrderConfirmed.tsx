@@ -3,8 +3,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import * as React from "react";
 import { useRouter } from "next/navigation";
+import * as React from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -33,7 +33,7 @@ function OrderConfirmed({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-red-400">
       <Modal
         keepMounted
         open={open}
@@ -42,7 +42,7 @@ function OrderConfirmed({
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+          <div className="inline-block align-bottom bg-white w-2/3 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
             <div>
               <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                 <CheckIcon
