@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { GlobalStates } from "@/app/context";
 import {
   Button,
   Checkbox,
@@ -9,10 +8,10 @@ import {
   FormControlLabel,
   FormLabel,
 } from "@mui/material";
-import Confetti from "react-confetti";
-import { useContext } from "react";
-import { GlobalStates } from "@/app/context";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Image from "next/image";
+import React, { useContext } from "react";
+import Confetti from "react-confetti";
 import OrderConfirmed from "../OrderConfirmed";
 
 function PaymentMethod() {
@@ -30,7 +29,7 @@ function PaymentMethod() {
   };
 
   return (
-    <div className="w-[80%] mx-auto my-auto md:w-screen min-h-[50vh] md:my-16 flex flex-col items-center justify-center">
+    <div className=" md:my-16 flex flex-col items-center justify-center">
       {open && <Confetti />}
       <div className="flex flex-col md:flex-row">
         <FormControl>
@@ -73,7 +72,7 @@ function PaymentMethod() {
             <Button
               size="small"
               variant="contained"
-              className="bg-blue-500 mt-16"
+              className="bg-blue-500 "
               onClick={handlePayment}
             >
               <span className="text-sx md:text-base">Complete Payment</span>
@@ -81,8 +80,8 @@ function PaymentMethod() {
           </div>
         )}
       </div>
-      <div className="mt-16 w-screen flex justify-center">
-        <div className="w-[30%]">
+      <div className="mt-8 w-full  flex justify-center">
+        <div className="">
           <PayPalScriptProvider
             options={{
               clientId:
